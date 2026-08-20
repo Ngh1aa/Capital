@@ -63,7 +63,7 @@ img{display:block;max-width:100%}
 .btn-ghost:hover{border-color:rgba(255,255,255,.45);color:rgba(255,255,255,.75)}
 .btn-outline-gold{display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(184,155,94,.5);color:var(--gold);padding:12px 28px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;font-family:var(--sans);transition:background .3s,color .3s}
 .btn-outline-gold:hover{background:var(--gold);color:var(--bg)}
-.btn-outline-gold svg{width:11px;height:11px;transition:transform .2s}
+.btn-outline-gold svg{width:11px;height:11px;transition:transform .2s}.floor-plan-cta{margin-top:16px}
 .btn-outline-gold:hover svg{transform:translateX(2px)}
 
 /* ── NAV ── */
