@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amenities – Capital Place Hanoi</title>
+  <meta name="description" content="World-class amenities at Capital Place: Sky Lounge, Fitness Centre, Conference Centre, Dining and Retail." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+  <style>
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.am-mosaic{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(201,168,102,.08)}
+@media(min-width:768px){.am-mosaic{grid-template-columns:repeat(3,1fr)}}
+.am-card{position:relative;overflow:hidden;background:var(--card);cursor:pointer;min-height:200px}
+.am-card.tall{grid-row:span 2;min-height:280px}
+@media(min-width:768px){.am-card.tall{min-height:0}}
+.am-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.am-card:hover img{transform:scale(1.06)}
+.am-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,8,.9) 0%,rgba(10,10,8,.2) 50%,transparent 100%);transition:background .5s}
+.am-card:hover .am-ov{background:linear-gradient(to top,rgba(10,10,8,.9) 0%,rgba(10,10,8,.25) 50%,rgba(201,168,102,.05) 100%)}
+.am-info{position:absolute;bottom:0;left:0;right:0;padding:clamp(1.5rem,3vw,2rem)}
+.am-sub{font-family:var(--sans);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.am-title{font-family:var(--serif);font-weight:300;color:#fff;font-size:clamp(1.1rem,2vw,1.4rem);line-height:1.2}
+#leasing{background:var(--bg2);padding:clamp(6rem,12vw,9rem) 0;border-top:1px solid var(--gold-b)}
+.ls-grid{display:grid;gap:4rem}
+@media(min-width:1024px){.ls-grid{grid-template-columns:1fr 1.3fr;gap:5rem}}
+.ls-title{font-family:var(--serif);font-weight:300;color:#fff;font-size:clamp(2rem,4vw,3.2rem);line-height:.9;margin-bottom:2.5rem}
+.ls-title em{color:var(--gold);font-style:italic}
+.ls-desc{color:rgba(255,255,255,.28);font-size:14px;max-width:280px;line-height:1.7;margin-bottom:3rem}
+.ct-links{display:flex;flex-direction:column;gap:1.25rem}
+.ct-link{display:flex;align-items:center;gap:1rem}
+.ct-icon{width:36px;height:36px;border:1px solid rgba(201,168,102,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .3s}
+.ct-link:hover .ct-icon{border-color:var(--gold)}
+.ct-icon svg{width:12px;height:12px;color:var(--gold)}
+.ct-text{color:rgba(255,255,255,.4);font-size:14px;transition:color .3s}
+.ct-link:hover .ct-text{color:rgba(255,255,255,.7)}
+.ls-addr{margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--gold-b)}
+.ls-addr p{color:rgba(255,255,255,.18);font-size:12px;line-height:2}
+.enq-form{display:flex;flex-direction:column;gap:1.75rem}
+.field label{display:block;font-family:var(--sans);font-size:9px;letter-spacing:.42em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:10px}
+.field input,.field textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(201,168,102,.15);color:#fff;font-size:14px;font-family:var(--sans);padding:10px 0;outline:none;caret-color:var(--gold);transition:border-color .3s;resize:none}
+.field input:focus,.field textarea:focus{border-color:var(--gold)}
+.btn-submit{width:100%;border:1px solid var(--gold);color:var(--gold);padding:16px;font-size:10px;letter-spacing:.42em;text-transform:uppercase;font-family:var(--sans);transition:background .3s,color .3s;margin-top:8px}
+.btn-submit:hover{background:var(--gold);color:var(--bg)}
+#success-msg{display:none;border:1px solid rgba(201,168,102,.12);min-height:360px;padding:3.5rem;align-items:center;justify-content:center;text-align:center}
+#success-msg.show{display:flex}
+.succ-line{width:40px;height:1px;background:var(--gold);margin:0 auto 1.5rem}
+#success-msg .eyebrow{margin-bottom:12px;display:block}
+#success-msg p{color:rgba(255,255,255,.3);font-size:14px}
+</style>
+</head>
+<body>
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-top">Capital</span>
+      <span class="logo-bot">Place</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="location.html">Location</a>
+      <a href="office.html">Office</a>
+      <a href="sustainability.html">Sustainability</a>
+      <a href="amenities.html">Amenities</a>
+      <div class="nav-sep"></div>
+      <div class="lang-btns">
+        <button class="active" onclick="setLang('EN')">EN</button>
+        <span class="lang-sep2">|</span>
+        <button onclick="setLang('VI')">VI</button>
+      </div>
+      <a href="amenities.html#leasing" class="btn-enquire">Enquire</a>
+    </div>
+    <button class="nav-ham" id="hamburger" aria-label="Toggle menu">
+      <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+      <svg id="icon-close" style="display:none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div id="mob-menu">
+    <a href="index.html" onclick="closeMob()">Home</a>
+    <a href="location.html" onclick="closeMob()">Location</a>
+    <a href="office.html" onclick="closeMob()">Office</a>
+    <a href="sustainability.html" onclick="closeMob()">Sustainability</a>
+    <a href="amenities.html" onclick="closeMob()">Amenities</a>
+    <a href="amenities.html#leasing" class="mob-enq" onclick="closeMob()">Leasing Enquiry</a>
+  </div>
+</nav>
+<div class="page-header">
+  <div class="container">
+    <p class="page-header-eyebrow">Amenities</p>
+    <h1>World-Class<br><em>Facilities</em></h1>
+    <p>Every amenity is designed to elevate the working experience &mdash; from the triple-height grand lobby to the 360&deg; sky lounge on Level 39.</p>
+  </div>
+</div>
+<section style="background:var(--bg);padding:clamp(6rem,12vw,9rem) 0">
+  <div class="container">
+    <p class="eyebrow" style="margin-bottom:3rem">All Amenities</p>
+    <div class="am-mosaic">
+      <div class="am-card tall"><img src="https://images.unsplash.com/photo-1780369088190-914cc3eee938?w=1200&h=900&fit=crop&auto=format" alt="Grand Lobby" loading="lazy"/><div class="am-ov"></div><div class="am-info"><p class="am-sub">Triple-height atrium</p><h3 class="am-title">Grand Lobby</h3></div></div>
+      <div class="am-card"><img src="https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=1200&h=900&fit=crop&auto=format" alt="Fitness" loading="lazy"/><div class="am-ov"></div><div class="am-info"><p class="am-sub">Gym &middot; Yoga &middot; Spa showers</p><h3 class="am-title">Fitness &amp; Wellness</h3></div></div>
+      <div class="am-card"><img src="https://images.unsplash.com/photo-1587702068694-a909ef4aa346?w=1200&h=900&fit=crop&auto=format" alt="Dining" loading="lazy"/><div class="am-ov"></div><div class="am-info"><p class="am-sub">Ground &amp; Podium levels</p><h3 class="am-title">Dining &amp; Retail</h3></div></div>
+      <div class="am-card"><img src="https://images.unsplash.com/photo-1758193431353-87812fbff5cd?w=1200&h=900&fit=crop&auto=format" alt="Sky Lounge" loading="lazy"/><div class="am-ov"></div><div class="am-info"><p class="am-sub">Level 39 &middot; 360&deg; panorama</p><h3 class="am-title">Sky Lounge</h3></div></div>
+      <div class="am-card"><img src="https://images.unsplash.com/photo-1768312783857-072ef0b3eea2?w=1200&h=900&fit=crop&auto=format" alt="Conference" loading="lazy"/><div class="am-ov"></div><div class="am-info"><p class="am-sub">Event halls &amp; breakout</p><h3 class="am-title">Conference Centre</h3></div></div>
+    </div>
+  </div>
+</section>
+<section id="leasing">
+  <div class="container">
+    <div class="ls-grid">
+      <div>
+        <p class="eyebrow" style="margin-bottom:1rem">Contact</p>
+        <h2 class="ls-title">Leasing<br><em>Enquiries</em></h2>
+        <p class="ls-desc">Our team is available to discuss floor plates, fit-out contributions, and tailored tenancy arrangements.</p>
+        <div class="ct-links">
+          <a href="tel:18009289" class="ct-link"><span class="ct-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg></span><span class="ct-text">1800 9289</span></a>
+          <a href="mailto:leasing@capitalplace.com.vn" class="ct-link"><span class="ct-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg></span><span class="ct-text">leasing@capitalplace.com.vn</span></a>
+        </div>
+        <div class="ls-addr"><p>29 Lieu Giai Street<br>Ngoc Ha, Ba Dinh<br>Hanoi, Vietnam</p></div>
+      </div>
+      <div>
+        <div id="success-msg"><div><div class="succ-line"></div><span class="eyebrow">Enquiry Received</span><p>Our leasing team will contact you within 24 hours.</p></div></div>
+        <form class="enq-form" id="enq-form" onsubmit="submitForm(event)">
+          <div class="field"><label for="fn">Full Name</label><input type="text" id="fn" required/></div>
+          <div class="field"><label for="fc">Company</label><input type="text" id="fc" required/></div>
+          <div class="field"><label for="fe">Email</label><input type="email" id="fe" required/></div>
+          <div class="field"><label for="fp">Phone</label><input type="tel" id="fp" required/></div>
+          <div class="field"><label for="fm">Message</label><textarea id="fm" rows="3"></textarea></div>
+          <button type="submit" class="btn-submit">Submit Enquiry</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+function submitForm(e){e.preventDefault();document.getElementById('enq-form').style.display='none';document.getElementById('success-msg').classList.add('show')}
+</script>
+<footer>
+  <div class="container">
+    <div class="ft-grid">
+      <div>
+        <div class="ft-logo"><span class="logo-top">Capital</span><span class="logo-bot">Place</span></div>
+        <p class="ft-addr">Twin-Peaks Joint Stock Company<br>29 Lieu Giai, Ngoc Ha<br>Ba Dinh, Hanoi, Vietnam</p>
+      </div>
+      <div class="ft-col">
+        <p class="ft-col-title">Navigate</p>
+        <a href="index.html">Home</a>
+        <a href="location.html">Location</a>
+        <a href="office.html">Office</a>
+        <a href="sustainability.html">Sustainability</a>
+        <a href="amenities.html">Amenities</a>
+      </div>
+      <div class="ft-col">
+        <p class="ft-col-title">Contact</p>
+        <a href="tel:18009289">1800 9289</a>
+        <a href="mailto:leasing@capitalplace.com.vn">leasing@capitalplace.com.vn</a>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <p>&copy; 2026 Twin-Peaks Joint Stock Company. All rights reserved.</p>
+      <p>Capital Place &middot; Hanoi</p>
+    </div>
+  </div>
+</footer>
+<script src="assets/main.js"></script>
+</body>
+</html>
