@@ -61,8 +61,8 @@ FOOTER = """<footer>
         <div class="ft-logo">
           <img class="official-logo official-logo-footer" src="assets/brand/capital-place-logo.svg" alt="Capital Place Hanoi" width="89" height="75" />
         </div>
-        <p class="ft-intro">A premier address for business in Hanoi's diplomatic quarter.</p>
-        <p class="ft-addr">Twin-Peaks Joint Stock Company<br>29 Lieu Giai, Ngoc Ha<br>Ba Dinh, Hanoi, Vietnam</p>
+        <p class="ft-intro">A landmark for business.<br>A new icon of Hanoi.</p>
+        <p class="ft-addr">29 Lieu Giai<br>Ngoc Ha, Ba Dinh<br>Hanoi, Vietnam</p>
       </div>
       <div class="ft-col">
         <p class="ft-col-title">Explore Capital Place</p>
@@ -549,7 +549,7 @@ function setFloor(i){if(i===aF)return;aF=i;
 sus_css = """<style>
 .sus-banner{position:relative;height:clamp(280px,40vw,520px);overflow:hidden}
 .sus-banner img{width:100%;height:100%;object-fit:cover;object-position:center}
-.sus-banner-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(17,17,17,.5),transparent 50%,rgba(17,17,17,.7))}
+.sus-banner-ov{position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,17,17,.34),transparent 42%),linear-gradient(to bottom,rgba(17,17,17,.4) 0%,rgba(17,17,17,.06) 38%,rgba(17,17,17,.9) 100%)}
 .sus-banner-txt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center}
 .sus-banner-txt p{font-family:var(--serif);font-weight:300;color:rgba(255,255,255,.75);font-size:clamp(.9rem,2.5vw,1.4rem);letter-spacing:.25em}
 .leed-strip{border-top:1px solid var(--gold-b);border-bottom:1px solid var(--gold-b);background:linear-gradient(90deg,rgba(38,53,46,.28),transparent 48%) var(--bg)}
@@ -652,7 +652,7 @@ am_css = """<style>
 .ls-addr{margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--gold-b)}
 .ls-addr p{color:rgba(255,255,255,.18);font-size:12px;line-height:2}
 .enq-form{display:flex;flex-direction:column;gap:1.75rem}
-.field label{display:block;font-family:var(--sans);font-size:9px;letter-spacing:.42em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:10px}
+.field label{display:block;font-family:var(--sans);font-size:9px;letter-spacing:.42em;text-transform:uppercase;color:var(--warm-ivory);opacity:1;margin-bottom:10px}
 .field input,.field textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(184,155,94,.15);color:#fff;font-size:14px;font-family:var(--sans);padding:10px 0;outline:none;caret-color:var(--gold);transition:border-color .3s;resize:none}
 .field input:focus,.field textarea:focus{border-color:var(--gold)}
 .btn-submit{width:100%;border:1px solid var(--gold);color:var(--gold);padding:16px;font-size:10px;letter-spacing:.42em;text-transform:uppercase;font-family:var(--sans);transition:background .3s,color .3s;margin-top:8px}
