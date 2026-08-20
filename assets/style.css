@@ -95,3 +95,19 @@ footer{background:var(--bg3);border-top:1px solid var(--gold-b);padding:3.5rem 0
 .ft-bot{border-top:1px solid rgba(201,168,102,.08);padding-top:1.75rem;display:flex;flex-direction:column;gap:8px}
 @media(min-width:768px){.ft-bot{flex-direction:row;justify-content:space-between}}
 .ft-bot p{color:rgba(255,255,255,.12);font-size:9px;letter-spacing:.15em;font-family:var(--sans)}
+
+
+/* ── Accessibility and interaction polish ── */
+:focus-visible{outline:1px solid var(--gold);outline-offset:5px}
+button:focus-visible,a:focus-visible{outline:1px solid var(--gold);outline-offset:4px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.anim-bounce,.fade-up,.hero-bg,.zone-img,.ql-card,.btn-primary,.btn-ghost{animation:none!important;transition:none!important}.fade-up{opacity:1;transform:none}.hero-bg{object-position:center 30%}}
+
+/* ── Homepage conversion / trust layer ── */
+.leasing-tease{background:var(--bg2);border-top:1px solid var(--gold-b);padding:clamp(5rem,10vw,8rem) 0}
+.leasing-tease-grid{display:grid;gap:2.5rem;align-items:end}
+@media(min-width:768px){.leasing-tease-grid{grid-template-columns:1.2fr .8fr;gap:4rem}}
+.leasing-tease-copy{max-width:420px;margin-top:1.5rem;color:rgba(255,255,255,.3);font-size:14px;line-height:1.75}
+.leasing-tease-actions{display:flex;flex-wrap:wrap;gap:1rem;justify-content:flex-start}
+@media(min-width:768px){.leasing-tease-actions{justify-content:flex-end}}
+.proof-row{display:flex;flex-wrap:wrap;gap:1rem 2rem;margin-top:clamp(3rem,6vw,5rem);padding-top:1.5rem;border-top:1px solid var(--gold-b)}
+.proof-row span{font-family:var(--sans);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:rgba(201,168,102,.55)}

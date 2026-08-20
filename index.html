@@ -65,9 +65,10 @@
 .zone-item.active .zone-sub{color:rgba(201,168,102,.65)}
 .zone-detail{font-size:14px;line-height:1.7;color:rgba(255,255,255,.38);overflow:hidden;max-height:0;opacity:0;transition:max-height .4s cubic-bezier(.22,1,.36,1),opacity .35s ease,margin-top .35s;margin-top:0}
 .zone-detail.open{max-height:120px;opacity:1;margin-top:12px}
-.img-panel{display:none;padding-left:3rem}
-@media(min-width:1024px){.img-panel{display:block}}
-.img-sticky{position:sticky;top:88px}
+.img-panel{display:block;padding-left:0;margin-top:2rem}
+@media(min-width:1024px){.img-panel{padding-left:3rem;margin-top:0}}
+.img-sticky{position:relative}
+@media(min-width:1024px){.img-sticky{position:sticky;top:88px}}
 .img-wrap{position:relative;overflow:hidden;background:var(--card);height:min(72vh,640px)}
 .zone-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .7s ease,transform .7s ease;opacity:0;transform:scale(1.04)}
 .zone-img.active{opacity:1;transform:scale(1)}
@@ -106,13 +107,13 @@
       <a href="amenities.html">Amenities</a>
       <div class="nav-sep"></div>
       <div class="lang-btns">
-        <button class="active" onclick="setLang('EN')">EN</button>
+        <button type="button" class="active" onclick="setLang('EN')">EN</button>
         <span class="lang-sep2">|</span>
-        <button onclick="setLang('VI')">VI</button>
+        <button type="button" onclick="setLang('VI')">VI</button>
       </div>
       <a href="amenities.html#leasing" class="btn-enquire">Enquire</a>
     </div>
-    <button class="nav-ham" id="hamburger" aria-label="Toggle menu">
+    <button type="button" class="nav-ham" id="hamburger" aria-label="Toggle menu" aria-controls="mob-menu" aria-expanded="false">
       <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
       <svg id="icon-close" style="display:none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
@@ -127,7 +128,7 @@
   </div>
 </nav>
 <section id="hero">
-  <video class="hero-bg" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1690944851207-3f288c8fcd0b?w=1600&h=2000&fit=crop&auto=format&q=90">
+  <video class="hero-bg" autoplay muted loop playsinline preload="metadata" aria-label="Capital Place exterior architecture" poster="https://images.unsplash.com/photo-1690944851207-3f288c8fcd0b?w=1600&h=2000&fit=crop&auto=format&q=90">
     <source src="https://capitalplace.com.vn/wp-content/uploads/2026/05/CAPITAL-PLACE-TVC_1080p.mp4" type="video/mp4">
   </video>
   <div class="ov1"></div><div class="ov2"></div><div class="ov3"></div>
@@ -153,10 +154,10 @@
 </section>
 <section id="specbar">
   <div class="spec-grid container">
-    <div class="stat-cell fade-up"><span class="stat-num" data-target="93700" data-fmt="comma">0</span><span class="stat-label">SQM Total GFA</span></div>
-    <div class="stat-cell fade-up" style="transition-delay:.1s"><span class="stat-num" data-target="2">0</span><span class="stat-label">Towers</span></div>
-    <div class="stat-cell fade-up" style="transition-delay:.2s"><span class="stat-num" data-target="41">0</span><span class="stat-label">Storeys</span></div>
-    <div class="stat-cell fade-up" style="transition-delay:.3s"><span class="stat-num" data-target="2015">0</span><span class="stat-label">Completed</span></div>
+    <div class="stat-cell fade-up"><span class="stat-num" data-target="93700" data-fmt="comma">93,700</span><span class="stat-label">SQM Total GFA</span></div>
+    <div class="stat-cell fade-up" style="transition-delay:.1s"><span class="stat-num" data-target="2">2</span><span class="stat-label">Towers</span></div>
+    <div class="stat-cell fade-up" style="transition-delay:.2s"><span class="stat-num" data-target="41">41</span><span class="stat-label">Storeys</span></div>
+    <div class="stat-cell fade-up" style="transition-delay:.3s"><span class="stat-num" data-target="2015">2015</span><span class="stat-label">Completed</span></div>
   </div>
 </section>
 <section id="explore">
@@ -167,11 +168,29 @@
     </div>
     <div class="exp-grid">
       <div class="zone-list" id="zone-list"></div>
-      <div class="img-panel"><div class="img-sticky"><div class="img-wrap" id="img-wrap">
+      <div class="img-panel"><div class="img-sticky"><div class="img-wrap" id="img-wrap" role="region" aria-live="polite" aria-label="Capital Place area preview">
         <div class="img-ov"></div>
         <div class="img-lbl"><p class="img-lbl-sub" id="z-sub"></p><h3 class="img-lbl-title" id="z-title"></h3></div>
         <div class="zone-dots" id="zone-dots"></div>
       </div></div></div>
+    </div>
+  </div>
+</section>
+<section class="leasing-tease" aria-labelledby="leasing-tease-title">
+  <div class="container">
+    <div class="leasing-tease-grid">
+      <div>
+        <p class="eyebrow" style="margin-bottom:1rem">The Address In Full</p>
+        <h2 id="leasing-tease-title" class="section-title">Make space<br><em>for more.</em></h2>
+        <p class="leasing-tease-copy">Explore available floor plates, view the building layout, or speak with the Capital Place leasing team.</p>
+      </div>
+      <div class="leasing-tease-actions">
+        <a href="office.html" class="btn-primary">View Floor Plans<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
+        <a href="amenities.html#leasing" class="btn-ghost">Request Availability</a>
+      </div>
+    </div>
+    <div class="proof-row" aria-label="Capital Place credentials">
+      <span>Dual LEED Certified</span><span>Grade-A Office</span><span>93,700 SQM</span><span>29 Lieu Giai</span>
     </div>
   </div>
 </section>
@@ -202,14 +221,15 @@ let aZ=0;
     const img=document.createElement('img');img.src=z.img;img.alt=z.label;img.loading='lazy';img.className='zone-img'+(i===0?' active':'');
     wrap.insertBefore(img,wrap.querySelector('.img-ov'));
     const dot=document.createElement('button');dot.className='zone-dot'+(i===0?' active':'');dot.setAttribute('aria-label',z.label);dot.onclick=()=>sz(i);dots.appendChild(dot);
-    const btn=document.createElement('button');btn.className='zone-item'+(i===0?' active':' inactive');
-    btn.innerHTML='<span class="zone-num">'+z.num+'</span><div class="zone-body"><div class="zone-head"><h3>'+z.label+'</h3><svg class="zone-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg></div><p class="zone-sub">'+z.sub+'</p><p class="zone-detail'+(i===0?' open':'')+'">'+z.detail+'</p></div>';
-    btn.onmouseenter=btn.onclick=()=>sz(i);list.appendChild(btn);
+    const btn=document.createElement('button');btn.type='button';btn.className='zone-item'+(i===0?' active':' inactive');
+    btn.setAttribute('aria-controls','zone-detail-'+z.id);btn.setAttribute('aria-expanded',i===0?'true':'false');
+    btn.innerHTML='<span class="zone-num">'+z.num+'</span><div class="zone-body"><div class="zone-head"><h3>'+z.label+'</h3><svg class="zone-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg></div><p class="zone-sub">'+z.sub+'</p><p class="zone-detail'+(i===0?' open':'')+'" id="zone-detail-'+z.id+'">'+z.detail+'</p></div>';
+    btn.onmouseenter=()=>sz(i);btn.onclick=()=>sz(i);list.appendChild(btn);
   });
   document.getElementById('z-sub').textContent=ZONES[0].sub;document.getElementById('z-title').textContent=ZONES[0].label;
 })();
 function sz(i){if(i===aZ)return;aZ=i;
-  document.querySelectorAll('.zone-item').forEach((el,x)=>{el.classList.toggle('active',x===i);el.classList.toggle('inactive',x!==i);el.querySelector('.zone-detail').classList.toggle('open',x===i)});
+  document.querySelectorAll('.zone-item').forEach((el,x)=>{el.classList.toggle('active',x===i);el.classList.toggle('inactive',x!==i);el.setAttribute('aria-expanded',x===i?'true':'false');el.querySelector('.zone-detail').classList.toggle('open',x===i)});
   document.querySelectorAll('.zone-img').forEach((el,x)=>el.classList.toggle('active',x===i));
   document.querySelectorAll('.zone-dot').forEach((el,x)=>el.classList.toggle('active',x===i));
   document.getElementById('z-sub').textContent=ZONES[i].sub;document.getElementById('z-title').textContent=ZONES[i].label;
