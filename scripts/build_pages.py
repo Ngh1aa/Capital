@@ -22,9 +22,17 @@ def head(title, desc, extra=''):
 
 NAV = """<nav id="main-nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">
-      <span class="logo-top">Capital</span>
-      <span class="logo-bot">Place</span>
+    <a href="index.html" class="nav-logo" aria-label="Capital Place Hanoi home">
+      <span class="logo-lockup">
+        <svg class="logo-mark" viewBox="0 0 24 28" aria-hidden="true" focusable="false">
+          <path d="M2 26L4 16"/><path d="M8 26L11 10"/><path d="M14 26L18 5"/><path d="M20 26L24 1"/>
+        </svg>
+        <span class="logo-wordmark">
+          <span class="logo-top">Capital</span>
+          <span class="logo-bot">Place</span>
+          <span class="logo-city">Hanoi</span>
+        </span>
+      </span>
     </a>
     <div class="nav-links">
       <a href="index.html">Home</a>
@@ -59,7 +67,16 @@ FOOTER = """<footer>
   <div class="container">
     <div class="ft-grid">
       <div>
-        <div class="ft-logo"><span class="logo-top">Capital</span><span class="logo-bot">Place</span></div>
+        <div class="ft-logo">
+          <span class="logo-lockup">
+            <svg class="logo-mark" viewBox="0 0 24 28" aria-hidden="true" focusable="false">
+              <path d="M2 26L4 16"/><path d="M8 26L11 10"/><path d="M14 26L18 5"/><path d="M20 26L24 1"/>
+            </svg>
+            <span class="logo-wordmark">
+              <span class="logo-top">Capital</span><span class="logo-bot">Place</span><span class="logo-city">Hanoi</span>
+            </span>
+          </span>
+        </div>
         <p class="ft-addr">Twin-Peaks Joint Stock Company<br>29 Lieu Giai, Ngoc Ha<br>Ba Dinh, Hanoi, Vietnam</p>
       </div>
       <div class="ft-col">
@@ -92,11 +109,11 @@ FOOTER = """<footer>
 idx_css = """<style>
 #hero{position:relative;height:100svh;min-height:680px;overflow:hidden;background:var(--bg)}
 .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
-.ov1{position:absolute;inset:0;background:rgba(11,11,9,.35)}
-.ov2{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,11,9,.65) 0%,transparent 50%,var(--bg) 100%)}
+.ov1{position:absolute;inset:0;background:rgba(7,19,28,.35)}
+.ov2{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(7,19,28,.65) 0%,transparent 50%,var(--bg) 100%)}
 .ov3{position:absolute;bottom:0;left:0;right:0;height:45%;background:linear-gradient(to top,var(--bg),transparent)}
 .hero-badges{position:absolute;top:86px;right:var(--px);display:flex;flex-direction:column;align-items:flex-end;gap:8px;animation:fadeIn .9s .6s both}
-.badge{font-family:var(--sans);font-size:9px;letter-spacing:.45em;text-transform:uppercase;border:1px solid;padding:7px 12px;backdrop-filter:blur(4px);background:rgba(11,11,9,.3)}
+.badge{font-family:var(--sans);font-size:9px;letter-spacing:.45em;text-transform:uppercase;border:1px solid;padding:7px 12px;backdrop-filter:blur(4px);background:rgba(7,19,28,.3)}
 .badge-gold{color:var(--gold);border-color:rgba(201,168,102,.35)}
 .badge-dim{color:rgba(201,168,102,.55);border-color:rgba(201,168,102,.15)}
 .hero-content{position:absolute;bottom:clamp(4rem,8vw,5rem);left:0;right:0}
@@ -359,12 +376,12 @@ def make_svg(fid):
     ticks_e = ''.join(f'<line x1="450" y1="{44+i*17}" x2="456" y2="{44+i*17}" stroke="#c9a866" stroke-width=".6" stroke-opacity=".6"/>' for i in range(16))
     cg = ''.join(f'<line x1="{x}" y1="24" x2="{x}" y2="316" stroke="#c9a866" stroke-width=".5" stroke-opacity=".07" stroke-dasharray="4 5"/>' for x in [132,240,348])
     rg = ''.join(f'<line x1="24" y1="{y}" x2="456" y2="{y}" stroke="#c9a866" stroke-width=".5" stroke-opacity=".07" stroke-dasharray="4 5"/>' for y in [120,196,268])
-    core = '' if G else '<rect x="172" y="108" width="136" height="124" fill="#131310" stroke="#c9a866" stroke-width=".9"/>'
+    core = '' if G else '<rect x="172" y="108" width="136" height="124" fill="#102b38" stroke="#c9a866" stroke-width=".9"/>'
     lifts = '' if G or S else ''.join(f'<g><rect x="{185+i*18}" y="120" width="14" height="18" fill="#1c1c18" stroke="#c9a866" stroke-width=".5"/><line x1="{186+i*18}" y1="121" x2="{198+i*18}" y2="137" stroke="#c9a866" stroke-width=".4" stroke-opacity=".35"/><line x1="{198+i*18}" y1="121" x2="{186+i*18}" y2="137" stroke="#c9a866" stroke-width=".4" stroke-opacity=".35"/></g>' for i in range(6))
     stairs = '' if G or S else '<rect x="178" y="153" width="22" height="26" fill="#1c1c18" stroke="#c9a866" stroke-width=".5"/><rect x="280" y="153" width="22" height="26" fill="#1c1c18" stroke="#c9a866" stroke-width=".5"/>'
     lbl = '' if G or S else '<text x="240" y="175" text-anchor="middle" fill="#3a3428" font-size="7" letter-spacing="2.5" font-family="sans-serif">CORE</text>'
     sp = ''
-    if G: sp = '<rect x="176" y="130" width="128" height="8" rx="4" fill="none" stroke="#c9a866" stroke-width=".8"/><rect x="196" y="148" width="88" height="44" fill="#131310" stroke="#c9a866" stroke-width=".8"/><text x="240" y="175" text-anchor="middle" fill="#3a3428" font-size="7" letter-spacing="2" font-family="sans-serif">RECEPTION</text>'
+    if G: sp = '<rect x="176" y="130" width="128" height="8" rx="4" fill="none" stroke="#c9a866" stroke-width=".8"/><rect x="196" y="148" width="88" height="44" fill="#102b38" stroke="#c9a866" stroke-width=".8"/><text x="240" y="175" text-anchor="middle" fill="#3a3428" font-size="7" letter-spacing="2" font-family="sans-serif">RECEPTION</text>'
     if S: sp = '<ellipse cx="240" cy="170" rx="80" ry="60" fill="none" stroke="#c9a866" stroke-width=".7" stroke-opacity=".25" stroke-dasharray="5 4"/><text x="240" y="174" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">SKY LOUNGE</text>'
     return f'<svg viewBox="0 0 480 340" style="width:100%;height:auto;max-height:280px"><rect x="24" y="24" width="432" height="292" fill="none" stroke="#c9a866" stroke-width="1.2"/>{ticks_n}{ticks_s}{ticks_w}{ticks_e}{cg}{rg}{core}{lifts}{stairs}{sp}{lbl}<text x="240" y="15" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">N</text><text x="240" y="332" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">S</text><text x="12" y="173" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">W</text><text x="465" y="173" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">E</text><g transform="translate(440,48)"><line x1="0" y1="12" x2="0" y2="-8" stroke="#c9a866" stroke-width=".8"/><polygon points="0,-10 -5,-2 5,-2" fill="#c9a866"/></g><g transform="translate(32,308)"><line x1="0" y1="0" x2="68" y2="0" stroke="#c9a866" stroke-width=".8" stroke-opacity=".5"/><line x1="0" y1="-4" x2="0" y2="4" stroke="#c9a866" stroke-width=".8" stroke-opacity=".5"/><line x1="68" y1="-4" x2="68" y2="4" stroke="#c9a866" stroke-width=".8" stroke-opacity=".5"/><text x="34" y="-7" text-anchor="middle" fill="#3a3428" font-size="6.5" letter-spacing="1" font-family="sans-serif">20 m</text></g></svg>'
 
@@ -474,7 +491,7 @@ function setFloor(i){if(i===aF)return;aF=i;
 sus_css = """<style>
 .sus-banner{position:relative;height:clamp(280px,40vw,520px);overflow:hidden}
 .sus-banner img{width:100%;height:100%;object-fit:cover;object-position:center}
-.sus-banner-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,11,9,.5),transparent 50%,rgba(11,11,9,.7))}
+.sus-banner-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(7,19,28,.5),transparent 50%,rgba(7,19,28,.7))}
 .sus-banner-txt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center}
 .sus-banner-txt p{font-family:var(--serif);font-weight:300;color:rgba(255,255,255,.75);font-size:clamp(.9rem,2.5vw,1.4rem);letter-spacing:.25em}
 .leed-strip{border-top:1px solid var(--gold-b);border-bottom:1px solid var(--gold-b);background:var(--bg)}

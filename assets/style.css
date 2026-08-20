@@ -1,8 +1,10 @@
 /* ── Reset & Base ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --gold:#c9a866;--gold-b:rgba(201,168,102,.12);
-  --bg:#0b0b09;--bg2:#0f0f0c;--bg3:#080807;--card:#131310;--fg:#ede8da;
+  --navy-950:#07131c;--navy-900:#0b1c27;--navy-800:#102b38;
+  --champagne:#c9a866;--bronze:#a9824f;--white:#f4f2ed;--mist:rgba(244,242,237,.62);
+  --gold:var(--champagne);--gold-b:rgba(201,168,102,.16);
+  --bg:var(--navy-950);--bg2:var(--navy-900);--bg3:#061019;--card:var(--navy-800);--fg:var(--white);
   --serif:'Fraunces',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;
   --max-w:1280px;--px:clamp(1.5rem,5vw,3rem)
 }
@@ -57,7 +59,7 @@ img{display:block;max-width:100%}
 
 /* ── NAV ── */
 #main-nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .5s,border-color .5s;border-bottom:1px solid transparent}
-#main-nav.scrolled{background:rgba(11,11,9,.96);backdrop-filter:blur(12px);border-color:rgba(201,168,102,.1)}
+#main-nav.scrolled{background:rgba(7,19,28,.96);backdrop-filter:blur(12px);border-color:rgba(201,168,102,.1)}
 .nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 var(--px);height:68px;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{display:flex;flex-direction:column;gap:2px;line-height:1;user-select:none}
 .logo-top{font-family:var(--serif);font-size:9px;letter-spacing:.55em;text-transform:uppercase;color:var(--gold)}
@@ -82,6 +84,14 @@ img{display:block;max-width:100%}
 #mob-menu a{font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.5);transition:color .2s}
 #mob-menu a:hover,#mob-menu a.active{color:var(--gold)}
 .mob-enq{margin-top:.5rem;border:1px solid rgba(201,168,102,.6);color:var(--gold);padding:12px 24px;font-size:10px;letter-spacing:.35em;text-transform:uppercase;text-align:center;display:block}
+
+
+/* ── Brand mark ── */
+.logo-lockup{display:flex;align-items:center;gap:10px}
+.logo-mark{width:22px;height:30px;display:block;flex:0 0 auto;color:var(--gold)}
+.logo-mark path{fill:none;stroke:currentColor;stroke-width:1.35;stroke-linecap:round}
+.logo-wordmark{display:flex;flex-direction:column;gap:1px;line-height:1}
+.logo-city{font-family:var(--sans);font-size:7px;letter-spacing:.42em;text-transform:uppercase;color:var(--mist);margin-left:.28em;margin-top:2px}
 
 /* ── FOOTER ── */
 footer{background:var(--bg3);border-top:1px solid var(--gold-b);padding:3.5rem 0 2.5rem}
