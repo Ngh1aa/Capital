@@ -23,16 +23,7 @@ def head(title, desc, extra=''):
 NAV = """<nav id="main-nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="Capital Place Hanoi home">
-      <span class="logo-lockup">
-        <svg class="logo-mark" viewBox="0 0 24 28" aria-hidden="true" focusable="false">
-          <path d="M2 26L4 16"/><path d="M8 26L11 10"/><path d="M14 26L18 5"/><path d="M20 26L24 1"/>
-        </svg>
-        <span class="logo-wordmark">
-          <span class="logo-top">Capital</span>
-          <span class="logo-bot">Place</span>
-          <span class="logo-city">Hanoi</span>
-        </span>
-      </span>
+      <img class="official-logo" src="assets/brand/capital-place-logo.svg" alt="Capital Place Hanoi" width="89" height="75" />
     </a>
     <div class="nav-links">
       <a href="index.html">Home</a>
@@ -68,14 +59,7 @@ FOOTER = """<footer>
     <div class="ft-grid">
       <div>
         <div class="ft-logo">
-          <span class="logo-lockup">
-            <svg class="logo-mark" viewBox="0 0 24 28" aria-hidden="true" focusable="false">
-              <path d="M2 26L4 16"/><path d="M8 26L11 10"/><path d="M14 26L18 5"/><path d="M20 26L24 1"/>
-            </svg>
-            <span class="logo-wordmark">
-              <span class="logo-top">Capital</span><span class="logo-bot">Place</span><span class="logo-city">Hanoi</span>
-            </span>
-          </span>
+          <img class="official-logo official-logo-footer" src="assets/brand/capital-place-logo.svg" alt="Capital Place Hanoi" width="89" height="75" />
         </div>
         <p class="ft-addr">Twin-Peaks Joint Stock Company<br>29 Lieu Giai, Ngoc Ha<br>Ba Dinh, Hanoi, Vietnam</p>
       </div>
@@ -322,7 +306,8 @@ loc_css = """<style>
 .transport-dist{font-family:var(--sans);font-size:12px;color:rgba(255,255,255,.25)}
 </style>"""
 
-loc_body = """<div class="page-header">
+loc_body = """<div class="page-header" style="--hero-position:center 34%">
+  <img class="page-header-media" src="https://images.unsplash.com/photo-1435575653489-b0873ec954e2?w=1800&h=1200&fit=crop&auto=format" alt="Capital Place architecture in Hanoi" fetchpriority="high" />
   <div class="container">
     <p class="page-header-eyebrow">Location</p>
     <h1>Prime<br><em>Ba Dinh</em></h1>
@@ -443,7 +428,8 @@ off_css = """<style>
 .feat-desc{font-family:var(--sans);font-size:13px;color:rgba(255,255,255,.3);line-height:1.6}
 </style>"""
 
-off_body = f"""<div class="page-header">
+off_body = f"""<div class="page-header" style="--hero-position:center 26%">
+  <img class="page-header-media" src="https://images.unsplash.com/photo-1690944851207-3f288c8fcd0b?w=1600&h=2000&fit=crop&auto=format&q=90" alt="Capital Place towers rising above Hanoi" fetchpriority="high" />
   <div class="container">
     <p class="page-header-eyebrow">Office</p>
     <h1>Grade-A<br><em>Office Floors</em></h1>
@@ -517,7 +503,8 @@ sus_css = """<style>
 .metric-desc{font-family:var(--sans);font-size:12px;color:rgba(255,255,255,.2);line-height:1.5;margin-top:.25rem}
 </style>"""
 
-sus_body = """<div class="page-header">
+sus_body = """<div class="page-header" style="--hero-position:center 40%">
+  <img class="page-header-media" src="https://images.unsplash.com/photo-1617761141732-d481912af1a9?w=1400&h=950&fit=crop&auto=format" alt="Light reflecting across Capital Place glass facade" fetchpriority="high" />
   <div class="container">
     <p class="page-header-eyebrow">Sustainability</p>
     <h1>Dual<br><em>LEED Certified</em></h1>
@@ -605,7 +592,8 @@ am_css = """<style>
 #success-msg p{color:rgba(255,255,255,.3);font-size:14px}
 </style>"""
 
-am_body = """<div class="page-header">
+am_body = """<div class="page-header" style="--hero-position:center 48%">
+  <img class="page-header-media" src="https://images.unsplash.com/photo-1780369088190-914cc3eee938?w=1200&h=900&fit=crop&auto=format" alt="Capital Place grand lobby and amenities" fetchpriority="high" />
   <div class="container">
     <p class="page-header-eyebrow">Amenities</p>
     <h1>World-Class<br><em>Facilities</em></h1>

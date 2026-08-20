@@ -29,22 +29,27 @@ img{display:block;max-width:100%}
 .fade-up{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
 
-/* ── Page header (non-hero pages) ── */
+/* ── Shared discovery hero for inner pages ── */
 .page-header{
-  padding:clamp(8rem,16vw,12rem) 0 clamp(4rem,8vw,6rem);
+  min-height:clamp(560px,72vh,820px);
+  padding:clamp(10rem,18vw,14rem) 0 clamp(5rem,10vw,8rem);
   border-bottom:1px solid var(--gold-b);
-  background:var(--bg2);
-  position:relative;overflow:hidden;
+  background:var(--bg);
+  position:relative;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate;
 }
+.page-header-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--hero-position,center);z-index:-2}
 .page-header::before{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 60% at 20% 50%, rgba(210,172,71,.04), transparent);
-  pointer-events:none;
+  background:linear-gradient(90deg,rgba(7,19,28,.9) 0%,rgba(7,19,28,.62) 42%,rgba(7,19,28,.25) 100%),linear-gradient(180deg,rgba(7,19,28,.2) 0%,rgba(7,19,28,.9) 100%);
+  pointer-events:none;z-index:-1;
 }
-.page-header-eyebrow{font-family:var(--sans);font-size:9px;letter-spacing:.55em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem}
-.page-header h1{font-family:var(--serif);font-weight:300;color:#fff;line-height:.9;font-size:clamp(2.8rem,7vw,5.5rem)}
-.page-header h1 em{color:var(--gold);font-style:italic}
-.page-header p{margin-top:1.5rem;color:rgba(255,255,255,.3);font-size:15px;max-width:500px;line-height:1.75}
+.page-header::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-deep),transparent);opacity:.8;pointer-events:none}
+.page-header .container{position:relative;z-index:1}
+.page-header-eyebrow{font-family:var(--sans);font-size:9px;letter-spacing:.55em;text-transform:uppercase;color:var(--gold-champagne);margin-bottom:1.25rem}
+.page-header h1{font-family:var(--serif);font-weight:300;color:#fff;line-height:.9;font-size:clamp(2.8rem,7vw,5.5rem);text-shadow:0 10px 38px rgba(0,0,0,.22)}
+.page-header h1 em{color:var(--gold-highlight);font-style:italic}
+.page-header p{margin-top:1.5rem;color:rgba(244,242,237,.72);font-size:15px;max-width:500px;line-height:1.75}
+@media(max-width:640px){.page-header{min-height:620px;padding-top:9rem}.page-header-media{object-position:center}.page-header::before{background:linear-gradient(180deg,rgba(7,19,28,.25) 0%,rgba(7,19,28,.95) 88%)}}
 
 /* ── Buttons ── */
 .btn-primary{display:inline-flex;align-items:center;gap:12px;background:var(--gold);color:var(--bg);padding:13px 32px;font-size:10px;letter-spacing:.35em;text-transform:uppercase;font-family:var(--sans);font-weight:500;transition:background .3s}
@@ -88,11 +93,8 @@ img{display:block;max-width:100%}
 
 
 /* ── Brand mark ── */
-.logo-lockup{display:flex;align-items:center;gap:10px}
-.logo-mark{width:22px;height:30px;display:block;flex:0 0 auto;color:var(--gold)}
-.logo-mark path{fill:none;stroke:currentColor;stroke-width:1.35;stroke-linecap:round}
-.logo-wordmark{display:flex;flex-direction:column;gap:1px;line-height:1}
-.logo-city{font-family:var(--sans);font-size:7px;letter-spacing:.42em;text-transform:uppercase;color:var(--mist);margin-left:.28em;margin-top:2px}
+.official-logo{display:block;width:76px;height:auto;max-height:64px;object-fit:contain;object-position:center}
+.official-logo-footer{width:89px;max-height:75px;margin-bottom:1.25rem}
 
 /* ── FOOTER ── */
 footer{background:var(--bg3);border-top:1px solid var(--gold-b);padding:3.5rem 0 2.5rem}
