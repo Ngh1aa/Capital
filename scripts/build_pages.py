@@ -372,7 +372,7 @@ def make_svg(fid):
     return f'<svg viewBox="0 0 480 340" style="width:100%;height:auto;max-height:280px"><rect x="24" y="24" width="432" height="292" fill="none" stroke="#d2ac47" stroke-width="1.2"/>{ticks_n}{ticks_s}{ticks_w}{ticks_e}{cg}{rg}{core}{lifts}{stairs}{sp}{lbl}<text x="240" y="15" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">N</text><text x="240" y="332" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">S</text><text x="12" y="173" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">W</text><text x="465" y="173" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">E</text><g transform="translate(440,48)"><line x1="0" y1="12" x2="0" y2="-8" stroke="#d2ac47" stroke-width=".8"/><polygon points="0,-10 -5,-2 5,-2" fill="#d2ac47"/></g><g transform="translate(32,308)"><line x1="0" y1="0" x2="68" y2="0" stroke="#d2ac47" stroke-width=".8" stroke-opacity=".5"/><line x1="0" y1="-4" x2="0" y2="4" stroke="#d2ac47" stroke-width=".8" stroke-opacity=".5"/><line x1="68" y1="-4" x2="68" y2="4" stroke="#d2ac47" stroke-width=".8" stroke-opacity=".5"/><text x="34" y="-7" text-anchor="middle" fill="#3a3428" font-size="6.5" letter-spacing="1" font-family="sans-serif">20 m</text></g></svg>'
 
 FLOORS = [
-    {"id":"ground","label":"Arrival & Retail","range":"B1 · Level 1","tower":"Shared podium","use":"Retail · Arrival · Building services","note":"The section diagram marks Level 1 as retail and B1 as the basement arrival band."},
+    {"id":"ground","label":"Arrival & Retail","range":"B3 · B1 · Level 1","tower":"Shared podium","use":"Three basement levels · Retail · Arrival","note":"The project includes three basement levels; the section diagram marks Level 1 as retail."},
     {"id":"podium","label":"Lower Office Band","range":"Levels 2 · 6","tower":"Tower 1 · Tower 2","use":"Office floors across the lower podium","note":"The lower office band sits above the retail level in both towers."},
     {"id":"lo","label":"Lower Office Floors","range":"7F · 19F","tower":"Tower 1 · Tower 2","use":"Grade-A office floors","note":"Both towers are shown with office floors from 7F through 19F."},
     {"id":"hi","label":"Upper Office Floors","range":"20F · 37F","tower":"Tower 1 · Tower 2","use":"Upper office floors","note":"The upper office band rises from 20F to 37F in both towers."},
@@ -439,6 +439,11 @@ off_css = """<style>
 .office-kpi-num{font-family:var(--serif);font-size:clamp(2.4rem,5vw,4rem);font-weight:300;color:var(--gold-primary);line-height:1}
 .office-kpi-label{font-family:var(--sans);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#fff}
 .office-kpi-note{font-family:var(--sans);font-size:12px;color:rgba(255,255,255,.3)}
+.office-highlights{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--gold-b);margin-top:1px}
+@media(min-width:768px){.office-highlights{grid-template-columns:repeat(4,1fr)}}
+.office-highlight{background:var(--bg2);padding:1.35rem 1.15rem;min-height:108px;display:flex;flex-direction:column;gap:.45rem}
+.office-highlight-value{font-family:var(--serif);font-size:clamp(1.35rem,2.2vw,2rem);font-weight:300;color:var(--gold-champagne);line-height:1.05}
+.office-highlight-label{font-family:var(--sans);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.48);line-height:1.35}
 .tower-section{background:var(--bg);padding:clamp(5rem,10vw,8rem) 0;border-top:1px solid var(--gold-b)}
 .tower-section-grid{display:grid;gap:3rem;align-items:center}
 @media(min-width:1024px){.tower-section-grid{grid-template-columns:.78fr 1.22fr;gap:5rem}}
@@ -470,12 +475,22 @@ off_body = f"""<div class="page-header" style="--hero-position:center 26%">
         <p class="eyebrow" style="margin-bottom:1rem">The workplace</p>
         <h2 id="office-overview-title" class="section-title">Two towers.<br><em>One address.</em></h2>
       </div>
-      <p class="office-intro-copy">The building section is organized as a simple vertical experience: retail and arrival at the base, office bands through the podium, and two towers rising together from 7F to 37F.</p>
+      <p class="office-intro-copy">The building section is organized as a simple vertical experience: three basement levels and retail at Level 1, office bands through the podium, and two towers rising together to 37 floors each.</p>
     </div>
     <div class="office-kpis" role="list" aria-label="Office building overview">
       <div class="office-kpi" role="listitem"><span class="office-kpi-num">02</span><span class="office-kpi-label">Towers</span><span class="office-kpi-note">Tower 1 &middot; Tower 2</span></div>
-      <div class="office-kpi" role="listitem"><span class="office-kpi-num">37F</span><span class="office-kpi-label">Upper office level</span><span class="office-kpi-note">Shown in the section diagram</span></div>
-      <div class="office-kpi" role="listitem"><span class="office-kpi-num">B1</span><span class="office-kpi-label">Arrival level</span><span class="office-kpi-note">Retail and building access</span></div>
+      <div class="office-kpi" role="listitem"><span class="office-kpi-num">37F</span><span class="office-kpi-label">Height per tower</span><span class="office-kpi-note">37 floors / tower</span></div>
+      <div class="office-kpi" role="listitem"><span class="office-kpi-num">~93,550</span><span class="office-kpi-label">Office area m²</span><span class="office-kpi-note">Grade-A workplace destination</span></div>
+    </div>
+    <div class="office-highlights" role="list" aria-label="Capital Place technical highlights">
+      <div class="office-highlight" role="listitem"><span class="office-highlight-value">3</span><span class="office-highlight-label">Basement levels</span></div>
+      <div class="office-highlight" role="listitem"><span class="office-highlight-value">~5,279 m²</span><span class="office-highlight-label">Retail area</span></div>
+      <div class="office-highlight" role="listitem"><span class="office-highlight-value">1,200–1,340 m²</span><span class="office-highlight-label">Typical floorplate</span></div>
+      <div class="office-highlight" role="listitem"><span class="office-highlight-value">32</span><span class="office-highlight-label">Lifts</span></div>
+      <div class="office-highlight" role="listitem"><span class="office-highlight-value">Central</span><span class="office-highlight-label">Air conditioning</span></div>
+      <div class="office-highlight" role="listitem"><span class="office-highlight-value">100%</span><span class="office-highlight-label">Backup power capacity</span></div>
+      <div class="office-highlight" role="listitem"><span class="office-highlight-value">Grade A / A+</span><span class="office-highlight-label">Building standard</span></div>
+      <div class="office-highlight" role="listitem"><span class="office-highlight-value">Gold + Platinum</span><span class="office-highlight-label">LEED certification</span></div>
     </div>
   </div>
 </section>
