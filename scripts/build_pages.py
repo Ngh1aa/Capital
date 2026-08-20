@@ -114,8 +114,8 @@ idx_css = """<style>
 .ov3{position:absolute;bottom:0;left:0;right:0;height:45%;background:linear-gradient(to top,var(--bg),transparent)}
 .hero-badges{position:absolute;top:86px;right:var(--px);display:flex;flex-direction:column;align-items:flex-end;gap:8px;animation:fadeIn .9s .6s both}
 .badge{font-family:var(--sans);font-size:9px;letter-spacing:.45em;text-transform:uppercase;border:1px solid;padding:7px 12px;backdrop-filter:blur(4px);background:rgba(7,19,28,.3)}
-.badge-gold{color:var(--gold);border-color:rgba(201,168,102,.35)}
-.badge-dim{color:rgba(201,168,102,.55);border-color:rgba(201,168,102,.15)}
+.badge-gold{color:var(--gold);border-color:rgba(210,172,71,.35)}
+.badge-dim{color:rgba(210,172,71,.55);border-color:rgba(210,172,71,.15)}
 .hero-content{position:absolute;bottom:clamp(4rem,8vw,5rem);left:0;right:0}
 .hero-eyebrow{color:var(--gold);font-size:9px;letter-spacing:.55em;text-transform:uppercase;font-family:var(--sans);margin-bottom:1.5rem;animation:fadeUp 1.2s .1s both}
 .hero-h1{font-family:var(--serif);font-weight:300;color:#fff;line-height:.88}
@@ -126,7 +126,7 @@ idx_css = """<style>
 .hero-h1 span:nth-child(3){animation:fadeUp 1s .44s both}
 .hero-specs{margin-top:1.75rem;display:flex;flex-wrap:wrap;align-items:center;gap:1.25rem;animation:fadeUp 1s .5s both}
 .hero-spec{display:flex;align-items:center;gap:1.25rem;font-family:var(--sans);font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.28)}
-.spec-sep{width:1px;height:12px;background:rgba(201,168,102,.25)}
+.spec-sep{width:1px;height:12px;background:rgba(210,172,71,.25)}
 .hero-ctas{margin-top:2.25rem;display:flex;flex-wrap:wrap;gap:1rem;animation:fadeUp 1s .55s both}
 .scroll-cue{position:absolute;bottom:28px;right:var(--px);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.18)}
 .scroll-cue span{font-family:var(--sans);font-size:8px;letter-spacing:.4em;text-transform:uppercase}
@@ -159,7 +159,7 @@ idx_css = """<style>
 .zone-item.active .zone-chevron{color:var(--gold);opacity:1}
 .zone-item.inactive .zone-chevron{opacity:0}
 .zone-sub{font-family:var(--sans);font-size:9px;letter-spacing:.22em;text-transform:uppercase;transition:color .3s;color:rgba(255,255,255,.22)}
-.zone-item.active .zone-sub{color:rgba(201,168,102,.65)}
+.zone-item.active .zone-sub{color:rgba(210,172,71,.65)}
 .zone-detail{font-size:14px;line-height:1.7;color:rgba(255,255,255,.38);overflow:hidden;max-height:0;opacity:0;transition:max-height .4s cubic-bezier(.22,1,.36,1),opacity .35s ease,margin-top .35s;margin-top:0}
 .zone-detail.open{max-height:120px;opacity:1;margin-top:12px}
 .img-panel{display:block;padding-left:0;margin-top:2rem}
@@ -181,7 +181,7 @@ idx_css = """<style>
 @media(min-width:768px){.ql-grid{grid-template-columns:repeat(4,1fr)}}
 .ql-card{background:var(--bg2);padding:2.5rem 2rem;display:flex;flex-direction:column;gap:1rem;transition:background .3s}
 .ql-card:hover{background:var(--card)}
-.ql-num{font-family:var(--sans);font-size:9px;letter-spacing:.4em;color:rgba(201,168,102,.4)}
+.ql-num{font-family:var(--sans);font-size:9px;letter-spacing:.4em;color:rgba(210,172,71,.4)}
 .ql-title{font-family:var(--serif);font-weight:300;color:#fff;font-size:1.25rem;line-height:1.2}
 .ql-desc{font-family:var(--sans);font-size:13px;color:rgba(255,255,255,.3);line-height:1.6}
 .ql-arrow{margin-top:auto;color:var(--gold);display:flex;align-items:center;gap:8px;font-family:var(--sans);font-size:10px;letter-spacing:.25em;text-transform:uppercase}
@@ -317,7 +317,7 @@ loc_css = """<style>
 .nearbylist li::before{content:'';display:block;width:20px;height:1px;background:var(--gold);flex-shrink:0}
 .transport-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gold-b);margin-top:clamp(3rem,6vw,5rem)}
 .transport-cell{background:var(--bg);padding:2rem;display:flex;flex-direction:column;gap:.5rem}
-.transport-icon{font-family:var(--sans);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:rgba(201,168,102,.5)}
+.transport-icon{font-family:var(--sans);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:rgba(210,172,71,.5)}
 .transport-name{font-family:var(--serif);font-weight:300;color:#fff;font-size:1.1rem}
 .transport-dist{font-family:var(--sans);font-size:12px;color:rgba(255,255,255,.25)}
 </style>"""
@@ -370,20 +370,20 @@ loc_body = """<div class="page-header">
 def make_svg(fid):
     G = fid == 'ground'
     S = fid == 'sky'
-    ticks_n = ''.join(f'<line x1="{44+i*17}" y1="24" x2="{44+i*17}" y2="30" stroke="#c9a866" stroke-width=".6" stroke-opacity=".6"/>' for i in range(24))
-    ticks_s = ''.join(f'<line x1="{44+i*17}" y1="310" x2="{44+i*17}" y2="316" stroke="#c9a866" stroke-width=".6" stroke-opacity=".6"/>' for i in range(24))
-    ticks_w = ''.join(f'<line x1="24" y1="{44+i*17}" x2="30" y2="{44+i*17}" stroke="#c9a866" stroke-width=".6" stroke-opacity=".6"/>' for i in range(16))
-    ticks_e = ''.join(f'<line x1="450" y1="{44+i*17}" x2="456" y2="{44+i*17}" stroke="#c9a866" stroke-width=".6" stroke-opacity=".6"/>' for i in range(16))
-    cg = ''.join(f'<line x1="{x}" y1="24" x2="{x}" y2="316" stroke="#c9a866" stroke-width=".5" stroke-opacity=".07" stroke-dasharray="4 5"/>' for x in [132,240,348])
-    rg = ''.join(f'<line x1="24" y1="{y}" x2="456" y2="{y}" stroke="#c9a866" stroke-width=".5" stroke-opacity=".07" stroke-dasharray="4 5"/>' for y in [120,196,268])
-    core = '' if G else '<rect x="172" y="108" width="136" height="124" fill="#102b38" stroke="#c9a866" stroke-width=".9"/>'
-    lifts = '' if G or S else ''.join(f'<g><rect x="{185+i*18}" y="120" width="14" height="18" fill="#1c1c18" stroke="#c9a866" stroke-width=".5"/><line x1="{186+i*18}" y1="121" x2="{198+i*18}" y2="137" stroke="#c9a866" stroke-width=".4" stroke-opacity=".35"/><line x1="{198+i*18}" y1="121" x2="{186+i*18}" y2="137" stroke="#c9a866" stroke-width=".4" stroke-opacity=".35"/></g>' for i in range(6))
-    stairs = '' if G or S else '<rect x="178" y="153" width="22" height="26" fill="#1c1c18" stroke="#c9a866" stroke-width=".5"/><rect x="280" y="153" width="22" height="26" fill="#1c1c18" stroke="#c9a866" stroke-width=".5"/>'
+    ticks_n = ''.join(f'<line x1="{44+i*17}" y1="24" x2="{44+i*17}" y2="30" stroke="#d2ac47" stroke-width=".6" stroke-opacity=".6"/>' for i in range(24))
+    ticks_s = ''.join(f'<line x1="{44+i*17}" y1="310" x2="{44+i*17}" y2="316" stroke="#d2ac47" stroke-width=".6" stroke-opacity=".6"/>' for i in range(24))
+    ticks_w = ''.join(f'<line x1="24" y1="{44+i*17}" x2="30" y2="{44+i*17}" stroke="#d2ac47" stroke-width=".6" stroke-opacity=".6"/>' for i in range(16))
+    ticks_e = ''.join(f'<line x1="450" y1="{44+i*17}" x2="456" y2="{44+i*17}" stroke="#d2ac47" stroke-width=".6" stroke-opacity=".6"/>' for i in range(16))
+    cg = ''.join(f'<line x1="{x}" y1="24" x2="{x}" y2="316" stroke="#d2ac47" stroke-width=".5" stroke-opacity=".07" stroke-dasharray="4 5"/>' for x in [132,240,348])
+    rg = ''.join(f'<line x1="24" y1="{y}" x2="456" y2="{y}" stroke="#d2ac47" stroke-width=".5" stroke-opacity=".07" stroke-dasharray="4 5"/>' for y in [120,196,268])
+    core = '' if G else '<rect x="172" y="108" width="136" height="124" fill="#102b38" stroke="#d2ac47" stroke-width=".9"/>'
+    lifts = '' if G or S else ''.join(f'<g><rect x="{185+i*18}" y="120" width="14" height="18" fill="#1c1c18" stroke="#d2ac47" stroke-width=".5"/><line x1="{186+i*18}" y1="121" x2="{198+i*18}" y2="137" stroke="#d2ac47" stroke-width=".4" stroke-opacity=".35"/><line x1="{198+i*18}" y1="121" x2="{186+i*18}" y2="137" stroke="#d2ac47" stroke-width=".4" stroke-opacity=".35"/></g>' for i in range(6))
+    stairs = '' if G or S else '<rect x="178" y="153" width="22" height="26" fill="#1c1c18" stroke="#d2ac47" stroke-width=".5"/><rect x="280" y="153" width="22" height="26" fill="#1c1c18" stroke="#d2ac47" stroke-width=".5"/>'
     lbl = '' if G or S else '<text x="240" y="175" text-anchor="middle" fill="#3a3428" font-size="7" letter-spacing="2.5" font-family="sans-serif">CORE</text>'
     sp = ''
-    if G: sp = '<rect x="176" y="130" width="128" height="8" rx="4" fill="none" stroke="#c9a866" stroke-width=".8"/><rect x="196" y="148" width="88" height="44" fill="#102b38" stroke="#c9a866" stroke-width=".8"/><text x="240" y="175" text-anchor="middle" fill="#3a3428" font-size="7" letter-spacing="2" font-family="sans-serif">RECEPTION</text>'
-    if S: sp = '<ellipse cx="240" cy="170" rx="80" ry="60" fill="none" stroke="#c9a866" stroke-width=".7" stroke-opacity=".25" stroke-dasharray="5 4"/><text x="240" y="174" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">SKY LOUNGE</text>'
-    return f'<svg viewBox="0 0 480 340" style="width:100%;height:auto;max-height:280px"><rect x="24" y="24" width="432" height="292" fill="none" stroke="#c9a866" stroke-width="1.2"/>{ticks_n}{ticks_s}{ticks_w}{ticks_e}{cg}{rg}{core}{lifts}{stairs}{sp}{lbl}<text x="240" y="15" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">N</text><text x="240" y="332" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">S</text><text x="12" y="173" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">W</text><text x="465" y="173" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">E</text><g transform="translate(440,48)"><line x1="0" y1="12" x2="0" y2="-8" stroke="#c9a866" stroke-width=".8"/><polygon points="0,-10 -5,-2 5,-2" fill="#c9a866"/></g><g transform="translate(32,308)"><line x1="0" y1="0" x2="68" y2="0" stroke="#c9a866" stroke-width=".8" stroke-opacity=".5"/><line x1="0" y1="-4" x2="0" y2="4" stroke="#c9a866" stroke-width=".8" stroke-opacity=".5"/><line x1="68" y1="-4" x2="68" y2="4" stroke="#c9a866" stroke-width=".8" stroke-opacity=".5"/><text x="34" y="-7" text-anchor="middle" fill="#3a3428" font-size="6.5" letter-spacing="1" font-family="sans-serif">20 m</text></g></svg>'
+    if G: sp = '<rect x="176" y="130" width="128" height="8" rx="4" fill="none" stroke="#d2ac47" stroke-width=".8"/><rect x="196" y="148" width="88" height="44" fill="#102b38" stroke="#d2ac47" stroke-width=".8"/><text x="240" y="175" text-anchor="middle" fill="#3a3428" font-size="7" letter-spacing="2" font-family="sans-serif">RECEPTION</text>'
+    if S: sp = '<ellipse cx="240" cy="170" rx="80" ry="60" fill="none" stroke="#d2ac47" stroke-width=".7" stroke-opacity=".25" stroke-dasharray="5 4"/><text x="240" y="174" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">SKY LOUNGE</text>'
+    return f'<svg viewBox="0 0 480 340" style="width:100%;height:auto;max-height:280px"><rect x="24" y="24" width="432" height="292" fill="none" stroke="#d2ac47" stroke-width="1.2"/>{ticks_n}{ticks_s}{ticks_w}{ticks_e}{cg}{rg}{core}{lifts}{stairs}{sp}{lbl}<text x="240" y="15" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">N</text><text x="240" y="332" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">S</text><text x="12" y="173" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">W</text><text x="465" y="173" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">E</text><g transform="translate(440,48)"><line x1="0" y1="12" x2="0" y2="-8" stroke="#d2ac47" stroke-width=".8"/><polygon points="0,-10 -5,-2 5,-2" fill="#d2ac47"/></g><g transform="translate(32,308)"><line x1="0" y1="0" x2="68" y2="0" stroke="#d2ac47" stroke-width=".8" stroke-opacity=".5"/><line x1="0" y1="-4" x2="0" y2="4" stroke="#d2ac47" stroke-width=".8" stroke-opacity=".5"/><line x1="68" y1="-4" x2="68" y2="4" stroke="#d2ac47" stroke-width=".8" stroke-opacity=".5"/><text x="34" y="-7" text-anchor="middle" fill="#3a3428" font-size="6.5" letter-spacing="1" font-family="sans-serif">20 m</text></g></svg>'
 
 FLOORS = [
     {"id":"ground","label":"Ground Floor","range":"Level G","gfa":"4,200 SQM","height":"12.0 m (triple)","grid":"\u2014","use":"Lobby \u00b7 Retail \u00b7 Drop-off \u00b7 Security"},
@@ -438,7 +438,7 @@ off_css = """<style>
 .feat-grid{display:grid;gap:1px;background:var(--gold-b);margin-top:3rem}
 @media(min-width:768px){.feat-grid{grid-template-columns:repeat(3,1fr)}}
 .feat-card{background:var(--bg2);padding:2.5rem 2rem}
-.feat-num{font-family:var(--sans);font-size:9px;letter-spacing:.4em;color:rgba(201,168,102,.35);margin-bottom:.75rem}
+.feat-num{font-family:var(--sans);font-size:9px;letter-spacing:.4em;color:rgba(210,172,71,.35);margin-bottom:.75rem}
 .feat-title{font-family:var(--serif);font-weight:300;color:#fff;font-size:1.1rem;margin-bottom:.75rem}
 .feat-desc{font-family:var(--sans);font-size:13px;color:rgba(255,255,255,.3);line-height:1.6}
 </style>"""
@@ -565,7 +565,7 @@ sus_body = """<div class="page-header">
 # ══════════════════════════════════
 am_css = """<style>
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.am-mosaic{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(201,168,102,.08)}
+.am-mosaic{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(210,172,71,.08)}
 @media(min-width:768px){.am-mosaic{grid-template-columns:repeat(3,1fr)}}
 .am-card{position:relative;overflow:hidden;background:var(--card);cursor:pointer;min-height:200px}
 .am-card.tall{grid-row:span 2;min-height:280px}
@@ -573,7 +573,7 @@ am_css = """<style>
 .am-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
 .am-card:hover img{transform:scale(1.06)}
 .am-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,8,.9) 0%,rgba(10,10,8,.2) 50%,transparent 100%);transition:background .5s}
-.am-card:hover .am-ov{background:linear-gradient(to top,rgba(10,10,8,.9) 0%,rgba(10,10,8,.25) 50%,rgba(201,168,102,.05) 100%)}
+.am-card:hover .am-ov{background:linear-gradient(to top,rgba(10,10,8,.9) 0%,rgba(10,10,8,.25) 50%,rgba(210,172,71,.05) 100%)}
 .am-info{position:absolute;bottom:0;left:0;right:0;padding:clamp(1.5rem,3vw,2rem)}
 .am-sub{font-family:var(--sans);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
 .am-title{font-family:var(--serif);font-weight:300;color:#fff;font-size:clamp(1.1rem,2vw,1.4rem);line-height:1.2}
@@ -585,7 +585,7 @@ am_css = """<style>
 .ls-desc{color:rgba(255,255,255,.28);font-size:14px;max-width:280px;line-height:1.7;margin-bottom:3rem}
 .ct-links{display:flex;flex-direction:column;gap:1.25rem}
 .ct-link{display:flex;align-items:center;gap:1rem}
-.ct-icon{width:36px;height:36px;border:1px solid rgba(201,168,102,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .3s}
+.ct-icon{width:36px;height:36px;border:1px solid rgba(210,172,71,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .3s}
 .ct-link:hover .ct-icon{border-color:var(--gold)}
 .ct-icon svg{width:12px;height:12px;color:var(--gold)}
 .ct-text{color:rgba(255,255,255,.4);font-size:14px;transition:color .3s}
@@ -594,11 +594,11 @@ am_css = """<style>
 .ls-addr p{color:rgba(255,255,255,.18);font-size:12px;line-height:2}
 .enq-form{display:flex;flex-direction:column;gap:1.75rem}
 .field label{display:block;font-family:var(--sans);font-size:9px;letter-spacing:.42em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:10px}
-.field input,.field textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(201,168,102,.15);color:#fff;font-size:14px;font-family:var(--sans);padding:10px 0;outline:none;caret-color:var(--gold);transition:border-color .3s;resize:none}
+.field input,.field textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(210,172,71,.15);color:#fff;font-size:14px;font-family:var(--sans);padding:10px 0;outline:none;caret-color:var(--gold);transition:border-color .3s;resize:none}
 .field input:focus,.field textarea:focus{border-color:var(--gold)}
 .btn-submit{width:100%;border:1px solid var(--gold);color:var(--gold);padding:16px;font-size:10px;letter-spacing:.42em;text-transform:uppercase;font-family:var(--sans);transition:background .3s,color .3s;margin-top:8px}
 .btn-submit:hover{background:var(--gold);color:var(--bg)}
-#success-msg{display:none;border:1px solid rgba(201,168,102,.12);min-height:360px;padding:3.5rem;align-items:center;justify-content:center;text-align:center}
+#success-msg{display:none;border:1px solid rgba(210,172,71,.12);min-height:360px;padding:3.5rem;align-items:center;justify-content:center;text-align:center}
 #success-msg.show{display:flex}
 .succ-line{width:40px;height:1px;background:var(--gold);margin:0 auto 1.5rem}
 #success-msg .eyebrow{margin-bottom:12px;display:block}
