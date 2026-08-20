@@ -61,10 +61,11 @@ FOOTER = """<footer>
         <div class="ft-logo">
           <img class="official-logo official-logo-footer" src="assets/brand/capital-place-logo.svg" alt="Capital Place Hanoi" width="89" height="75" />
         </div>
+        <p class="ft-intro">A premier address for business in Hanoi's diplomatic quarter.</p>
         <p class="ft-addr">Twin-Peaks Joint Stock Company<br>29 Lieu Giai, Ngoc Ha<br>Ba Dinh, Hanoi, Vietnam</p>
       </div>
       <div class="ft-col">
-        <p class="ft-col-title">Navigate</p>
+        <p class="ft-col-title">Explore Capital Place</p>
         <a href="index.html">Home</a>
         <a href="location.html">Location</a>
         <a href="office.html">Office</a>
@@ -72,7 +73,8 @@ FOOTER = """<footer>
         <a href="amenities.html">Amenities</a>
       </div>
       <div class="ft-col">
-        <p class="ft-col-title">Contact</p>
+        <p class="ft-col-title">Contact &amp; Leasing</p>
+        <a href="amenities.html#leasing">Leasing Enquiry</a>
         <a href="tel:18009289">1800 9289</a>
         <a href="mailto:leasing@capitalplace.com.vn">leasing@capitalplace.com.vn</a>
       </div>
@@ -127,7 +129,7 @@ idx_css = """<style>
 .exp-header{margin-bottom:clamp(3.5rem,7vw,4.5rem);display:flex;flex-direction:column;gap:1.5rem}
 @media(min-width:768px){.exp-header{flex-direction:row;align-items:flex-end}}
 .exp-header .left{flex:1}
-.exp-header>p{color:rgba(255,255,255,.28);font-size:14px;max-width:280px;line-height:1.7}
+.exp-header>p{color:rgba(255,255,255,.42);font-size:14px;max-width:280px;line-height:1.7}@media(min-width:1100px){.exp-header>p{max-width:none;white-space:nowrap}}
 .exp-grid{display:grid}
 @media(min-width:1024px){.exp-grid{grid-template-columns:1fr 1.4fr}}
 .zone-list{border-top:1px solid var(--gold-b)}
@@ -154,7 +156,7 @@ idx_css = """<style>
 .zone-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .7s ease,transform .7s ease;opacity:0;transform:scale(1.04)}
 .zone-img.active{opacity:1;transform:scale(1)}
 .img-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,8,.85) 0%,transparent 60%,rgba(10,10,8,.15) 100%)}
-.img-lbl{position:absolute;bottom:0;left:0;right:0;padding:2rem}
+.img-lbl{position:absolute;bottom:0;left:0;right:0;padding:3.75rem 2rem 2rem;z-index:2;overflow:hidden}.img-lbl::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(4,10,14,.96) 0%,rgba(4,10,14,.72) 48%,transparent 100%);z-index:-1;pointer-events:none}
 .img-lbl-sub{font-family:var(--sans);font-size:9px;letter-spacing:.45em;text-transform:uppercase;color:var(--gold)}
 .img-lbl-title{font-family:var(--serif);font-weight:300;color:#fff;font-size:clamp(1.4rem,2.5vw,1.8rem);margin-top:4px}
 .zone-dots{position:absolute;right:24px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px}
@@ -163,8 +165,8 @@ idx_css = """<style>
 .quick-links{background:var(--bg2);border-top:1px solid var(--gold-b);padding:clamp(4rem,8vw,6rem) 0}
 .ql-grid{display:grid;gap:1px;background:var(--gold-b)}
 @media(min-width:768px){.ql-grid{grid-template-columns:repeat(4,1fr)}}
-.ql-card{background:var(--bg2);padding:2.5rem 2rem;display:flex;flex-direction:column;gap:1rem;transition:background .3s}
-.ql-card:hover{background:var(--card)}
+.ql-card{background:var(--bg2);padding:2.5rem 2rem;display:flex;flex-direction:column;gap:1rem;transition:background .25s,transform .25s,border-color .25s;position:relative;border:1px solid transparent}
+.ql-card:hover{background:var(--card);border-color:rgba(210,172,71,.34);transform:translateY(-4px);z-index:1}.ql-card:focus-visible{background:var(--card);border-color:var(--gold);transform:translateY(-4px);z-index:1}
 .ql-num{font-family:var(--sans);font-size:9px;letter-spacing:.4em;color:rgba(210,172,71,.4)}
 .ql-title{font-family:var(--serif);font-weight:300;color:#fff;font-size:1.25rem;line-height:1.2}
 .ql-desc{font-family:var(--sans);font-size:13px;color:rgba(255,255,255,.3);line-height:1.6}
@@ -178,10 +180,6 @@ idx_body = """<section id="hero">
     <source src="https://capitalplace.com.vn/wp-content/uploads/2026/05/CAPITAL-PLACE-TVC_1080p.mp4" type="video/mp4">
   </video>
   <div class="ov1"></div><div class="ov2"></div><div class="ov3"></div>
-  <div class="hero-badges">
-    <span class="badge badge-gold">LEED Platinum</span>
-    <span class="badge badge-dim">LEED Gold</span>
-  </div>
   <div class="hero-content"><div class="container">
     <p class="hero-eyebrow">29 Lieu Giai &middot; Ba Dinh &middot; Hanoi</p>
     <h1 class="hero-h1"><span>Hanoi's</span><span class="italic">Premier</span><span>Address</span></h1>
@@ -254,8 +252,8 @@ idx_body = """<section id="hero">
 
 idx_js = """<script>
 const ZONES=[
-  {num:"01",id:"lobby",label:"Grand Lobby",sub:"Ground Floor \u00b7 Triple-height atrium",detail:"Marble floors, bamboo-inspired columns, and site-specific Vietnamese art define the arrival. The 18\u00a0m atrium opens both towers.",img:"https://images.unsplash.com/photo-1780369088190-914cc3eee938?w=1200&h=900&fit=crop&auto=format"},
-  {num:"02",id:"office",label:"Office Floors",sub:"L6 \u2013 L38 \u00b7 Both towers \u00b7 93,700 SQM",detail:"Column-free, open-plan floorplates with full-height glazing. GFA 1,850\u20132,100 SQM per floor. NBF-compliant fresh air.",img:"https://images.unsplash.com/photo-1531972111231-7482a960e109?w=1200&h=900&fit=crop&auto=format"},
+  {num:"01",id:"lobby",label:"Grand Lobby",sub:"Ground Floor \u00b7 Triple-height atrium",detail:"Marble floors, bamboo-inspired columns, and site-specific Vietnamese art define the arrival. The 18\u00a0m atrium opens both towers.",img:"https://www.hanoi-office.com/uploads/files/capital%20place/toa_nha_capital_place_8.jpg"},
+  {num:"02",id:"office",label:"Office Floors",sub:"L6 \u2013 L38 \u00b7 Both towers \u00b7 93,700 SQM",detail:"Column-free, open-plan floorplates with full-height glazing. GFA 1,850\u20132,100 SQM per floor. NBF-compliant fresh air.",img:"https://thanhnien.mediacdn.vn/uploaded/quochung.qc/2020_10_12/capitalplace/2_AYLF.jpg?width=1200"},
   {num:"03",id:"fitness",label:"Fitness & Wellness",sub:"Podium Level 3",detail:"Full gym, yoga studio, meditation zone, spa showers, and end-of-trip cyclist facilities. Open to all tower tenants.",img:"https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=1200&h=900&fit=crop&auto=format"},
   {num:"04",id:"dining",label:"Dining & Retail",sub:"Ground \u00b7 L1 \u00b7 L2",detail:"A curated selection of caf\u00e9s, restaurants, and specialty retail across the podium.",img:"https://images.unsplash.com/photo-1587702068694-a909ef4aa346?w=1200&h=900&fit=crop&auto=format"},
   {num:"05",id:"sky",label:"Sky Lounge",sub:"Level 39 \u00b7 Tower A",detail:"An exclusive tenant amenity floor with 360\u00b0 panoramic views of Hanoi.",img:"https://images.unsplash.com/photo-1758193431353-87812fbff5cd?w=1200&h=900&fit=crop&auto=format"},
@@ -265,29 +263,30 @@ let aZ=0;
 (function(){
   const list=document.getElementById('zone-list'),wrap=document.getElementById('img-wrap'),dots=document.getElementById('zone-dots');
   ZONES.forEach((z,i)=>{
-    const img=document.createElement('img');img.src=z.img;img.alt=z.label;img.loading='lazy';img.className='zone-img'+(i===0?' active':'');
+    const img=document.createElement('img');img.src=z.img;img.alt=z.label+' at Capital Place';img.loading=i===0?'eager':'lazy';img.decoding='async';img.className='zone-img'+(i===0?' active':'');
     wrap.insertBefore(img,wrap.querySelector('.img-ov'));
-    const dot=document.createElement('button');dot.className='zone-dot'+(i===0?' active':'');dot.setAttribute('aria-label',z.label);dot.onclick=()=>sz(i);dots.appendChild(dot);
+    const dot=document.createElement('button');dot.type='button';dot.className='zone-dot'+(i===0?' active':'');dot.setAttribute('aria-label','Show '+z.label);dot.setAttribute('aria-current',i===0?'true':'false');dot.onclick=()=>sz(i);dots.appendChild(dot);
     const btn=document.createElement('button');btn.type='button';btn.className='zone-item'+(i===0?' active':' inactive');
     btn.setAttribute('aria-controls','zone-detail-'+z.id);btn.setAttribute('aria-expanded',i===0?'true':'false');
     btn.innerHTML='<span class="zone-num">'+z.num+'</span><div class="zone-body"><div class="zone-head"><h3>'+z.label+'</h3><svg class="zone-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg></div><p class="zone-sub">'+z.sub+'</p><p class="zone-detail'+(i===0?' open':'')+'" id="zone-detail-'+z.id+'">'+z.detail+'</p></div>';
-    btn.onmouseenter=()=>sz(i);btn.onclick=()=>sz(i);list.appendChild(btn);
+    btn.onmouseenter=()=>sz(i);btn.onfocus=()=>sz(i);btn.onclick=()=>sz(i);list.appendChild(btn);
   });
   document.getElementById('z-sub').textContent=ZONES[0].sub;document.getElementById('z-title').textContent=ZONES[0].label;
 })();
 function sz(i){if(i===aZ)return;aZ=i;
   document.querySelectorAll('.zone-item').forEach((el,x)=>{el.classList.toggle('active',x===i);el.classList.toggle('inactive',x!==i);el.setAttribute('aria-expanded',x===i?'true':'false');el.querySelector('.zone-detail').classList.toggle('open',x===i)});
   document.querySelectorAll('.zone-img').forEach((el,x)=>el.classList.toggle('active',x===i));
-  document.querySelectorAll('.zone-dot').forEach((el,x)=>el.classList.toggle('active',x===i));
+  document.querySelectorAll('.zone-dot').forEach((el,x)=>{el.classList.toggle('active',x===i);el.setAttribute('aria-current',x===i?'true':'false')});
   document.getElementById('z-sub').textContent=ZONES[i].sub;document.getElementById('z-title').textContent=ZONES[i].label;
 }
 </script>"""
 
+# Feedback image references are intentionally kept as remote URLs because the requested sources are external website assets.
 # ══════════════════════════════════
 # location.html
 # ══════════════════════════════════
 loc_css = """<style>
-.loc-map{width:100%;height:clamp(320px,45vw,560px);border:0;filter:grayscale(1) contrast(1.1) brightness(.6)}
+.loc-map{width:100%;height:clamp(320px,45vw,560px);border:0;filter:none;display:block}
 .loc-grid{display:grid;gap:0;border-top:1px solid var(--gold-b)}
 @media(min-width:1024px){.loc-grid{grid-template-columns:1fr 1fr}}
 .loc-cell{padding:clamp(3rem,6vw,5rem);border-bottom:1px solid var(--gold-b)}
@@ -300,10 +299,12 @@ loc_css = """<style>
 .nearbylist li{display:flex;align-items:center;gap:1rem;color:rgba(255,255,255,.3);font-size:13px;font-family:var(--sans)}
 .nearbylist li::before{content:'';display:block;width:20px;height:1px;background:var(--gold);flex-shrink:0}
 .transport-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gold-b);margin-top:clamp(3rem,6vw,5rem)}
-.transport-cell{background:var(--bg);padding:2rem;display:flex;flex-direction:column;gap:.5rem}
-.transport-icon{font-family:var(--sans);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:rgba(210,172,71,.5)}
+.transport-cell{background:var(--bg);padding:2rem;display:flex;flex-direction:column;gap:.5rem;transition:background .25s,transform .25s,box-shadow .25s;border:1px solid transparent}
+.transport-cell:hover,.transport-cell:focus-within{background:var(--card);border-color:rgba(210,172,71,.28);transform:translateY(-3px);box-shadow:0 14px 32px rgba(0,0,0,.16)}
+.transport-icon{font-family:var(--sans);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:rgba(210,172,71,.7);transition:color .25s}
+.transport-cell:hover .transport-icon{color:var(--gold-highlight)}
 .transport-name{font-family:var(--serif);font-weight:300;color:#fff;font-size:1.1rem}
-.transport-dist{font-family:var(--sans);font-size:12px;color:rgba(255,255,255,.25)}
+.transport-dist{font-family:var(--sans);font-size:12px;color:rgba(255,255,255,.38)}
 </style>"""
 
 loc_body = """<div class="page-header" style="--hero-position:center 34%">
@@ -315,7 +316,7 @@ loc_body = """<div class="page-header" style="--hero-position:center 34%">
   </div>
 </div>
 <iframe class="loc-map"
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.7530985168567!2d105.82763!3d21.03543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab4f84b16e69%3A0x53c9a6d0c4c4bd2b!2sCapital%20Place!5e0!3m2!1sen!2s!4v1692000000000"
+  src="https://www.google.com/maps?q=Capital%20Place%2C%2029%20Lieu%20Giai%2C%20Ba%20Dinh%2C%20Hanoi&output=embed"
   allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Capital Place map">
 </iframe>
 <section style="background:var(--bg);padding:clamp(6rem,12vw,9rem) 0">
@@ -334,7 +335,7 @@ loc_body = """<div class="page-header" style="--hero-position:center 34%">
         </ul>
       </div>
       <div class="loc-cell fade-up" style="transition-delay:.1s">
-        <p class="loc-cell-label">Why Ba Dinh</p>
+        <p class="loc-cell-label">Why is Ba Dinh</p>
         <h3>Hanoi's Most<br>Prestigious Address</h3>
         <p>Ba Dinh is Hanoi's political and diplomatic centre. Major multinational tenants in the area include embassies of the US, EU, UK, Japan, and Korea, as well as Vietnam's largest state-owned enterprises.</p>
         <p style="margin-top:1rem">Capital Place provides unmatched visibility and prestige for organisations that require proximity to government and diplomatic missions.</p>
