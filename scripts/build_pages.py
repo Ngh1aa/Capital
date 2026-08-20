@@ -547,77 +547,176 @@ function setFloor(i){if(i===aF)return;aF=i;
 # sustainability.html
 # ══════════════════════════════════
 sus_css = """<style>
-.sus-banner{position:relative;height:clamp(280px,40vw,520px);overflow:hidden}
-.sus-banner img{width:100%;height:100%;object-fit:cover;object-position:center}
-.sus-banner-ov{position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,17,17,.34),transparent 42%),linear-gradient(to bottom,rgba(17,17,17,.4) 0%,rgba(17,17,17,.06) 38%,rgba(17,17,17,.9) 100%)}
-.sus-banner-txt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center}
-.sus-banner-txt p{font-family:var(--serif);font-weight:300;color:rgba(255,255,255,.75);font-size:clamp(.9rem,2.5vw,1.4rem);letter-spacing:.25em}
-.leed-strip{border-top:1px solid var(--gold-b);border-bottom:1px solid var(--gold-b);background:linear-gradient(90deg,rgba(38,53,46,.28),transparent 48%) var(--bg)}
-.leed-grid{display:grid}
-@media(min-width:768px){.leed-grid{grid-template-columns:1fr 1fr}}
-.leed-card{padding:clamp(3rem,6vw,5rem) 0;border-bottom:1px solid var(--gold-b)}
-@media(min-width:768px){
-  .leed-card{border-bottom:none;border-right:1px solid var(--gold-b);padding:clamp(3rem,6vw,5rem) 3rem}
-  .leed-card:last-child{border-right:none;padding-right:0}
-  .leed-card:first-child{padding-left:0}
-}
-.leed-card:last-child{border-bottom:none}
-.leed-badge-label{font-family:var(--sans);font-size:9px;letter-spacing:.45em;text-transform:uppercase;color:var(--gold)}
-.leed-card h3{font-family:var(--serif);font-weight:300;color:#fff;font-size:clamp(1.3rem,2.5vw,1.8rem);margin-top:12px;line-height:1.1}
-.leed-card p{color:rgba(255,255,255,.3);font-size:14px;margin-top:1rem;line-height:1.75}
-.metrics-section{background:linear-gradient(135deg,rgba(38,53,46,.24),transparent 52%) var(--bg2);padding:clamp(6rem,12vw,9rem) 0;border-top:1px solid var(--gold-b)}
-.metrics-grid{display:grid;gap:1px;background:var(--gold-b);margin-top:3rem}
-@media(min-width:768px){.metrics-grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1024px){.metrics-grid{grid-template-columns:repeat(4,1fr)}}
-.metric-cell{background:var(--bg2);padding:2.5rem 2rem;display:flex;flex-direction:column;gap:.5rem}
-.metric-val{font-family:var(--serif);font-weight:300;color:var(--gold);font-size:clamp(2rem,3.5vw,2.8rem)}
-.metric-key{font-family:var(--sans);font-size:9px;letter-spacing:.38em;text-transform:uppercase;color:rgba(255,255,255,.25)}
-.metric-desc{font-family:var(--sans);font-size:12px;color:rgba(255,255,255,.2);line-height:1.5;margin-top:.25rem}
+.sus-hero .page-header-media{object-position:center 34%}
+.sus-certifications,.sus-performance,.sus-technical,.sus-water,.sus-indoor,.sus-future,.sus-human{padding:clamp(5.5rem,11vw,9rem) 0;border-top:1px solid var(--gold-b)}
+.sus-certifications{background:var(--bg)}
+.sus-intro{max-width:660px;color:rgba(242,238,229,.64);font-size:15px;line-height:1.8;margin-top:1.5rem}
+.sus-cert-grid{display:grid;gap:1px;background:rgba(214,192,138,.24);margin-top:3.5rem}
+@media(min-width:768px){.sus-cert-grid{grid-template-columns:1fr 1fr}}
+.sus-cert-card{position:relative;min-height:360px;padding:clamp(2.5rem,6vw,5rem);background:linear-gradient(145deg,rgba(38,53,46,.42),var(--graphite));overflow:hidden;transition:background .35s,transform .35s}
+.sus-cert-card::after{content:'';position:absolute;inset:auto -14% -38% 30%;height:72%;background:radial-gradient(ellipse,rgba(214,192,138,.13),transparent 64%);transform:rotate(-12deg);transition:transform .45s,opacity .45s;pointer-events:none}
+.sus-cert-card:hover,.sus-cert-card:focus-visible{background:linear-gradient(145deg,rgba(38,53,46,.72),var(--graphite-soft));transform:translateY(-3px)}
+.sus-cert-card:hover::after,.sus-cert-card:focus-visible::after{transform:rotate(-12deg) translate(-8px,-10px);opacity:1.35}
+.sus-cert-card:focus-visible{outline:1px solid var(--gold);outline-offset:-6px}
+.sus-cert-kicker{position:relative;z-index:1;color:var(--champagne-gold);font:10px var(--sans);letter-spacing:.38em;text-transform:uppercase}
+.sus-cert-mark{position:relative;z-index:1;font-family:var(--serif);font-size:clamp(3.8rem,8vw,7rem);line-height:.82;font-weight:300;color:var(--warm-ivory);margin:2.4rem 0 1.4rem}
+.sus-cert-mark em{display:block;color:var(--gold);font-style:italic}
+.sus-cert-title{position:relative;z-index:1;color:var(--warm-ivory);font:11px var(--sans);letter-spacing:.2em;text-transform:uppercase;line-height:1.55;max-width:260px}
+.sus-cert-detail{position:relative;z-index:1;color:rgba(242,238,229,.58);font-size:13px;line-height:1.7;max-width:330px;margin-top:1.3rem}
+.sus-performance{background:linear-gradient(135deg,rgba(38,53,46,.26),transparent 55%) var(--bg2)}
+.sus-section-head{max-width:700px}
+.sus-section-head p{max-width:600px;color:rgba(242,238,229,.58);font-size:14px;line-height:1.8;margin-top:1.25rem}
+.sus-metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(214,192,138,.2);margin-top:3rem}
+@media(min-width:900px){.sus-metric-grid{grid-template-columns:repeat(4,1fr)}}
+.sus-metric{background:var(--bg2);padding:2rem 1.5rem;min-height:210px;display:flex;flex-direction:column;justify-content:space-between}
+.sus-metric-type{color:var(--champagne-gold);font:9px var(--sans);letter-spacing:.32em;text-transform:uppercase}
+.sus-metric-value{color:var(--gold);font-family:var(--serif);font-size:clamp(2.1rem,4vw,3.8rem);font-weight:300;line-height:.9;margin:2rem 0 .9rem}
+.sus-metric-note{color:rgba(242,238,229,.54);font-size:12px;line-height:1.55}
+.sus-technical{background:var(--bg)}
+.sus-tech-grid{display:grid;gap:1px;background:rgba(214,192,138,.2);margin-top:3rem}
+@media(min-width:768px){.sus-tech-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1100px){.sus-tech-grid{grid-template-columns:repeat(3,1fr)}}
+.sus-tech-card{background:var(--card);min-height:230px;transition:background .25s}
+.sus-tech-card:hover,.sus-tech-card:focus-within{background:var(--graphite-soft)}
+.sus-tech-card summary{list-style:none;cursor:pointer;padding:1.5rem;display:flex;align-items:flex-start;gap:.9rem;color:var(--warm-ivory)}
+.sus-tech-card summary::-webkit-details-marker{display:none}
+.sus-tech-number{color:var(--gold);font:10px var(--sans);letter-spacing:.2em}
+.sus-tech-name{font:11px var(--sans);letter-spacing:.18em;text-transform:uppercase;line-height:1.45;flex:1}
+.sus-tech-toggle{color:var(--gold-champagne);font-size:1.25rem;line-height:1;transition:transform .25s}
+.sus-tech-card[open] .sus-tech-toggle{transform:rotate(45deg)}
+.sus-tech-body{padding:0 1.5rem 1.6rem 3.15rem}
+.sus-tech-body p{color:rgba(242,238,229,.54);font-size:13px;line-height:1.7}
+.sus-tech-stat{display:block;color:var(--gold);font-family:var(--serif);font-size:2rem;font-weight:300;line-height:1;margin-top:1.1rem}
+.sus-tech-stat small{display:block;color:var(--champagne-gold);font:9px var(--sans);letter-spacing:.2em;text-transform:uppercase;margin-top:.55rem}
+.sus-water{background:var(--bg2)}
+.sus-water-grid,.sus-indoor-grid,.sus-future-grid{display:grid;gap:1rem;margin-top:3rem}
+@media(min-width:768px){.sus-water-grid,.sus-indoor-grid,.sus-future-grid{grid-template-columns:repeat(3,1fr)}}
+.sus-info-card{background:var(--card);border:1px solid rgba(214,192,138,.16);padding:2rem;min-height:245px}
+.sus-info-card h3{font-family:var(--serif);font-size:1.65rem;font-weight:300;color:var(--warm-ivory);line-height:.98;margin:1.6rem 0 .9rem}
+.sus-info-card p{color:rgba(242,238,229,.52);font-size:13px;line-height:1.7}
+.sus-info-stat{color:var(--gold);font:2.2rem var(--serif);font-weight:300;display:block}
+.sus-indoor{background:var(--bg)}
+.sus-indoor-card{background:linear-gradient(145deg,rgba(38,53,46,.52),var(--card));border-top:1px solid var(--gold);padding:2rem;min-height:190px}
+.sus-indoor-card h3{font:11px var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--champagne-gold);margin:1rem 0}
+.sus-indoor-card p{color:rgba(242,238,229,.56);font-size:14px;line-height:1.7}
+.sus-visual-section{display:grid;min-height:clamp(500px,58vw,720px);background:var(--graphite);border-top:1px solid var(--gold-b)}
+@media(min-width:900px){.sus-visual-section{grid-template-columns:1fr 1fr}}
+.sus-visual-media{min-height:360px;overflow:hidden}.sus-visual-media img{width:100%;height:100%;min-height:360px;object-fit:cover;display:block;transition:transform .8s ease}.sus-visual-section:hover .sus-visual-media img{transform:scale(1.025)}
+.sus-visual-copy{padding:clamp(3rem,8vw,8rem) clamp(1.5rem,7vw,8rem);align-self:center}.sus-visual-copy h2{font-family:var(--serif);font-size:clamp(3rem,6vw,6.2rem);font-weight:300;color:var(--warm-ivory);line-height:.88;margin:1rem 0 1.5rem}.sus-visual-copy h2 em{color:var(--gold);font-style:italic}.sus-visual-copy p{color:rgba(242,238,229,.62);font-size:15px;line-height:1.8;max-width:440px}
+.sus-waste-copy{max-width:470px}.sus-waste-words{display:flex;flex-wrap:wrap;gap:.55rem 1.2rem;margin-top:2.4rem;color:var(--gold);font:clamp(1.6rem,3vw,2.7rem) var(--serif);font-weight:300}.sus-waste-words span:nth-child(2){color:var(--champagne-gold)}.sus-waste-words span:nth-child(3){color:var(--stone)}
+.sus-future{background:linear-gradient(145deg,rgba(38,53,46,.92),var(--capital-black));border-top-color:rgba(214,192,138,.28)}
+.sus-future .sus-section-head p{color:rgba(242,238,229,.68)}
+.sus-future .sus-info-card{background:rgba(17,17,17,.34);border-color:rgba(214,192,138,.26)}
+.sus-future .sus-info-card h3{font-size:1.45rem;margin-top:1rem}
+.sus-human{background:var(--bg2)}
+.sus-cta{padding:clamp(5rem,10vw,8rem) 0;background:var(--capital-black);border-top:1px solid var(--gold-b);text-align:center}
+.sus-cta h2{font-family:var(--serif);font-size:clamp(2.8rem,6vw,5.8rem);font-weight:300;line-height:.9;color:var(--warm-ivory)}
+.sus-cta h2 em{color:var(--gold);font-style:italic}.sus-cta p{color:rgba(242,238,229,.58);font-size:15px;line-height:1.7;margin:1.5rem auto 2rem;max-width:480px}.sus-cta-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:1rem}
+@media(max-width:640px){.sus-metric{min-height:180px;padding:1.25rem}.sus-metric-value{font-size:2rem}.sus-cert-card{min-height:320px}.sus-tech-card summary{padding:1.25rem}.sus-tech-body{padding-left:2.8rem}.sus-visual-copy{padding:3.5rem 1.5rem}.sus-waste-words{font-size:1.8rem}}
+@media(prefers-reduced-motion:reduce){.sus-cert-card,.sus-tech-toggle,.sus-visual-media img{transition:none}}
 </style>"""
 
-sus_body = """<div class="page-header" style="--hero-position:center 40%">
-  <img class="page-header-media" src="assets/images/feedback/sustainability-generated.jpg" alt="Light reflecting across Capital Place glass facade" fetchpriority="high" />
+sus_body = """<div class="page-header sus-hero" style="--hero-position:center 34%">
+  <img class="page-header-media" src="assets/images/feedback/sustainability-generated.jpg" alt="Capital Place glass facade with natural light and greenery" fetchpriority="high" />
   <div class="container">
     <p class="page-header-eyebrow">Sustainability</p>
-    <h1>Dual<br><em>LEED Certified</em></h1>
-    <p>Capital Place is one of the very few buildings in Vietnam to hold two LEED certifications simultaneously &mdash; Platinum and Gold &mdash; reflecting the highest global standards in sustainable design and operations.</p>
+    <h1>Sustainability<br><em>as a Standard</em></h1>
+    <p>A healthier, more responsible workplace designed for long-term performance.</p>
   </div>
 </div>
-<div class="sus-banner">
-  <img src="assets/images/feedback/sustainability-generated-2.jpg" alt="Capital Place facade" loading="lazy"/>
-  <div class="sus-banner-ov"></div>
-  <div class="sus-banner-txt"><p>DUAL LEED CERTIFIED &nbsp;&middot;&nbsp; GRADE A OFFICES &nbsp;&middot;&nbsp; HANOI</p></div>
-</div>
-<section class="leed-strip">
+<section class="sus-certifications">
   <div class="container">
-    <div class="leed-grid">
-      <div class="leed-card fade-up">
-        <span class="leed-badge-label">LEED Platinum</span>
-        <h3>Operations &amp; Maintenance</h3>
-        <p>The highest possible rating for building operations &mdash; recognising outstanding performance in energy efficiency, water conservation, occupant wellbeing, and indoor environment quality.</p>
-        <p style="margin-top:1rem">Capital Place achieves Platinum through continuous monitoring of all building systems, occupant surveys, and annual performance reviews against USGBC benchmarks.</p>
-      </div>
-      <div class="leed-card fade-up" style="transition-delay:.12s">
-        <span class="leed-badge-label">LEED Gold</span>
-        <h3>Building Design &amp; Construction</h3>
-        <p>Sustainability was embedded from day one &mdash; not retrofitted. Every material, system, and structural decision was evaluated against LEED BD+C criteria during design and construction phases.</p>
-        <p style="margin-top:1rem">From low-VOC materials and high-performance glazing to stormwater management and construction waste reduction, Capital Place was built with the future in mind.</p>
-      </div>
+    <div class="sus-section-head">
+      <p class="eyebrow">Dual LEED Certified</p>
+      <h2 class="section-title">Certified<br><em>for Performance</em></h2>
+      <p class="sus-intro">Capital Place is the first building in Hanoi to achieve both LEED Platinum for Operations &amp; Maintenance and LEED Gold for Building Design &amp; Construction.</p>
+    </div>
+    <div class="sus-cert-grid">
+      <article class="sus-cert-card fade-up" tabindex="0">
+        <span class="sus-cert-kicker">LEED</span>
+        <p class="sus-cert-mark">Platinum</p>
+        <h3 class="sus-cert-title">Operations &amp; Maintenance</h3>
+        <p class="sus-cert-detail">Operational performance and ongoing building management.</p>
+      </article>
+      <article class="sus-cert-card fade-up" style="transition-delay:.12s" tabindex="0">
+        <span class="sus-cert-kicker">LEED</span>
+        <p class="sus-cert-mark"><em>Gold</em></p>
+        <h3 class="sus-cert-title">Building Design &amp; Construction</h3>
+        <p class="sus-cert-detail">Sustainable design and construction.</p>
+      </article>
     </div>
   </div>
 </section>
-<section class="metrics-section">
+<section class="sus-performance">
   <div class="container">
-    <p class="eyebrow" style="margin-bottom:1rem">Performance</p>
-    <h2 class="section-title">Measured<br><em>Impact</em></h2>
-    <div class="metrics-grid">
-      <div class="metric-cell fade-up"><span class="metric-val">35%</span><span class="metric-key">Energy Reduction</span><span class="metric-desc">vs ASHRAE 90.1 baseline through high-performance HVAC and building envelope</span></div>
-      <div class="metric-cell fade-up" style="transition-delay:.08s"><span class="metric-val">40%</span><span class="metric-key">Water Savings</span><span class="metric-desc">Through low-flow fixtures, cooling tower optimisation, and rainwater reuse</span></div>
-      <div class="metric-cell fade-up" style="transition-delay:.16s"><span class="metric-val">90%</span><span class="metric-key">Construction Waste Diverted</span><span class="metric-desc">Recycled or reused &mdash; keeping materials out of landfill during build phase</span></div>
-      <div class="metric-cell fade-up" style="transition-delay:.24s"><span class="metric-val">100%</span><span class="metric-key">Daylight &amp; Views</span><span class="metric-desc">Regularly occupied spaces achieve LEED credits for daylight and quality views</span></div>
+    <div class="sus-section-head">
+      <p class="eyebrow">Performance by Numbers</p>
+      <h2 class="section-title">Measuring<br><em>What Matters</em></h2>
+      <p>Selected performance indicators published by Capital Place, presented with their original qualifiers.</p>
+    </div>
+    <div class="sus-metric-grid">
+      <article class="sus-metric fade-up"><span class="sus-metric-type">Energy</span><strong class="sus-metric-value">69%</strong><span class="sus-metric-note">Up to cooling energy saved.</span></article>
+      <article class="sus-metric fade-up" style="transition-delay:.08s"><span class="sus-metric-type">Water</span><strong class="sus-metric-value">10,000 m³</strong><span class="sus-metric-note">Clean water saved annually.</span></article>
+      <article class="sus-metric fade-up" style="transition-delay:.16s"><span class="sus-metric-type">Energy</span><strong class="sus-metric-value">27,636 kWh</strong><span class="sus-metric-note">Saved annually through smart sensor lighting.</span></article>
+      <article class="sus-metric fade-up" style="transition-delay:.24s"><span class="sus-metric-type">Water</span><strong class="sus-metric-value">2,000+ m³</strong><span class="sus-metric-note">Water saved annually through reuse and green-space maintenance.</span></article>
     </div>
   </div>
-</section>"""
+</section>
+<section class="sus-technical">
+  <div class="container">
+    <div class="sus-section-head">
+      <p class="eyebrow">Energy Performance</p>
+      <h2 class="section-title">Engineered<br><em>for Efficiency</em></h2>
+      <p>Intelligent systems work quietly behind the scenes to optimise energy performance throughout the building.</p>
+    </div>
+    <div class="sus-tech-grid">
+      <details class="sus-tech-card" open><summary><span class="sus-tech-number">01</span><span class="sus-tech-name">Building Management System</span><span class="sus-tech-toggle" aria-hidden="true">+</span></summary><div class="sus-tech-body"><p>Intelligent building management helps monitor and optimise energy use.</p><strong class="sus-tech-stat">10,000+ kWh<small>saved annually</small></strong></div></details>
+      <details class="sus-tech-card"><summary><span class="sus-tech-number">02</span><span class="sus-tech-name">Low-E Glass Façade</span><span class="sus-tech-toggle" aria-hidden="true">+</span></summary><div class="sus-tech-body"><p>High-performance glazing across a 151,000 m² façade helps reduce solar heat gain.</p><strong class="sus-tech-stat">69%<small>up to cooling energy saved</small></strong></div></details>
+      <details class="sus-tech-card"><summary><span class="sus-tech-number">03</span><span class="sus-tech-name">High-Efficiency IE3 Motors</span><span class="sus-tech-toggle" aria-hidden="true">+</span></summary><div class="sus-tech-body"><p>High-efficiency motors support lower energy demand in building systems.</p><strong class="sus-tech-stat">30%<small>energy saving compared to IE1</small></strong></div></details>
+      <details class="sus-tech-card"><summary><span class="sus-tech-number">04</span><span class="sus-tech-name">Active Harmonic Filter</span><span class="sus-tech-toggle" aria-hidden="true">+</span></summary><div class="sus-tech-body"><p>Active harmonic filtering supports cleaner and more efficient electrical performance.</p><strong class="sus-tech-stat">1%<small>of total building energy consumption saved</small></strong></div></details>
+      <details class="sus-tech-card"><summary><span class="sus-tech-number">05</span><span class="sus-tech-name">Smart Sensor Lighting</span><span class="sus-tech-toggle" aria-hidden="true">+</span></summary><div class="sus-tech-body"><p>Smart sensors respond to occupancy and daylight to reduce unnecessary lighting demand.</p><strong class="sus-tech-stat">27,636 kWh<small>saved per year</small></strong></div></details>
+    </div>
+  </div>
+</section>
+<section class="sus-water">
+  <div class="container">
+    <div class="sus-section-head"><p class="eyebrow">Water Management</p><h2 class="section-title">Every Drop<br><em>Counts</em></h2><p>Intelligent water systems reduce consumption and support responsible resource management.</p></div>
+    <div class="sus-water-grid">
+      <article class="sus-info-card fade-up"><span class="sus-info-stat">10,000 m³</span><h3>Sensor Faucets &amp; Eco-Flush</h3><p>Clean water saved per year.</p></article>
+      <article class="sus-info-card fade-up" style="transition-delay:.1s"><span class="sus-info-stat">69,120 kWh</span><h3>Wastewater System</h3><p>Estimated annual savings.</p></article>
+      <article class="sus-info-card fade-up" style="transition-delay:.2s"><span class="sus-info-stat">2,000+ m³</span><h3>Water Reuse</h3><p>Water saved annually through reuse and green-space maintenance.</p></article>
+    </div>
+  </div>
+</section>
+<section class="sus-indoor">
+  <div class="container">
+    <div class="sus-section-head"><p class="eyebrow">Indoor Environment</p><h2 class="section-title">A Healthier<br><em>Workplace</em></h2><p>Sustainability is also about the people inside the building — from indoor air quality to a more comfortable working environment.</p></div>
+    <div class="sus-indoor-grid">
+      <article class="sus-indoor-card fade-up"><span class="sus-cert-kicker">01</span><h3>Air Quality</h3><p>Improved indoor air environment for the people who work in the building.</p></article>
+      <article class="sus-indoor-card fade-up" style="transition-delay:.1s"><span class="sus-cert-kicker">02</span><h3>Energy</h3><p>Efficient building systems that work quietly behind the scenes.</p></article>
+      <article class="sus-indoor-card fade-up" style="transition-delay:.2s"><span class="sus-cert-kicker">03</span><h3>Wellbeing</h3><p>A healthier workplace designed around comfort, focus and connection.</p></article>
+    </div>
+  </div>
+</section>
+<section class="sus-visual-section">
+  <div class="sus-visual-media"><img src="assets/images/feedback/sustainability-generated-2.jpg" alt="Capital Place architecture and planted landscape" loading="lazy" /></div>
+  <div class="sus-visual-copy sus-waste-copy"><p class="eyebrow">Responsible Every Day</p><h2>Designed to<br><em>Reduce Waste</em></h2><p>Sustainability extends beyond building systems. Capital Place encourages responsible waste sorting, recycling and everyday environmental habits across its community.</p><p style="margin-top:1rem">Green Station, located at the Kim Ma entrance, supports the sorting and collection of recyclable materials.</p><div class="sus-waste-words"><span>Reduce</span><span>Reuse</span><span>Recycle</span></div></div>
+</section>
+<section class="sus-future">
+  <div class="container">
+    <div class="sus-section-head"><p class="eyebrow">Green Future</p><h2 class="section-title">Building a More<br><em>Conscious Community</em></h2><p>From greener everyday habits to community initiatives, sustainability at Capital Place extends beyond the building itself.</p></div>
+    <div class="sus-future-grid">
+      <article class="sus-info-card fade-up"><span class="sus-cert-kicker">01</span><h3>Green Station</h3><p>Encouraging responsible recycling and greener everyday habits.</p></article>
+      <article class="sus-info-card fade-up" style="transition-delay:.1s"><span class="sus-cert-kicker">02</span><h3>Community</h3><p>Initiatives that bring tenants and the wider community together.</p></article>
+      <article class="sus-info-card fade-up" style="transition-delay:.2s"><span class="sus-cert-kicker">03</span><h3>Wellbeing</h3><p>Activities supporting a healthier and more connected workplace.</p></article>
+    </div>
+  </div>
+</section>
+<section class="sus-visual-section sus-human">
+  <div class="sus-visual-copy"><p class="eyebrow">The Human Side</p><h2>Better for the Building.<br><em>Better for People.</em></h2><p>A sustainable building should do more than reduce its environmental impact. It should create a workplace where people can work, connect and thrive.</p></div>
+  <div class="sus-visual-media"><img src="assets/images/feedback/sustainability-generated.jpg" alt="People, greenery and natural light inside a premium workplace" loading="lazy" /></div>
+</section>
+<section class="sus-cta"><div class="container"><h2>Work Towards a<br><em>Better Future</em></h2><p>Discover a workplace built around performance, responsibility and people.</p><div class="sus-cta-actions"><a class="btn-primary" href="office.html">Explore Office <span aria-hidden="true">&rarr;</span></a><a class="btn-outline-gold" href="amenities.html#leasing">Enquire <span aria-hidden="true">&rarr;</span></a></div></div></section>"""
 
 # ══════════════════════════════════
 # amenities.html
