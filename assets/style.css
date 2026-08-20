@@ -59,6 +59,10 @@ img{display:block;max-width:100%}
 .btn-primary:hover{background:#D6C08A}
 .btn-primary svg{width:11px;height:11px;transition:transform .2s}
 .btn-primary:hover svg{transform:translateX(2px)}
+.btn-gold{display:inline-flex;align-items:center;gap:12px;background:var(--capital-gold);color:var(--capital-black);padding:13px 32px;font-size:10px;letter-spacing:.35em;text-transform:uppercase;font-family:var(--sans);font-weight:500;transition:background .3s}
+.btn-gold:hover{background:var(--champagne-gold)}
+.btn-gold svg{width:11px;height:11px;transition:transform .2s}
+.btn-gold:hover svg{transform:translateX(2px)}
 .btn-ghost{display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.55);padding:13px 32px;font-size:10px;letter-spacing:.35em;text-transform:uppercase;font-family:var(--sans);transition:border-color .3s,color .3s}
 .btn-ghost:hover{border-color:rgba(255,255,255,.45);color:rgba(255,255,255,.75)}
 .btn-outline-gold{display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(184,155,94,.5);color:var(--gold);padding:12px 28px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;font-family:var(--sans);transition:background .3s,color .3s}
