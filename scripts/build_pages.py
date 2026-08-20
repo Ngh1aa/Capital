@@ -372,27 +372,29 @@ def make_svg(fid):
     return f'<svg viewBox="0 0 480 340" style="width:100%;height:auto;max-height:280px"><rect x="24" y="24" width="432" height="292" fill="none" stroke="#d2ac47" stroke-width="1.2"/>{ticks_n}{ticks_s}{ticks_w}{ticks_e}{cg}{rg}{core}{lifts}{stairs}{sp}{lbl}<text x="240" y="15" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">N</text><text x="240" y="332" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">S</text><text x="12" y="173" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">W</text><text x="465" y="173" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">E</text><g transform="translate(440,48)"><line x1="0" y1="12" x2="0" y2="-8" stroke="#d2ac47" stroke-width=".8"/><polygon points="0,-10 -5,-2 5,-2" fill="#d2ac47"/></g><g transform="translate(32,308)"><line x1="0" y1="0" x2="68" y2="0" stroke="#d2ac47" stroke-width=".8" stroke-opacity=".5"/><line x1="0" y1="-4" x2="0" y2="4" stroke="#d2ac47" stroke-width=".8" stroke-opacity=".5"/><line x1="68" y1="-4" x2="68" y2="4" stroke="#d2ac47" stroke-width=".8" stroke-opacity=".5"/><text x="34" y="-7" text-anchor="middle" fill="#3a3428" font-size="6.5" letter-spacing="1" font-family="sans-serif">20 m</text></g></svg>'
 
 FLOORS = [
-    {"id":"ground","label":"Ground Floor","range":"Level G","gfa":"4,200 SQM","height":"12.0 m (triple)","grid":"\u2014","use":"Lobby \u00b7 Retail \u00b7 Drop-off \u00b7 Security"},
-    {"id":"podium","label":"Podium","range":"L1 \u2013 L5","gfa":"8,400 SQM","height":"4.5 m (slab-slab)","grid":"9 \u00d7 9 m","use":"Amenities \u00b7 Parking \u00b7 Conference \u00b7 Retail"},
-    {"id":"lo","label":"Office (Lower)","range":"L6 \u2013 L20","gfa":"2,100 SQM","height":"2.85 m (finished)","grid":"9 \u00d7 9 m","use":"Grade-A Open Plan \u00b7 Column-free"},
-    {"id":"hi","label":"Office (Upper)","range":"L21 \u2013 L38","gfa":"1,850 SQM","height":"2.85 m (finished)","grid":"9 \u00d7 9 m","use":"Premium Open Plan \u00b7 270\u00b0 Views"},
-    {"id":"sky","label":"Sky Levels","range":"L39 \u2013 L41","gfa":"1,600 SQM","height":"3.5 m","grid":"\u2014","use":"Sky Lounge \u00b7 Mechanical \u00b7 Roof Garden"},
+    {"id":"ground","label":"Arrival & Retail","range":"B1 · Level 1","tower":"Shared podium","use":"Retail · Arrival · Building services","note":"The section diagram marks Level 1 as retail and B1 as the basement arrival band."},
+    {"id":"podium","label":"Lower Office Band","range":"Levels 2 · 6","tower":"Tower 1 · Tower 2","use":"Office floors across the lower podium","note":"The lower office band sits above the retail level in both towers."},
+    {"id":"lo","label":"Lower Office Floors","range":"7F · 19F","tower":"Tower 1 · Tower 2","use":"Grade-A office floors","note":"Both towers are shown with office floors from 7F through 19F."},
+    {"id":"hi","label":"Upper Office Floors","range":"20F · 37F","tower":"Tower 1 · Tower 2","use":"Upper office floors","note":"The upper office band rises from 20F to 37F in both towers."},
 ]
 
 def floor_panels():
     out = ''
     for i, f in enumerate(FLOORS):
         active = ' active' if i == 2 else ''
-        rows = ''.join(f'<div class="spec-row"><span class="spec-key">{k}</span><span class="spec-val">{v}</span></div>' for k, v in [("GFA",f["gfa"]),("Ceiling Height",f["height"]),("Column Grid",f["grid"]),("Primary Use",f["use"])])
-        out += f'<div class="floor-panel{active}" data-fi="{i}"><div class="svg-box">{make_svg(f["id"])}</div><div class="floor-specs"><div class="floor-spec-hd"><span class="eyebrow">{f["range"]}</span><h3>{f["label"]}</h3></div><div class="spec-table">{rows}</div><a href="amenities.html#leasing" class="btn-outline-gold">Request Floor Plan<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a></div></div>'
+        rows = ''.join(f'<div class="spec-row"><span class="spec-key">{k}</span><span class="spec-val">{v}</span></div>' for k, v in [("Tower",f["tower"]),("Level band",f["range"]),("Function",f["use"]),("Reference",f["note"])])
+        out += f'<div class="floor-panel{active}" id="floor-panel-{i}" data-fi="{i}" role="tabpanel" aria-labelledby="floor-tab-{i}"><div class="svg-box">{make_svg(f["id"])}</div><div class="floor-specs"><div class="floor-spec-hd"><span class="eyebrow">{f["range"]}</span><h3>{f["label"]}</h3></div><div class="spec-table">{rows}</div><a href="amenities.html#leasing" class="btn-outline-gold">Request Floor Plan<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a></div></div>'
     return out
+
 
 def floor_btns():
     out = ''
     for i, f in enumerate(FLOORS):
         active = ' active' if i == 2 else ' inactive'
-        out += f'<button type="button" class="floor-btn{active}" onclick="setFloor({i})"><span class="floor-range">{f["range"]}</span><span class="floor-lbl">{f["label"]}</span></button>'
+        selected = 'true' if i == 2 else 'false'
+        out += f'<button type="button" class="floor-btn{active}" id="floor-tab-{i}" role="tab" aria-selected="{selected}" aria-controls="floor-panel-{i}" onclick="setFloor({i})"><span class="floor-range">{f["range"]}</span><span class="floor-lbl">{f["label"]}</span></button>'
     return out
+
 
 off_css = """<style>
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
@@ -427,24 +429,78 @@ off_css = """<style>
 .feat-num{font-family:var(--sans);font-size:9px;letter-spacing:.4em;color:rgba(210,172,71,.35);margin-bottom:.75rem}
 .feat-title{font-family:var(--serif);font-weight:300;color:#fff;font-size:1.1rem;margin-bottom:.75rem}
 .feat-desc{font-family:var(--sans);font-size:13px;color:rgba(255,255,255,.3);line-height:1.6}
+.office-overview{background:var(--bg2);padding:clamp(5rem,10vw,8rem) 0;border-top:1px solid var(--gold-b)}
+.office-intro{display:grid;gap:2rem;align-items:end}
+@media(min-width:900px){.office-intro{grid-template-columns:1fr 1fr;gap:5rem}}
+.office-intro-copy{color:rgba(255,255,255,.42);font-size:14px;line-height:1.75;max-width:34rem}
+.office-kpis{display:grid;grid-template-columns:1fr;gap:1px;background:var(--gold-b);margin-top:clamp(3rem,6vw,5rem)}
+@media(min-width:768px){.office-kpis{grid-template-columns:repeat(3,1fr)}}
+.office-kpi{background:var(--bg2);padding:2rem 1.5rem;display:flex;flex-direction:column;gap:.35rem}
+.office-kpi-num{font-family:var(--serif);font-size:clamp(2.4rem,5vw,4rem);font-weight:300;color:var(--gold-primary);line-height:1}
+.office-kpi-label{font-family:var(--sans);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#fff}
+.office-kpi-note{font-family:var(--sans);font-size:12px;color:rgba(255,255,255,.3)}
+.tower-section{background:var(--bg);padding:clamp(5rem,10vw,8rem) 0;border-top:1px solid var(--gold-b)}
+.tower-section-grid{display:grid;gap:3rem;align-items:center}
+@media(min-width:1024px){.tower-section-grid{grid-template-columns:.78fr 1.22fr;gap:5rem}}
+.tower-section-copy p:not(.eyebrow){color:rgba(255,255,255,.42);font-size:14px;line-height:1.75;max-width:30rem;margin-top:1.5rem}
+.tower-notes{display:flex;flex-direction:column;gap:.7rem;border-top:1px solid var(--gold-b);margin-top:2rem;padding-top:1.25rem;font-family:var(--sans);font-size:11px;color:rgba(255,255,255,.42)}
+.tower-notes b{color:var(--gold-champagne);font-weight:400;letter-spacing:.12em;text-transform:uppercase;margin-right:.4rem}
+.tower-section-media{margin:0;border:1px solid var(--gold-b);background:#f4f4f0;padding:.7rem}
+.tower-section-media img{display:block;width:100%;height:auto;filter:saturate(.86) contrast(.98)}
+.tower-section-media figcaption{font-family:var(--sans);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#6d624e;padding:.8rem .35rem .25rem}
+.office-floor-section{background:var(--bg2);padding:clamp(5rem,10vw,8rem) 0;border-top:1px solid var(--gold-b)}
+.fp-intro{color:rgba(255,255,255,.38);font-size:14px;line-height:1.75;max-width:34rem;margin-top:1.5rem}
+.floor-panel[aria-hidden="true"]{display:none}
+.floor-panel[aria-hidden="false"]{display:grid}
+@media(max-width:767px){.tower-section-media{padding:.45rem}.tower-section-media figcaption{font-size:8px}.spec-row{grid-template-columns:100px 1fr}.floor-sel{border-right:0}}
 </style>"""
 
 off_body = f"""<div class="page-header" style="--hero-position:center 26%">
-  <img class="page-header-media" src="https://images.unsplash.com/photo-1690944851207-3f288c8fcd0b?w=1600&h=2000&fit=crop&auto=format&q=90" alt="Capital Place towers rising above Hanoi" fetchpriority="high" />
+  <img class="page-header-media" src="https://images.unsplash.com/photo-1690944851207-3f288c8fcd0b?w=1600&h=2000&fit=crop&auto=format&q=90" alt="Capital Place twin towers rising above Hanoi" fetchpriority="high" />
   <div class="container">
     <p class="page-header-eyebrow">Office</p>
-    <h1>Grade-A<br><em>Office Floors</em></h1>
-    <p>93,700 SQM of premium column-free workspace across two towers, L6 to L38, with full-height glazing and panoramic city views.</p>
+    <h1>A workplace<br><em>in two towers</em></h1>
+    <p>From a retail arrival at B1 and Level 1 to upper office floors at 37F, Capital Place gives teams a clear vertical address in the heart of Hanoi.</p>
   </div>
 </div>
-<section style="background:var(--bg2);padding:clamp(6rem,12vw,9rem) 0;border-top:1px solid var(--gold-b)">
+<section class="office-overview" aria-labelledby="office-overview-title">
+  <div class="container">
+    <div class="office-intro">
+      <div>
+        <p class="eyebrow" style="margin-bottom:1rem">The workplace</p>
+        <h2 id="office-overview-title" class="section-title">Two towers.<br><em>One address.</em></h2>
+      </div>
+      <p class="office-intro-copy">The building section is organized as a simple vertical experience: retail and arrival at the base, office bands through the podium, and two towers rising together from 7F to 37F.</p>
+    </div>
+    <div class="office-kpis" role="list" aria-label="Office building overview">
+      <div class="office-kpi" role="listitem"><span class="office-kpi-num">02</span><span class="office-kpi-label">Towers</span><span class="office-kpi-note">Tower 1 &middot; Tower 2</span></div>
+      <div class="office-kpi" role="listitem"><span class="office-kpi-num">37F</span><span class="office-kpi-label">Upper office level</span><span class="office-kpi-note">Shown in the section diagram</span></div>
+      <div class="office-kpi" role="listitem"><span class="office-kpi-num">B1</span><span class="office-kpi-label">Arrival level</span><span class="office-kpi-note">Retail and building access</span></div>
+    </div>
+  </div>
+</section>
+<section class="tower-section" aria-labelledby="tower-section-title">
+  <div class="container">
+    <div class="tower-section-grid">
+      <div class="tower-section-copy">
+        <p class="eyebrow" style="margin-bottom:1rem">Building section</p>
+        <h2 id="tower-section-title" class="section-title">A clear vertical<br><em>address</em></h2>
+        <p>The reference section shows the twin-tower composition and its floor functions at a glance. Office bands are repeated across Tower 1 and Tower 2, while retail anchors the base of the building.</p>
+        <div class="tower-notes"><span><b>Tower 1</b> 7F&ndash;37F office bands</span><span><b>Tower 2</b> 7F&ndash;37F office bands</span><span><b>Level 1</b> Retail</span></div>
+      </div>
+      <figure class="tower-section-media"><img src="assets/images/capital-place-tower-section.png" alt="Capital Place Tower 1 and Tower 2 section diagram showing office and retail floor bands" loading="lazy" decoding="async" /><figcaption>Indicative tower section &middot; floor functions shown by level</figcaption></figure>
+    </div>
+  </div>
+</section>
+<section class="office-floor-section" aria-labelledby="floor-plans-title">
   <div class="container">
     <div class="fp-header">
-      <p class="eyebrow" style="margin-bottom:1rem">Layouts</p>
-      <h2 class="section-title">Floor<br><em>Plans</em></h2>
+      <p class="eyebrow" style="margin-bottom:1rem">Floor directory</p>
+      <h2 id="floor-plans-title" class="section-title">Find your<br><em>place in the building</em></h2>
+      <p class="fp-intro">Select a level band to understand how Capital Place moves from arrival and retail to the upper office floors. Request the detailed floor plan when you are ready to explore availability.</p>
     </div>
     <div class="fp-grid">
-      <div class="floor-sel">{floor_btns()}</div>
+      <div class="floor-sel" role="tablist" aria-label="Capital Place floor bands">{floor_btns()}</div>
       <div class="floor-viewer">{floor_panels()}</div>
     </div>
   </div>
@@ -452,14 +508,14 @@ off_body = f"""<div class="page-header" style="--hero-position:center 26%">
 <section class="office-features">
   <div class="container">
     <p class="eyebrow" style="margin-bottom:1rem">Specifications</p>
-    <h2 class="section-title">Built For<br><em>Excellence</em></h2>
+    <h2 class="section-title">Built for<br><em>focused work</em></h2>
     <div class="feat-grid">
-      <div class="feat-card fade-up"><p class="feat-num">01</p><h3 class="feat-title">Column-Free Floorplates</h3><p class="feat-desc">Open-plan layouts with zero internal columns allow complete flexibility in workspace configuration.</p></div>
-      <div class="feat-card fade-up" style="transition-delay:.08s"><p class="feat-num">02</p><h3 class="feat-title">Full-Height Glazing</h3><p class="feat-desc">Floor-to-ceiling glass on all four elevations maximises natural light and panoramic views.</p></div>
-      <div class="feat-card fade-up" style="transition-delay:.16s"><p class="feat-num">03</p><h3 class="feat-title">NBF Fresh Air System</h3><p class="feat-desc">Compliant with the National Building Framework, delivering superior indoor air quality for occupant wellbeing.</p></div>
-      <div class="feat-card fade-up" style="transition-delay:.24s"><p class="feat-num">04</p><h3 class="feat-title">Raised Access Floors</h3><p class="feat-desc">600 mm module raised-access flooring throughout for flexible MEP distribution and future-proofing.</p></div>
-      <div class="feat-card fade-up" style="transition-delay:.32s"><p class="feat-num">05</p><h3 class="feat-title">BMS Integration</h3><p class="feat-desc">Building management system controls HVAC, lighting, and security from a centralised dashboard.</p></div>
-      <div class="feat-card fade-up" style="transition-delay:.4s"><p class="feat-num">06</p><h3 class="feat-title">24/7 Security</h3><p class="feat-desc">Turnstile access control, CCTV, on-site security team, and visitor management system.</p></div>
+      <div class="feat-card fade-up"><p class="feat-num">01</p><h3 class="feat-title">Column-Free Floorplates</h3><p class="feat-desc">Open-plan layouts give teams the freedom to shape their workplace around the way they work.</p></div>
+      <div class="feat-card fade-up" style="transition-delay:.08s"><p class="feat-num">02</p><h3 class="feat-title">Full-Height Glazing</h3><p class="feat-desc">Generous glazing brings natural light and a clear connection to the city into every working day.</p></div>
+      <div class="feat-card fade-up" style="transition-delay:.16s"><p class="feat-num">03</p><h3 class="feat-title">Fresh Air System</h3><p class="feat-desc">A considered indoor environment supports comfort, concentration and everyday wellbeing.</p></div>
+      <div class="feat-card fade-up" style="transition-delay:.24s"><p class="feat-num">04</p><h3 class="feat-title">Raised Access Floors</h3><p class="feat-desc">Flexible floor infrastructure makes it easier to plan, connect and evolve the workplace.</p></div>
+      <div class="feat-card fade-up" style="transition-delay:.32s"><p class="feat-num">05</p><h3 class="feat-title">Building Management</h3><p class="feat-desc">Integrated building systems help maintain a controlled, efficient and dependable workplace.</p></div>
+      <div class="feat-card fade-up" style="transition-delay:.4s"><p class="feat-num">06</p><h3 class="feat-title">24/7 Security</h3><p class="feat-desc">Controlled access, CCTV and on-site support help protect people, teams and business continuity.</p></div>
     </div>
   </div>
 </section>"""
@@ -467,8 +523,8 @@ off_body = f"""<div class="page-header" style="--hero-position:center 26%">
 off_js = """<script>
 let aF=2;
 function setFloor(i){if(i===aF)return;aF=i;
-  document.querySelectorAll('.floor-btn').forEach((b,x)=>{b.classList.toggle('active',x===i);b.classList.toggle('inactive',x!==i)});
-  document.querySelectorAll('.floor-panel').forEach((p,x)=>p.classList.toggle('active',x===i));
+  document.querySelectorAll('.floor-btn').forEach((b,x)=>{b.classList.toggle('active',x===i);b.classList.toggle('inactive',x!==i);b.setAttribute('aria-selected',x===i?'true':'false')});
+  document.querySelectorAll('.floor-panel').forEach((p,x)=>{p.classList.toggle('active',x===i);p.setAttribute('aria-hidden',x===i?'false':'true')});
 }
 </script>"""
 
