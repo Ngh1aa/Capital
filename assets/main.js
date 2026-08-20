@@ -63,3 +63,21 @@ const countIO = new IntersectionObserver(
   { threshold: 0.5 }
 );
 document.querySelectorAll('.stat-num[data-target]').forEach(el => countIO.observe(el));
+
+// ── UI Feedback Tool (Nhấn đồng thời Q + W + E để bật/tắt)
+(function initUIFeedback() {
+  const init = (mod) => {
+    if (mod && typeof mod.createUIFeedback === 'function') {
+      mod.createUIFeedback({
+        storageKey: 'capital-ui-feedback',
+        accent: '#c9a866',
+        githubRepo: 'Ngh1aa/Capital'
+      });
+    }
+  };
+
+  import('./ui-feedback.js').then(init).catch(() => {
+    import('./assets/ui-feedback.js').then(init).catch(() => {});
+  });
+})();
+

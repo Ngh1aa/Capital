@@ -1,0 +1,10 @@
+{
+  "enabled": true,
+  "source": "Ngh1aa/ui-feedback-tool",
+  "targetPaths": [
+    "assets/ui-feedback.js",
+    "ui-feedback.js"
+  ],
+  "storageKey": "capital-ui-feedback",
+  "githubRepo": "Ngh1aa/Capital"
+}
