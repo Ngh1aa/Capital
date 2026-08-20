@@ -12,7 +12,7 @@
   <style>
 .sus-banner{position:relative;height:clamp(280px,40vw,520px);overflow:hidden}
 .sus-banner img{width:100%;height:100%;object-fit:cover;object-position:center}
-.sus-banner-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,11,9,.5),transparent 50%,rgba(11,11,9,.7))}
+.sus-banner-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(7,19,28,.5),transparent 50%,rgba(7,19,28,.7))}
 .sus-banner-txt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center}
 .sus-banner-txt p{font-family:var(--serif);font-weight:300;color:rgba(255,255,255,.75);font-size:clamp(.9rem,2.5vw,1.4rem);letter-spacing:.25em}
 .leed-strip{border-top:1px solid var(--gold-b);border-bottom:1px solid var(--gold-b);background:var(--bg)}
@@ -41,9 +41,8 @@
 <body>
 <nav id="main-nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">
-      <span class="logo-top">Capital</span>
-      <span class="logo-bot">Place</span>
+    <a href="index.html" class="nav-logo" aria-label="Capital Place Hanoi home">
+      <img class="official-logo" src="assets/brand/capital-place-logo.svg" alt="Capital Place Hanoi" width="89" height="75" />
     </a>
     <div class="nav-links">
       <a href="index.html">Home</a>
@@ -53,13 +52,13 @@
       <a href="amenities.html">Amenities</a>
       <div class="nav-sep"></div>
       <div class="lang-btns">
-        <button class="active" onclick="setLang('EN')">EN</button>
+        <button type="button" class="active" onclick="setLang('EN')">EN</button>
         <span class="lang-sep2">|</span>
-        <button onclick="setLang('VI')">VI</button>
+        <button type="button" onclick="setLang('VI')">VI</button>
       </div>
       <a href="amenities.html#leasing" class="btn-enquire">Enquire</a>
     </div>
-    <button class="nav-ham" id="hamburger" aria-label="Toggle menu">
+    <button type="button" class="nav-ham" id="hamburger" aria-label="Toggle menu" aria-controls="mob-menu" aria-expanded="false">
       <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
       <svg id="icon-close" style="display:none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
@@ -73,7 +72,8 @@
     <a href="amenities.html#leasing" class="mob-enq" onclick="closeMob()">Leasing Enquiry</a>
   </div>
 </nav>
-<div class="page-header">
+<div class="page-header" style="--hero-position:center 40%">
+  <img class="page-header-media" src="https://images.unsplash.com/photo-1617761141732-d481912af1a9?w=1400&h=950&fit=crop&auto=format" alt="Light reflecting across Capital Place glass facade" fetchpriority="high" />
   <div class="container">
     <p class="page-header-eyebrow">Sustainability</p>
     <h1>Dual<br><em>LEED Certified</em></h1>
@@ -119,11 +119,14 @@
   <div class="container">
     <div class="ft-grid">
       <div>
-        <div class="ft-logo"><span class="logo-top">Capital</span><span class="logo-bot">Place</span></div>
+        <div class="ft-logo">
+          <img class="official-logo official-logo-footer" src="assets/brand/capital-place-logo.svg" alt="Capital Place Hanoi" width="89" height="75" />
+        </div>
+        <p class="ft-intro">A premier address for business in Hanoi's diplomatic quarter.</p>
         <p class="ft-addr">Twin-Peaks Joint Stock Company<br>29 Lieu Giai, Ngoc Ha<br>Ba Dinh, Hanoi, Vietnam</p>
       </div>
       <div class="ft-col">
-        <p class="ft-col-title">Navigate</p>
+        <p class="ft-col-title">Explore Capital Place</p>
         <a href="index.html">Home</a>
         <a href="location.html">Location</a>
         <a href="office.html">Office</a>
@@ -131,7 +134,8 @@
         <a href="amenities.html">Amenities</a>
       </div>
       <div class="ft-col">
-        <p class="ft-col-title">Contact</p>
+        <p class="ft-col-title">Contact &amp; Leasing</p>
+        <a href="amenities.html#leasing">Leasing Enquiry</a>
         <a href="tel:18009289">1800 9289</a>
         <a href="mailto:leasing@capitalplace.com.vn">leasing@capitalplace.com.vn</a>
       </div>

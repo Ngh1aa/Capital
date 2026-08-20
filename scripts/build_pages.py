@@ -1,6 +1,6 @@
 import os
 
-ROOT = r'c:\Users\LENOVO\Documents\GitHub\Capital'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 FONTS = '<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />'
 
@@ -22,9 +22,8 @@ def head(title, desc, extra=''):
 
 NAV = """<nav id="main-nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">
-      <span class="logo-top">Capital</span>
-      <span class="logo-bot">Place</span>
+    <a href="index.html" class="nav-logo" aria-label="Capital Place Hanoi home">
+      <img class="official-logo" src="assets/brand/capital-place-logo.svg" alt="Capital Place Hanoi" width="89" height="75" />
     </a>
     <div class="nav-links">
       <a href="index.html">Home</a>
@@ -34,13 +33,13 @@ NAV = """<nav id="main-nav">
       <a href="amenities.html">Amenities</a>
       <div class="nav-sep"></div>
       <div class="lang-btns">
-        <button class="active" onclick="setLang('EN')">EN</button>
+        <button type="button" class="active" onclick="setLang('EN')">EN</button>
         <span class="lang-sep2">|</span>
-        <button onclick="setLang('VI')">VI</button>
+        <button type="button" onclick="setLang('VI')">VI</button>
       </div>
       <a href="amenities.html#leasing" class="btn-enquire">Enquire</a>
     </div>
-    <button class="nav-ham" id="hamburger" aria-label="Toggle menu">
+    <button type="button" class="nav-ham" id="hamburger" aria-label="Toggle menu" aria-controls="mob-menu" aria-expanded="false">
       <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
       <svg id="icon-close" style="display:none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
@@ -59,11 +58,14 @@ FOOTER = """<footer>
   <div class="container">
     <div class="ft-grid">
       <div>
-        <div class="ft-logo"><span class="logo-top">Capital</span><span class="logo-bot">Place</span></div>
+        <div class="ft-logo">
+          <img class="official-logo official-logo-footer" src="assets/brand/capital-place-logo.svg" alt="Capital Place Hanoi" width="89" height="75" />
+        </div>
+        <p class="ft-intro">A premier address for business in Hanoi's diplomatic quarter.</p>
         <p class="ft-addr">Twin-Peaks Joint Stock Company<br>29 Lieu Giai, Ngoc Ha<br>Ba Dinh, Hanoi, Vietnam</p>
       </div>
       <div class="ft-col">
-        <p class="ft-col-title">Navigate</p>
+        <p class="ft-col-title">Explore Capital Place</p>
         <a href="index.html">Home</a>
         <a href="location.html">Location</a>
         <a href="office.html">Office</a>
@@ -71,7 +73,8 @@ FOOTER = """<footer>
         <a href="amenities.html">Amenities</a>
       </div>
       <div class="ft-col">
-        <p class="ft-col-title">Contact</p>
+        <p class="ft-col-title">Contact &amp; Leasing</p>
+        <a href="amenities.html#leasing">Leasing Enquiry</a>
         <a href="tel:18009289">1800 9289</a>
         <a href="mailto:leasing@capitalplace.com.vn">leasing@capitalplace.com.vn</a>
       </div>
@@ -92,13 +95,13 @@ FOOTER = """<footer>
 idx_css = """<style>
 #hero{position:relative;height:100svh;min-height:680px;overflow:hidden;background:var(--bg)}
 .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
-.ov1{position:absolute;inset:0;background:rgba(11,11,9,.35)}
-.ov2{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,11,9,.65) 0%,transparent 50%,var(--bg) 100%)}
+.ov1{position:absolute;inset:0;background:rgba(7,19,28,.35)}
+.ov2{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(7,19,28,.65) 0%,transparent 50%,var(--bg) 100%)}
 .ov3{position:absolute;bottom:0;left:0;right:0;height:45%;background:linear-gradient(to top,var(--bg),transparent)}
 .hero-badges{position:absolute;top:86px;right:var(--px);display:flex;flex-direction:column;align-items:flex-end;gap:8px;animation:fadeIn .9s .6s both}
-.badge{font-family:var(--sans);font-size:9px;letter-spacing:.45em;text-transform:uppercase;border:1px solid;padding:7px 12px;backdrop-filter:blur(4px);background:rgba(11,11,9,.3)}
-.badge-gold{color:var(--gold);border-color:rgba(201,168,102,.35)}
-.badge-dim{color:rgba(201,168,102,.55);border-color:rgba(201,168,102,.15)}
+.badge{font-family:var(--sans);font-size:9px;letter-spacing:.45em;text-transform:uppercase;border:1px solid;padding:7px 12px;backdrop-filter:blur(4px);background:rgba(7,19,28,.3)}
+.badge-gold{color:var(--gold);border-color:rgba(210,172,71,.35)}
+.badge-dim{color:rgba(210,172,71,.55);border-color:rgba(210,172,71,.15)}
 .hero-content{position:absolute;bottom:clamp(4rem,8vw,5rem);left:0;right:0}
 .hero-eyebrow{color:var(--gold);font-size:9px;letter-spacing:.55em;text-transform:uppercase;font-family:var(--sans);margin-bottom:1.5rem;animation:fadeUp 1.2s .1s both}
 .hero-h1{font-family:var(--serif);font-weight:300;color:#fff;line-height:.88}
@@ -109,7 +112,7 @@ idx_css = """<style>
 .hero-h1 span:nth-child(3){animation:fadeUp 1s .44s both}
 .hero-specs{margin-top:1.75rem;display:flex;flex-wrap:wrap;align-items:center;gap:1.25rem;animation:fadeUp 1s .5s both}
 .hero-spec{display:flex;align-items:center;gap:1.25rem;font-family:var(--sans);font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.28)}
-.spec-sep{width:1px;height:12px;background:rgba(201,168,102,.25)}
+.spec-sep{width:1px;height:12px;background:rgba(210,172,71,.25)}
 .hero-ctas{margin-top:2.25rem;display:flex;flex-wrap:wrap;gap:1rem;animation:fadeUp 1s .55s both}
 .scroll-cue{position:absolute;bottom:28px;right:var(--px);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.18)}
 .scroll-cue span{font-family:var(--sans);font-size:8px;letter-spacing:.4em;text-transform:uppercase}
@@ -126,7 +129,7 @@ idx_css = """<style>
 .exp-header{margin-bottom:clamp(3.5rem,7vw,4.5rem);display:flex;flex-direction:column;gap:1.5rem}
 @media(min-width:768px){.exp-header{flex-direction:row;align-items:flex-end}}
 .exp-header .left{flex:1}
-.exp-header>p{color:rgba(255,255,255,.28);font-size:14px;max-width:280px;line-height:1.7}
+.exp-header>p{color:rgba(255,255,255,.42);font-size:14px;max-width:280px;line-height:1.7}@media(min-width:1100px){.exp-header>p{max-width:none;white-space:nowrap}}
 .exp-grid{display:grid}
 @media(min-width:1024px){.exp-grid{grid-template-columns:1fr 1.4fr}}
 .zone-list{border-top:1px solid var(--gold-b)}
@@ -142,17 +145,18 @@ idx_css = """<style>
 .zone-item.active .zone-chevron{color:var(--gold);opacity:1}
 .zone-item.inactive .zone-chevron{opacity:0}
 .zone-sub{font-family:var(--sans);font-size:9px;letter-spacing:.22em;text-transform:uppercase;transition:color .3s;color:rgba(255,255,255,.22)}
-.zone-item.active .zone-sub{color:rgba(201,168,102,.65)}
+.zone-item.active .zone-sub{color:rgba(210,172,71,.65)}
 .zone-detail{font-size:14px;line-height:1.7;color:rgba(255,255,255,.38);overflow:hidden;max-height:0;opacity:0;transition:max-height .4s cubic-bezier(.22,1,.36,1),opacity .35s ease,margin-top .35s;margin-top:0}
 .zone-detail.open{max-height:120px;opacity:1;margin-top:12px}
-.img-panel{display:none;padding-left:3rem}
-@media(min-width:1024px){.img-panel{display:block}}
-.img-sticky{position:sticky;top:88px}
+.img-panel{display:block;padding-left:0;margin-top:2rem}
+@media(min-width:1024px){.img-panel{padding-left:3rem;margin-top:0}}
+.img-sticky{position:relative}
+@media(min-width:1024px){.img-sticky{position:sticky;top:88px}}
 .img-wrap{position:relative;overflow:hidden;background:var(--card);height:min(72vh,640px)}
 .zone-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .7s ease,transform .7s ease;opacity:0;transform:scale(1.04)}
 .zone-img.active{opacity:1;transform:scale(1)}
 .img-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,8,.85) 0%,transparent 60%,rgba(10,10,8,.15) 100%)}
-.img-lbl{position:absolute;bottom:0;left:0;right:0;padding:2rem}
+.img-lbl{position:absolute;bottom:0;left:0;right:0;padding:3.75rem 2rem 2rem;z-index:2;overflow:hidden}.img-lbl::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(4,10,14,.96) 0%,rgba(4,10,14,.72) 48%,transparent 100%);z-index:-1;pointer-events:none}
 .img-lbl-sub{font-family:var(--sans);font-size:9px;letter-spacing:.45em;text-transform:uppercase;color:var(--gold)}
 .img-lbl-title{font-family:var(--serif);font-weight:300;color:#fff;font-size:clamp(1.4rem,2.5vw,1.8rem);margin-top:4px}
 .zone-dots{position:absolute;right:24px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px}
@@ -161,9 +165,9 @@ idx_css = """<style>
 .quick-links{background:var(--bg2);border-top:1px solid var(--gold-b);padding:clamp(4rem,8vw,6rem) 0}
 .ql-grid{display:grid;gap:1px;background:var(--gold-b)}
 @media(min-width:768px){.ql-grid{grid-template-columns:repeat(4,1fr)}}
-.ql-card{background:var(--bg2);padding:2.5rem 2rem;display:flex;flex-direction:column;gap:1rem;transition:background .3s}
-.ql-card:hover{background:var(--card)}
-.ql-num{font-family:var(--sans);font-size:9px;letter-spacing:.4em;color:rgba(201,168,102,.4)}
+.ql-card{background:var(--bg2);padding:2.5rem 2rem;display:flex;flex-direction:column;gap:1rem;transition:background .25s,transform .25s,border-color .25s;position:relative;border:1px solid transparent}
+.ql-card:hover{background:var(--card);border-color:rgba(210,172,71,.34);transform:translateY(-4px);z-index:1}.ql-card:focus-visible{background:var(--card);border-color:var(--gold);transform:translateY(-4px);z-index:1}
+.ql-num{font-family:var(--sans);font-size:9px;letter-spacing:.4em;color:rgba(210,172,71,.4)}
 .ql-title{font-family:var(--serif);font-weight:300;color:#fff;font-size:1.25rem;line-height:1.2}
 .ql-desc{font-family:var(--sans);font-size:13px;color:rgba(255,255,255,.3);line-height:1.6}
 .ql-arrow{margin-top:auto;color:var(--gold);display:flex;align-items:center;gap:8px;font-family:var(--sans);font-size:10px;letter-spacing:.25em;text-transform:uppercase}
@@ -172,14 +176,10 @@ idx_css = """<style>
 </style>"""
 
 idx_body = """<section id="hero">
-  <video class="hero-bg" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1690944851207-3f288c8fcd0b?w=1600&h=2000&fit=crop&auto=format&q=90">
+  <video class="hero-bg" autoplay muted loop playsinline preload="metadata" aria-label="Capital Place exterior architecture" poster="https://images.unsplash.com/photo-1690944851207-3f288c8fcd0b?w=1600&h=2000&fit=crop&auto=format&q=90">
     <source src="https://capitalplace.com.vn/wp-content/uploads/2026/05/CAPITAL-PLACE-TVC_1080p.mp4" type="video/mp4">
   </video>
   <div class="ov1"></div><div class="ov2"></div><div class="ov3"></div>
-  <div class="hero-badges">
-    <span class="badge badge-gold">LEED Platinum</span>
-    <span class="badge badge-dim">LEED Gold</span>
-  </div>
   <div class="hero-content"><div class="container">
     <p class="hero-eyebrow">29 Lieu Giai &middot; Ba Dinh &middot; Hanoi</p>
     <h1 class="hero-h1"><span>Hanoi's</span><span class="italic">Premier</span><span>Address</span></h1>
@@ -198,10 +198,10 @@ idx_body = """<section id="hero">
 </section>
 <section id="specbar">
   <div class="spec-grid container">
-    <div class="stat-cell fade-up"><span class="stat-num" data-target="93700" data-fmt="comma">0</span><span class="stat-label">SQM Total GFA</span></div>
-    <div class="stat-cell fade-up" style="transition-delay:.1s"><span class="stat-num" data-target="2">0</span><span class="stat-label">Towers</span></div>
-    <div class="stat-cell fade-up" style="transition-delay:.2s"><span class="stat-num" data-target="41">0</span><span class="stat-label">Storeys</span></div>
-    <div class="stat-cell fade-up" style="transition-delay:.3s"><span class="stat-num" data-target="2015">0</span><span class="stat-label">Completed</span></div>
+    <div class="stat-cell fade-up"><span class="stat-num" data-target="93700" data-fmt="comma">93,700</span><span class="stat-label">SQM Total GFA</span></div>
+    <div class="stat-cell fade-up" style="transition-delay:.1s"><span class="stat-num" data-target="2">2</span><span class="stat-label">Towers</span></div>
+    <div class="stat-cell fade-up" style="transition-delay:.2s"><span class="stat-num" data-target="41">41</span><span class="stat-label">Storeys</span></div>
+    <div class="stat-cell fade-up" style="transition-delay:.3s"><span class="stat-num" data-target="2015">2015</span><span class="stat-label">Completed</span></div>
   </div>
 </section>
 <section id="explore">
@@ -212,11 +212,29 @@ idx_body = """<section id="hero">
     </div>
     <div class="exp-grid">
       <div class="zone-list" id="zone-list"></div>
-      <div class="img-panel"><div class="img-sticky"><div class="img-wrap" id="img-wrap">
+      <div class="img-panel"><div class="img-sticky"><div class="img-wrap" id="img-wrap" role="region" aria-live="polite" aria-label="Capital Place area preview">
         <div class="img-ov"></div>
         <div class="img-lbl"><p class="img-lbl-sub" id="z-sub"></p><h3 class="img-lbl-title" id="z-title"></h3></div>
         <div class="zone-dots" id="zone-dots"></div>
       </div></div></div>
+    </div>
+  </div>
+</section>
+<section class="leasing-tease" aria-labelledby="leasing-tease-title">
+  <div class="container">
+    <div class="leasing-tease-grid">
+      <div>
+        <p class="eyebrow" style="margin-bottom:1rem">The Address In Full</p>
+        <h2 id="leasing-tease-title" class="section-title">Make space<br><em>for more.</em></h2>
+        <p class="leasing-tease-copy">Explore available floor plates, view the building layout, or speak with the Capital Place leasing team.</p>
+      </div>
+      <div class="leasing-tease-actions">
+        <a href="office.html" class="btn-primary">View Floor Plans<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
+        <a href="amenities.html#leasing" class="btn-ghost">Request Availability</a>
+      </div>
+    </div>
+    <div class="proof-row" aria-label="Capital Place credentials">
+      <span>Dual LEED Certified</span><span>Grade-A Office</span><span>93,700 SQM</span><span>29 Lieu Giai</span>
     </div>
   </div>
 </section>
@@ -234,8 +252,8 @@ idx_body = """<section id="hero">
 
 idx_js = """<script>
 const ZONES=[
-  {num:"01",id:"lobby",label:"Grand Lobby",sub:"Ground Floor \u00b7 Triple-height atrium",detail:"Marble floors, bamboo-inspired columns, and site-specific Vietnamese art define the arrival. The 18\u00a0m atrium opens both towers.",img:"https://images.unsplash.com/photo-1780369088190-914cc3eee938?w=1200&h=900&fit=crop&auto=format"},
-  {num:"02",id:"office",label:"Office Floors",sub:"L6 \u2013 L38 \u00b7 Both towers \u00b7 93,700 SQM",detail:"Column-free, open-plan floorplates with full-height glazing. GFA 1,850\u20132,100 SQM per floor. NBF-compliant fresh air.",img:"https://images.unsplash.com/photo-1531972111231-7482a960e109?w=1200&h=900&fit=crop&auto=format"},
+  {num:"01",id:"lobby",label:"Grand Lobby",sub:"Ground Floor \u00b7 Triple-height atrium",detail:"Marble floors, bamboo-inspired columns, and site-specific Vietnamese art define the arrival. The 18\u00a0m atrium opens both towers.",img:"https://www.hanoi-office.com/uploads/files/capital%20place/toa_nha_capital_place_8.jpg"},
+  {num:"02",id:"office",label:"Office Floors",sub:"L6 \u2013 L38 \u00b7 Both towers \u00b7 93,700 SQM",detail:"Column-free, open-plan floorplates with full-height glazing. GFA 1,850\u20132,100 SQM per floor. NBF-compliant fresh air.",img:"https://thanhnien.mediacdn.vn/uploaded/quochung.qc/2020_10_12/capitalplace/2_AYLF.jpg?width=1200"},
   {num:"03",id:"fitness",label:"Fitness & Wellness",sub:"Podium Level 3",detail:"Full gym, yoga studio, meditation zone, spa showers, and end-of-trip cyclist facilities. Open to all tower tenants.",img:"https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=1200&h=900&fit=crop&auto=format"},
   {num:"04",id:"dining",label:"Dining & Retail",sub:"Ground \u00b7 L1 \u00b7 L2",detail:"A curated selection of caf\u00e9s, restaurants, and specialty retail across the podium.",img:"https://images.unsplash.com/photo-1587702068694-a909ef4aa346?w=1200&h=900&fit=crop&auto=format"},
   {num:"05",id:"sky",label:"Sky Lounge",sub:"Level 39 \u00b7 Tower A",detail:"An exclusive tenant amenity floor with 360\u00b0 panoramic views of Hanoi.",img:"https://images.unsplash.com/photo-1758193431353-87812fbff5cd?w=1200&h=900&fit=crop&auto=format"},
@@ -245,28 +263,30 @@ let aZ=0;
 (function(){
   const list=document.getElementById('zone-list'),wrap=document.getElementById('img-wrap'),dots=document.getElementById('zone-dots');
   ZONES.forEach((z,i)=>{
-    const img=document.createElement('img');img.src=z.img;img.alt=z.label;img.loading='lazy';img.className='zone-img'+(i===0?' active':'');
+    const img=document.createElement('img');img.src=z.img;img.alt=z.label+' at Capital Place';img.loading=i===0?'eager':'lazy';img.decoding='async';img.className='zone-img'+(i===0?' active':'');
     wrap.insertBefore(img,wrap.querySelector('.img-ov'));
-    const dot=document.createElement('button');dot.className='zone-dot'+(i===0?' active':'');dot.setAttribute('aria-label',z.label);dot.onclick=()=>sz(i);dots.appendChild(dot);
-    const btn=document.createElement('button');btn.className='zone-item'+(i===0?' active':' inactive');
-    btn.innerHTML='<span class="zone-num">'+z.num+'</span><div class="zone-body"><div class="zone-head"><h3>'+z.label+'</h3><svg class="zone-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg></div><p class="zone-sub">'+z.sub+'</p><p class="zone-detail'+(i===0?' open':'')+'">'+z.detail+'</p></div>';
-    btn.onmouseenter=btn.onclick=()=>sz(i);list.appendChild(btn);
+    const dot=document.createElement('button');dot.type='button';dot.className='zone-dot'+(i===0?' active':'');dot.setAttribute('aria-label','Show '+z.label);dot.setAttribute('aria-current',i===0?'true':'false');dot.onclick=()=>sz(i);dots.appendChild(dot);
+    const btn=document.createElement('button');btn.type='button';btn.className='zone-item'+(i===0?' active':' inactive');
+    btn.setAttribute('aria-controls','zone-detail-'+z.id);btn.setAttribute('aria-expanded',i===0?'true':'false');
+    btn.innerHTML='<span class="zone-num">'+z.num+'</span><div class="zone-body"><div class="zone-head"><h3>'+z.label+'</h3><svg class="zone-chevron" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg></div><p class="zone-sub">'+z.sub+'</p><p class="zone-detail'+(i===0?' open':'')+'" id="zone-detail-'+z.id+'">'+z.detail+'</p></div>';
+    btn.onmouseenter=()=>sz(i);btn.onfocus=()=>sz(i);btn.onclick=()=>sz(i);list.appendChild(btn);
   });
   document.getElementById('z-sub').textContent=ZONES[0].sub;document.getElementById('z-title').textContent=ZONES[0].label;
 })();
 function sz(i){if(i===aZ)return;aZ=i;
-  document.querySelectorAll('.zone-item').forEach((el,x)=>{el.classList.toggle('active',x===i);el.classList.toggle('inactive',x!==i);el.querySelector('.zone-detail').classList.toggle('open',x===i)});
+  document.querySelectorAll('.zone-item').forEach((el,x)=>{el.classList.toggle('active',x===i);el.classList.toggle('inactive',x!==i);el.setAttribute('aria-expanded',x===i?'true':'false');el.querySelector('.zone-detail').classList.toggle('open',x===i)});
   document.querySelectorAll('.zone-img').forEach((el,x)=>el.classList.toggle('active',x===i));
-  document.querySelectorAll('.zone-dot').forEach((el,x)=>el.classList.toggle('active',x===i));
+  document.querySelectorAll('.zone-dot').forEach((el,x)=>{el.classList.toggle('active',x===i);el.setAttribute('aria-current',x===i?'true':'false')});
   document.getElementById('z-sub').textContent=ZONES[i].sub;document.getElementById('z-title').textContent=ZONES[i].label;
 }
 </script>"""
 
+# Feedback image references are intentionally kept as remote URLs because the requested sources are external website assets.
 # ══════════════════════════════════
 # location.html
 # ══════════════════════════════════
 loc_css = """<style>
-.loc-map{width:100%;height:clamp(320px,45vw,560px);border:0;filter:grayscale(1) contrast(1.1) brightness(.6)}
+.loc-map{width:100%;height:clamp(320px,45vw,560px);border:0;filter:none;display:block}
 .loc-grid{display:grid;gap:0;border-top:1px solid var(--gold-b)}
 @media(min-width:1024px){.loc-grid{grid-template-columns:1fr 1fr}}
 .loc-cell{padding:clamp(3rem,6vw,5rem);border-bottom:1px solid var(--gold-b)}
@@ -279,13 +299,16 @@ loc_css = """<style>
 .nearbylist li{display:flex;align-items:center;gap:1rem;color:rgba(255,255,255,.3);font-size:13px;font-family:var(--sans)}
 .nearbylist li::before{content:'';display:block;width:20px;height:1px;background:var(--gold);flex-shrink:0}
 .transport-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gold-b);margin-top:clamp(3rem,6vw,5rem)}
-.transport-cell{background:var(--bg);padding:2rem;display:flex;flex-direction:column;gap:.5rem}
-.transport-icon{font-family:var(--sans);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:rgba(201,168,102,.5)}
+.transport-cell{background:var(--bg);padding:2rem;display:flex;flex-direction:column;gap:.5rem;transition:background .25s,transform .25s,box-shadow .25s;border:1px solid transparent}
+.transport-cell:hover,.transport-cell:focus-within{background:var(--card);border-color:rgba(210,172,71,.28);transform:translateY(-3px);box-shadow:0 14px 32px rgba(0,0,0,.16)}
+.transport-icon{font-family:var(--sans);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:rgba(210,172,71,.7);transition:color .25s}
+.transport-cell:hover .transport-icon{color:var(--gold-highlight)}
 .transport-name{font-family:var(--serif);font-weight:300;color:#fff;font-size:1.1rem}
-.transport-dist{font-family:var(--sans);font-size:12px;color:rgba(255,255,255,.25)}
+.transport-dist{font-family:var(--sans);font-size:12px;color:rgba(255,255,255,.38)}
 </style>"""
 
-loc_body = """<div class="page-header">
+loc_body = """<div class="page-header" style="--hero-position:center 34%">
+  <img class="page-header-media" src="https://images.unsplash.com/photo-1435575653489-b0873ec954e2?w=1800&h=1200&fit=crop&auto=format" alt="Capital Place architecture in Hanoi" fetchpriority="high" />
   <div class="container">
     <p class="page-header-eyebrow">Location</p>
     <h1>Prime<br><em>Ba Dinh</em></h1>
@@ -293,7 +316,7 @@ loc_body = """<div class="page-header">
   </div>
 </div>
 <iframe class="loc-map"
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.7530985168567!2d105.82763!3d21.03543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab4f84b16e69%3A0x53c9a6d0c4c4bd2b!2sCapital%20Place!5e0!3m2!1sen!2s!4v1692000000000"
+  src="https://www.google.com/maps?q=Capital%20Place%2C%2029%20Lieu%20Giai%2C%20Ba%20Dinh%2C%20Hanoi&output=embed"
   allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Capital Place map">
 </iframe>
 <section style="background:var(--bg);padding:clamp(6rem,12vw,9rem) 0">
@@ -312,7 +335,7 @@ loc_body = """<div class="page-header">
         </ul>
       </div>
       <div class="loc-cell fade-up" style="transition-delay:.1s">
-        <p class="loc-cell-label">Why Ba Dinh</p>
+        <p class="loc-cell-label">Why is Ba Dinh</p>
         <h3>Hanoi's Most<br>Prestigious Address</h3>
         <p>Ba Dinh is Hanoi's political and diplomatic centre. Major multinational tenants in the area include embassies of the US, EU, UK, Japan, and Korea, as well as Vietnam's largest state-owned enterprises.</p>
         <p style="margin-top:1rem">Capital Place provides unmatched visibility and prestige for organisations that require proximity to government and diplomatic missions.</p>
@@ -333,43 +356,45 @@ loc_body = """<div class="page-header">
 def make_svg(fid):
     G = fid == 'ground'
     S = fid == 'sky'
-    ticks_n = ''.join(f'<line x1="{44+i*17}" y1="24" x2="{44+i*17}" y2="30" stroke="#c9a866" stroke-width=".6" stroke-opacity=".6"/>' for i in range(24))
-    ticks_s = ''.join(f'<line x1="{44+i*17}" y1="310" x2="{44+i*17}" y2="316" stroke="#c9a866" stroke-width=".6" stroke-opacity=".6"/>' for i in range(24))
-    ticks_w = ''.join(f'<line x1="24" y1="{44+i*17}" x2="30" y2="{44+i*17}" stroke="#c9a866" stroke-width=".6" stroke-opacity=".6"/>' for i in range(16))
-    ticks_e = ''.join(f'<line x1="450" y1="{44+i*17}" x2="456" y2="{44+i*17}" stroke="#c9a866" stroke-width=".6" stroke-opacity=".6"/>' for i in range(16))
-    cg = ''.join(f'<line x1="{x}" y1="24" x2="{x}" y2="316" stroke="#c9a866" stroke-width=".5" stroke-opacity=".07" stroke-dasharray="4 5"/>' for x in [132,240,348])
-    rg = ''.join(f'<line x1="24" y1="{y}" x2="456" y2="{y}" stroke="#c9a866" stroke-width=".5" stroke-opacity=".07" stroke-dasharray="4 5"/>' for y in [120,196,268])
-    core = '' if G else '<rect x="172" y="108" width="136" height="124" fill="#131310" stroke="#c9a866" stroke-width=".9"/>'
-    lifts = '' if G or S else ''.join(f'<g><rect x="{185+i*18}" y="120" width="14" height="18" fill="#1c1c18" stroke="#c9a866" stroke-width=".5"/><line x1="{186+i*18}" y1="121" x2="{198+i*18}" y2="137" stroke="#c9a866" stroke-width=".4" stroke-opacity=".35"/><line x1="{198+i*18}" y1="121" x2="{186+i*18}" y2="137" stroke="#c9a866" stroke-width=".4" stroke-opacity=".35"/></g>' for i in range(6))
-    stairs = '' if G or S else '<rect x="178" y="153" width="22" height="26" fill="#1c1c18" stroke="#c9a866" stroke-width=".5"/><rect x="280" y="153" width="22" height="26" fill="#1c1c18" stroke="#c9a866" stroke-width=".5"/>'
+    ticks_n = ''.join(f'<line x1="{44+i*17}" y1="24" x2="{44+i*17}" y2="30" stroke="#d2ac47" stroke-width=".6" stroke-opacity=".6"/>' for i in range(24))
+    ticks_s = ''.join(f'<line x1="{44+i*17}" y1="310" x2="{44+i*17}" y2="316" stroke="#d2ac47" stroke-width=".6" stroke-opacity=".6"/>' for i in range(24))
+    ticks_w = ''.join(f'<line x1="24" y1="{44+i*17}" x2="30" y2="{44+i*17}" stroke="#d2ac47" stroke-width=".6" stroke-opacity=".6"/>' for i in range(16))
+    ticks_e = ''.join(f'<line x1="450" y1="{44+i*17}" x2="456" y2="{44+i*17}" stroke="#d2ac47" stroke-width=".6" stroke-opacity=".6"/>' for i in range(16))
+    cg = ''.join(f'<line x1="{x}" y1="24" x2="{x}" y2="316" stroke="#d2ac47" stroke-width=".5" stroke-opacity=".07" stroke-dasharray="4 5"/>' for x in [132,240,348])
+    rg = ''.join(f'<line x1="24" y1="{y}" x2="456" y2="{y}" stroke="#d2ac47" stroke-width=".5" stroke-opacity=".07" stroke-dasharray="4 5"/>' for y in [120,196,268])
+    core = '' if G else '<rect x="172" y="108" width="136" height="124" fill="#102b38" stroke="#d2ac47" stroke-width=".9"/>'
+    lifts = '' if G or S else ''.join(f'<g><rect x="{185+i*18}" y="120" width="14" height="18" fill="#1c1c18" stroke="#d2ac47" stroke-width=".5"/><line x1="{186+i*18}" y1="121" x2="{198+i*18}" y2="137" stroke="#d2ac47" stroke-width=".4" stroke-opacity=".35"/><line x1="{198+i*18}" y1="121" x2="{186+i*18}" y2="137" stroke="#d2ac47" stroke-width=".4" stroke-opacity=".35"/></g>' for i in range(6))
+    stairs = '' if G or S else '<rect x="178" y="153" width="22" height="26" fill="#1c1c18" stroke="#d2ac47" stroke-width=".5"/><rect x="280" y="153" width="22" height="26" fill="#1c1c18" stroke="#d2ac47" stroke-width=".5"/>'
     lbl = '' if G or S else '<text x="240" y="175" text-anchor="middle" fill="#3a3428" font-size="7" letter-spacing="2.5" font-family="sans-serif">CORE</text>'
     sp = ''
-    if G: sp = '<rect x="176" y="130" width="128" height="8" rx="4" fill="none" stroke="#c9a866" stroke-width=".8"/><rect x="196" y="148" width="88" height="44" fill="#131310" stroke="#c9a866" stroke-width=".8"/><text x="240" y="175" text-anchor="middle" fill="#3a3428" font-size="7" letter-spacing="2" font-family="sans-serif">RECEPTION</text>'
-    if S: sp = '<ellipse cx="240" cy="170" rx="80" ry="60" fill="none" stroke="#c9a866" stroke-width=".7" stroke-opacity=".25" stroke-dasharray="5 4"/><text x="240" y="174" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">SKY LOUNGE</text>'
-    return f'<svg viewBox="0 0 480 340" style="width:100%;height:auto;max-height:280px"><rect x="24" y="24" width="432" height="292" fill="none" stroke="#c9a866" stroke-width="1.2"/>{ticks_n}{ticks_s}{ticks_w}{ticks_e}{cg}{rg}{core}{lifts}{stairs}{sp}{lbl}<text x="240" y="15" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">N</text><text x="240" y="332" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">S</text><text x="12" y="173" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">W</text><text x="465" y="173" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">E</text><g transform="translate(440,48)"><line x1="0" y1="12" x2="0" y2="-8" stroke="#c9a866" stroke-width=".8"/><polygon points="0,-10 -5,-2 5,-2" fill="#c9a866"/></g><g transform="translate(32,308)"><line x1="0" y1="0" x2="68" y2="0" stroke="#c9a866" stroke-width=".8" stroke-opacity=".5"/><line x1="0" y1="-4" x2="0" y2="4" stroke="#c9a866" stroke-width=".8" stroke-opacity=".5"/><line x1="68" y1="-4" x2="68" y2="4" stroke="#c9a866" stroke-width=".8" stroke-opacity=".5"/><text x="34" y="-7" text-anchor="middle" fill="#3a3428" font-size="6.5" letter-spacing="1" font-family="sans-serif">20 m</text></g></svg>'
+    if G: sp = '<rect x="176" y="130" width="128" height="8" rx="4" fill="none" stroke="#d2ac47" stroke-width=".8"/><rect x="196" y="148" width="88" height="44" fill="#102b38" stroke="#d2ac47" stroke-width=".8"/><text x="240" y="175" text-anchor="middle" fill="#3a3428" font-size="7" letter-spacing="2" font-family="sans-serif">RECEPTION</text>'
+    if S: sp = '<ellipse cx="240" cy="170" rx="80" ry="60" fill="none" stroke="#d2ac47" stroke-width=".7" stroke-opacity=".25" stroke-dasharray="5 4"/><text x="240" y="174" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">SKY LOUNGE</text>'
+    return f'<svg viewBox="0 0 480 340" style="width:100%;height:auto;max-height:280px"><rect x="24" y="24" width="432" height="292" fill="none" stroke="#d2ac47" stroke-width="1.2"/>{ticks_n}{ticks_s}{ticks_w}{ticks_e}{cg}{rg}{core}{lifts}{stairs}{sp}{lbl}<text x="240" y="15" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">N</text><text x="240" y="332" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">S</text><text x="12" y="173" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">W</text><text x="465" y="173" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">E</text><g transform="translate(440,48)"><line x1="0" y1="12" x2="0" y2="-8" stroke="#d2ac47" stroke-width=".8"/><polygon points="0,-10 -5,-2 5,-2" fill="#d2ac47"/></g><g transform="translate(32,308)"><line x1="0" y1="0" x2="68" y2="0" stroke="#d2ac47" stroke-width=".8" stroke-opacity=".5"/><line x1="0" y1="-4" x2="0" y2="4" stroke="#d2ac47" stroke-width=".8" stroke-opacity=".5"/><line x1="68" y1="-4" x2="68" y2="4" stroke="#d2ac47" stroke-width=".8" stroke-opacity=".5"/><text x="34" y="-7" text-anchor="middle" fill="#3a3428" font-size="6.5" letter-spacing="1" font-family="sans-serif">20 m</text></g></svg>'
 
 FLOORS = [
-    {"id":"ground","label":"Ground Floor","range":"Level G","gfa":"4,200 SQM","height":"12.0 m (triple)","grid":"\u2014","use":"Lobby \u00b7 Retail \u00b7 Drop-off \u00b7 Security"},
-    {"id":"podium","label":"Podium","range":"L1 \u2013 L5","gfa":"8,400 SQM","height":"4.5 m (slab-slab)","grid":"9 \u00d7 9 m","use":"Amenities \u00b7 Parking \u00b7 Conference \u00b7 Retail"},
-    {"id":"lo","label":"Office (Lower)","range":"L6 \u2013 L20","gfa":"2,100 SQM","height":"2.85 m (finished)","grid":"9 \u00d7 9 m","use":"Grade-A Open Plan \u00b7 Column-free"},
-    {"id":"hi","label":"Office (Upper)","range":"L21 \u2013 L38","gfa":"1,850 SQM","height":"2.85 m (finished)","grid":"9 \u00d7 9 m","use":"Premium Open Plan \u00b7 270\u00b0 Views"},
-    {"id":"sky","label":"Sky Levels","range":"L39 \u2013 L41","gfa":"1,600 SQM","height":"3.5 m","grid":"\u2014","use":"Sky Lounge \u00b7 Mechanical \u00b7 Roof Garden"},
+    {"id":"ground","label":"Arrival & Retail","range":"B1 · Level 1","tower":"Shared podium","use":"Retail · Arrival · Building services","note":"The section diagram marks Level 1 as retail and B1 as the basement arrival band."},
+    {"id":"podium","label":"Lower Office Band","range":"Levels 2 · 6","tower":"Tower 1 · Tower 2","use":"Office floors across the lower podium","note":"The lower office band sits above the retail level in both towers."},
+    {"id":"lo","label":"Lower Office Floors","range":"7F · 19F","tower":"Tower 1 · Tower 2","use":"Grade-A office floors","note":"Both towers are shown with office floors from 7F through 19F."},
+    {"id":"hi","label":"Upper Office Floors","range":"20F · 37F","tower":"Tower 1 · Tower 2","use":"Upper office floors","note":"The upper office band rises from 20F to 37F in both towers."},
 ]
 
 def floor_panels():
     out = ''
     for i, f in enumerate(FLOORS):
         active = ' active' if i == 2 else ''
-        rows = ''.join(f'<div class="spec-row"><span class="spec-key">{k}</span><span class="spec-val">{v}</span></div>' for k, v in [("GFA",f["gfa"]),("Ceiling Height",f["height"]),("Column Grid",f["grid"]),("Primary Use",f["use"])])
-        out += f'<div class="floor-panel{active}" data-fi="{i}"><div class="svg-box">{make_svg(f["id"])}</div><div class="floor-specs"><div class="floor-spec-hd"><span class="eyebrow">{f["range"]}</span><h3>{f["label"]}</h3></div><div class="spec-table">{rows}</div><a href="amenities.html#leasing" class="btn-outline-gold">Request Floor Plan<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a></div></div>'
+        rows = ''.join(f'<div class="spec-row"><span class="spec-key">{k}</span><span class="spec-val">{v}</span></div>' for k, v in [("Tower",f["tower"]),("Level band",f["range"]),("Function",f["use"]),("Reference",f["note"])])
+        out += f'<div class="floor-panel{active}" id="floor-panel-{i}" data-fi="{i}" role="tabpanel" aria-labelledby="floor-tab-{i}"><div class="svg-box">{make_svg(f["id"])}</div><div class="floor-specs"><div class="floor-spec-hd"><span class="eyebrow">{f["range"]}</span><h3>{f["label"]}</h3></div><div class="spec-table">{rows}</div><a href="amenities.html#leasing" class="btn-outline-gold">Request Floor Plan<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a></div></div>'
     return out
+
 
 def floor_btns():
     out = ''
     for i, f in enumerate(FLOORS):
         active = ' active' if i == 2 else ' inactive'
-        out += f'<button class="floor-btn{active}" onclick="setFloor({i})"><span class="floor-range">{f["range"]}</span><span class="floor-lbl">{f["label"]}</span></button>'
+        selected = 'true' if i == 2 else 'false'
+        out += f'<button type="button" class="floor-btn{active}" id="floor-tab-{i}" role="tab" aria-selected="{selected}" aria-controls="floor-panel-{i}" onclick="setFloor({i})"><span class="floor-range">{f["range"]}</span><span class="floor-lbl">{f["label"]}</span></button>'
     return out
+
 
 off_css = """<style>
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
@@ -401,26 +426,81 @@ off_css = """<style>
 .feat-grid{display:grid;gap:1px;background:var(--gold-b);margin-top:3rem}
 @media(min-width:768px){.feat-grid{grid-template-columns:repeat(3,1fr)}}
 .feat-card{background:var(--bg2);padding:2.5rem 2rem}
-.feat-num{font-family:var(--sans);font-size:9px;letter-spacing:.4em;color:rgba(201,168,102,.35);margin-bottom:.75rem}
+.feat-num{font-family:var(--sans);font-size:9px;letter-spacing:.4em;color:rgba(210,172,71,.35);margin-bottom:.75rem}
 .feat-title{font-family:var(--serif);font-weight:300;color:#fff;font-size:1.1rem;margin-bottom:.75rem}
 .feat-desc{font-family:var(--sans);font-size:13px;color:rgba(255,255,255,.3);line-height:1.6}
+.office-overview{background:var(--bg2);padding:clamp(5rem,10vw,8rem) 0;border-top:1px solid var(--gold-b)}
+.office-intro{display:grid;gap:2rem;align-items:end}
+@media(min-width:900px){.office-intro{grid-template-columns:1fr 1fr;gap:5rem}}
+.office-intro-copy{color:rgba(255,255,255,.42);font-size:14px;line-height:1.75;max-width:34rem}
+.office-kpis{display:grid;grid-template-columns:1fr;gap:1px;background:var(--gold-b);margin-top:clamp(3rem,6vw,5rem)}
+@media(min-width:768px){.office-kpis{grid-template-columns:repeat(3,1fr)}}
+.office-kpi{background:var(--bg2);padding:2rem 1.5rem;display:flex;flex-direction:column;gap:.35rem}
+.office-kpi-num{font-family:var(--serif);font-size:clamp(2.4rem,5vw,4rem);font-weight:300;color:var(--gold-primary);line-height:1}
+.office-kpi-label{font-family:var(--sans);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#fff}
+.office-kpi-note{font-family:var(--sans);font-size:12px;color:rgba(255,255,255,.3)}
+.tower-section{background:var(--bg);padding:clamp(5rem,10vw,8rem) 0;border-top:1px solid var(--gold-b)}
+.tower-section-grid{display:grid;gap:3rem;align-items:center}
+@media(min-width:1024px){.tower-section-grid{grid-template-columns:.78fr 1.22fr;gap:5rem}}
+.tower-section-copy p:not(.eyebrow){color:rgba(255,255,255,.42);font-size:14px;line-height:1.75;max-width:30rem;margin-top:1.5rem}
+.tower-notes{display:flex;flex-direction:column;gap:.7rem;border-top:1px solid var(--gold-b);margin-top:2rem;padding-top:1.25rem;font-family:var(--sans);font-size:11px;color:rgba(255,255,255,.42)}
+.tower-notes b{color:var(--gold-champagne);font-weight:400;letter-spacing:.12em;text-transform:uppercase;margin-right:.4rem}
+.tower-section-media{margin:0;border:1px solid var(--gold-b);background:#f4f4f0;padding:.7rem}
+.tower-section-media img{display:block;width:100%;height:auto;filter:saturate(.86) contrast(.98)}
+.tower-section-media figcaption{font-family:var(--sans);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#6d624e;padding:.8rem .35rem .25rem}
+.office-floor-section{background:var(--bg2);padding:clamp(5rem,10vw,8rem) 0;border-top:1px solid var(--gold-b)}
+.fp-intro{color:rgba(255,255,255,.38);font-size:14px;line-height:1.75;max-width:34rem;margin-top:1.5rem}
+.floor-panel[aria-hidden="true"]{display:none}
+.floor-panel[aria-hidden="false"]{display:grid}
+@media(max-width:767px){.tower-section-media{padding:.45rem}.tower-section-media figcaption{font-size:8px}.spec-row{grid-template-columns:100px 1fr}.floor-sel{border-right:0}}
 </style>"""
 
-off_body = f"""<div class="page-header">
+off_body = f"""<div class="page-header" style="--hero-position:center 26%">
+  <img class="page-header-media" src="https://images.unsplash.com/photo-1690944851207-3f288c8fcd0b?w=1600&h=2000&fit=crop&auto=format&q=90" alt="Capital Place twin towers rising above Hanoi" fetchpriority="high" />
   <div class="container">
     <p class="page-header-eyebrow">Office</p>
-    <h1>Grade-A<br><em>Office Floors</em></h1>
-    <p>93,700 SQM of premium column-free workspace across two towers, L6 to L38, with full-height glazing and panoramic city views.</p>
+    <h1>A workplace<br><em>in two towers</em></h1>
+    <p>From a retail arrival at B1 and Level 1 to upper office floors at 37F, Capital Place gives teams a clear vertical address in the heart of Hanoi.</p>
   </div>
 </div>
-<section style="background:var(--bg2);padding:clamp(6rem,12vw,9rem) 0;border-top:1px solid var(--gold-b)">
+<section class="office-overview" aria-labelledby="office-overview-title">
+  <div class="container">
+    <div class="office-intro">
+      <div>
+        <p class="eyebrow" style="margin-bottom:1rem">The workplace</p>
+        <h2 id="office-overview-title" class="section-title">Two towers.<br><em>One address.</em></h2>
+      </div>
+      <p class="office-intro-copy">The building section is organized as a simple vertical experience: retail and arrival at the base, office bands through the podium, and two towers rising together from 7F to 37F.</p>
+    </div>
+    <div class="office-kpis" role="list" aria-label="Office building overview">
+      <div class="office-kpi" role="listitem"><span class="office-kpi-num">02</span><span class="office-kpi-label">Towers</span><span class="office-kpi-note">Tower 1 &middot; Tower 2</span></div>
+      <div class="office-kpi" role="listitem"><span class="office-kpi-num">37F</span><span class="office-kpi-label">Upper office level</span><span class="office-kpi-note">Shown in the section diagram</span></div>
+      <div class="office-kpi" role="listitem"><span class="office-kpi-num">B1</span><span class="office-kpi-label">Arrival level</span><span class="office-kpi-note">Retail and building access</span></div>
+    </div>
+  </div>
+</section>
+<section class="tower-section" aria-labelledby="tower-section-title">
+  <div class="container">
+    <div class="tower-section-grid">
+      <div class="tower-section-copy">
+        <p class="eyebrow" style="margin-bottom:1rem">Building section</p>
+        <h2 id="tower-section-title" class="section-title">A clear vertical<br><em>address</em></h2>
+        <p>The reference section shows the twin-tower composition and its floor functions at a glance. Office bands are repeated across Tower 1 and Tower 2, while retail anchors the base of the building.</p>
+        <div class="tower-notes"><span><b>Tower 1</b> 7F&ndash;37F office bands</span><span><b>Tower 2</b> 7F&ndash;37F office bands</span><span><b>Level 1</b> Retail</span></div>
+      </div>
+      <figure class="tower-section-media"><img src="assets/images/capital-place-tower-section.png" alt="Capital Place Tower 1 and Tower 2 section diagram showing office and retail floor bands" loading="lazy" decoding="async" /><figcaption>Indicative tower section &middot; floor functions shown by level</figcaption></figure>
+    </div>
+  </div>
+</section>
+<section class="office-floor-section" aria-labelledby="floor-plans-title">
   <div class="container">
     <div class="fp-header">
-      <p class="eyebrow" style="margin-bottom:1rem">Layouts</p>
-      <h2 class="section-title">Floor<br><em>Plans</em></h2>
+      <p class="eyebrow" style="margin-bottom:1rem">Floor directory</p>
+      <h2 id="floor-plans-title" class="section-title">Find your<br><em>place in the building</em></h2>
+      <p class="fp-intro">Select a level band to understand how Capital Place moves from arrival and retail to the upper office floors. Request the detailed floor plan when you are ready to explore availability.</p>
     </div>
     <div class="fp-grid">
-      <div class="floor-sel">{floor_btns()}</div>
+      <div class="floor-sel" role="tablist" aria-label="Capital Place floor bands">{floor_btns()}</div>
       <div class="floor-viewer">{floor_panels()}</div>
     </div>
   </div>
@@ -428,14 +508,14 @@ off_body = f"""<div class="page-header">
 <section class="office-features">
   <div class="container">
     <p class="eyebrow" style="margin-bottom:1rem">Specifications</p>
-    <h2 class="section-title">Built For<br><em>Excellence</em></h2>
+    <h2 class="section-title">Built for<br><em>focused work</em></h2>
     <div class="feat-grid">
-      <div class="feat-card fade-up"><p class="feat-num">01</p><h3 class="feat-title">Column-Free Floorplates</h3><p class="feat-desc">Open-plan layouts with zero internal columns allow complete flexibility in workspace configuration.</p></div>
-      <div class="feat-card fade-up" style="transition-delay:.08s"><p class="feat-num">02</p><h3 class="feat-title">Full-Height Glazing</h3><p class="feat-desc">Floor-to-ceiling glass on all four elevations maximises natural light and panoramic views.</p></div>
-      <div class="feat-card fade-up" style="transition-delay:.16s"><p class="feat-num">03</p><h3 class="feat-title">NBF Fresh Air System</h3><p class="feat-desc">Compliant with the National Building Framework, delivering superior indoor air quality for occupant wellbeing.</p></div>
-      <div class="feat-card fade-up" style="transition-delay:.24s"><p class="feat-num">04</p><h3 class="feat-title">Raised Access Floors</h3><p class="feat-desc">600 mm module raised-access flooring throughout for flexible MEP distribution and future-proofing.</p></div>
-      <div class="feat-card fade-up" style="transition-delay:.32s"><p class="feat-num">05</p><h3 class="feat-title">BMS Integration</h3><p class="feat-desc">Building management system controls HVAC, lighting, and security from a centralised dashboard.</p></div>
-      <div class="feat-card fade-up" style="transition-delay:.4s"><p class="feat-num">06</p><h3 class="feat-title">24/7 Security</h3><p class="feat-desc">Turnstile access control, CCTV, on-site security team, and visitor management system.</p></div>
+      <div class="feat-card fade-up"><p class="feat-num">01</p><h3 class="feat-title">Column-Free Floorplates</h3><p class="feat-desc">Open-plan layouts give teams the freedom to shape their workplace around the way they work.</p></div>
+      <div class="feat-card fade-up" style="transition-delay:.08s"><p class="feat-num">02</p><h3 class="feat-title">Full-Height Glazing</h3><p class="feat-desc">Generous glazing brings natural light and a clear connection to the city into every working day.</p></div>
+      <div class="feat-card fade-up" style="transition-delay:.16s"><p class="feat-num">03</p><h3 class="feat-title">Fresh Air System</h3><p class="feat-desc">A considered indoor environment supports comfort, concentration and everyday wellbeing.</p></div>
+      <div class="feat-card fade-up" style="transition-delay:.24s"><p class="feat-num">04</p><h3 class="feat-title">Raised Access Floors</h3><p class="feat-desc">Flexible floor infrastructure makes it easier to plan, connect and evolve the workplace.</p></div>
+      <div class="feat-card fade-up" style="transition-delay:.32s"><p class="feat-num">05</p><h3 class="feat-title">Building Management</h3><p class="feat-desc">Integrated building systems help maintain a controlled, efficient and dependable workplace.</p></div>
+      <div class="feat-card fade-up" style="transition-delay:.4s"><p class="feat-num">06</p><h3 class="feat-title">24/7 Security</h3><p class="feat-desc">Controlled access, CCTV and on-site support help protect people, teams and business continuity.</p></div>
     </div>
   </div>
 </section>"""
@@ -443,8 +523,8 @@ off_body = f"""<div class="page-header">
 off_js = """<script>
 let aF=2;
 function setFloor(i){if(i===aF)return;aF=i;
-  document.querySelectorAll('.floor-btn').forEach((b,x)=>{b.classList.toggle('active',x===i);b.classList.toggle('inactive',x!==i)});
-  document.querySelectorAll('.floor-panel').forEach((p,x)=>p.classList.toggle('active',x===i));
+  document.querySelectorAll('.floor-btn').forEach((b,x)=>{b.classList.toggle('active',x===i);b.classList.toggle('inactive',x!==i);b.setAttribute('aria-selected',x===i?'true':'false')});
+  document.querySelectorAll('.floor-panel').forEach((p,x)=>{p.classList.toggle('active',x===i);p.setAttribute('aria-hidden',x===i?'false':'true')});
 }
 </script>"""
 
@@ -454,7 +534,7 @@ function setFloor(i){if(i===aF)return;aF=i;
 sus_css = """<style>
 .sus-banner{position:relative;height:clamp(280px,40vw,520px);overflow:hidden}
 .sus-banner img{width:100%;height:100%;object-fit:cover;object-position:center}
-.sus-banner-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,11,9,.5),transparent 50%,rgba(11,11,9,.7))}
+.sus-banner-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(7,19,28,.5),transparent 50%,rgba(7,19,28,.7))}
 .sus-banner-txt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center}
 .sus-banner-txt p{font-family:var(--serif);font-weight:300;color:rgba(255,255,255,.75);font-size:clamp(.9rem,2.5vw,1.4rem);letter-spacing:.25em}
 .leed-strip{border-top:1px solid var(--gold-b);border-bottom:1px solid var(--gold-b);background:var(--bg)}
@@ -480,7 +560,8 @@ sus_css = """<style>
 .metric-desc{font-family:var(--sans);font-size:12px;color:rgba(255,255,255,.2);line-height:1.5;margin-top:.25rem}
 </style>"""
 
-sus_body = """<div class="page-header">
+sus_body = """<div class="page-header" style="--hero-position:center 40%">
+  <img class="page-header-media" src="https://images.unsplash.com/photo-1617761141732-d481912af1a9?w=1400&h=950&fit=crop&auto=format" alt="Light reflecting across Capital Place glass facade" fetchpriority="high" />
   <div class="container">
     <p class="page-header-eyebrow">Sustainability</p>
     <h1>Dual<br><em>LEED Certified</em></h1>
@@ -528,7 +609,7 @@ sus_body = """<div class="page-header">
 # ══════════════════════════════════
 am_css = """<style>
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.am-mosaic{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(201,168,102,.08)}
+.am-mosaic{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(210,172,71,.08)}
 @media(min-width:768px){.am-mosaic{grid-template-columns:repeat(3,1fr)}}
 .am-card{position:relative;overflow:hidden;background:var(--card);cursor:pointer;min-height:200px}
 .am-card.tall{grid-row:span 2;min-height:280px}
@@ -536,7 +617,7 @@ am_css = """<style>
 .am-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
 .am-card:hover img{transform:scale(1.06)}
 .am-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,8,.9) 0%,rgba(10,10,8,.2) 50%,transparent 100%);transition:background .5s}
-.am-card:hover .am-ov{background:linear-gradient(to top,rgba(10,10,8,.9) 0%,rgba(10,10,8,.25) 50%,rgba(201,168,102,.05) 100%)}
+.am-card:hover .am-ov{background:linear-gradient(to top,rgba(10,10,8,.9) 0%,rgba(10,10,8,.25) 50%,rgba(210,172,71,.05) 100%)}
 .am-info{position:absolute;bottom:0;left:0;right:0;padding:clamp(1.5rem,3vw,2rem)}
 .am-sub{font-family:var(--sans);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
 .am-title{font-family:var(--serif);font-weight:300;color:#fff;font-size:clamp(1.1rem,2vw,1.4rem);line-height:1.2}
@@ -548,7 +629,7 @@ am_css = """<style>
 .ls-desc{color:rgba(255,255,255,.28);font-size:14px;max-width:280px;line-height:1.7;margin-bottom:3rem}
 .ct-links{display:flex;flex-direction:column;gap:1.25rem}
 .ct-link{display:flex;align-items:center;gap:1rem}
-.ct-icon{width:36px;height:36px;border:1px solid rgba(201,168,102,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .3s}
+.ct-icon{width:36px;height:36px;border:1px solid rgba(210,172,71,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .3s}
 .ct-link:hover .ct-icon{border-color:var(--gold)}
 .ct-icon svg{width:12px;height:12px;color:var(--gold)}
 .ct-text{color:rgba(255,255,255,.4);font-size:14px;transition:color .3s}
@@ -557,18 +638,19 @@ am_css = """<style>
 .ls-addr p{color:rgba(255,255,255,.18);font-size:12px;line-height:2}
 .enq-form{display:flex;flex-direction:column;gap:1.75rem}
 .field label{display:block;font-family:var(--sans);font-size:9px;letter-spacing:.42em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:10px}
-.field input,.field textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(201,168,102,.15);color:#fff;font-size:14px;font-family:var(--sans);padding:10px 0;outline:none;caret-color:var(--gold);transition:border-color .3s;resize:none}
+.field input,.field textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(210,172,71,.15);color:#fff;font-size:14px;font-family:var(--sans);padding:10px 0;outline:none;caret-color:var(--gold);transition:border-color .3s;resize:none}
 .field input:focus,.field textarea:focus{border-color:var(--gold)}
 .btn-submit{width:100%;border:1px solid var(--gold);color:var(--gold);padding:16px;font-size:10px;letter-spacing:.42em;text-transform:uppercase;font-family:var(--sans);transition:background .3s,color .3s;margin-top:8px}
 .btn-submit:hover{background:var(--gold);color:var(--bg)}
-#success-msg{display:none;border:1px solid rgba(201,168,102,.12);min-height:360px;padding:3.5rem;align-items:center;justify-content:center;text-align:center}
+#success-msg{display:none;border:1px solid rgba(210,172,71,.12);min-height:360px;padding:3.5rem;align-items:center;justify-content:center;text-align:center}
 #success-msg.show{display:flex}
 .succ-line{width:40px;height:1px;background:var(--gold);margin:0 auto 1.5rem}
 #success-msg .eyebrow{margin-bottom:12px;display:block}
 #success-msg p{color:rgba(255,255,255,.3);font-size:14px}
 </style>"""
 
-am_body = """<div class="page-header">
+am_body = """<div class="page-header" style="--hero-position:center 48%">
+  <img class="page-header-media" src="https://images.unsplash.com/photo-1780369088190-914cc3eee938?w=1200&h=900&fit=crop&auto=format" alt="Capital Place grand lobby and amenities" fetchpriority="high" />
   <div class="container">
     <p class="page-header-eyebrow">Amenities</p>
     <h1>World-Class<br><em>Facilities</em></h1>
@@ -603,11 +685,11 @@ am_body = """<div class="page-header">
       <div>
         <div id="success-msg"><div><div class="succ-line"></div><span class="eyebrow">Enquiry Received</span><p>Our leasing team will contact you within 24 hours.</p></div></div>
         <form class="enq-form" id="enq-form" onsubmit="submitForm(event)">
-          <div class="field"><label for="fn">Full Name</label><input type="text" id="fn" required/></div>
-          <div class="field"><label for="fc">Company</label><input type="text" id="fc" required/></div>
-          <div class="field"><label for="fe">Email</label><input type="email" id="fe" required/></div>
-          <div class="field"><label for="fp">Phone</label><input type="tel" id="fp" required/></div>
-          <div class="field"><label for="fm">Message</label><textarea id="fm" rows="3"></textarea></div>
+          <div class="field"><label for="fn">Full Name</label><input type="text" id="fn" name="name" autocomplete="name" required/></div>
+          <div class="field"><label for="fc">Company</label><input type="text" id="fc" name="company" autocomplete="organization" required/></div>
+          <div class="field"><label for="fe">Email</label><input type="email" id="fe" name="email" autocomplete="email" required/></div>
+          <div class="field"><label for="fp">Phone</label><input type="tel" id="fp" name="phone" autocomplete="tel" required/></div>
+          <div class="field"><label for="fm">Message</label><textarea id="fm" name="message" rows="3"></textarea></div>
           <button type="submit" class="btn-submit">Submit Enquiry</button>
         </form>
       </div>
