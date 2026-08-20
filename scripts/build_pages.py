@@ -95,13 +95,13 @@ FOOTER = """<footer>
 idx_css = """<style>
 #hero{position:relative;height:100svh;min-height:680px;overflow:hidden;background:var(--bg)}
 .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
-.ov1{position:absolute;inset:0;background:rgba(7,19,28,.35)}
-.ov2{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(7,19,28,.65) 0%,transparent 50%,var(--bg) 100%)}
+.ov1{position:absolute;inset:0;background:rgba(17,17,17,.35)}
+.ov2{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(17,17,17,.65) 0%,transparent 50%,var(--bg) 100%)}
 .ov3{position:absolute;bottom:0;left:0;right:0;height:45%;background:linear-gradient(to top,var(--bg),transparent)}
 .hero-badges{position:absolute;top:86px;right:var(--px);display:flex;flex-direction:column;align-items:flex-end;gap:8px;animation:fadeIn .9s .6s both}
-.badge{font-family:var(--sans);font-size:9px;letter-spacing:.45em;text-transform:uppercase;border:1px solid;padding:7px 12px;backdrop-filter:blur(4px);background:rgba(7,19,28,.3)}
-.badge-gold{color:var(--gold);border-color:rgba(210,172,71,.35)}
-.badge-dim{color:rgba(210,172,71,.55);border-color:rgba(210,172,71,.15)}
+.badge{font-family:var(--sans);font-size:9px;letter-spacing:.45em;text-transform:uppercase;border:1px solid;padding:7px 12px;backdrop-filter:blur(4px);background:rgba(17,17,17,.3)}
+.badge-gold{color:var(--gold);border-color:rgba(184,155,94,.35)}
+.badge-dim{color:rgba(184,155,94,.55);border-color:rgba(184,155,94,.15)}
 .hero-content{position:absolute;bottom:clamp(4rem,8vw,5rem);left:0;right:0}
 .hero-eyebrow{color:var(--gold);font-size:9px;letter-spacing:.55em;text-transform:uppercase;font-family:var(--sans);margin-bottom:1.5rem;animation:fadeUp 1.2s .1s both}
 .hero-h1{font-family:var(--serif);font-weight:300;color:#fff;line-height:.88}
@@ -112,7 +112,7 @@ idx_css = """<style>
 .hero-h1 span:nth-child(3){animation:fadeUp 1s .44s both}
 .hero-specs{margin-top:1.75rem;display:flex;flex-wrap:wrap;align-items:center;gap:1.25rem;animation:fadeUp 1s .5s both}
 .hero-spec{display:flex;align-items:center;gap:1.25rem;font-family:var(--sans);font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.28)}
-.spec-sep{width:1px;height:12px;background:rgba(210,172,71,.25)}
+.spec-sep{width:1px;height:12px;background:rgba(184,155,94,.25)}
 .hero-ctas{margin-top:2.25rem;display:flex;flex-wrap:wrap;gap:1rem;animation:fadeUp 1s .55s both}
 .scroll-cue{position:absolute;bottom:28px;right:var(--px);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.18)}
 .scroll-cue span{font-family:var(--sans);font-size:8px;letter-spacing:.4em;text-transform:uppercase}
@@ -145,8 +145,8 @@ idx_css = """<style>
 .zone-item.active .zone-chevron{color:var(--gold);opacity:1}
 .zone-item.inactive .zone-chevron{opacity:0}
 .zone-sub{font-family:var(--sans);font-size:9px;letter-spacing:.22em;text-transform:uppercase;transition:color .3s;color:rgba(255,255,255,.22)}
-.zone-item.active .zone-sub{color:rgba(210,172,71,.65)}
-.zone-detail{font-size:14px;line-height:1.7;color:rgba(255,255,255,.38);overflow:hidden;max-height:0;opacity:0;transition:max-height .4s cubic-bezier(.22,1,.36,1),opacity .35s ease,margin-top .35s;margin-top:0}
+.zone-item.active .zone-sub{color:rgba(184,155,94,.65)}
+.zone-detail{font-size:14px;line-height:1.7;color:var(--warm-ivory);overflow:hidden;max-height:0;opacity:0;transition:max-height .4s cubic-bezier(.22,1,.36,1),opacity .35s ease,margin-top .35s;margin-top:0}
 .zone-detail.open{max-height:120px;opacity:1;margin-top:12px}
 .img-panel{display:block;padding-left:0;margin-top:2rem}
 @media(min-width:1024px){.img-panel{padding-left:3rem;margin-top:0}}
@@ -155,7 +155,7 @@ idx_css = """<style>
 .img-wrap{position:relative;overflow:hidden;background:var(--card);height:min(72vh,640px)}
 .zone-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .7s ease,transform .7s ease;opacity:0;transform:scale(1.04)}
 .zone-img.active{opacity:1;transform:scale(1)}
-.img-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,8,.85) 0%,transparent 60%,rgba(10,10,8,.15) 100%)}
+.img-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,.85) 0%,transparent 60%,rgba(17,17,17,.15) 100%)}
 .img-lbl{position:absolute;bottom:0;left:0;right:0;padding:3.75rem 2rem 2rem;z-index:2;overflow:hidden}.img-lbl::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(4,10,14,.96) 0%,rgba(4,10,14,.72) 48%,transparent 100%);z-index:-1;pointer-events:none}
 .img-lbl-sub{font-family:var(--sans);font-size:9px;letter-spacing:.45em;text-transform:uppercase;color:var(--gold)}
 .img-lbl-title{font-family:var(--serif);font-weight:300;color:#fff;font-size:clamp(1.4rem,2.5vw,1.8rem);margin-top:4px}
@@ -166,8 +166,8 @@ idx_css = """<style>
 .ql-grid{display:grid;gap:1px;background:var(--gold-b)}
 @media(min-width:768px){.ql-grid{grid-template-columns:repeat(4,1fr)}}
 .ql-card{background:var(--bg2);padding:2.5rem 2rem;display:flex;flex-direction:column;gap:1rem;transition:background .25s,transform .25s,border-color .25s;position:relative;border:1px solid transparent}
-.ql-card:hover{background:var(--card);border-color:rgba(210,172,71,.34);transform:translateY(-4px);z-index:1}.ql-card:focus-visible{background:var(--card);border-color:var(--gold);transform:translateY(-4px);z-index:1}
-.ql-num{font-family:var(--sans);font-size:9px;letter-spacing:.4em;color:rgba(210,172,71,.4)}
+.ql-card:hover{background:var(--card);border-color:rgba(184,155,94,.34);transform:translateY(-4px);z-index:1}.ql-card:focus-visible{background:var(--card);border-color:var(--gold);transform:translateY(-4px);z-index:1}
+.ql-num{font-family:var(--sans);font-size:9px;letter-spacing:.4em;color:rgba(184,155,94,.4)}
 .ql-title{font-family:var(--serif);font-weight:300;color:#fff;font-size:1.25rem;line-height:1.2}
 .ql-desc{font-family:var(--sans);font-size:13px;color:rgba(255,255,255,.3);line-height:1.6}
 .ql-arrow{margin-top:auto;color:var(--gold);display:flex;align-items:center;gap:8px;font-family:var(--sans);font-size:10px;letter-spacing:.25em;text-transform:uppercase}
@@ -300,15 +300,15 @@ loc_css = """<style>
 .nearbylist li::before{content:'';display:block;width:20px;height:1px;background:var(--gold);flex-shrink:0}
 .transport-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--gold-b);margin-top:clamp(3rem,6vw,5rem)}
 .transport-cell{background:var(--bg);padding:2rem;display:flex;flex-direction:column;gap:.5rem;transition:background .25s,transform .25s,box-shadow .25s;border:1px solid transparent}
-.transport-cell:hover,.transport-cell:focus-within{background:var(--card);border-color:rgba(210,172,71,.28);transform:translateY(-3px);box-shadow:0 14px 32px rgba(0,0,0,.16)}
-.transport-icon{font-family:var(--sans);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:rgba(210,172,71,.7);transition:color .25s}
+.transport-cell:hover,.transport-cell:focus-within{background:var(--card);border-color:rgba(184,155,94,.28);transform:translateY(-3px);box-shadow:0 14px 32px rgba(0,0,0,.16)}
+.transport-icon{font-family:var(--sans);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:rgba(184,155,94,.7);transition:color .25s}
 .transport-cell:hover .transport-icon{color:var(--gold-highlight)}
 .transport-name{font-family:var(--serif);font-weight:300;color:#fff;font-size:1.1rem}
 .transport-dist{font-family:var(--sans);font-size:12px;color:rgba(255,255,255,.38)}
 </style>"""
 
-loc_body = """<div class="page-header" style="--hero-position:center 34%">
-  <img class="page-header-media" src="https://images.unsplash.com/photo-1435575653489-b0873ec954e2?w=1800&h=1200&fit=crop&auto=format" alt="Capital Place architecture in Hanoi" fetchpriority="high" />
+loc_body = """<div class="page-header" style="--hero-position:center 34%;background-image:url(assets/images/feedback/location-page-header.jpg);background-position:center 34%">
+  <img class="page-header-media" src="assets/images/feedback/location-generated.jpg" alt="Capital Place architecture in Hanoi" fetchpriority="high" />
   <div class="container">
     <p class="page-header-eyebrow">Location</p>
     <h1>Prime<br><em>Ba Dinh</em></h1>
@@ -356,20 +356,20 @@ loc_body = """<div class="page-header" style="--hero-position:center 34%">
 def make_svg(fid):
     G = fid == 'ground'
     S = fid == 'sky'
-    ticks_n = ''.join(f'<line x1="{44+i*17}" y1="24" x2="{44+i*17}" y2="30" stroke="#d2ac47" stroke-width=".6" stroke-opacity=".6"/>' for i in range(24))
-    ticks_s = ''.join(f'<line x1="{44+i*17}" y1="310" x2="{44+i*17}" y2="316" stroke="#d2ac47" stroke-width=".6" stroke-opacity=".6"/>' for i in range(24))
-    ticks_w = ''.join(f'<line x1="24" y1="{44+i*17}" x2="30" y2="{44+i*17}" stroke="#d2ac47" stroke-width=".6" stroke-opacity=".6"/>' for i in range(16))
-    ticks_e = ''.join(f'<line x1="450" y1="{44+i*17}" x2="456" y2="{44+i*17}" stroke="#d2ac47" stroke-width=".6" stroke-opacity=".6"/>' for i in range(16))
-    cg = ''.join(f'<line x1="{x}" y1="24" x2="{x}" y2="316" stroke="#d2ac47" stroke-width=".5" stroke-opacity=".07" stroke-dasharray="4 5"/>' for x in [132,240,348])
-    rg = ''.join(f'<line x1="24" y1="{y}" x2="456" y2="{y}" stroke="#d2ac47" stroke-width=".5" stroke-opacity=".07" stroke-dasharray="4 5"/>' for y in [120,196,268])
-    core = '' if G else '<rect x="172" y="108" width="136" height="124" fill="#102b38" stroke="#d2ac47" stroke-width=".9"/>'
-    lifts = '' if G or S else ''.join(f'<g><rect x="{185+i*18}" y="120" width="14" height="18" fill="#1c1c18" stroke="#d2ac47" stroke-width=".5"/><line x1="{186+i*18}" y1="121" x2="{198+i*18}" y2="137" stroke="#d2ac47" stroke-width=".4" stroke-opacity=".35"/><line x1="{198+i*18}" y1="121" x2="{186+i*18}" y2="137" stroke="#d2ac47" stroke-width=".4" stroke-opacity=".35"/></g>' for i in range(6))
-    stairs = '' if G or S else '<rect x="178" y="153" width="22" height="26" fill="#1c1c18" stroke="#d2ac47" stroke-width=".5"/><rect x="280" y="153" width="22" height="26" fill="#1c1c18" stroke="#d2ac47" stroke-width=".5"/>'
-    lbl = '' if G or S else '<text x="240" y="175" text-anchor="middle" fill="#3a3428" font-size="7" letter-spacing="2.5" font-family="sans-serif">CORE</text>'
+    ticks_n = ''.join(f'<line x1="{44+i*17}" y1="24" x2="{44+i*17}" y2="30" stroke="#B89B5E" stroke-width=".6" stroke-opacity=".6"/>' for i in range(24))
+    ticks_s = ''.join(f'<line x1="{44+i*17}" y1="310" x2="{44+i*17}" y2="316" stroke="#B89B5E" stroke-width=".6" stroke-opacity=".6"/>' for i in range(24))
+    ticks_w = ''.join(f'<line x1="24" y1="{44+i*17}" x2="30" y2="{44+i*17}" stroke="#B89B5E" stroke-width=".6" stroke-opacity=".6"/>' for i in range(16))
+    ticks_e = ''.join(f'<line x1="450" y1="{44+i*17}" x2="456" y2="{44+i*17}" stroke="#B89B5E" stroke-width=".6" stroke-opacity=".6"/>' for i in range(16))
+    cg = ''.join(f'<line x1="{x}" y1="24" x2="{x}" y2="316" stroke="#B89B5E" stroke-width=".5" stroke-opacity=".07" stroke-dasharray="4 5"/>' for x in [132,240,348])
+    rg = ''.join(f'<line x1="24" y1="{y}" x2="456" y2="{y}" stroke="#B89B5E" stroke-width=".5" stroke-opacity=".07" stroke-dasharray="4 5"/>' for y in [120,196,268])
+    core = '' if G else '<rect x="172" y="108" width="136" height="124" fill="#2F2D29" stroke="#B89B5E" stroke-width=".9"/>'
+    lifts = '' if G or S else ''.join(f'<g><rect x="{185+i*18}" y="120" width="14" height="18" fill="#1c1c18" stroke="#B89B5E" stroke-width=".5"/><line x1="{186+i*18}" y1="121" x2="{198+i*18}" y2="137" stroke="#B89B5E" stroke-width=".4" stroke-opacity=".35"/><line x1="{198+i*18}" y1="121" x2="{186+i*18}" y2="137" stroke="#B89B5E" stroke-width=".4" stroke-opacity=".35"/></g>' for i in range(6))
+    stairs = '' if G or S else '<rect x="178" y="153" width="22" height="26" fill="#1c1c18" stroke="#B89B5E" stroke-width=".5"/><rect x="280" y="153" width="22" height="26" fill="#1c1c18" stroke="#B89B5E" stroke-width=".5"/>'
+    lbl = '' if G or S else '<text x="240" y="175" text-anchor="middle" fill="#242321" font-size="7" letter-spacing="2.5" font-family="sans-serif">CORE</text>'
     sp = ''
-    if G: sp = '<rect x="176" y="130" width="128" height="8" rx="4" fill="none" stroke="#d2ac47" stroke-width=".8"/><rect x="196" y="148" width="88" height="44" fill="#102b38" stroke="#d2ac47" stroke-width=".8"/><text x="240" y="175" text-anchor="middle" fill="#3a3428" font-size="7" letter-spacing="2" font-family="sans-serif">RECEPTION</text>'
-    if S: sp = '<ellipse cx="240" cy="170" rx="80" ry="60" fill="none" stroke="#d2ac47" stroke-width=".7" stroke-opacity=".25" stroke-dasharray="5 4"/><text x="240" y="174" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">SKY LOUNGE</text>'
-    return f'<svg viewBox="0 0 480 340" style="width:100%;height:auto;max-height:280px"><rect x="24" y="24" width="432" height="292" fill="none" stroke="#d2ac47" stroke-width="1.2"/>{ticks_n}{ticks_s}{ticks_w}{ticks_e}{cg}{rg}{core}{lifts}{stairs}{sp}{lbl}<text x="240" y="15" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">N</text><text x="240" y="332" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">S</text><text x="12" y="173" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">W</text><text x="465" y="173" text-anchor="middle" fill="#3a3428" font-size="7.5" letter-spacing="2" font-family="sans-serif">E</text><g transform="translate(440,48)"><line x1="0" y1="12" x2="0" y2="-8" stroke="#d2ac47" stroke-width=".8"/><polygon points="0,-10 -5,-2 5,-2" fill="#d2ac47"/></g><g transform="translate(32,308)"><line x1="0" y1="0" x2="68" y2="0" stroke="#d2ac47" stroke-width=".8" stroke-opacity=".5"/><line x1="0" y1="-4" x2="0" y2="4" stroke="#d2ac47" stroke-width=".8" stroke-opacity=".5"/><line x1="68" y1="-4" x2="68" y2="4" stroke="#d2ac47" stroke-width=".8" stroke-opacity=".5"/><text x="34" y="-7" text-anchor="middle" fill="#3a3428" font-size="6.5" letter-spacing="1" font-family="sans-serif">20 m</text></g></svg>'
+    if G: sp = '<rect x="176" y="130" width="128" height="8" rx="4" fill="none" stroke="#B89B5E" stroke-width=".8"/><rect x="196" y="148" width="88" height="44" fill="#2F2D29" stroke="#B89B5E" stroke-width=".8"/><text x="240" y="175" text-anchor="middle" fill="#242321" font-size="7" letter-spacing="2" font-family="sans-serif">RECEPTION</text>'
+    if S: sp = '<ellipse cx="240" cy="170" rx="80" ry="60" fill="none" stroke="#B89B5E" stroke-width=".7" stroke-opacity=".25" stroke-dasharray="5 4"/><text x="240" y="174" text-anchor="middle" fill="#242321" font-size="7.5" letter-spacing="2" font-family="sans-serif">SKY LOUNGE</text>'
+    return f'<svg viewBox="0 0 480 340" style="width:100%;height:auto;max-height:280px"><rect x="24" y="24" width="432" height="292" fill="none" stroke="#B89B5E" stroke-width="1.2"/>{ticks_n}{ticks_s}{ticks_w}{ticks_e}{cg}{rg}{core}{lifts}{stairs}{sp}{lbl}<text x="240" y="15" text-anchor="middle" fill="#242321" font-size="7.5" letter-spacing="2" font-family="sans-serif">N</text><text x="240" y="332" text-anchor="middle" fill="#242321" font-size="7.5" letter-spacing="2" font-family="sans-serif">S</text><text x="12" y="173" text-anchor="middle" fill="#242321" font-size="7.5" letter-spacing="2" font-family="sans-serif">W</text><text x="465" y="173" text-anchor="middle" fill="#242321" font-size="7.5" letter-spacing="2" font-family="sans-serif">E</text><g transform="translate(440,48)"><line x1="0" y1="12" x2="0" y2="-8" stroke="#B89B5E" stroke-width=".8"/><polygon points="0,-10 -5,-2 5,-2" fill="#B89B5E"/></g><g transform="translate(32,308)"><line x1="0" y1="0" x2="68" y2="0" stroke="#B89B5E" stroke-width=".8" stroke-opacity=".5"/><line x1="0" y1="-4" x2="0" y2="4" stroke="#B89B5E" stroke-width=".8" stroke-opacity=".5"/><line x1="68" y1="-4" x2="68" y2="4" stroke="#B89B5E" stroke-width=".8" stroke-opacity=".5"/><text x="34" y="-7" text-anchor="middle" fill="#242321" font-size="6.5" letter-spacing="1" font-family="sans-serif">20 m</text></g></svg>'
 
 FLOORS = [
     {"id":"ground","label":"Arrival & Retail","range":"B3 · B1 · Level 1","tower":"Shared podium","use":"Three basement levels · Retail · Arrival","note":"The project includes three basement levels; the section diagram marks Level 1 as retail."},
@@ -426,7 +426,7 @@ off_css = """<style>
 .feat-grid{display:grid;gap:1px;background:var(--gold-b);margin-top:3rem}
 @media(min-width:768px){.feat-grid{grid-template-columns:repeat(3,1fr)}}
 .feat-card{background:var(--bg2);padding:2.5rem 2rem}
-.feat-num{font-family:var(--sans);font-size:9px;letter-spacing:.4em;color:rgba(210,172,71,.35);margin-bottom:.75rem}
+.feat-num{font-family:var(--sans);font-size:9px;letter-spacing:.4em;color:rgba(184,155,94,.35);margin-bottom:.75rem}
 .feat-title{font-family:var(--serif);font-weight:300;color:#fff;font-size:1.1rem;margin-bottom:.75rem}
 .feat-desc{font-family:var(--sans);font-size:13px;color:rgba(255,255,255,.3);line-height:1.6}
 .office-overview{background:var(--bg2);padding:clamp(5rem,10vw,8rem) 0;border-top:1px solid var(--gold-b)}
@@ -450,9 +450,9 @@ off_css = """<style>
 .tower-section-copy p:not(.eyebrow){color:rgba(255,255,255,.42);font-size:14px;line-height:1.75;max-width:30rem;margin-top:1.5rem}
 .tower-notes{display:flex;flex-direction:column;gap:.7rem;border-top:1px solid var(--gold-b);margin-top:2rem;padding-top:1.25rem;font-family:var(--sans);font-size:11px;color:rgba(255,255,255,.42)}
 .tower-notes b{color:var(--gold-champagne);font-weight:400;letter-spacing:.12em;text-transform:uppercase;margin-right:.4rem}
-.tower-section-media{margin:0;border:1px solid var(--gold-b);background:#f4f4f0;padding:.7rem}
+.tower-section-media{margin:0;border:1px solid var(--gold-b);background:#F2EEE5;padding:.7rem}
 .tower-section-media img{display:block;width:100%;height:auto;filter:saturate(.86) contrast(.98)}
-.tower-section-media figcaption{font-family:var(--sans);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#6d624e;padding:.8rem .35rem .25rem}
+.tower-section-media figcaption{font-family:var(--sans);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#8F753F;padding:.8rem .35rem .25rem}
 .office-floor-section{background:var(--bg2);padding:clamp(5rem,10vw,8rem) 0;border-top:1px solid var(--gold-b)}
 .fp-intro{color:rgba(255,255,255,.38);font-size:14px;line-height:1.75;max-width:34rem;margin-top:1.5rem}
 .floor-panel[aria-hidden="true"]{display:none}
@@ -460,8 +460,8 @@ off_css = """<style>
 @media(max-width:767px){.tower-section-media{padding:.45rem}.tower-section-media figcaption{font-size:8px}.spec-row{grid-template-columns:100px 1fr}.floor-sel{border-right:0}}
 </style>"""
 
-off_body = f"""<div class="page-header" style="--hero-position:center 26%">
-  <img class="page-header-media" src="https://images.unsplash.com/photo-1690944851207-3f288c8fcd0b?w=1600&h=2000&fit=crop&auto=format&q=90" alt="Capital Place twin towers rising above Hanoi" fetchpriority="high" />
+off_body = f"""<div class="page-header" style="--hero-position:center 62.8856%;background-image:url(assets/images/feedback/office-page-header.jpg);background-position:34.3156% 62.8856%">
+  <img class="page-header-media" src="assets/images/feedback/office-page-header.jpg" alt="Capital Place twin towers rising above Hanoi" fetchpriority="high" />
   <div class="container">
     <p class="page-header-eyebrow">Office</p>
     <h1>A workplace<br><em>in two towers</em></h1>
@@ -549,10 +549,10 @@ function setFloor(i){if(i===aF)return;aF=i;
 sus_css = """<style>
 .sus-banner{position:relative;height:clamp(280px,40vw,520px);overflow:hidden}
 .sus-banner img{width:100%;height:100%;object-fit:cover;object-position:center}
-.sus-banner-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(7,19,28,.5),transparent 50%,rgba(7,19,28,.7))}
+.sus-banner-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(17,17,17,.5),transparent 50%,rgba(17,17,17,.7))}
 .sus-banner-txt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center}
 .sus-banner-txt p{font-family:var(--serif);font-weight:300;color:rgba(255,255,255,.75);font-size:clamp(.9rem,2.5vw,1.4rem);letter-spacing:.25em}
-.leed-strip{border-top:1px solid var(--gold-b);border-bottom:1px solid var(--gold-b);background:var(--bg)}
+.leed-strip{border-top:1px solid var(--gold-b);border-bottom:1px solid var(--gold-b);background:linear-gradient(90deg,rgba(38,53,46,.28),transparent 48%) var(--bg)}
 .leed-grid{display:grid}
 @media(min-width:768px){.leed-grid{grid-template-columns:1fr 1fr}}
 .leed-card{padding:clamp(3rem,6vw,5rem) 0;border-bottom:1px solid var(--gold-b)}
@@ -565,7 +565,7 @@ sus_css = """<style>
 .leed-badge-label{font-family:var(--sans);font-size:9px;letter-spacing:.45em;text-transform:uppercase;color:var(--gold)}
 .leed-card h3{font-family:var(--serif);font-weight:300;color:#fff;font-size:clamp(1.3rem,2.5vw,1.8rem);margin-top:12px;line-height:1.1}
 .leed-card p{color:rgba(255,255,255,.3);font-size:14px;margin-top:1rem;line-height:1.75}
-.metrics-section{background:var(--bg2);padding:clamp(6rem,12vw,9rem) 0;border-top:1px solid var(--gold-b)}
+.metrics-section{background:linear-gradient(135deg,rgba(38,53,46,.24),transparent 52%) var(--bg2);padding:clamp(6rem,12vw,9rem) 0;border-top:1px solid var(--gold-b)}
 .metrics-grid{display:grid;gap:1px;background:var(--gold-b);margin-top:3rem}
 @media(min-width:768px){.metrics-grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1024px){.metrics-grid{grid-template-columns:repeat(4,1fr)}}
@@ -576,7 +576,7 @@ sus_css = """<style>
 </style>"""
 
 sus_body = """<div class="page-header" style="--hero-position:center 40%">
-  <img class="page-header-media" src="https://images.unsplash.com/photo-1617761141732-d481912af1a9?w=1400&h=950&fit=crop&auto=format" alt="Light reflecting across Capital Place glass facade" fetchpriority="high" />
+  <img class="page-header-media" src="assets/images/feedback/sustainability-generated.jpg" alt="Light reflecting across Capital Place glass facade" fetchpriority="high" />
   <div class="container">
     <p class="page-header-eyebrow">Sustainability</p>
     <h1>Dual<br><em>LEED Certified</em></h1>
@@ -584,7 +584,7 @@ sus_body = """<div class="page-header" style="--hero-position:center 40%">
   </div>
 </div>
 <div class="sus-banner">
-  <img src="https://images.unsplash.com/photo-1435575653489-b0873ec954e2?w=1800&h=1200&fit=crop&auto=format" alt="Capital Place facade" loading="lazy"/>
+  <img src="assets/images/feedback/sustainability-generated-2.jpg" alt="Capital Place facade" loading="lazy"/>
   <div class="sus-banner-ov"></div>
   <div class="sus-banner-txt"><p>DUAL LEED CERTIFIED &nbsp;&middot;&nbsp; GRADE A OFFICES &nbsp;&middot;&nbsp; HANOI</p></div>
 </div>
@@ -624,15 +624,15 @@ sus_body = """<div class="page-header" style="--hero-position:center 40%">
 # ══════════════════════════════════
 am_css = """<style>
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.am-mosaic{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(210,172,71,.08)}
+.am-mosaic{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(184,155,94,.08)}
 @media(min-width:768px){.am-mosaic{grid-template-columns:repeat(3,1fr)}}
 .am-card{position:relative;overflow:hidden;background:var(--card);cursor:pointer;min-height:200px}
 .am-card.tall{grid-row:span 2;min-height:280px}
 @media(min-width:768px){.am-card.tall{min-height:0}}
 .am-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
 .am-card:hover img{transform:scale(1.06)}
-.am-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,8,.9) 0%,rgba(10,10,8,.2) 50%,transparent 100%);transition:background .5s}
-.am-card:hover .am-ov{background:linear-gradient(to top,rgba(10,10,8,.9) 0%,rgba(10,10,8,.25) 50%,rgba(210,172,71,.05) 100%)}
+.am-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,.9) 0%,rgba(17,17,17,.2) 50%,transparent 100%);transition:background .5s}
+.am-card:hover .am-ov{background:linear-gradient(to top,rgba(17,17,17,.9) 0%,rgba(17,17,17,.25) 50%,rgba(184,155,94,.05) 100%)}
 .am-info{position:absolute;bottom:0;left:0;right:0;padding:clamp(1.5rem,3vw,2rem)}
 .am-sub{font-family:var(--sans);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
 .am-title{font-family:var(--serif);font-weight:300;color:#fff;font-size:clamp(1.1rem,2vw,1.4rem);line-height:1.2}
@@ -644,7 +644,7 @@ am_css = """<style>
 .ls-desc{color:rgba(255,255,255,.28);font-size:14px;max-width:280px;line-height:1.7;margin-bottom:3rem}
 .ct-links{display:flex;flex-direction:column;gap:1.25rem}
 .ct-link{display:flex;align-items:center;gap:1rem}
-.ct-icon{width:36px;height:36px;border:1px solid rgba(210,172,71,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .3s}
+.ct-icon{width:36px;height:36px;border:1px solid rgba(184,155,94,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .3s}
 .ct-link:hover .ct-icon{border-color:var(--gold)}
 .ct-icon svg{width:12px;height:12px;color:var(--gold)}
 .ct-text{color:rgba(255,255,255,.4);font-size:14px;transition:color .3s}
@@ -653,11 +653,11 @@ am_css = """<style>
 .ls-addr p{color:rgba(255,255,255,.18);font-size:12px;line-height:2}
 .enq-form{display:flex;flex-direction:column;gap:1.75rem}
 .field label{display:block;font-family:var(--sans);font-size:9px;letter-spacing:.42em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:10px}
-.field input,.field textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(210,172,71,.15);color:#fff;font-size:14px;font-family:var(--sans);padding:10px 0;outline:none;caret-color:var(--gold);transition:border-color .3s;resize:none}
+.field input,.field textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(184,155,94,.15);color:#fff;font-size:14px;font-family:var(--sans);padding:10px 0;outline:none;caret-color:var(--gold);transition:border-color .3s;resize:none}
 .field input:focus,.field textarea:focus{border-color:var(--gold)}
 .btn-submit{width:100%;border:1px solid var(--gold);color:var(--gold);padding:16px;font-size:10px;letter-spacing:.42em;text-transform:uppercase;font-family:var(--sans);transition:background .3s,color .3s;margin-top:8px}
 .btn-submit:hover{background:var(--gold);color:var(--bg)}
-#success-msg{display:none;border:1px solid rgba(210,172,71,.12);min-height:360px;padding:3.5rem;align-items:center;justify-content:center;text-align:center}
+#success-msg{display:none;border:1px solid rgba(184,155,94,.12);min-height:360px;padding:3.5rem;align-items:center;justify-content:center;text-align:center}
 #success-msg.show{display:flex}
 .succ-line{width:40px;height:1px;background:var(--gold);margin:0 auto 1.5rem}
 #success-msg .eyebrow{margin-bottom:12px;display:block}

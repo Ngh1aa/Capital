@@ -11,15 +11,15 @@
   <link rel="stylesheet" href="assets/style.css" />
   <style>
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.am-mosaic{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(210,172,71,.08)}
+.am-mosaic{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(184,155,94,.08)}
 @media(min-width:768px){.am-mosaic{grid-template-columns:repeat(3,1fr)}}
 .am-card{position:relative;overflow:hidden;background:var(--card);cursor:pointer;min-height:200px}
 .am-card.tall{grid-row:span 2;min-height:280px}
 @media(min-width:768px){.am-card.tall{min-height:0}}
 .am-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
 .am-card:hover img{transform:scale(1.06)}
-.am-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,8,.9) 0%,rgba(10,10,8,.2) 50%,transparent 100%);transition:background .5s}
-.am-card:hover .am-ov{background:linear-gradient(to top,rgba(10,10,8,.9) 0%,rgba(10,10,8,.25) 50%,rgba(210,172,71,.05) 100%)}
+.am-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,.9) 0%,rgba(17,17,17,.2) 50%,transparent 100%);transition:background .5s}
+.am-card:hover .am-ov{background:linear-gradient(to top,rgba(17,17,17,.9) 0%,rgba(17,17,17,.25) 50%,rgba(184,155,94,.05) 100%)}
 .am-info{position:absolute;bottom:0;left:0;right:0;padding:clamp(1.5rem,3vw,2rem)}
 .am-sub{font-family:var(--sans);font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
 .am-title{font-family:var(--serif);font-weight:300;color:#fff;font-size:clamp(1.1rem,2vw,1.4rem);line-height:1.2}
@@ -31,7 +31,7 @@
 .ls-desc{color:rgba(255,255,255,.28);font-size:14px;max-width:280px;line-height:1.7;margin-bottom:3rem}
 .ct-links{display:flex;flex-direction:column;gap:1.25rem}
 .ct-link{display:flex;align-items:center;gap:1rem}
-.ct-icon{width:36px;height:36px;border:1px solid rgba(210,172,71,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .3s}
+.ct-icon{width:36px;height:36px;border:1px solid rgba(184,155,94,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .3s}
 .ct-link:hover .ct-icon{border-color:var(--gold)}
 .ct-icon svg{width:12px;height:12px;color:var(--gold)}
 .ct-text{color:rgba(255,255,255,.4);font-size:14px;transition:color .3s}
@@ -40,11 +40,11 @@
 .ls-addr p{color:rgba(255,255,255,.18);font-size:12px;line-height:2}
 .enq-form{display:flex;flex-direction:column;gap:1.75rem}
 .field label{display:block;font-family:var(--sans);font-size:9px;letter-spacing:.42em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:10px}
-.field input,.field textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(210,172,71,.15);color:#fff;font-size:14px;font-family:var(--sans);padding:10px 0;outline:none;caret-color:var(--gold);transition:border-color .3s;resize:none}
+.field input,.field textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(184,155,94,.15);color:#fff;font-size:14px;font-family:var(--sans);padding:10px 0;outline:none;caret-color:var(--gold);transition:border-color .3s;resize:none}
 .field input:focus,.field textarea:focus{border-color:var(--gold)}
 .btn-submit{width:100%;border:1px solid var(--gold);color:var(--gold);padding:16px;font-size:10px;letter-spacing:.42em;text-transform:uppercase;font-family:var(--sans);transition:background .3s,color .3s;margin-top:8px}
 .btn-submit:hover{background:var(--gold);color:var(--bg)}
-#success-msg{display:none;border:1px solid rgba(210,172,71,.12);min-height:360px;padding:3.5rem;align-items:center;justify-content:center;text-align:center}
+#success-msg{display:none;border:1px solid rgba(184,155,94,.12);min-height:360px;padding:3.5rem;align-items:center;justify-content:center;text-align:center}
 #success-msg.show{display:flex}
 .succ-line{width:40px;height:1px;background:var(--gold);margin:0 auto 1.5rem}
 #success-msg .eyebrow{margin-bottom:12px;display:block}
