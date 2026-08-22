@@ -91,7 +91,7 @@ document.querySelectorAll('.stat-num[data-target]').forEach(el => countIO.observ
     return null;
   };
 
-  import('./ui-feedback.js').then(init).catch((error) => {
+  import('./ui-feedback.js?v=0.13.0').then(init).catch((error) => {
     document.documentElement.dataset.uiFeedback = 'error';
     console.warn('[Capital] UI feedback failed to load', error);
   });
