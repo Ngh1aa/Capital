@@ -40,6 +40,9 @@
 .am-dialog{position:fixed;inset:0;z-index:80;background:rgba(17,17,17,.86);display:grid;place-items:center;padding:1rem}.am-dialog[hidden]{display:none}.am-dialog-panel{width:min(680px,100%);max-height:90vh;overflow:auto;background:var(--graphite);border:1px solid rgba(214,192,138,.35);box-shadow:0 20px 80px rgba(0,0,0,.45);position:relative}.am-dialog-panel img{width:100%;height:220px;object-fit:cover;display:block}.am-dialog-body{padding:1.5rem 1.5rem 2rem}.am-dialog-close{position:absolute;right:1rem;top:1rem;width:36px;height:36px;border:1px solid rgba(242,238,229,.5);background:rgba(17,17,17,.55);color:var(--warm-ivory);cursor:pointer}.am-dialog-close:hover,.am-dialog-close:focus-visible{background:var(--gold);color:var(--capital-black);border-color:var(--gold)}.am-dialog-category{color:var(--gold);font-size:9px;letter-spacing:.3em;text-transform:uppercase}.am-dialog h3{font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--warm-ivory);margin:.5rem 0}.am-dialog p{font-size:13px;line-height:1.7;color:rgba(242,238,229,.58)}.am-dialog-meta{font-size:10px;letter-spacing:.16em;color:var(--gold-champagne);text-transform:uppercase;margin:.75rem 0}
 @media(prefers-reduced-motion:reduce){.am-media img,.am-dir-card{transition:none}}
 </style>
+<meta name="theme-color" content="#111111" />
+  <meta property="og:site_name" content="Capital Place Hanoi" />
+  <link rel="stylesheet" href="assets/capital-upgrade.css?v=ux-20260824-1" />
 </head>
 <body>
 <nav id="main-nav">
@@ -59,7 +62,7 @@
         <span class="lang-sep2">|</span>
         <button type="button" onclick="setLang('VI')">VI</button>
       </div>
-      <a href="amenities.html#leasing" class="btn-enquire">Enquire</a>
+      <a href="availability.html" class="btn-enquire">Find a Space</a>
     </div>
     <button type="button" class="nav-ham" id="hamburger" aria-label="Toggle menu" aria-controls="mob-menu" aria-expanded="false">
       <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
@@ -72,9 +75,11 @@
     <a href="office.html" onclick="closeMob()">Office</a>
     <a href="sustainability.html" onclick="closeMob()">Sustainability</a>
     <a href="amenities.html" onclick="closeMob()">Amenities</a>
-    <a href="amenities.html#leasing" class="mob-enq" onclick="closeMob()">Leasing Enquiry</a>
+    <a href="availability.html" onclick="closeMob()">Availability</a>
+    <a href="leasing.html" class="mob-enq" onclick="closeMob()">Leasing Enquiry</a>
   </div>
 </nav>
+<main id="main-content">
 <div class="page-header am-hero" style="--hero-position:center 48%">
   <img class="page-header-media" src="https://images.unsplash.com/photo-1780369088190-914cc3eee938?w=1600&h=1000&fit=crop&auto=format" alt="Capital Place grand lobby and connected amenities" fetchpriority="high" />
   <div class="container">
@@ -120,7 +125,7 @@
   <button class="am-dir-card" type="button" role="listitem" data-category="family" data-title="Family Space" data-location="The Link · B1" data-hours="Current opening hours available on request" data-description="A safe and engaging play space designed for children and families." data-image="https://images.unsplash.com/photo-1780369088190-914cc3eee938?w=1200&h=900&fit=crop&auto=format"><img src="https://images.unsplash.com/photo-1780369088190-914cc3eee938?w=800&h=500&fit=crop&auto=format" alt="Family-friendly amenity space" loading="lazy"/><span class="am-dir-copy"><span class="am-dir-category">Family</span><h3>Family Space</h3><span class="am-dir-meta">B1</span><span class="am-dir-explore">Explore &rarr;</span></span></button>
 </div></div></section>
 <section class="am-community"><div class="container"><div class="am-community-grid"><div><p class="am-kicker">Capital Place Community</p><h2 class="section-title">More Than<br><em>A Workplace</em></h2></div><div><p class="am-lead">A connected community where people, businesses and ideas come together.</p><div class="am-activity-list"><span class="am-activity">Community events</span><span class="am-activity">Wellbeing activities</span><span class="am-activity">Green initiatives</span><span class="am-activity">First aid training</span><span class="am-activity">Community programmes</span></div></div></div></div></section>
-<section id="leasing"><div class="container"><div class="ls-grid"><div><p class="am-kicker">Enquire</p><h2 class="ls-title">Make Capital Place<br><em>Your Place</em></h2><p class="ls-desc">Discover a workplace designed around your business, your people and the way you work.</p><div class="ct-links"><a href="tel:18009289" class="ct-link"><span class="ct-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg></span><span class="ct-text">1800 9289</span></a><a href="mailto:leasing@capitalplace.com.vn" class="ct-link"><span class="ct-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg></span><span class="ct-text">leasing@capitalplace.com.vn</span></a></div><div class="ls-addr"><p>29 Lieu Giai Street<br>Ngoc Ha, Ba Dinh<br>Hanoi, Vietnam</p></div></div><div><div id="success-msg"><div><div class="succ-line"></div><span class="eyebrow">Enquiry Received</span><p class="success-copy">Our leasing team will contact you within 24 hours.</p></div></div><form class="enq-form" id="enq-form" onsubmit="submitForm(event)"><div class="field"><label for="fn">Full Name</label><input type="text" id="fn" name="name" autocomplete="name" required/></div><div class="field"><label for="fc">Company</label><input type="text" id="fc" name="company" autocomplete="organization" required/></div><div class="field"><label for="fe">Email</label><input type="email" id="fe" name="email" autocomplete="email" required/></div><div class="field"><label for="fp">Phone</label><input type="tel" id="fp" name="phone" autocomplete="tel" required/></div><div class="field"><label for="fm">Message</label><textarea id="fm" name="message" rows="3"></textarea></div><button type="submit" class="btn-submit">Submit Enquiry</button></form></div></div></div></section>
+<section id="leasing" class="ux-section graphite" aria-labelledby="amenity-next-title"><div class="container"><div class="ux-section-head"><div><p class="eyebrow">Next Steps</p><h2 id="amenity-next-title" class="section-title">Choose your<br><em>Capital Place journey</em></h2></div><p class="ux-section-copy">Amenities support occupiers, visitors and prospective tenants in different ways. Continue through the route that matches your intent.</p></div><div class="gateway-grid"><a class="gateway-link" href="availability.html"><div><h3>Office Leasing</h3><p>Find indicative space, review a floor and request a viewing.</p></div><span>Find a Space →</span></a><a class="gateway-link" href="retail.html"><div><h3>Retail / F&amp;B</h3><p>Explore The Link and start a brand-specific enquiry.</p></div><span>Retail Leasing →</span></a><a class="gateway-link" href="occupiers.html"><div><h3>For Occupiers</h3><p>Open public amenity, visitor and building-support routes.</p></div><span>Occupier Gateway →</span></a></div></div></section>
 <div class="am-dialog" id="am-dialog" role="dialog" aria-modal="true" aria-labelledby="am-dialog-title" hidden><div class="am-dialog-panel"><button class="am-dialog-close" type="button" aria-label="Close amenity details">&times;</button><img id="am-dialog-image" src="" alt=""/><div class="am-dialog-body"><span class="am-dialog-category" id="am-dialog-category"></span><h3 id="am-dialog-title"></h3><p class="am-dialog-meta" id="am-dialog-meta"></p><p id="am-dialog-description"></p></div></div></div>
 <script>
 (function(){
@@ -146,6 +151,7 @@
 })();
 function submitForm(e){e.preventDefault();document.getElementById('enq-form').style.display='none';document.getElementById('success-msg').classList.add('show')}
 </script>
+</main>
 <footer>
   <div class="container">
     <div class="ft-grid">
@@ -163,12 +169,17 @@ function submitForm(e){e.preventDefault();document.getElementById('enq-form').st
         <a href="office.html">Office</a>
         <a href="sustainability.html">Sustainability</a>
         <a href="amenities.html">Amenities</a>
+        <a class="ft-secondary" href="availability.html">Availability</a>
+        <a class="ft-secondary" href="visit.html">Visit</a>
+        <a class="ft-secondary" href="resources.html">Resources</a>
       </div>
       <div class="ft-col">
         <p class="ft-col-title">Contact &amp; Leasing</p>
-        <a href="amenities.html#leasing">Leasing Enquiry</a>
+        <a href="leasing.html">Leasing Enquiry</a>
+        <a href="retail.html">Retail / F&amp;B Leasing</a>
+        <a href="occupiers.html">For Occupiers</a>
         <a href="tel:18009289">1800 9289</a>
-        <a href="mailto:leasing@capitalplace.com.vn">leasing@capitalplace.com.vn</a>
+        <a href="mailto:leasing@capitalplace.vn">leasing@capitalplace.vn</a>
       </div>
     </div>
     <div class="ft-bot">
@@ -178,5 +189,7 @@ function submitForm(e){e.preventDefault();document.getElementById('enq-form').st
   </div>
 </footer>
 <script src="assets/main.js"></script>
+<script src="assets/capital-data.js?v=ux-20260824-1"></script>
+<script src="assets/capital-upgrade.js?v=ux-20260824-1"></script>
 </body>
 </html>

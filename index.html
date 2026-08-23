@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Capital Place – Hanoi's Premier Address</title>
-  <meta name="description" content="Capital Place is Hanoi's premier Grade-A office address. 93,700 SQM, LEED Platinum, 29 Lieu Giai, Ba Dinh." />
+  <meta name="description" content="Capital Place is Hanoi's premier Grade-A office address. 93,000 SQM, LEED Platinum, 29 Lieu Giai, Ba Dinh." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -91,6 +91,10 @@
 .ql-arrow svg{width:12px;height:12px;transition:transform .2s}
 .ql-card:hover .ql-arrow svg{transform:translateX(3px)}
 </style>
+<meta name="theme-color" content="#111111" />
+  <meta property="og:site_name" content="Capital Place Hanoi" />
+  <link rel="stylesheet" href="assets/capital-upgrade.css?v=ux-20260824-1" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Place","name":"Capital Place","description":"Grade A office building comprising two 37-storey towers and approximately 93,000 sqm of office and retail space.","address":{"@type":"PostalAddress","streetAddress":"29 Lieu Giai","addressLocality":"Hanoi","addressCountry":"VN"},"telephone":"18009289","email":"leasing@capitalplace.vn","url":"https://ngh1aa.github.io/Capital/"}</script>
 </head>
 <body>
 <nav id="main-nav">
@@ -110,7 +114,7 @@
         <span class="lang-sep2">|</span>
         <button type="button" onclick="setLang('VI')">VI</button>
       </div>
-      <a href="amenities.html#leasing" class="btn-enquire">Enquire</a>
+      <a href="availability.html" class="btn-enquire">Find a Space</a>
     </div>
     <button type="button" class="nav-ham" id="hamburger" aria-label="Toggle menu" aria-controls="mob-menu" aria-expanded="false">
       <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
@@ -123,9 +127,11 @@
     <a href="office.html" onclick="closeMob()">Office</a>
     <a href="sustainability.html" onclick="closeMob()">Sustainability</a>
     <a href="amenities.html" onclick="closeMob()">Amenities</a>
-    <a href="amenities.html#leasing" class="mob-enq" onclick="closeMob()">Leasing Enquiry</a>
+    <a href="availability.html" onclick="closeMob()">Availability</a>
+    <a href="leasing.html" class="mob-enq" onclick="closeMob()">Leasing Enquiry</a>
   </div>
 </nav>
+<main id="main-content">
 <section id="hero">
   <video class="hero-bg" autoplay muted loop playsinline preload="metadata" aria-label="Capital Place exterior architecture" poster="https://images.unsplash.com/photo-1690944851207-3f288c8fcd0b?w=1600&h=2000&fit=crop&auto=format&q=90">
     <source src="https://capitalplace.com.vn/wp-content/uploads/2026/05/CAPITAL-PLACE-TVC_1080p.mp4" type="video/mp4">
@@ -135,23 +141,23 @@
     <p class="hero-eyebrow">29 Lieu Giai &middot; Ba Dinh &middot; Hanoi</p>
     <h1 class="hero-h1"><span>Hanoi's</span><span class="italic">Premier</span><span>Address</span></h1>
     <div class="hero-specs">
-      <span class="hero-spec">93,700 SQM</span>
+      <span class="hero-spec">93,000 SQM</span>
       <span class="hero-spec"><span class="spec-sep"></span>2 Towers</span>
-      <span class="hero-spec"><span class="spec-sep"></span>41 Storeys</span>
+      <span class="hero-spec"><span class="spec-sep"></span>37 Storeys Per Tower</span>
       <span class="hero-spec"><span class="spec-sep"></span>Grade A</span>
     </div>
     <div class="hero-ctas">
       <a href="#explore" class="btn-primary">Explore Building<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
-      <a href="amenities.html#leasing" class="btn-ghost">Leasing Enquiry</a>
+      <a href="leasing.html?intent=office" class="btn-ghost">Leasing Enquiry</a>
     </div>
   </div></div>
   <div class="scroll-cue"><span>Scroll</span><svg class="anim-bounce" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"/></svg></div>
 </section>
 <section id="specbar">
   <div class="spec-grid container">
-    <div class="stat-cell fade-up"><span class="stat-num" data-target="93700" data-fmt="comma">93,700</span><span class="stat-label">SQM Total GFA</span></div>
+    <div class="stat-cell fade-up"><span class="stat-num" data-target="93700" data-fmt="comma">93,000</span><span class="stat-label">SQM Leasable Area</span></div>
     <div class="stat-cell fade-up" style="transition-delay:.1s"><span class="stat-num" data-target="2">2</span><span class="stat-label">Towers</span></div>
-    <div class="stat-cell fade-up" style="transition-delay:.2s"><span class="stat-num" data-target="41">41</span><span class="stat-label">Storeys</span></div>
+    <div class="stat-cell fade-up" style="transition-delay:.2s"><span class="stat-num" data-target="37">37</span><span class="stat-label">Storeys Per Tower</span></div>
     <div class="stat-cell fade-up" style="transition-delay:.3s"><span class="stat-num" data-target="2015">2015</span><span class="stat-label">Completed</span></div>
   </div>
 </section>
@@ -180,21 +186,22 @@
         <p class="leasing-tease-copy">Explore available floor plates, view the building layout, or speak with the Capital Place leasing team.</p>
       </div>
       <div class="leasing-tease-actions">
-        <a href="office.html" class="btn-primary">View Floor Plans<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
-        <a href="amenities.html#leasing" class="btn-ghost">Request Availability</a>
+        <a href="availability.html" class="btn-primary">View Availability<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
+        <a href="leasing.html?intent=office" class="btn-ghost">Request Availability</a>
       </div>
     </div>
     <div class="proof-row" aria-label="Capital Place credentials">
-      <span>Dual LEED Certified</span><span>Grade-A Office</span><span>93,700 SQM</span><span>29 Lieu Giai</span>
+      <span>Dual LEED Certified</span><span>Grade-A Office</span><span>93,000 SQM</span><span>29 Lieu Giai</span>
     </div>
   </div>
 </section>
+<section class="home-availability" data-home-availability aria-labelledby="home-availability-title"><div class="container"><div class="home-availability-grid"><div><p class="eyebrow" style="margin-bottom:1rem">Current Opportunities</p><h2 id="home-availability-title" class="section-title">Space for the<br><em>next move.</em></h2><p class="leasing-tease-copy">Start with indicative availability across both towers, then evaluate the floor, capacity and specifications in context.</p><div class="ux-actions"><a class="btn-gold" href="availability.html">View Availability <span aria-hidden="true">→</span></a><a class="btn-outline-gold" href="availability.html#space-finder">Find a Space</a></div></div><div class="home-availability-summary"><div class="home-availability-line"><strong>Tower 01</strong><span data-home-tower="1">Opportunities on request</span></div><div class="home-availability-line"><strong>Tower 02</strong><span data-home-tower="2">Opportunities on request</span></div><div class="home-availability-line"><strong>Area Range</strong><span data-home-area-range>Confirmed by leasing</span></div><p class="home-availability-note">Illustrative availability only. Current spaces and commercial terms are confirmed by the leasing team.</p></div></div></div></section>
 <section class="quick-links">
   <div class="container">
     <p class="eyebrow" style="margin-bottom:2.5rem">Explore More</p>
     <div class="ql-grid">
       <a href="location.html" class="ql-card"><span class="ql-num">01</span><h3 class="ql-title">Location</h3><p class="ql-desc">Prime Ba Dinh diplomatic quarter, steps from major embassies and government offices.</p><span class="ql-arrow">View<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span></a>
-      <a href="office.html" class="ql-card"><span class="ql-num">02</span><h3 class="ql-title">Office</h3><p class="ql-desc">Column-free open-plan layouts from 1,850 SQM per floor with full-height glazing.</p><span class="ql-arrow">View<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span></a>
+      <a href="office.html" class="ql-card"><span class="ql-num">02</span><h3 class="ql-title">Office</h3><p class="ql-desc">Column-free floor plates, flexible workplace layouts and full-height glazing.</p><span class="ql-arrow">View<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span></a>
       <a href="sustainability.html" class="ql-card"><span class="ql-num">03</span><h3 class="ql-title">Sustainability</h3><p class="ql-desc">Dual LEED certified &mdash; Platinum for operations and Gold for design.</p><span class="ql-arrow">View<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span></a>
       <a href="amenities.html" class="ql-card"><span class="ql-num">04</span><h3 class="ql-title">Amenities</h3><p class="ql-desc">Sky Lounge, fitness centre, conference halls and fine dining across the podium.</p><span class="ql-arrow">View<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span></a>
     </div>
@@ -203,7 +210,7 @@
 <script>
 const ZONES=[
   {num:"01",id:"lobby",label:"Grand Lobby",sub:"Ground Floor · Triple-height atrium",detail:"Marble floors, bamboo-inspired columns, and site-specific Vietnamese art define the arrival. The 18 m atrium opens both towers.",img:"https://www.hanoi-office.com/uploads/files/capital%20place/toa_nha_capital_place_8.jpg"},
-  {num:"02",id:"office",label:"Office Floors",sub:"L6 – L38 · Both towers · 93,700 SQM",detail:"Column-free, open-plan floorplates with full-height glazing. GFA 1,850–2,100 SQM per floor. NBF-compliant fresh air.",img:"https://thanhnien.mediacdn.vn/uploaded/quochung.qc/2020_10_12/capitalplace/2_AYLF.jpg?width=1200"},
+  {num:"02",id:"office",label:"Office Floors",sub:"L6 – L38 · Both towers · 93,000 SQM",detail:"Column-free, open-plan floorplates with full-height glazing. GFA 1,850–2,100 SQM per floor. NBF-compliant fresh air.",img:"https://thanhnien.mediacdn.vn/uploaded/quochung.qc/2020_10_12/capitalplace/2_AYLF.jpg?width=1200"},
   {num:"03",id:"fitness",label:"Fitness & Wellness",sub:"Podium Level 3",detail:"Full gym, yoga studio, meditation zone, spa showers, and end-of-trip cyclist facilities. Open to all tower tenants.",img:"https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=1200&h=900&fit=crop&auto=format"},
   {num:"04",id:"dining",label:"Dining & Retail",sub:"Ground · L1 · L2",detail:"A curated selection of cafés, restaurants, and specialty retail across the podium.",img:"https://images.unsplash.com/photo-1587702068694-a909ef4aa346?w=1200&h=900&fit=crop&auto=format"},
   {num:"05",id:"sky",label:"Sky Lounge",sub:"Level 39 · Tower A",detail:"An exclusive tenant amenity floor with 360° panoramic views of Hanoi.",img:"https://images.unsplash.com/photo-1758193431353-87812fbff5cd?w=1200&h=900&fit=crop&auto=format"},
@@ -230,6 +237,7 @@ function sz(i){if(i===aZ)return;aZ=i;
   document.getElementById('z-sub').textContent=ZONES[i].sub;document.getElementById('z-title').textContent=ZONES[i].label;
 }
 </script>
+</main>
 <footer>
   <div class="container">
     <div class="ft-grid">
@@ -247,12 +255,17 @@ function sz(i){if(i===aZ)return;aZ=i;
         <a href="office.html">Office</a>
         <a href="sustainability.html">Sustainability</a>
         <a href="amenities.html">Amenities</a>
+        <a class="ft-secondary" href="availability.html">Availability</a>
+        <a class="ft-secondary" href="visit.html">Visit</a>
+        <a class="ft-secondary" href="resources.html">Resources</a>
       </div>
       <div class="ft-col">
         <p class="ft-col-title">Contact &amp; Leasing</p>
-        <a href="amenities.html#leasing">Leasing Enquiry</a>
+        <a href="leasing.html">Leasing Enquiry</a>
+        <a href="retail.html">Retail / F&amp;B Leasing</a>
+        <a href="occupiers.html">For Occupiers</a>
         <a href="tel:18009289">1800 9289</a>
-        <a href="mailto:leasing@capitalplace.com.vn">leasing@capitalplace.com.vn</a>
+        <a href="mailto:leasing@capitalplace.vn">leasing@capitalplace.vn</a>
       </div>
     </div>
     <div class="ft-bot">
@@ -261,6 +274,8 @@ function sz(i){if(i===aZ)return;aZ=i;
     </div>
   </div>
 </footer>
-<script src="assets/main.js?v=ui-feedback-v0.13.0"></script>
+<script src="assets/main.js"></script>
+<script src="assets/capital-data.js?v=ux-20260824-1"></script>
+<script src="assets/capital-upgrade.js?v=ux-20260824-1"></script>
 </body>
 </html>

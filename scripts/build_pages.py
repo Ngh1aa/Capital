@@ -854,6 +854,10 @@ pages = {
         am_css) + "\n" + NAV + "\n" + am_body + "\n" + am_js + "\n" + FOOTER,
 }
 
+from ux_upgrade import apply_upgrade
+
+pages = apply_upgrade(pages, head, NAV, FOOTER)
+
 for fname, content in pages.items():
     path = os.path.join(ROOT, fname)
     with open(path, 'w', encoding='utf-8') as f:

@@ -78,6 +78,9 @@
 @media(max-width:640px){.sus-metric{min-height:180px;padding:1.25rem}.sus-metric-value{font-size:2rem}.sus-cert-card{min-height:320px}.sus-tech-card summary{padding:1.25rem}.sus-tech-body{padding-left:2.8rem}.sus-visual-copy{padding:3.5rem 1.5rem}.sus-waste-words{font-size:1.8rem}}
 @media(prefers-reduced-motion:reduce){.sus-cert-card,.sus-tech-toggle,.sus-visual-media img{transition:none}}
 </style>
+<meta name="theme-color" content="#111111" />
+  <meta property="og:site_name" content="Capital Place Hanoi" />
+  <link rel="stylesheet" href="assets/capital-upgrade.css?v=ux-20260824-1" />
 </head>
 <body>
 <nav id="main-nav">
@@ -97,7 +100,7 @@
         <span class="lang-sep2">|</span>
         <button type="button" onclick="setLang('VI')">VI</button>
       </div>
-      <a href="amenities.html#leasing" class="btn-enquire">Enquire</a>
+      <a href="availability.html" class="btn-enquire">Find a Space</a>
     </div>
     <button type="button" class="nav-ham" id="hamburger" aria-label="Toggle menu" aria-controls="mob-menu" aria-expanded="false">
       <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
@@ -110,9 +113,11 @@
     <a href="office.html" onclick="closeMob()">Office</a>
     <a href="sustainability.html" onclick="closeMob()">Sustainability</a>
     <a href="amenities.html" onclick="closeMob()">Amenities</a>
-    <a href="amenities.html#leasing" class="mob-enq" onclick="closeMob()">Leasing Enquiry</a>
+    <a href="availability.html" onclick="closeMob()">Availability</a>
+    <a href="leasing.html" class="mob-enq" onclick="closeMob()">Leasing Enquiry</a>
   </div>
 </nav>
+<main id="main-content">
 <div class="page-header sus-hero" style="--hero-position:center 34%">
   <img class="page-header-media" src="assets/images/feedback/sustainability-generated.jpg" alt="Capital Place glass facade with natural light and greenery" fetchpriority="high" />
   <div class="container">
@@ -213,7 +218,9 @@
   <div class="sus-visual-copy"><p class="eyebrow">The Human Side</p><h2>Better for the Building.<br><em>Better for People.</em></h2><p>A sustainable building should do more than reduce its environmental impact. It should create a workplace where people can work, connect and thrive.</p></div>
   <div class="sus-visual-media"><img src="assets/images/feedback/sustainability-generated.jpg" alt="People, greenery and natural light inside a premium workplace" loading="lazy" /></div>
 </section>
-<section class="sus-cta"><div class="container"><h2>Work Towards a<br><em>Better Future</em></h2><p>Discover a workplace built around performance, responsibility and people.</p><div class="sus-cta-actions"><a class="btn-primary" href="office.html">Explore Office <span aria-hidden="true">&rarr;</span></a><a class="btn-outline-gold" href="amenities.html#leasing">Enquire <span aria-hidden="true">&rarr;</span></a></div></div></section>
+<section class="ux-section alt" id="sustainability-resources" aria-labelledby="sustainability-resource-title"><div class="container"><div class="ux-section-head"><div><p class="eyebrow">Occupier Value</p><h2 id="sustainability-resource-title" class="section-title">From credentials<br><em>to workplace value</em></h2></div><p class="ux-section-copy">Connect certifications and building systems to the information corporate occupiers need for workplace, ESG and technical evaluation.</p></div><div class="gateway-grid"><a class="gateway-link" href="resources.html"><div><h3>Sustainability Overview</h3><p>Review public LEED and performance information in the resource hub.</p></div><span>View Resources →</span></a><a class="gateway-link" href="office.html#office-specifications"><div><h3>Building Specifications</h3><p>Review air filtration, floor systems, vertical transport and resilience.</p></div><span>View Specifications →</span></a><a class="gateway-link" href="leasing.html?intent=technical-package"><div><h3>Detailed ESG Package</h3><p>Request qualified technical and sustainability documentation.</p></div><span>Request Package →</span></a></div></div></section>
+<section class="sus-cta"><div class="container"><h2>Work Towards a<br><em>Better Future</em></h2><p>Discover a workplace built around performance, responsibility and people.</p><div class="sus-cta-actions"><a class="btn-primary" href="office.html">Explore Office <span aria-hidden="true">&rarr;</span></a><a class="btn-outline-gold" href="leasing.html?intent=office">Enquire <span aria-hidden="true">&rarr;</span></a></div></div></section>
+</main>
 <footer>
   <div class="container">
     <div class="ft-grid">
@@ -231,12 +238,17 @@
         <a href="office.html">Office</a>
         <a href="sustainability.html">Sustainability</a>
         <a href="amenities.html">Amenities</a>
+        <a class="ft-secondary" href="availability.html">Availability</a>
+        <a class="ft-secondary" href="visit.html">Visit</a>
+        <a class="ft-secondary" href="resources.html">Resources</a>
       </div>
       <div class="ft-col">
         <p class="ft-col-title">Contact &amp; Leasing</p>
-        <a href="amenities.html#leasing">Leasing Enquiry</a>
+        <a href="leasing.html">Leasing Enquiry</a>
+        <a href="retail.html">Retail / F&amp;B Leasing</a>
+        <a href="occupiers.html">For Occupiers</a>
         <a href="tel:18009289">1800 9289</a>
-        <a href="mailto:leasing@capitalplace.com.vn">leasing@capitalplace.com.vn</a>
+        <a href="mailto:leasing@capitalplace.vn">leasing@capitalplace.vn</a>
       </div>
     </div>
     <div class="ft-bot">
@@ -246,5 +258,7 @@
   </div>
 </footer>
 <script src="assets/main.js"></script>
+<script src="assets/capital-data.js?v=ux-20260824-1"></script>
+<script src="assets/capital-upgrade.js?v=ux-20260824-1"></script>
 </body>
 </html>
