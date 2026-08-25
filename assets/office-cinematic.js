@@ -27,6 +27,10 @@
     };
     const select = (button) => {
       const state = button.dataset.fitState;
+      const label = visual.querySelector('.oc-floorplate-stage-label');
+      const labels = { empty: 'Typical high-zone reference · 1,847 sqm · Empty shell', open: 'Typical high-zone reference · 1,847 sqm · Open plan reference', executive: 'Typical high-zone reference · 1,847 sqm · Executive reference' };
+      if (label) label.textContent = labels[state] || labels.empty;
+      visual.dataset.fitState = state;
       buttons.forEach((item) => {
         const active = item === button;
         item.classList.toggle('is-active', active);

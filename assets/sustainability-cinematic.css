@@ -4,3 +4,9 @@
 @media(max-width:850px){.ss-intro-head,.ss-leed-panels,.ss-system-grid,.ss-facade,.ss-water-grid,.ss-business-grid,.ss-community-grid,.ss-resources-grid{grid-template-columns:1fr}.ss-hero-copy,.ss-cta-copy{padding-top:23vh}.ss-leed-panel{min-height:68svh}.ss-performance-grid{grid-template-columns:1fr 1fr}.ss-performance-card{min-height:42svh}.ss-cutaway{min-height:450px}.ss-tower{min-height:340px}.ss-facade-media{min-height:360px}.ss-community-mosaic{min-height:450px}.ss-data-grid{grid-template-columns:1fr}.ss-health-copy,.ss-green-copy{padding-top:22vh}}
 @media(max-width:560px){.ss-performance-grid{grid-template-columns:1fr}.ss-performance-card{min-height:56svh}.ss-business-values article{grid-template-columns:1fr}.ss-business-values p{grid-column:1}.ss-community-mosaic{grid-template-columns:1fr 1fr;min-height:360px}.ss-community-mosaic img{min-height:170px}.ss-community-copy ul{grid-template-columns:1fr}.ss-hero-copy h1,.ss-cta-copy h2{font-size:clamp(3.6rem,16vw,6.5rem)}}
 @media(prefers-reduced-motion:reduce){.ss-leed-panel>img,.ss-performance-card img{transition:none}.ss-page{scroll-behavior:auto}}
+/* UI feedback 25 Aug 2026 — targeted text contrast and section visual */
+.ss-green-shade,.ss-cta-shade{background:linear-gradient(90deg,rgba(0,0,0,.94),rgba(0,0,0,.34) 74%,rgba(0,0,0,.1)),linear-gradient(0deg,rgba(0,0,0,.82),transparent 62%)}
+.ss-cutaway{padding:0;display:block;background:#171717}
+.ss-cutaway-image{display:block;width:100%;height:100%;min-height:600px;object-fit:contain;mix-blend-mode:screen;opacity:.92}
+.ss-cutaway-caption{position:absolute;left:1.5rem;bottom:1.25rem;color:rgba(255,255,255,.68);font-size:.56rem;text-transform:uppercase;letter-spacing:.14em}
+@media(max-width:850px){.ss-cutaway-image{min-height:450px}}

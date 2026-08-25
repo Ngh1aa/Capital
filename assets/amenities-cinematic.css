@@ -16,3 +16,11 @@
 .ac-amenities footer{background:#f3f0e9;color:#111}.ac-amenities footer .ft-grid,.ac-amenities footer .ft-grid *{color:#111!important}
 @media(max-width:850px){.ac-hero,.ac-link,.ac-community,.ac-final{min-height:88svh}.ac-hero-copy,.ac-link-copy,.ac-community-copy,.ac-final-copy{padding-top:22vh}.ac-hero-copy h1,.ac-link-copy h2,.ac-community-copy h2,.ac-final-copy h2{font-size:clamp(3.6rem,15vw,6.5rem)}.ac-hero-montage{grid-template-columns:1fr 1fr}.ac-day-head,.ac-wellbeing-head,.ac-directory-head{display:block}.ac-day-head>p,.ac-wellbeing-head>p,.ac-directory-head>p{margin-top:1rem}.ac-day-track{grid-template-columns:repeat(7,13rem)}.ac-day-track article{min-height:42rem}.ac-nexus-image{inset:0 0 45% 0}.ac-nexus-copy{margin-left:0;padding-top:53vh}.ac-nexus:after{background:linear-gradient(0deg,#171717 39%,transparent 71%)}.ac-meet-grid,.ac-focus-grid,.ac-hospitality,.ac-directory-layout{grid-template-columns:1fr}.ac-meet-gallery figure{min-height:27rem}.ac-focus-media{min-height:48svh}.ac-hospitality-copy{min-height:55svh}.ac-wellbeing-grid{grid-template-columns:1fr}.ac-wellbeing-grid article{min-height:38rem}.ac-brand-list{grid-template-columns:repeat(2,1fr)}.ac-b1-map{min-height:29rem}.ac-brand-panel img{height:11rem}.ac-value-grid{grid-template-columns:1fr}.ac-final-intents{grid-template-columns:1fr;max-width:24rem}}
 @media(prefers-reduced-motion:reduce){.ac-day-track article img,.ac-b1-pin,.ac-final-intents a{transition:none}.ac-amenities main{scroll-behavior:auto}}
+/* UI feedback 25 Aug 2026 — targeted text contrast, Nexus offset and verified B1 floor plan */
+.ac-hero-shade,.ac-link-shade,.ac-community-shade,.ac-final-shade{background:linear-gradient(90deg,rgba(0,0,0,.94),rgba(0,0,0,.34) 74%,rgba(0,0,0,.1)),linear-gradient(0deg,rgba(0,0,0,.82),transparent 62%)}
+.ac-nexus-copy{translate:200px}
+.ac-b1-map{background:#f5ede0;aspect-ratio:16/9;min-height:clamp(22rem,38vw,38rem)}
+.ac-b1-map:before{display:none}
+.ac-b1-map-image{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
+.ac-b1-map .ac-b1-label{z-index:3;background:rgba(255,255,255,.82);padding:.25rem .4rem;color:#111}
+@media(max-width:850px){.ac-nexus-copy{translate:0}.ac-b1-map{min-height:0}}
