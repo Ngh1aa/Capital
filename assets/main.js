@@ -73,6 +73,92 @@ const countIO = new IntersectionObserver(
 );
 document.querySelectorAll('.stat-num[data-target]').forEach(el => countIO.observe(el));
 
+// ── Background video control and reduced-motion fallback
+(function initHeroMediaControl() {
+  const video = document.querySelector('.hero-bg:is(video)');
+  const toggle = document.querySelector('.hero-media-toggle');
+  if (!video || !toggle) return;
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const label = toggle.querySelector('span:last-child');
+  const icon = toggle.querySelector('span:first-child');
+
+  const render = () => {
+    const paused = video.paused;
+    toggle.setAttribute('aria-pressed', String(paused));
+    toggle.setAttribute('aria-label', paused ? 'Play background video' : 'Pause background video');
+    if (label) label.textContent = paused ? 'Play motion' : 'Pause motion';
+    if (icon) icon.textContent = paused ? '▶' : 'Ⅱ';
+  };
+
+  if (reducedMotion) video.pause();
+  render();
+  toggle.addEventListener('click', async () => {
+    if (video.paused) {
+      try { await video.play(); } catch { /* Browser can keep media paused. */ }
+    } else {
+      video.pause();
+    }
+    render();
+  });
+  video.addEventListener('play', render);
+  video.addEventListener('pause', render);
+})();
+
+// ── Architectural motion system
+(function initCapitalMotionSystem() {
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const selector = [
+    'main > section',
+    'main article',
+    'main [class$="-card"]',
+    'main [class*="-card "]',
+    'main [class$="-row"]',
+  ].join(',');
+  let observer;
+
+  document.documentElement.classList.add('capital-motion-ready');
+
+  const prepare = (scope = document) => {
+    const nodes = [
+      ...(scope instanceof Element && scope.matches(selector) ? [scope] : []),
+      ...scope.querySelectorAll(selector),
+    ];
+
+    nodes.forEach((node) => {
+      if (node.dataset.capitalMotionReady === 'true' || node.closest('[data-no-motion]')) return;
+      node.dataset.capitalMotionReady = 'true';
+      node.classList.add('capital-motion-item');
+
+      const siblings = [...node.parentElement.children].filter((child) => child.matches?.(selector));
+      const index = Math.max(0, siblings.indexOf(node));
+      node.style.setProperty('--capital-motion-delay', `${Math.min(index, 4) * 75}ms`);
+
+      const hero = node.matches('#hero, .page-header, main > section:first-of-type');
+      if (hero || reducedMotion || !observer) node.classList.add('is-motion-visible');
+      else observer.observe(node);
+    });
+  };
+
+  if (!reducedMotion && 'IntersectionObserver' in window) {
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-motion-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: .11, rootMargin: '0px 0px -8% 0px' });
+  }
+
+  prepare();
+  const mutations = new MutationObserver((records) => {
+    records.forEach((record) => record.addedNodes.forEach((node) => {
+      if (node instanceof Element) prepare(node);
+    }));
+  });
+  mutations.observe(document.body, { childList: true, subtree: true });
+})();
+
 // ── UI Feedback Tool (Nhấn đồng thời Q + W + E để bật/tắt)
 (function initUIFeedback() {
   const debugFeedback = ['1', 'true', 'on'].includes(new URLSearchParams(location.search).get('feedback') || '');
@@ -96,4 +182,3 @@ document.querySelectorAll('.stat-num[data-target]').forEach(el => countIO.observ
     console.warn('[Capital] UI feedback failed to load', error);
   });
 })();
-
