@@ -5,7 +5,7 @@
     { id: 'reference-1847', label: 'Reference Floor Plate A', area: 1847, capacity: 184, workstations: 156, offices: 16, mdOffices: 7, meetingSeats: 60, zone: 'High zone', fitOut: 'Condition on request', view: 'Orientation on request', floorPlan: 'typical-high-zone' },
     { id: 'reference-1240', label: 'Reference Floor Plate B', area: 1240, capacity: 110, workstations: 100, offices: 10, mdOffices: 5, meetingSeats: 24, zone: 'Low zone', fitOut: 'Condition on request', view: 'Orientation on request', floorPlan: 'typical-low-zone' }
   ];
-  let selected = { tower: 'Tower 01', level: 'Level 24', spaceId: null, ...referenceSpaces[0] };
+  let selected = { tower: 'Tower 01', level: 'Level 24', spaceId: null, area: null, capacity: null, zone: 'High zone', status: 'Availability on request', view: 'Orientation on request', technical: false };
   let shortlist = [];
 
   const $ = (selector, root = document) => root.querySelector(selector);
@@ -33,7 +33,8 @@
   function selectFloor(button) {
     $$('[data-av-floor]').forEach((item) => item.classList.toggle('is-active', item === button));
     const isTechnical = button.dataset.technical === 'true';
-    selected = { tower: button.dataset.tower, level: button.dataset.level.replace('L', 'Level '), spaceId: null, area: null, capacity: null, zone: button.dataset.zone, status: isTechnical ? 'Technical / podium' : 'Availability on request', view: 'Orientation on request' };
+    const level = button.dataset.level.replace('L', 'Level ');
+    selected = { tower: button.dataset.tower, level, spaceId: `${button.dataset.tower}-${button.dataset.level}`, area: null, capacity: null, zone: button.dataset.zone, status: isTechnical ? 'Technical / podium' : 'Availability on request', view: 'Orientation on request', fitOut: 'Condition on request', technical: isTechnical };
     updateDetail();
     document.querySelector('#floor-detail')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
@@ -65,8 +66,11 @@
     if (plans) plans.href = `leasing.html?intent=technical-package&space=${query}`;
     const save = $('[data-av-save]');
     if (save) {
-      const saved = selected.spaceId && shortlist.some((item) => item.id === selected.spaceId);
-      save.textContent = saved ? '✓ Space saved' : '♡ Save Space';
+      const saved = selected.spaceId && shortlist.some((item) => (item.id || item.spaceId) === selected.spaceId);
+      const unavailable = selected.technical;
+      save.disabled = Boolean(unavailable);
+      save.textContent = unavailable ? 'Technical level' : saved ? '✓ Space saved' : '♡ Save Space';
+      save.setAttribute('aria-pressed', String(Boolean(saved)));
       save.classList.toggle('is-saved', Boolean(saved));
     }
   }
@@ -137,9 +141,11 @@
   function saveShortlist() { global.localStorage.setItem('capitalShortlist', JSON.stringify(shortlist)); }
 
   function toggleSave(space) {
-    const index = shortlist.findIndex((item) => item.id === space.id);
+    const id = space?.id || space?.spaceId;
+    if (!id || space.technical) return;
+    const index = shortlist.findIndex((item) => (item.id || item.spaceId) === id);
     if (index >= 0) shortlist.splice(index, 1);
-    else if (shortlist.length < 2) shortlist.push(space);
+    else if (shortlist.length < 2) shortlist.push({ ...space, id });
     saveShortlist();
     renderMatches(); updateDetail(); renderCompare();
   }
@@ -153,9 +159,18 @@
     empty.hidden = shortlist.length > 0;
     table.hidden = shortlist.length === 0;
     if (count) count.textContent = `${shortlist.length} saved`;
-    columns.innerHTML = shortlist.map((space) => `<div class="av-compare-column"><strong>${space.area.toLocaleString()} m²</strong><h3>${space.label}</h3><span>Capacity · ${space.capacity} people</span><span>Zone · ${space.zone}</span><span>Workstations · ${space.workstations}</span><span>Fit-out · ${space.fitOut}</span><span>View · ${space.view}</span></div>`).join('');
+    columns.innerHTML = shortlist.map((space) => {
+      const title = space.label || `${space.tower} · ${space.level}`;
+      const area = space.area ? `${space.area.toLocaleString()} m²` : 'Area on request';
+      const capacity = space.capacity ? `${space.capacity} people` : 'Planning package';
+      const workstations = space.workstations ? `${space.workstations}` : 'Confirmed with Leasing';
+      return `<div class="av-compare-column"><strong>${area}</strong><h3>${title}</h3><span>Capacity · ${capacity}</span><span>Zone · ${space.zone || 'On request'}</span><span>Workstations · ${workstations}</span><span>Fit-out · ${space.fitOut || 'Condition on request'}</span><span>View · ${space.view || 'Orientation on request'}</span><span>Status · ${space.status || 'Availability on request'}</span></div>`;
+    }).join('');
     const book = $('[data-av-compare-book]');
-    if (book) book.href = `leasing.html?intent=viewing&space=${encodeURIComponent(shortlist.map((space) => space.label).join(' + '))}`;
+    if (book) {
+      const context = shortlist.map((space) => space.label || `${space.tower} · ${space.level}`).join(' + ');
+      book.href = `leasing.html?intent=viewing&space=${encodeURIComponent(context)}`;
+    }
   }
 
   function initViews() {
@@ -198,7 +213,7 @@
       if (empty) empty.style.opacity = button.dataset.avPlan === 'empty' ? '1' : '0';
       if (testfit) testfit.style.opacity = button.dataset.avPlan === 'testfit' ? '1' : '0';
     }));
-    $('[data-av-save]')?.addEventListener('click', () => { if (selected.spaceId) toggleSave(selected); });
+    $('[data-av-save]')?.addEventListener('click', () => { if (selected.spaceId && !selected.technical) toggleSave(selected); });
     $('[data-av-clear]')?.addEventListener('click', () => { shortlist = []; saveShortlist(); renderMatches(); renderCompare(); updateDetail(); });
   }
 
