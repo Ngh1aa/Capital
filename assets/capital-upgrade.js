@@ -28,7 +28,7 @@
 
   function capacityFor(space) {
     return {
-      indicative: Math.max(1, Math.round(space.areaSqm / 10)),
+      indicative: space.planningHeadcount || Math.max(1, Math.round(space.areaSqm / 10)),
       rangeLow: Math.max(1, Math.floor(space.areaSqm / 12)),
       rangeHigh: Math.max(1, Math.floor(space.areaSqm / 10))
     };
@@ -83,15 +83,22 @@
 
   function availabilityRow(space) {
     const status = getStatus(space);
-    const link = status.actionable
-      ? `<a class="availability-link" href="space.html?id=${encodeURIComponent(space.id)}" data-space-link="${escapeHtml(space.id)}">View Reference →</a>`
-      : '<a class="availability-link" href="leasing.html?intent=office">Ask Leasing →</a>';
-    return `<article class="availability-row" data-status="${escapeHtml(space.status)}" data-space-id="${escapeHtml(space.id)}">
-      <div><h3 class="availability-space-title">${escapeHtml(space.tower)} · ${escapeHtml(space.floor)}</h3><span class="availability-space-suite">${escapeHtml(space.suite)}</span></div>
-      <div><span class="availability-meta-key">Area</span><span class="availability-area">${formatArea(space.areaSqm)}</span></div>
-      <div><span class="availability-meta-key">Availability</span><span class="availability-status">${escapeHtml(status.label)}</span></div>
-      <div><span class="availability-meta-key">Timing</span><span class="availability-meta-value">${escapeHtml(space.availableFrom)}</span></div>
-      ${link}
+    const detailHref = status.actionable ? `space.html?id=${encodeURIComponent(space.id)}` : 'availability.html';
+    const leasingHref = `leasing.html?intent=availability&space=${encodeURIComponent(space.id)}`;
+    const capacity = space.planningHeadcount || Math.max(1, Math.round(space.areaSqm / 10));
+    return `<article class="availability-card" data-status="${escapeHtml(space.status)}" data-space-id="${escapeHtml(space.id)}">
+      <div class="availability-plan">${planSvg(space)}</div>
+      <div class="availability-card-body">
+        <div class="availability-card-kicker"><span>${escapeHtml(space.floor)}</span><span>${escapeHtml(space.tower)}</span></div>
+        <div class="availability-card-area">${Number(space.areaSqm).toLocaleString('en-US')} <small>m²</small></div>
+        <span class="availability-card-status">${escapeHtml(status.label)}</span>
+        <div class="availability-card-stats">
+          <div><strong>${escapeHtml(capacity)}</strong><span>planning headcount</span></div>
+          <div><strong>${escapeHtml(space.workstations || '—')}</strong><span>workstations</span></div>
+          <div><strong>${escapeHtml(space.meetingSeats || '—')}</strong><span>meeting seats</span></div>
+        </div>
+        <div class="availability-card-actions"><a href="${detailHref}" data-space-link="${escapeHtml(space.id)}">Explore floor plate →</a><a href="${leasingHref}">Check live status</a></div>
+      </div>
     </article>`;
   }
 

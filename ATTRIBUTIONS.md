@@ -11,3 +11,6 @@ website:
 
 These materials remain the property of their respective owners and are used
 here only to demonstrate a non-commercial website redesign concept.
+
+The twin-tower image used in the homepage scale sequence is the public
+`Panorama-5.jpg` asset from the Capital Place homepage.

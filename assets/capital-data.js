@@ -21,7 +21,7 @@
   });
 
   const statusMeta = Object.freeze({
-    'on-request': { label: 'Confirmation Required', order: 1, actionable: true }
+    'on-request': { label: 'Live Status via Leasing', order: 1, actionable: true }
   });
 
   // Public reference floor plates only. Capital Place does not publish a live
@@ -33,14 +33,16 @@
       suite: 'Typical planning reference', areaSqm: 1847, minimumAreaSqm: 1847, divisible: false,
       status: 'on-request', availableFrom: 'Current availability confirmed by leasing',
       fitOutStatus: 'Condition on request', viewDirection: 'Orientation on request',
-      floorPlanId: 'typical-high-zone', featured: true
+      floorPlanId: 'typical-high-zone', planningHeadcount: 184, workstations: 156,
+      offices: 16, managingDirectorOffices: 7, meetingSeats: 60, featured: true
     },
     {
       id: 'reference-1240', tower: 'Both Towers', towerNumber: 0, floor: 'Reference Floor Plate B', floorNumber: 0,
       suite: 'Typical planning reference', areaSqm: 1240, minimumAreaSqm: 1240, divisible: false,
       status: 'on-request', availableFrom: 'Current availability confirmed by leasing',
       fitOutStatus: 'Condition on request', viewDirection: 'Orientation on request',
-      floorPlanId: 'typical-low-zone', featured: true
+      floorPlanId: 'typical-low-zone', planningHeadcount: 110, workstations: 100,
+      offices: 10, managingDirectorOffices: 5, meetingSeats: 24, featured: true
     }
   ]);
 

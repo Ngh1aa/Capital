@@ -9,8 +9,12 @@ Live site: https://ngh1aa.github.io/Capital/
 
 ## Experience scope
 
+- Image-led homepage narrative that establishes the twin-tower scale before
+  moving into workplace proof and leasing conversion.
+- Interactive workday gallery using official Capital Place photography.
 - Central building and contact data.
-- Two public reference floor plates with leasing-led availability confirmation.
+- Two visual public reference floor plates with official planning capacity and
+  leasing-led live-status confirmation.
 - Space Finder by area, headcount, move-in timing and tower.
 - Interactive stacking plan and mobile opportunity list.
 - Dynamic floor detail with illustrative plan, capacity and contextual CTAs.
@@ -49,6 +53,7 @@ legacy templates.
 ```bash
 node --check assets/capital-data.js
 node --check assets/capital-upgrade.js
+node --check assets/capital-vision.js
 node scripts/qa_capital.mjs
 ```
 
