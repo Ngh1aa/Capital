@@ -390,3 +390,9 @@ body:has(.loc-v2-hero) footer .ft-grid * {
 section#amenity-directory .am-dir-card .am-dir-copy {
   padding-inline-start: 16px !important;
 }
+
+
+/* Amenities Directory: subtle 1px card borders. */
+section#amenity-directory .am-dir-card {
+  border: 1px solid rgba(17, 17, 17, .14) !important;
+}
