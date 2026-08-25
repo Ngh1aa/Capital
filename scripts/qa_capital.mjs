@@ -11,7 +11,7 @@ const pages = [
 const failures = [];
 let assertions = 0;
 const assetVersion = 'vision-20260825-2';
-const whiteAssetVersion = 'white-20260825-2';
+const whiteAssetVersion = 'white-20260825-3';
 
 function assert(condition, message) {
   assertions += 1;
@@ -108,6 +108,7 @@ assert(publicAssets.includes('--cta-orange:#F15F22'), 'CTA orange token is missi
 assert(publicAssets.includes('--brand-cream:#F0EFE9'), 'official brand cream token is missing');
 assert((publicAssets.match(/#F15F22/g) || []).length === 1, 'orange must appear only once as the CTA token');
 assert(!/rgba\(241,95,34|#(?:F37024|A63C12)/i.test(publicAssets), 'orange remains outside the CTA token');
+assert(publicAssets.includes('body [hidden]{display:none!important}'), 'hidden interactive fields can be exposed by author CSS');
 assert(!/#(?:B89B5E|8F753F|D6C08A|C9A866|F5A623|FEF3C7|FCD34D|FACC15|F59E0B)/i.test(publicAssets), 'legacy yellow/gold color remains in public assets');
 assert(!publicAssets.includes('Fraunces'), 'legacy serif font remains in public assets');
 

@@ -24,6 +24,7 @@
 
 html{background:#fff}
 body,.vision-home,.vision-availability{background:#fff;color:var(--capital-black)}
+body [hidden]{display:none!important}
 .eyebrow,.vision-kicker,.ux-kicker,.page-header-eyebrow{color:var(--capital-black)}
 .section-title,.section-title em,h1 em,h2 em,h3 em,.hero-h1 .italic{color:inherit!important;font-style:normal!important;font-weight:inherit}
 .text-link,.vision-text-link.dark,.vision-text-link.dark:hover,.vision-text-link.dark:focus-visible{color:var(--capital-black);border-color:rgba(35,31,32,.34)}
