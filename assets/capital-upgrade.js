@@ -15,7 +15,7 @@
   }
 
   function formatArea(value) {
-    return `${Number(value).toLocaleString('en-US')} m²`;
+    return Number.isFinite(Number(value)) && Number(value) > 0 ? `${Number(value).toLocaleString('en-US')} m²` : 'Area on request';
   }
 
   function getSpace(id) {
@@ -27,6 +27,7 @@
   }
 
   function capacityFor(space) {
+    if (!Number.isFinite(Number(space.areaSqm)) || Number(space.areaSqm) <= 0) return { indicative: null, rangeLow: null, rangeHigh: null };
     return {
       indicative: space.planningHeadcount || Math.max(1, Math.round(space.areaSqm / 10)),
       rangeLow: Math.max(1, Math.floor(space.areaSqm / 12)),
@@ -367,12 +368,38 @@
     const page = $('[data-space-page]');
     if (!page) return;
     const id = params.get('id');
-    const space = getSpace(id);
+    let space = getSpace(id);
+    if (!space && params.get('tower') && params.get('floor')) {
+      const tower = ['Tower 01', 'Tower 02'].includes(params.get('tower')) ? params.get('tower') : null;
+      const floorMatch = params.get('floor').match(/^Level ([1-9]|[12][0-9]|3[0-7])$/);
+      if (tower && floorMatch) {
+        const floorNumber = Number(floorMatch[1]);
+        space = {
+          id: `selected-${tower.toLowerCase().replace(/ /g, '-')}-${floorNumber}`,
+          tower,
+          towerNumber: tower === 'Tower 01' ? 1 : 2,
+          floor: `Level ${floorNumber}`,
+          floorNumber,
+          suite: 'Selected floor · status on request',
+          areaSqm: null,
+          minimumAreaSqm: null,
+          divisible: null,
+          status: 'on-request',
+          availableFrom: 'Current availability confirmed by leasing',
+          fitOutStatus: 'Condition on request',
+          viewDirection: 'Orientation on request',
+          zone: floorNumber >= 21 ? 'High zone' : 'Low zone',
+          floorPlanId: 'selected-floor'
+        };
+      }
+    }
     const valid = $('[data-space-valid]', page);
     const invalid = $('[data-space-invalid]', page);
     if (!space) {
       if (valid) valid.hidden = true;
       if (invalid) invalid.hidden = false;
+      const invalidCta = $('[data-space-cta]');
+      if (invalidCta) invalidCta.hidden = true;
       document.title = 'Opportunity Not Available – Capital Place Hanoi';
       return;
     }
@@ -380,18 +407,28 @@
     const capacity = capacityFor(space);
     if (valid) valid.hidden = false;
     if (invalid) invalid.hidden = true;
+    const validCta = $('[data-space-cta]');
+    if (validCta) validCta.hidden = false;
     document.title = `${space.tower} ${space.floor} – Capital Place Hanoi`;
-    const description = `${formatArea(space.areaSqm)} office opportunity at Capital Place Hanoi. ${status.label}; current terms confirmed by leasing.`;
+    const description = `${space.tower} ${space.floor} office opportunity at Capital Place Hanoi. Area and current terms confirmed by leasing.`;
     $('meta[name="description"]')?.setAttribute('content', description);
+    page.dataset.spaceId = space.id;
     $$('[data-space-field="tower-floor"]', page).forEach((element) => { element.textContent = `${space.tower} · ${space.floor}`; });
-    $$('[data-space-field="area"]', page).forEach((element) => { element.textContent = formatArea(space.areaSqm); });
+    $$('[data-space-field="tower"]', page).forEach((element) => { element.textContent = space.tower; });
+    $$('[data-space-field="floor"]', page).forEach((element) => { element.textContent = space.floor; });
+    $$('[data-space-field="area"]', page).forEach((element) => { element.textContent = formatArea(space.areaSqm); if (Number.isFinite(Number(space.areaSqm))) element.dataset.area = String(space.areaSqm); });
     $$('[data-space-field="status"]', page).forEach((element) => { element.textContent = status.label; });
     $$('[data-space-field="timing"]', page).forEach((element) => { element.textContent = space.availableFrom; });
     $$('[data-space-field="fitout"]', page).forEach((element) => { element.textContent = space.fitOutStatus; });
-    $$('[data-space-field="divisibility"]', page).forEach((element) => { element.textContent = space.divisible ? `Subject to confirmation · from ${formatArea(space.minimumAreaSqm)}` : 'Full floor'; });
+    $$('[data-space-field="divisibility"]', page).forEach((element) => { element.textContent = space.divisible === null ? 'Divisibility on request' : space.divisible ? `Subject to confirmation · from ${formatArea(space.minimumAreaSqm)}` : 'Full floor'; });
     $$('[data-space-field="view"]', page).forEach((element) => { element.textContent = space.viewDirection; });
-    $$('[data-space-field="capacity"]', page).forEach((element) => { element.textContent = `~${capacity.indicative}`; });
-    $$('[data-space-field="capacity-range"]', page).forEach((element) => { element.textContent = `${capacity.rangeLow}–${capacity.rangeHigh}`; });
+    $$('[data-space-field="zone"]', page).forEach((element) => { element.textContent = space.zone || 'Zone on request'; });
+    $$('[data-space-field="capacity"]', page).forEach((element) => { element.textContent = capacity.indicative ? `~${capacity.indicative}` : 'Planning reference'; });
+    $$('[data-space-field="capacity-range"]', page).forEach((element) => { element.textContent = capacity.rangeLow ? `${capacity.rangeLow}–${capacity.rangeHigh}` : 'Planning reference'; });
+    const stickyTitle = $('[data-space-cta-title]');
+    const stickyContext = $('[data-space-cta-context]');
+    if (stickyTitle) stickyTitle.textContent = `${space.tower} · ${space.floor}`;
+    if (stickyContext) stickyContext.textContent = `${formatArea(space.areaSqm)} · ${capacity.indicative ? `${capacity.indicative} people reference` : 'capacity on request'} · ${status.label}`;
     const plan = $('[data-space-plan]', page);
     if (plan) plan.innerHTML = planSvg(space);
     $$('[data-space-action="viewing"]', page).forEach((link) => {
@@ -409,6 +446,8 @@
       link.href = `leasing.html?intent=technical-package&space=${encodeURIComponent(space.id)}`;
       if (!status.actionable) link.hidden = true;
     });
+    const stickyBook = $('[data-space-cta-book]');
+    if (stickyBook) stickyBook.href = `leasing.html?intent=viewing&space=${encodeURIComponent(space.id)}`;
     track('view_space', { spaceId: space.id, status: space.status, areaSqm: space.areaSqm });
   }
 
@@ -428,7 +467,8 @@
     const success = $('[data-form-success]');
     const supportedIntents = ['office', 'availability', 'proposal', 'viewing', 'future-availability', 'retail', 'technical-package'];
     let intent = supportedIntents.includes(params.get('intent')) ? params.get('intent') : 'office';
-    const space = getSpace(params.get('space'));
+    const spaceParam = params.get('space');
+    const space = getSpace(spaceParam);
     const reference = params.get('reference');
 
     function updateIntent(nextIntent) {
@@ -469,17 +509,25 @@
         'technical-package': 'Request Technical Package'
       };
       if (title) title.textContent = labels[intent] || labels.office;
+      const submitLabel = $('[data-form-submit-label]');
+      const submitLabels = { office: 'Prepare Enquiry', availability: 'Ask About Availability', proposal: 'Request Proposal', viewing: 'Book Private Viewing', 'future-availability': 'Register Interest', retail: 'Start Retail Enquiry', 'technical-package': 'Request Technical Package' };
+      if (submitLabel) submitLabel.textContent = submitLabels[intent] || submitLabels.office;
     }
 
     intentButtons.forEach((button) => button.addEventListener('click', () => updateIntent(button.dataset.intent)));
     updateIntent(intent);
 
-    if (space || reference) {
-      const value = space ? `${space.tower} · ${space.floor} · ${formatArea(space.areaSqm)}` : reference;
+    if (space || spaceParam || reference) {
+      const value = space ? `${space.tower} · ${space.floor} · ${formatArea(space.areaSqm)}` : (spaceParam || reference);
       contextInput.value = value;
       if (contextPanel) {
         contextPanel.hidden = false;
+        contextPanel.classList.add('is-visible');
         $('[data-leasing-context-value]', contextPanel).textContent = value;
+        $('[data-leasing-selected-area]', contextPanel).textContent = space ? formatArea(space.areaSqm) : 'Area on request';
+        $('[data-leasing-selected-capacity]', contextPanel).textContent = space?.planningHeadcount ? `~${space.planningHeadcount} people` : 'Planning reference';
+        $('[data-leasing-selected-view]', contextPanel).textContent = space?.viewDirection || 'Orientation on request';
+        $('[data-leasing-selected-status]', contextPanel).textContent = space ? getStatus(space).label : 'Current status via Leasing';
       }
     }
 

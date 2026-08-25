@@ -64,6 +64,12 @@
     const query = encodeURIComponent(`${selected.tower} · ${selected.level}${selected.area ? ` · ${selected.area.toLocaleString()} m²` : ''}`);
     if (book) book.href = `leasing.html?intent=viewing&space=${query}`;
     if (plans) plans.href = `leasing.html?intent=technical-package&space=${query}`;
+    const detail = $('[data-av-space-detail]');
+    if (detail) {
+      detail.href = selected.spaceId && selected.spaceId.startsWith('reference-')
+        ? `space.html?id=${encodeURIComponent(selected.spaceId)}`
+        : `space.html?tower=${encodeURIComponent(selected.tower)}&floor=${encodeURIComponent(selected.level)}`;
+    }
     const save = $('[data-av-save]');
     if (save) {
       const saved = selected.spaceId && shortlist.some((item) => (item.id || item.spaceId) === selected.spaceId);
