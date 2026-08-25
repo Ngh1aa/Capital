@@ -17,11 +17,11 @@
       ? '<path d="M90 104H222V142H478V104H610M90 346H222V308H478V346H610" />'
       : '<path d="M66 92H214V130H486V92H634M66 358H214V320H486V358H634" />';
     return `<svg viewBox="0 0 700 450" role="img" aria-label="Illustrative ${escapeHtml(area(space.areaSqm))} square metre planning reference">
-      <g fill="none" stroke="#F15F22" stroke-width="1.5"> <path d="${outer}" />${wing}<path d="${inner}" fill="#F0EFE9" />
+      <g fill="none" stroke="#231F20" stroke-width="1.5"> <path d="${outer}" />${wing}<path d="${inner}" fill="#F0EFE9" />
       <path d="M270 174h42v44h-42zM329 174h42v44h-42zM388 174h42v44h-42zM278 236h64v48h-64zM358 236h64v48h-64z" />
       <path d="M92 126v190M608 126v190M112 112h94M494 112h94M112 338h94M494 338h94" stroke-dasharray="5 7" stroke-opacity=".58" /></g>
-      <text x="350" y="230" text-anchor="middle" fill="#A63C12" font-size="11" letter-spacing="4" font-family="DM Sans, sans-serif">CORE</text>
-      <text x="350" y="30" text-anchor="middle" fill="#A63C12" font-size="9" letter-spacing="3" font-family="DM Sans, sans-serif">NORTH</text>
+      <text x="350" y="230" text-anchor="middle" fill="#231F20" font-size="11" letter-spacing="4" font-family="DM Sans, sans-serif">CORE</text>
+      <text x="350" y="30" text-anchor="middle" fill="#231F20" font-size="9" letter-spacing="3" font-family="DM Sans, sans-serif">NORTH</text>
     </svg>`;
   }
 

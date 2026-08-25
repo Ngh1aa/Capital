@@ -11,6 +11,7 @@ const pages = [
 const failures = [];
 let assertions = 0;
 const assetVersion = 'vision-20260825-2';
+const whiteAssetVersion = 'white-20260825-1';
 
 function assert(condition, message) {
   assertions += 1;
@@ -40,6 +41,7 @@ for (const page of pages) {
   assert((html.match(/<nav\b/g) || []).length === 1, `${page}: expected one navigation landmark`);
   assert((html.match(/<footer\b/g) || []).length === 1, `${page}: expected one footer landmark`);
   assert(html.includes(`assets/capital-upgrade.css?v=${assetVersion}`), `${page}: missing upgrade stylesheet`);
+  assert(html.includes(`assets/capital-white.css?v=${whiteAssetVersion}`), `${page}: missing white-first stylesheet`);
   assert(html.includes(`assets/capital-data.js?v=${assetVersion}`), `${page}: missing central data module`);
   assert(html.includes(`assets/capital-upgrade.js?v=${assetVersion}`), `${page}: missing interaction module`);
 
@@ -73,9 +75,9 @@ assert(!allHtml.toLowerCase().includes('unsplash'), 'third-party Unsplash asset 
 assert(!allHtml.includes('2015'), 'obsolete opening date remains in HTML');
 
 const requiredHooks = {
-  'index.html': ['availability.html', 'data-space-finder', 'data-floorplate-showcase', 'assets/images/official/'],
-  'office.html': ['data-space-finder', 'office-specifications', 'stack-shell'],
-  'availability.html': ['data-space-finder', 'data-availability-list', 'current-opportunities'],
+  'index.html': ['availability.html', 'data-space-finder', 'data-floorplate-showcase', 'assets/images/official/', 'Explore the<br />whole building.'],
+  'office.html': ['data-space-finder', 'office-specifications', 'stack-shell', 'office-status-callout', 'Check Today’s Floors'],
+  'availability.html': ['data-space-finder', 'data-availability-list', 'current-opportunities', 'building-status', 'Current vacant floors', 'Detailed floor plans'],
   'space.html': ['data-space-page', 'data-space-plan', 'data-space-action="viewing"'],
   'leasing.html': ['data-leasing-form', 'name="requiredArea"', 'name="targetMoveIn"', 'name="preferredDate"', 'name="brand"', 'privacy.html'],
   'visit.html': ['visitor-guide', 'visit-map', 'Reception'],
@@ -98,16 +100,18 @@ assert((dataJs.match(/id: 'reference-/g) || []).length === 2, 'capital-data.js: 
 assert(dataJs.includes("availabilityMode: 'leasing-confirmation'"), 'capital-data.js: leasing-confirmation mode missing');
 
 const publicAssetFiles = [
-  'assets/style.css', 'assets/capital-upgrade.css', 'assets/capital-vision.css', 'assets/main.js',
+  'assets/style.css', 'assets/capital-upgrade.css', 'assets/capital-vision.css', 'assets/capital-white.css', 'assets/main.js',
   'assets/capital-data.js', 'assets/capital-upgrade.js', 'assets/capital-vision.js', 'assets/ui-feedback.js'
 ];
 const publicAssets = publicAssetFiles.map((file) => fs.readFileSync(path.join(root, file), 'utf8')).join('\n');
-assert(publicAssets.includes('--brand-orange:#F15F22'), 'official brand orange token is missing');
+assert(publicAssets.includes('--cta-orange:#F15F22'), 'CTA orange token is missing');
 assert(publicAssets.includes('--brand-cream:#F0EFE9'), 'official brand cream token is missing');
+assert((publicAssets.match(/#F15F22/g) || []).length === 1, 'orange must appear only once as the CTA token');
+assert(!/rgba\(241,95,34|#(?:F37024|A63C12)/i.test(publicAssets), 'orange remains outside the CTA token');
 assert(!/#(?:B89B5E|8F753F|D6C08A|C9A866|F5A623|FEF3C7|FCD34D|FACC15|F59E0B)/i.test(publicAssets), 'legacy yellow/gold color remains in public assets');
 assert(!publicAssets.includes('Fraunces'), 'legacy serif font remains in public assets');
 
-for (const cssFile of ['assets/style.css', 'assets/capital-upgrade.css', 'assets/capital-vision.css']) {
+for (const cssFile of ['assets/style.css', 'assets/capital-upgrade.css', 'assets/capital-vision.css', 'assets/capital-white.css']) {
   const css = fs.readFileSync(path.join(root, cssFile), 'utf8');
   assert((css.match(/{/g) || []).length === (css.match(/}/g) || []).length, `${cssFile}: unbalanced braces`);
 }

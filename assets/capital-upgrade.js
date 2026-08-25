@@ -350,16 +350,16 @@
   function planSvg(space) {
     const label = `${space.tower} · ${space.floor}`;
     return `<svg viewBox="0 0 760 500" role="img" aria-label="Illustrative planning diagram for ${escapeHtml(label)}">
-      <rect x="35" y="35" width="690" height="430" fill="none" stroke="#F15F22" stroke-width="2"/>
-      <rect x="285" y="155" width="190" height="190" fill="#D9D9D9" stroke="#F15F22" stroke-width="1.5"/>
-      <rect x="310" y="180" width="42" height="55" fill="none" stroke="#F15F22"/><rect x="360" y="180" width="42" height="55" fill="none" stroke="#F15F22"/><rect x="410" y="180" width="42" height="55" fill="none" stroke="#F15F22"/>
-      <rect x="310" y="250" width="60" height="62" fill="none" stroke="#F15F22"/><rect x="390" y="250" width="62" height="62" fill="none" stroke="#F15F22"/>
-      <path d="M55 70H265V135H495V70H705M55 430H270V365H490V430H705" fill="none" stroke="#F15F22" stroke-width="1" stroke-dasharray="6 7"/>
-      <path d="M70 90v320M690 90v320" stroke="#F15F22" stroke-width="1" stroke-dasharray="6 7"/>
-      <text x="380" y="252" text-anchor="middle" fill="#F15F22" font-size="12" letter-spacing="4" font-family="sans-serif">CORE</text>
-      <text x="380" y="22" text-anchor="middle" fill="#F15F22" font-size="11" letter-spacing="3" font-family="sans-serif">N</text>
-      <text x="380" y="488" text-anchor="middle" fill="#F15F22" font-size="10" letter-spacing="2" font-family="sans-serif">PLANNING DIAGRAM · NOT FOR CONSTRUCTION</text>
-      <line x1="650" y1="70" x2="650" y2="25" stroke="#F15F22"/><polygon points="650,16 644,29 656,29" fill="#F15F22"/>
+      <rect x="35" y="35" width="690" height="430" fill="none" stroke="#231F20" stroke-width="2"/>
+      <rect x="285" y="155" width="190" height="190" fill="#D9D9D9" stroke="#231F20" stroke-width="1.5"/>
+      <rect x="310" y="180" width="42" height="55" fill="none" stroke="#231F20"/><rect x="360" y="180" width="42" height="55" fill="none" stroke="#231F20"/><rect x="410" y="180" width="42" height="55" fill="none" stroke="#231F20"/>
+      <rect x="310" y="250" width="60" height="62" fill="none" stroke="#231F20"/><rect x="390" y="250" width="62" height="62" fill="none" stroke="#231F20"/>
+      <path d="M55 70H265V135H495V70H705M55 430H270V365H490V430H705" fill="none" stroke="#231F20" stroke-width="1" stroke-dasharray="6 7"/>
+      <path d="M70 90v320M690 90v320" stroke="#231F20" stroke-width="1" stroke-dasharray="6 7"/>
+      <text x="380" y="252" text-anchor="middle" fill="#231F20" font-size="12" letter-spacing="4" font-family="sans-serif">CORE</text>
+      <text x="380" y="22" text-anchor="middle" fill="#231F20" font-size="11" letter-spacing="3" font-family="sans-serif">N</text>
+      <text x="380" y="488" text-anchor="middle" fill="#231F20" font-size="10" letter-spacing="2" font-family="sans-serif">PLANNING DIAGRAM · NOT FOR CONSTRUCTION</text>
+      <line x1="650" y1="70" x2="650" y2="25" stroke="#231F20"/><polygon points="650,16 644,29 656,29" fill="#231F20"/>
     </svg>`;
   }
 

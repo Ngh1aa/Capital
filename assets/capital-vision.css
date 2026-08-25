@@ -100,7 +100,7 @@
 .workday-head{display:grid;gap:2rem;align-items:end;margin-bottom:clamp(2.5rem,5vw,4rem)}
 .workday-head h2{color:var(--brand-white);font-size:clamp(2.8rem,6vw,6rem);font-weight:300;line-height:.9;margin-top:1rem}
 .workday-head>p{max-width:510px;color:rgba(255,255,255,.56);font:400 14px/1.75 var(--sans)}
-.workday-gallery{display:grid;min-height:720px;border-top:1px solid rgba(241,95,34,.28)}
+.workday-gallery{display:grid;min-height:720px;border-top:1px solid rgba(35,31,32,.28)}
 .workday-main{position:relative;min-height:560px;overflow:hidden;background:var(--brand-charcoal)}
 .workday-main>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;transform:scale(1.01);transition:opacity .35s,transform .8s cubic-bezier(.16,1,.3,1)}
 .workday-main>img.is-changing{opacity:.18;transform:scale(1.04)}
@@ -156,13 +156,13 @@
 .availability-command-copy>p:not(.vision-kicker){max-width:430px;color:rgba(35,31,32,.62);font:400 14px/1.75 var(--sans);margin-top:1.4rem}
 .availability-trust{display:flex;flex-direction:column;align-items:flex-start;margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--brand-line)}
 .availability-trust strong{color:var(--brand-black);font:500 12px/1.4 var(--sans);margin-bottom:.7rem}
-.availability-trust a{color:var(--brand-orange-ink);font:500 11px/1.8 var(--sans);border-bottom:1px solid rgba(241,95,34,.25)}
+.availability-trust a{color:var(--brand-orange-ink);font:500 11px/1.8 var(--sans);border-bottom:1px solid rgba(35,31,32,.25)}
 .vision-finder-shell{background:var(--brand-white)!important;border:1px solid var(--brand-line)!important}
 .vision-finder-shell .finder-progress{background:var(--brand-line)}
 .vision-finder-shell .finder-progress span{background:var(--brand-cream);color:rgba(35,31,32,.52)}
 .vision-finder-shell .finder-progress span.active{background:var(--brand-orange);color:var(--brand-black)}
 .vision-finder-shell .finder-choice{border-color:var(--brand-line);color:var(--brand-black)}
-.vision-finder-shell .finder-choice.active,.vision-finder-shell .finder-choice:hover{border-color:var(--brand-orange);background:rgba(241,95,34,.08);color:var(--brand-black)}
+.vision-finder-shell .finder-choice.active,.vision-finder-shell .finder-choice:hover{border-color:var(--brand-orange);background:rgba(35,31,32,.08);color:var(--brand-black)}
 .vision-finder-shell .ux-field label,.vision-finder-shell .finder-assumption{color:rgba(35,31,32,.56)}
 .vision-finder-shell .ux-field input,.vision-finder-shell .ux-field select{background:var(--brand-white);border-color:var(--brand-line);color:var(--brand-black)}
 .vision-finder-shell .finder-estimate{color:var(--brand-black);border-color:var(--brand-line)}
