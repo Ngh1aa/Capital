@@ -45,6 +45,7 @@ for (const page of pages) {
   assert(html.includes(`assets/capital-upgrade.css?v=${assetVersion}`), `${page}: missing upgrade stylesheet`);
   assert(html.includes(`assets/capital-white.css?v=${whiteAssetVersion}`), `${page}: missing white-first stylesheet`);
   if (visualPages.has(page)) assert(html.includes(`assets/capital-visual.css?v=${visualAssetVersion}`), `${page}: missing visual-density stylesheet`);
+  assert(html.includes(`assets/main.js?v=${visualAssetVersion}`), `${page}: missing current main interaction bundle`);
   assert(html.includes(`assets/capital-data.js?v=${assetVersion}`), `${page}: missing central data module`);
   assert(html.includes(`assets/capital-upgrade.js?v=${assetVersion}`), `${page}: missing interaction module`);
 
