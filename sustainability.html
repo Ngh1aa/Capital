@@ -1,269 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sustainability – Capital Place Hanoi</title>
-  <meta name="description" content="Capital Place holds dual LEED certifications: Platinum for Operations and Gold for Building Design & Construction." />
+  <meta name="description" content="Capital Place combines dual LEED credentials, efficient building systems, healthier workplace design and everyday community action." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/style.css" />
-  <style>
-.sus-hero .page-header-media{object-position:center 34%}@media(min-width:900px){.sus-hero>.container{transform:translateX(-200px)}}
-.sus-certifications,.sus-performance,.sus-technical,.sus-water,.sus-indoor,.sus-future,.sus-human{padding:clamp(5.5rem,11vw,9rem) 0;border-top:1px solid var(--accent-border)}
-.sus-certifications{background:var(--bg)}
-.sus-intro{max-width:660px;color:rgba(240,239,233,.64);font-size:15px;line-height:1.8;margin-top:1.5rem}
-.sus-cert-grid{display:grid;gap:1px;background:rgba(35,31,32,.24);margin-top:3.5rem}
-@media(min-width:768px){.sus-cert-grid{grid-template-columns:1fr 1fr}}
-.sus-cert-card{position:relative;min-height:360px;padding:clamp(2.5rem,6vw,5rem);background:linear-gradient(145deg,rgba(35,31,32,.07),var(--graphite));overflow:hidden;transition:background .35s,transform .35s}
-.sus-cert-card::after{content:'';position:absolute;inset:auto -14% -38% 30%;height:72%;background:radial-gradient(ellipse,rgba(35,31,32,.13),transparent 64%);transform:rotate(-12deg);transition:transform .45s,opacity .45s;pointer-events:none}
-.sus-cert-card:hover,.sus-cert-card:focus-visible{background:linear-gradient(145deg,rgba(35,31,32,.10),var(--graphite-soft));transform:translateY(-3px)}
-.sus-cert-card:hover::after,.sus-cert-card:focus-visible::after{transform:rotate(-12deg) translate(-8px,-10px);opacity:1.35}
-.sus-cert-card:focus-visible{outline:1px solid var(--accent);outline-offset:-6px}
-.sus-cert-logo{position:relative;z-index:1;width:88px;height:88px;object-fit:contain;display:block;margin-bottom:1.6rem}
-.sus-cert-kicker{position:relative;z-index:1;color:var(--brand-orange-soft);font:10px var(--sans);letter-spacing:.38em;text-transform:uppercase}
-.sus-cert-mark{position:relative;z-index:1;font-family:var(--serif);font-size:clamp(3.8rem,8vw,7rem);line-height:.82;font-weight:300;color:var(--warm-ivory);margin:2.4rem 0 1.4rem}
-.sus-cert-mark em{display:block;color:var(--accent);font-style:italic}
-.sus-cert-title{position:relative;z-index:1;color:var(--warm-ivory);font:11px var(--sans);letter-spacing:.2em;text-transform:uppercase;line-height:1.55;max-width:260px}
-.sus-cert-detail{position:relative;z-index:1;color:rgba(240,239,233,.58);font-size:13px;line-height:1.7;max-width:330px;margin-top:1.3rem}
-.sus-performance{background:linear-gradient(135deg,rgba(35,31,32,.05),transparent 55%) var(--bg2)}
-.sus-section-head{max-width:700px}
-.sus-section-head p{max-width:600px;color:rgba(240,239,233,.58);font-size:14px;line-height:1.8;margin-top:1.25rem}
-.sus-metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(35,31,32,.2);margin-top:3rem}
-@media(min-width:900px){.sus-metric-grid{grid-template-columns:repeat(4,1fr)}}
-.sus-metric{background:var(--bg2);padding:2rem 1.5rem;min-height:210px;display:flex;flex-direction:column;justify-content:space-between}
-.sus-metric-type{color:var(--brand-orange-soft);font:9px var(--sans);letter-spacing:.32em;text-transform:uppercase}
-.sus-metric-value{color:var(--accent);font-family:var(--serif);font-size:clamp(2.1rem,4vw,3.8rem);font-weight:300;line-height:.9;margin:2rem 0 .9rem}
-.sus-metric-note{color:rgba(240,239,233,.54);font-size:12px;line-height:1.55}
-.sus-technical{background:var(--bg)}
-.sus-tech-grid{display:grid;gap:1px;background:rgba(35,31,32,.2);margin-top:3rem}
-@media(min-width:768px){.sus-tech-grid{grid-template-columns:1fr 1fr}}
-@media(min-width:1100px){.sus-tech-grid{grid-template-columns:repeat(3,1fr)}}
-.sus-tech-card{background:var(--card);min-height:230px;transition:background .25s}
-.sus-tech-card:hover,.sus-tech-card:focus-within{background:var(--graphite-soft)}
-.sus-tech-card summary{list-style:none;cursor:pointer;padding:1.5rem;display:flex;align-items:flex-start;gap:.9rem;color:var(--warm-ivory)}
-.sus-tech-card summary::-webkit-details-marker{display:none}
-.sus-tech-number{color:var(--accent);font:10px var(--sans);letter-spacing:.2em}
-.sus-tech-name{font:11px var(--sans);letter-spacing:.18em;text-transform:uppercase;line-height:1.45;flex:1}
-.sus-tech-toggle{color:var(--accent-soft);font-size:1.25rem;line-height:1;transition:transform .25s}
-.sus-tech-card[open] .sus-tech-toggle{transform:rotate(45deg)}
-.sus-tech-body{padding:0 1.5rem 1.6rem 3.15rem}
-.sus-tech-body p{color:rgba(240,239,233,.54);font-size:13px;line-height:1.7}
-.sus-tech-stat{display:block;color:var(--accent);font-family:var(--serif);font-size:2rem;font-weight:300;line-height:1;margin-top:1.1rem}
-.sus-tech-stat small{display:block;color:var(--brand-orange-soft);font:9px var(--sans);letter-spacing:.2em;text-transform:uppercase;margin-top:.55rem}
-.sus-water{background:var(--bg2)}
-.sus-water-grid,.sus-indoor-grid,.sus-future-grid{display:grid;gap:1rem;margin-top:3rem}
-@media(min-width:768px){.sus-water-grid,.sus-indoor-grid,.sus-future-grid{grid-template-columns:repeat(3,1fr)}}
-.sus-info-card{background:var(--card);border:1px solid rgba(35,31,32,.16);padding:2rem;min-height:245px}
-.sus-info-card h3{font-family:var(--serif);font-size:1.65rem;font-weight:300;color:var(--warm-ivory);line-height:.98;margin:1.6rem 0 .9rem}
-.sus-info-card p{color:rgba(240,239,233,.52);font-size:13px;line-height:1.7}
-.sus-info-stat{color:var(--accent);font:2.2rem var(--serif);font-weight:300;display:block}
-.sus-indoor{background:var(--bg)}
-.sus-indoor-card{background:linear-gradient(145deg,rgba(35,31,32,.08),var(--card));border-top:1px solid var(--accent);padding:2rem;min-height:190px}
-.sus-indoor-card h3{font:11px var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--brand-orange-soft);margin:1rem 0}
-.sus-indoor-card p{color:rgba(240,239,233,.56);font-size:14px;line-height:1.7}
-.sus-visual-section{display:grid;min-height:clamp(500px,58vw,720px);background:var(--graphite);border-top:1px solid var(--accent-border)}
-@media(min-width:900px){.sus-visual-section{grid-template-columns:1fr 1fr}}
-.sus-visual-media{min-height:360px;overflow:hidden}.sus-visual-media img{width:100%;height:100%;min-height:360px;object-fit:cover;display:block;transition:transform .8s ease}.sus-visual-section:hover .sus-visual-media img{transform:scale(1.025)}
-.sus-visual-copy{padding:clamp(3rem,8vw,8rem) clamp(1.5rem,7vw,8rem);align-self:center}.sus-visual-copy h2{font-family:var(--serif);font-size:clamp(3rem,6vw,6.2rem);font-weight:300;color:var(--warm-ivory);line-height:.88;margin:1rem 0 1.5rem}.sus-visual-copy h2 em{color:var(--accent);font-style:italic}.sus-visual-copy p{color:rgba(240,239,233,.62);font-size:15px;line-height:1.8;max-width:440px}
-.sus-waste-copy{max-width:470px}.sus-waste-words{display:flex;flex-wrap:wrap;gap:.55rem 1.2rem;margin:2.4rem 0 0;padding:0;list-style:none;color:var(--accent);font:clamp(1.6rem,3vw,2.7rem) var(--serif);font-weight:300}.sus-waste-words li:nth-child(2){color:var(--brand-orange-soft)}.sus-waste-words li:nth-child(3){color:var(--stone)}
-.sus-future{background:linear-gradient(145deg,rgba(35,31,32,.12),var(--capital-black));border-top-color:rgba(35,31,32,.28)}
-.sus-future .sus-section-head p{color:rgba(240,239,233,.68)}
-.sus-future .sus-info-card{background:rgba(35,31,32,.34);border-color:rgba(35,31,32,.26)}
-.sus-future .sus-info-card h3{font-size:1.45rem;margin-top:1rem}
-.sus-human{background:var(--bg2)}
-.sus-cta{padding:clamp(5rem,10vw,8rem) 0;background:var(--capital-black);border-top:1px solid var(--accent-border);text-align:center}
-.sus-cta h2{font-family:var(--serif);font-size:clamp(2.8rem,6vw,5.8rem);font-weight:300;line-height:.9;color:var(--warm-ivory)}
-.sus-cta h2 em{color:var(--accent);font-style:italic}.sus-cta p{color:rgba(240,239,233,.58);font-size:15px;line-height:1.7;margin:1.5rem auto 2rem;max-width:480px}.sus-cta-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:1rem}
-@media(max-width:640px){.sus-metric{min-height:180px;padding:1.25rem}.sus-metric-value{font-size:2rem}.sus-cert-card{min-height:320px}.sus-tech-card summary{padding:1.25rem}.sus-tech-body{padding-left:2.8rem}.sus-visual-copy{padding:3.5rem 1.5rem}.sus-waste-words{font-size:1.8rem}}
-@media(prefers-reduced-motion:reduce){.sus-cert-card,.sus-tech-toggle,.sus-visual-media img{transition:none}}
-</style>
-<meta name="theme-color" content="#FFFFFF" />
-  <meta property="og:site_name" content="Capital Place Hanoi" />
   <link rel="stylesheet" href="assets/capital-upgrade.css?v=vision-20260825-2" />
   <link rel="stylesheet" href="assets/capital-white.css?v=white-20260825-3" />
   <link rel="stylesheet" href="assets/capital-visual.css?v=visual-20260825-4" />
+  <link rel="stylesheet" href="assets/sustainability-cinematic.css?v=sustainability-20260825-1" />
+  <meta name="theme-color" content="#111111" />
+  <meta property="og:site_name" content="Capital Place Hanoi" />
 </head>
-<body>
-<nav id="main-nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo" aria-label="Capital Place Hanoi home">
-      <img class="official-logo" src="assets/brand/capital-place-logo.svg" alt="Capital Place Hanoi" width="89" height="75" />
-    </a>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="location.html">Location</a>
-      <a href="office.html">Office</a>
-      <a href="sustainability.html">Sustainability</a>
-      <a href="amenities.html">Amenities</a>
-      <div class="nav-sep"></div>
-      <div class="lang-btns">
-        <button type="button" class="active" onclick="setLang('EN')">EN</button>
-        <span class="lang-sep2">|</span>
-        <button type="button" onclick="setLang('VI')">VI</button>
-      </div>
-      <a href="availability.html" class="btn-enquire">Find a Space</a>
-    </div>
-    <button type="button" class="nav-ham" id="hamburger" aria-label="Toggle menu" aria-controls="mob-menu" aria-expanded="false">
-      <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
-      <svg id="icon-close" style="display:none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-    </button>
-  </div>
-  <div id="mob-menu">
-    <a href="index.html" onclick="closeMob()">Home</a>
-    <a href="location.html" onclick="closeMob()">Location</a>
-    <a href="office.html" onclick="closeMob()">Office</a>
-    <a href="sustainability.html" onclick="closeMob()">Sustainability</a>
-    <a href="amenities.html" onclick="closeMob()">Amenities</a>
-    <a href="availability.html" onclick="closeMob()">Availability</a>
-    <a href="leasing.html" class="mob-enq" onclick="closeMob()">Leasing Enquiry</a>
-  </div>
-</nav>
+<body class="ss-page">
+<nav id="main-nav"><div class="nav-inner"><a href="index.html" class="nav-logo" aria-label="Capital Place Hanoi home"><img class="official-logo" src="assets/brand/capital-place-logo.svg" alt="Capital Place Hanoi" width="89" height="75" /></a><div class="nav-links"><a href="index.html">Home</a><a href="location.html">Location</a><a href="office.html">Office</a><a href="sustainability.html">Sustainability</a><a href="amenities.html">Amenities</a><div class="nav-sep"></div><div class="lang-btns"><button type="button" class="active" onclick="setLang('EN')">EN</button><span class="lang-sep2">|</span><button type="button" onclick="setLang('VI')">VI</button></div><a href="availability.html" class="btn-enquire">Find a Space</a></div><button type="button" class="nav-ham" id="hamburger" aria-label="Toggle menu" aria-controls="mob-menu" aria-expanded="false"><svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg><svg id="icon-close" style="display:none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button></div><div id="mob-menu"><a href="index.html" onclick="closeMob()">Home</a><a href="location.html" onclick="closeMob()">Location</a><a href="office.html" onclick="closeMob()">Office</a><a href="sustainability.html" onclick="closeMob()">Sustainability</a><a href="amenities.html" onclick="closeMob()">Amenities</a><a href="availability.html" onclick="closeMob()">Availability</a><a href="leasing.html" class="mob-enq" onclick="closeMob()">Leasing Enquiry</a></div></nav>
 <main id="main-content">
-<div class="page-header sus-hero" style="--hero-position:center 34%">
-  <img class="page-header-media" src="assets/images/official/sustainability-hero.jpg" alt="Sustainability and community at Capital Place" fetchpriority="high" />
-  <div class="container">
-    <p class="page-header-eyebrow">Sustainability</p>
-    <h1>Sustainability<br><em>as a Standard</em></h1>
-    <p>A healthier, more responsible workplace designed for long-term performance.</p>
-  </div>
-</div>
-<section class="sus-certifications">
-  <div class="container">
-    <div class="sus-section-head">
-      <p class="eyebrow">Dual LEED Certified</p>
-      <h2 class="section-title">Certified<br><em>for Performance</em></h2>
-      <p class="sus-intro">Capital Place is the first building in Hanoi to achieve both LEED Platinum for Operations &amp; Maintenance and LEED Gold for Building Design &amp; Construction.</p>
-    </div>
-    <div class="sus-cert-grid">
-      <article class="sus-cert-card fade-up" tabindex="0">
-        <img class="sus-cert-logo" src="assets/images/official/leed-platinum.png" alt="LEED Platinum certification emblem" loading="lazy" />
-        <span class="sus-cert-kicker">LEED</span>
-        <p class="sus-cert-mark">Platinum</p>
-        <h3 class="sus-cert-title">Operations &amp; Maintenance</h3>
-        <p class="sus-cert-detail">Operational performance and ongoing building management.</p>
-      </article>
-      <article class="sus-cert-card fade-up" style="transition-delay:.12s" tabindex="0">
-        <img class="sus-cert-logo" src="assets/images/official/leed-gold.png" alt="LEED Gold certification emblem" loading="lazy" />
-        <span class="sus-cert-kicker">LEED</span>
-        <p class="sus-cert-mark"><em>Gold</em></p>
-        <h3 class="sus-cert-title">Building Design &amp; Construction</h3>
-        <p class="sus-cert-detail">Sustainable design and construction.</p>
-      </article>
-    </div>
-  </div>
-</section>
-<section class="sus-performance">
-  <div class="container">
-    <div class="sus-section-head">
-      <p class="eyebrow">Performance by Numbers</p>
-      <h2 class="section-title">Measuring<br><em>What Matters</em></h2>
-      <p>Selected performance indicators published by Capital Place, presented with their original qualifiers.</p>
-    </div>
-    <div class="sus-metric-grid">
-      <article class="sus-metric fade-up"><span class="sus-metric-type">Energy</span><strong class="sus-metric-value">69%</strong><span class="sus-metric-note">Up to cooling energy saved.</span></article>
-      <article class="sus-metric fade-up" style="transition-delay:.08s"><span class="sus-metric-type">Water</span><strong class="sus-metric-value">10,000 m³</strong><span class="sus-metric-note">Clean water saved annually.</span></article>
-      <article class="sus-metric fade-up" style="transition-delay:.16s"><span class="sus-metric-type">Energy</span><strong class="sus-metric-value">27,636 kWh</strong><span class="sus-metric-note">Saved annually through smart sensor lighting.</span></article>
-      <article class="sus-metric fade-up" style="transition-delay:.24s"><span class="sus-metric-type">Water</span><strong class="sus-metric-value">2,000+ m³</strong><span class="sus-metric-note">Water saved annually through reuse and green-space maintenance.</span></article>
-    </div>
-  </div>
-</section>
-<section class="sus-technical">
-  <div class="container">
-    <div class="sus-section-head">
-      <p class="eyebrow">Energy Performance</p>
-      <h2 class="section-title">Engineered<br><em>for Efficiency</em></h2>
-      <p>Intelligent systems work quietly behind the scenes to optimise energy performance throughout the building.</p>
-    </div>
-    <div class="sus-tech-grid">
-      <details class="sus-tech-card" open><summary><span class="sus-tech-number">01</span><span class="sus-tech-name">Building Management System</span><span class="sus-tech-toggle" aria-hidden="true">+</span></summary><div class="sus-tech-body"><p>Intelligent building management helps monitor and optimise energy use.</p><strong class="sus-tech-stat">10,000+ kWh<small>saved annually</small></strong></div></details>
-      <details class="sus-tech-card"><summary><span class="sus-tech-number">02</span><span class="sus-tech-name">Low-E Glass Façade</span><span class="sus-tech-toggle" aria-hidden="true">+</span></summary><div class="sus-tech-body"><p>High-performance low-E glazing helps reduce solar heat gain.</p><strong class="sus-tech-stat">69%<small>up to cooling energy saved</small></strong></div></details>
-      <details class="sus-tech-card"><summary><span class="sus-tech-number">03</span><span class="sus-tech-name">High-Efficiency IE3 Motors</span><span class="sus-tech-toggle" aria-hidden="true">+</span></summary><div class="sus-tech-body"><p>High-efficiency motors support lower energy demand in building systems.</p><strong class="sus-tech-stat">30%<small>energy saving compared to IE1</small></strong></div></details>
-      <details class="sus-tech-card"><summary><span class="sus-tech-number">04</span><span class="sus-tech-name">Active Harmonic Filter</span><span class="sus-tech-toggle" aria-hidden="true">+</span></summary><div class="sus-tech-body"><p>Active harmonic filtering supports cleaner and more efficient electrical performance.</p><strong class="sus-tech-stat">1%<small>of total building energy consumption saved</small></strong></div></details>
-      <details class="sus-tech-card"><summary><span class="sus-tech-number">05</span><span class="sus-tech-name">Smart Sensor Lighting</span><span class="sus-tech-toggle" aria-hidden="true">+</span></summary><div class="sus-tech-body"><p>Smart sensors respond to occupancy and daylight to reduce unnecessary lighting demand.</p><strong class="sus-tech-stat">27,636 kWh<small>saved per year</small></strong></div></details><details class="sus-tech-card"><summary><span class="sus-tech-number">06</span><span class="sus-tech-name">Water Reuse &amp; Green Space</span><span class="sus-tech-toggle" aria-hidden="true">+</span></summary><div class="sus-tech-body"><p>Water reuse supports responsible green-space maintenance across the Capital Place community.</p><strong class="sus-tech-stat">2,000+ m&sup3;<small>water saved annually</small></strong></div></details>
-    </div>
-  </div>
-</section>
-<section class="sus-water">
-  <div class="container">
-    <div class="sus-section-head"><p class="eyebrow">Water Management</p><h2 class="section-title">Every Drop<br><em>Counts</em></h2><p>Intelligent water systems reduce consumption and support responsible resource management.</p></div>
-    <div class="sus-water-grid">
-      <article class="sus-info-card fade-up"><span class="sus-info-stat">10,000 m³</span><h3>Sensor Faucets &amp; Eco-Flush</h3><p>Clean water saved per year.</p></article>
-      <article class="sus-info-card fade-up" style="transition-delay:.1s"><span class="sus-info-stat">69,120 kWh</span><h3>Wastewater System</h3><p>Estimated annual savings.</p></article>
-      <article class="sus-info-card fade-up" style="transition-delay:.2s"><span class="sus-info-stat">2,000+ m³</span><h3>Water Reuse</h3><p>Water saved annually through reuse and green-space maintenance.</p></article>
-    </div>
-  </div>
-</section>
-<section class="sus-indoor">
-  <div class="container">
-    <div class="sus-section-head"><p class="eyebrow">Indoor Environment</p><h2 class="section-title">A Healthier<br><em>Workplace</em></h2><p>Sustainability is also about the people inside the building — from indoor air quality to a more comfortable working environment.</p></div>
-    <div class="sus-indoor-grid">
-      <article class="sus-indoor-card fade-up"><span class="sus-cert-kicker">01</span><h3>Air Quality</h3><p>Improved indoor air environment for the people who work in the building.</p></article>
-      <article class="sus-indoor-card fade-up" style="transition-delay:.1s"><span class="sus-cert-kicker">02</span><h3>Energy</h3><p>Efficient building systems that work quietly behind the scenes.</p></article>
-      <article class="sus-indoor-card fade-up" style="transition-delay:.2s"><span class="sus-cert-kicker">03</span><h3>Wellbeing</h3><p>A healthier workplace designed around comfort, focus and connection.</p></article>
-    </div>
-  </div>
-</section>
-<section class="sus-visual-section">
-  <div class="sus-visual-media"><img src="assets/images/official/common-area.jpg" alt="Common area at Capital Place" loading="lazy" /></div>
-  <div class="sus-visual-copy sus-waste-copy"><p class="eyebrow">Responsible Every Day</p><h2>Designed to<br><em>Reduce Waste</em></h2><p>Sustainability extends beyond building systems. Capital Place encourages responsible waste sorting, recycling and everyday environmental habits across its community.</p><p style="margin-top:1rem">Green Station, located at the Kim Ma entrance, supports the sorting and collection of recyclable materials.</p><ul class="sus-waste-words" aria-label="Responsible waste principles"><li>Reduce</li><li>Reuse</li><li>Recycle</li></ul></div>
-</section>
-<section class="sus-future">
-  <div class="container">
-    <div class="sus-section-head"><p class="eyebrow">Green Future</p><h2 class="section-title">Building a More<br><em>Conscious Community</em></h2><p>From greener everyday habits to community initiatives, sustainability at Capital Place extends beyond the building itself.</p></div>
-    <div class="sus-future-grid">
-      <article class="sus-info-card fade-up"><span class="sus-cert-kicker">01</span><h3>Green Station</h3><p>Encouraging responsible recycling and greener everyday habits.</p></article>
-      <article class="sus-info-card fade-up" style="transition-delay:.1s"><span class="sus-cert-kicker">02</span><h3>Community</h3><p>Initiatives that bring tenants and the wider community together.</p></article>
-      <article class="sus-info-card fade-up" style="transition-delay:.2s"><span class="sus-cert-kicker">03</span><h3>Wellbeing</h3><p>Activities supporting a healthier and more connected workplace.</p></article>
-    </div>
-  </div>
-</section>
-<section class="sus-visual-section sus-human">
-  <div class="sus-visual-copy"><p class="eyebrow">The Human Side</p><h2>Better for the Building.<br><em>Better for People.</em></h2><p>A sustainable building should do more than reduce its environmental impact. It should create a workplace where people can work, connect and thrive.</p></div>
-  <div class="sus-visual-media"><img src="assets/images/official/the-nexus.jpg" alt="The Nexus private workspace at Capital Place" loading="lazy" /></div>
-</section>
-<section class="ux-section alt" id="sustainability-resources" aria-labelledby="sustainability-resource-title"><div class="container"><div class="ux-section-head"><div><p class="eyebrow">Occupier Value</p><h2 id="sustainability-resource-title" class="section-title">From credentials<br><em>to workplace value</em></h2></div><p class="ux-section-copy">Connect certifications and building systems to the information corporate occupiers need for workplace, ESG and technical evaluation.</p></div><div class="gateway-grid"><a class="gateway-link" href="resources.html"><div><h3>Sustainability Overview</h3><p>Review public LEED and performance information in the resource hub.</p></div><span>View Resources →</span></a><a class="gateway-link" href="office.html#office-specifications"><div><h3>Building Specifications</h3><p>Review air filtration, floor systems, vertical transport and resilience.</p></div><span>View Specifications →</span></a><a class="gateway-link" href="leasing.html?intent=technical-package"><div><h3>Detailed ESG Package</h3><p>Request qualified technical and sustainability documentation.</p></div><span>Request Package →</span></a></div></div></section>
-<section class="sus-cta"><div class="container"><h2>Work Towards a<br><em>Better Future</em></h2><p>Discover a workplace built around performance, responsibility and people.</p><div class="sus-cta-actions"><a class="btn-primary" href="office.html">Explore Office <span aria-hidden="true">&rarr;</span></a><a class="btn-outline-accent" href="leasing.html?intent=office">Enquire <span aria-hidden="true">&rarr;</span></a></div></div></section>
+  <section class="ss-hero" id="sustainability-hero" aria-labelledby="ss-hero-title"><img src="assets/images/official/sustainability-hero.jpg" alt="Capital Place glass façade and landscaped surroundings in Hanoi" fetchpriority="high" /><div class="ss-hero-shade"></div><div class="container ss-hero-copy"><p class="ss-kicker">Sustainability</p><h1 id="ss-hero-title">Built to perform.<br /><em>Designed to last.</em></h1><div class="ss-hero-credentials"><span>LEED Platinum · Operations &amp; Maintenance</span><span>LEED Gold · Design &amp; Construction</span></div></div></section>
+
+  <section class="ss-leed" id="dual-leed" aria-labelledby="ss-leed-title"><div class="container ss-intro-head"><p class="ss-kicker">01 · Dual LEED certified</p><h2 id="ss-leed-title">One building.<br /><em>Two standards.</em></h2><p>Capital Place is the first building in Hanoi to achieve both LEED Platinum for Operations &amp; Maintenance and LEED Gold for Building Design &amp; Construction.</p></div><div class="ss-leed-panels"><article class="ss-leed-panel"><img src="assets/images/official/capital-place-towers.jpg" alt="Capital Place towers in daylight" loading="lazy" /><div class="ss-panel-shade"></div><div class="ss-leed-copy"><img src="assets/images/official/leed-platinum.png" alt="LEED Platinum emblem" loading="lazy" /><span class="ss-kicker">Operations &amp; Maintenance</span><h3>Platinum</h3><p>Certified for the way the building performs every day.</p></div></article><article class="ss-leed-panel"><img src="assets/images/official/architecture-facade-official.jpg" alt="Capital Place architectural façade detail" loading="lazy" /><div class="ss-panel-shade"></div><div class="ss-leed-copy"><img src="assets/images/official/leed-gold.png" alt="LEED Gold emblem" loading="lazy" /><span class="ss-kicker">Building Design &amp; Construction</span><h3><em>Gold</em></h3><p>Certified from design and construction.</p></div></article></div></section>
+
+  <section class="ss-performance" id="performance-scale" aria-labelledby="ss-performance-title"><div class="container"><div class="ss-section-head"><p class="ss-kicker">02 · Performance at scale</p><h2 id="ss-performance-title">Numbers that<br /><em>do the work.</em></h2><p>Selected performance indicators published by Capital Place, presented with their original qualifiers.</p></div><div class="ss-performance-grid"><article class="ss-performance-card ss-performance-facade"><img src="assets/images/official/architecture-facade-official.jpg" alt="Close-up of Capital Place façade glazing" loading="lazy" /><div><strong>69%</strong><span>Up to cooling energy saved</span></div></article><article class="ss-performance-card ss-performance-light"><img src="assets/images/official/office-hero.jpg" alt="Capital Place office interior and lighting" loading="lazy" /><div><strong>27,636 <small>kWh</small></strong><span>Saved annually through smart sensor lighting</span></div></article><article class="ss-performance-card ss-performance-water"><img src="assets/images/official/common-area.jpg" alt="Green common area at Capital Place" loading="lazy" /><div><strong>10,000 <small>m³</small></strong><span>Clean water saved annually</span></div></article><article class="ss-performance-card ss-performance-reuse"><img src="assets/images/official/the-link.jpg" alt="Landscaped community space at The Link" loading="lazy" /><div><strong>2,000+ <small>m³</small></strong><span>Water saved annually through reuse and green-space maintenance</span></div></article></div></div></section>
+
+  <section class="ss-system" id="smarter-building" aria-labelledby="ss-system-title"><div class="container ss-system-grid"><div class="ss-cutaway" aria-label="Interactive building systems diagram"><div class="ss-tower ss-tower-left"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="ss-tower ss-tower-right"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="ss-core"><i>CORE</i><b data-ss-highlight="water"></b></div><div class="ss-flow ss-flow-facade"></div><div class="ss-flow ss-flow-lighting"></div><div class="ss-flow ss-flow-water"></div></div><div class="ss-system-copy"><p class="ss-kicker">03 · Inside the building</p><h2 id="ss-system-title">Inside a<br /><em>smarter building.</em></h2><p>Systems work together quietly behind the scenes to optimise energy, water and everyday performance.</p><div class="ss-system-list" role="tablist" aria-label="Building systems"><button type="button" class="is-active" data-ss-system="facade" role="tab" aria-selected="true"><span>01</span> Façade <b>+</b></button><button type="button" data-ss-system="lighting" role="tab" aria-selected="false"><span>02</span> Lighting <b>+</b></button><button type="button" data-ss-system="hvac" role="tab" aria-selected="false"><span>03</span> HVAC <b>+</b></button><button type="button" data-ss-system="power" role="tab" aria-selected="false"><span>04</span> Power <b>+</b></button><button type="button" data-ss-system="water" role="tab" aria-selected="false"><span>05</span> Water <b>+</b></button><button type="button" data-ss-system="management" role="tab" aria-selected="false"><span>06</span> Building management <b>+</b></button></div><div class="ss-system-detail" aria-live="polite"><strong data-ss-system-name>Façade</strong><p data-ss-system-copy>Low-E glazing helps reduce solar heat gain, supporting the building's cooling performance.</p><span data-ss-system-stat>Up to 69% cooling energy saved</span></div></div></div></section>
+
+  <section class="ss-facade" id="low-e-facade" aria-labelledby="ss-facade-title"><div class="ss-facade-media"><img src="assets/images/official/architecture-facade-official.jpg" alt="Low-E glass façade detail at Capital Place" loading="lazy" /></div><div class="ss-facade-copy"><p class="ss-kicker">04 · Low-E façade</p><h2 id="ss-facade-title">More light.<br /><em>Less heat.</em></h2><div class="ss-facade-journey"><span>Outside <b>Sunlight · Heat</b></span><i>↓</i><span>Low-E glass <b>High-performance glazing</b></span><i>↓</i><span>Inside <b>Reduced heat gain</b></span></div></div></section>
+
+  <section class="ss-water" id="water-journey" aria-labelledby="ss-water-title"><div class="container ss-water-grid"><div class="ss-water-copy"><p class="ss-kicker">05 · Water management</p><h2 id="ss-water-title">Every drop<br /><em>works harder.</em></h2><p>Water is treated as a journey through the building, from daily use to responsible reuse across the landscape.</p><span class="ss-water-stat">10,000 m³ <small>clean water saved annually</small></span></div><div class="ss-water-flow" aria-label="Water journey from building use to green landscape"><div><span>01</span><strong>Building use</strong><small>Sensor faucets · eco-flush</small></div><i>↓</i><div><span>02</span><strong>Wastewater system</strong><small>Treatment and recovery</small></div><i>↓</i><div><span>03</span><strong>Water reuse</strong><small>2,000+ m³ annually</small></div><i>↓</i><div><span>04</span><strong>Green landscape</strong><small>Responsible maintenance</small></div></div></div></section>
+
+  <section class="ss-health" id="healthier-workplace" aria-labelledby="ss-health-title"><img src="assets/images/official/office-hero.jpg" alt="Healthy, light-filled workplace at Capital Place" loading="lazy" /><div class="ss-health-shade"></div><div class="container ss-health-copy"><p class="ss-kicker">06 · Human benefit</p><h2 id="ss-health-title">A healthier<br /><em>workplace.</em></h2><p>Feature becomes benefit: a workplace shaped around air, daylight, focus, movement and reset.</p><div class="ss-health-sequence"><span><b>Breathe</b>Air quality</span><span><b>See</b>Natural daylight</span><span><b>Focus</b>Acoustic comfort</span><span><b>Move</b>Active workplace</span><span><b>Reset</b>Green spaces</span></div></div></section>
+
+  <section class="ss-business" id="business-value" aria-labelledby="ss-business-title"><div class="container ss-business-grid"><div><p class="ss-kicker">07 · Tenant value</p><h2 id="ss-business-title">Good for the building.<br /><em>Valuable for your business.</em></h2><p class="ss-business-intro">Sustainability at Capital Place is a practical workplace proposition for the people who shape your organisation's next address.</p></div><div class="ss-business-values"><article><span>01 · ESG</span><h3>Make the standard visible.</h3><p>Green-building credentials support corporate sustainability and ESG requirements.</p></article><article><span>02 · People</span><h3>Give wellbeing a place.</h3><p>Indoor environmental quality and amenities support healthier working days.</p></article><article><span>03 · Performance</span><h3>Build for the long term.</h3><p>Efficient operations and asset resilience support a more considered workplace strategy.</p></article></div></div></section>
+
+  <section class="ss-green" id="green-station" aria-labelledby="ss-green-title"><img src="assets/images/official/the-link.jpg" alt="The Link community and green space at Capital Place" loading="lazy" /><div class="ss-green-shade"></div><div class="container ss-green-copy"><p class="ss-kicker">08 · Responsible every day</p><h2 id="ss-green-title">Sustainability<br /><em>you can take part in.</em></h2><p>Green Station at the Kim Ma entrance supports sorting and collection of recyclable materials, turning building systems into everyday tenant participation.</p><div class="ss-green-process"><span>Sorting</span><i>→</i><span>Recycling</span><i>→</i><span>Community participation</span></div></div></section>
+
+  <section class="ss-community" id="community" aria-labelledby="ss-community-title"><div class="container ss-community-grid"><div class="ss-community-mosaic"><img src="assets/images/official/common-area.jpg" alt="Capital Place shared community area" loading="lazy" /><img src="assets/images/official/akademy-fitness.jpg" alt="Wellbeing activity at Capital Place" loading="lazy" /><img src="assets/images/official/lily-event-space.jpeg" alt="Tenant event space at The Nexus" loading="lazy" /></div><div class="ss-community-copy"><p class="ss-kicker">09 · Building + people + community</p><h2 id="ss-community-title">A community<br /><em>that acts.</em></h2><p>Capital Place brings tenant participation, wellbeing and everyday responsibility into one workplace community.</p><div class="ss-community-stat"><strong>80+</strong><span>businesses in one workplace community</span></div><ul><li>Green Station</li><li>Blood donation</li><li>First Aid Training</li><li>Wellbeing activities</li></ul></div></div></section>
+
+  <section class="ss-data" id="sustainability-data" aria-labelledby="ss-data-title"><div class="container"><div class="ss-section-head"><p class="ss-kicker">10 · For technical teams</p><h2 id="ss-data-title">Sustainability<br /><em>data.</em></h2><p>Technical depth for ESG managers, consultants, facility teams and workplace decision-makers.</p></div><div class="ss-data-grid"><details open><summary><span>01</span> Energy <b>+</b></summary><p>Building Management System, Low-E Glass Façade, IE3 Motors, Active Harmonic Filter and Smart Sensor Lighting.</p><strong>69% <small>up to cooling energy saved</small></strong></details><details><summary><span>02</span> Water <b>+</b></summary><p>Sensor faucets, eco-flush, wastewater systems and water reuse support responsible water management.</p><strong>2,000+ m³ <small>water saved annually through reuse and green-space maintenance</small></strong></details><details><summary><span>03</span> Indoor Environment <b>+</b></summary><p>Indoor air quality, daylight and workplace comfort are considered as part of the people experience.</p></details><details><summary><span>04</span> Building Systems <b>+</b></summary><p>Smart monitoring and efficient motors support lower demand and long-term operating performance.</p></details><details><summary><span>05</span> Waste <b>+</b></summary><p>Green Station supports sorting, recycling and responsible everyday habits at the Kim Ma entrance.</p></details><details><summary><span>06</span> Certifications <b>+</b></summary><p>LEED Platinum for Operations &amp; Maintenance and LEED Gold for Building Design &amp; Construction.</p></details></div></div></section>
+
+  <section class="ss-resources" id="sustainability-resources" aria-labelledby="ss-resources-title"><div class="container ss-resources-grid"><div><p class="ss-kicker">11 · Need the details?</p><h2 id="ss-resources-title">Evidence for<br /><em>the next decision.</em></h2></div><div class="ss-resource-links"><a href="resources.html"><span>Sustainability Fact Sheet</span><b>View resources →</b></a><a href="office.html#office-specifications"><span>Building Specifications</span><b>View specifications →</b></a><a href="leasing.html?intent=technical-package"><span>Request ESG Package</span><b>Request package →</b></a></div></div></section>
+
+  <section class="ss-cta" id="sustainability-cta" aria-labelledby="ss-cta-title"><img src="assets/images/official/capital-place-towers.jpg" alt="Capital Place towers as a long-term workplace address" loading="lazy" /><div class="ss-cta-shade"></div><div class="container ss-cta-copy"><p class="ss-kicker">12 · Leasing</p><h2 id="ss-cta-title">A better building.<br /><em>A better place to work.</em></h2><p>Make Capital Place part of your organisation's next workplace strategy.</p><div class="ss-cta-actions"><a class="ss-primary-button" href="availability.html">View available spaces <span aria-hidden="true">→</span></a><a class="ss-secondary-button" href="leasing.html?intent=technical-package">Request ESG information</a></div></div></section>
 </main>
-<footer>
-  <div class="container">
-    <div class="ft-grid">
-      <div>
-        <div class="ft-logo">
-          <img class="official-logo official-logo-footer" src="assets/brand/capital-place-logo.svg" alt="Capital Place Hanoi" width="89" height="75" />
-        </div>
-        <p class="ft-intro">A landmark for business.<br>A new icon of Hanoi.</p>
-        <p class="ft-addr">29 Lieu Giai<br>Ngoc Ha, Ba Dinh<br>Hanoi, Vietnam</p>
-      </div>
-      <div class="ft-col">
-        <p class="ft-col-title">Explore Capital Place</p>
-        <a href="index.html">Home</a>
-        <a href="location.html">Location</a>
-        <a href="office.html">Office</a>
-        <a href="sustainability.html">Sustainability</a>
-        <a href="amenities.html">Amenities</a>
-        <a class="ft-secondary" href="availability.html">Availability</a>
-        <a class="ft-secondary" href="visit.html">Visit</a>
-        <a class="ft-secondary" href="resources.html">Resources</a>
-      </div>
-      <div class="ft-col">
-        <p class="ft-col-title">Contact &amp; Leasing</p>
-        <a href="leasing.html">Leasing Enquiry</a>
-        <a href="retail.html">Retail / F&amp;B Leasing</a>
-        <a href="occupiers.html">For Occupiers</a>
-        <a href="tel:18009289">1800 9289</a>
-        <a href="mailto:leasing@capitalplace.vn">leasing@capitalplace.vn</a>
-      </div>
-    </div>
-    <div class="ft-bot">
-      <p>&copy; 2026 Twin-Peaks Joint Stock Company. All rights reserved.</p>
-      <p>Capital Place &middot; Hanoi</p>
-    </div>
-  </div>
-</footer>
-<script src="assets/main.js?v=visual-20260825-4"></script>
-<script src="assets/capital-data.js?v=vision-20260825-2"></script>
-<script src="assets/capital-upgrade.js?v=vision-20260825-2"></script>
+<footer><div class="container"><div class="ft-grid"><div><div class="ft-logo"><img class="official-logo official-logo-footer" src="assets/brand/capital-place-logo.svg" alt="Capital Place Hanoi" width="89" height="75" /></div><p class="ft-intro">A landmark for business.<br />A new icon of Hanoi.</p><p class="ft-addr">29 Lieu Giai<br />Ngoc Ha<br />Hanoi, Vietnam</p></div><div class="ft-col"><p class="ft-col-title">Explore Capital Place</p><a href="index.html">Home</a><a href="location.html">Location</a><a href="office.html">Office</a><a href="sustainability.html">Sustainability</a><a href="amenities.html">Amenities</a><a href="availability.html">Availability</a><a href="visit.html">Visit</a><a href="resources.html">Resources</a></div><div class="ft-col"><p class="ft-col-title">Contact &amp; Leasing</p><a href="leasing.html">Leasing Enquiry</a><a href="retail.html">Retail / F&amp;B Leasing</a><a href="occupiers.html">For Occupiers</a><a href="tel:18009289">1800 9289</a><a href="mailto:leasing@capitalplace.vn">leasing@capitalplace.vn</a></div></div><div class="ft-bot"><p>&copy; 2026 Twin-Peaks Joint Stock Company. All rights reserved.</p><p>Capital Place · Hanoi</p></div></div></footer>
+<script src="assets/main.js?v=visual-20260825-4"></script><script src="assets/sustainability-cinematic.js?v=sustainability-20260825-1"></script>
 </body>
 </html>
