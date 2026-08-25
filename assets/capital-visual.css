@@ -130,3 +130,136 @@
 }
 
 @media(prefers-reduced-motion:reduce){.feature-card-v2,.availability-journey-card img{transition:none}}
+
+
+/* UI feedback updates — 2026-08-25 */
+/* Homepage footer: the review explicitly requests black navigation and contact text. */
+body.vision-home footer .ft-col-title,
+body.vision-home footer .ft-col a,
+body.vision-home footer .ft-col a.ft-secondary {
+  color: var(--brand-black) !important;
+}
+body.vision-home footer .ft-col-title {
+  font-weight: 600;
+}
+
+/* Location hero, address copy, and evenly spaced readable image cards. */
+@media (min-width: 1024px) {
+  main#main-content > .page-header.loc-v2-hero > .container {
+    translate: -96px 0;
+  }
+}
+@media (max-width: 1023px) {
+  main#main-content > .page-header.loc-v2-hero > .container {
+    translate: 0 0;
+  }
+}
+section#the-address > .container > .loc-address-grid > .loc-address-copy:first-of-type > p:nth-of-type(2) {
+  color: var(--brand-black) !important;
+}
+#surroundings-directory.loc-directory {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: clamp(1rem, 2.5vw, 2rem);
+}
+#surroundings-directory .loc-card {
+  position: relative;
+  min-height: 300px;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--brand-black);
+}
+#surroundings-directory .loc-card-visual {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  z-index: -2;
+}
+#surroundings-directory .loc-card-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(35,31,32,.18), rgba(35,31,32,.88));
+}
+#surroundings-directory .loc-card-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 300px;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.25rem;
+}
+
+/* Amenities directory: black, white-text detail panel on hover/focus and 16px left inset. */
+section#amenity-directory .am-directory-grid {
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+section#amenity-directory .am-dir-card {
+  overflow: hidden;
+}
+section#amenity-directory .am-dir-copy {
+  padding-left: 16px !important;
+  transition: background-color .22s ease, color .22s ease;
+}
+section#amenity-directory .am-dir-card:hover .am-dir-copy,
+section#amenity-directory .am-dir-card:focus-visible .am-dir-copy {
+  background: var(--brand-black) !important;
+  color: var(--brand-white) !important;
+}
+section#amenity-directory .am-dir-card:hover .am-dir-category,
+section#amenity-directory .am-dir-card:hover h3,
+section#amenity-directory .am-dir-card:hover .am-dir-meta,
+section#amenity-directory .am-dir-card:hover .am-dir-explore,
+section#amenity-directory .am-dir-card:focus-visible .am-dir-category,
+section#amenity-directory .am-dir-card:focus-visible h3,
+section#amenity-directory .am-dir-card:focus-visible .am-dir-meta,
+section#amenity-directory .am-dir-card:focus-visible .am-dir-explore {
+  color: var(--brand-white) !important;
+}
+
+/* Amenities next-step section: keep the requested dark gradient behind readable copy. */
+#leasing.ux-section.graphite {
+  background-color: var(--brand-black) !important;
+  background-image: linear-gradient(90deg, rgba(35,31,32,.94), rgba(35,31,32,.78) 54%, rgba(35,31,32,.18)), url("images/official/amenities-hero.jpg") !important;
+}
+#leasing.ux-section.graphite .section-title,
+#leasing.ux-section.graphite .section-title em,
+#leasing.ux-section.graphite .eyebrow,
+#leasing.ux-section.graphite .ux-section-copy,
+#leasing.ux-section.graphite .gateway-link h3,
+#leasing.ux-section.graphite .gateway-link p,
+#leasing.ux-section.graphite .gateway-link span {
+  color: var(--brand-white) !important;
+}
+#leasing.ux-section.graphite .gateway-link {
+  background: rgba(35,31,32,.72) !important;
+}
+#leasing.ux-section.graphite .gateway-link:hover,
+#leasing.ux-section.graphite .gateway-link:focus-visible {
+  background: rgba(35,31,32,.94) !important;
+}
+
+/* Official photo replacement for the floor-plan preview. */
+.office-v2-section .floor-plan-preview.official-floor-plan-photo {
+  min-height: 280px;
+  padding: 0;
+  overflow: hidden;
+  background: var(--brand-black);
+}
+.office-v2-section .floor-plan-preview.official-floor-plan-photo img {
+  display: block;
+  width: 100%;
+  height: 280px;
+  max-height: none;
+  object-fit: cover;
+  object-position: center 58%;
+}
+@media (max-width: 759px) {
+  .office-v2-section .floor-plan-preview.official-floor-plan-photo,
+  .office-v2-section .floor-plan-preview.official-floor-plan-photo img {
+    min-height: 240px;
+    height: 240px;
+  }
+}
