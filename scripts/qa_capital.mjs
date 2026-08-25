@@ -10,6 +10,7 @@ const pages = [
 ];
 const failures = [];
 let assertions = 0;
+const assetVersion = 'brand-20260825-1';
 
 function assert(condition, message) {
   assertions += 1;
@@ -38,9 +39,9 @@ for (const page of pages) {
   assert((html.match(/<main\b/g) || []).length === 1, `${page}: expected one main landmark`);
   assert((html.match(/<nav\b/g) || []).length === 1, `${page}: expected one navigation landmark`);
   assert((html.match(/<footer\b/g) || []).length === 1, `${page}: expected one footer landmark`);
-  assert(html.includes('assets/capital-upgrade.css?v=ux-20260824-1'), `${page}: missing upgrade stylesheet`);
-  assert(html.includes('assets/capital-data.js?v=ux-20260824-1'), `${page}: missing central data module`);
-  assert(html.includes('assets/capital-upgrade.js?v=ux-20260824-1'), `${page}: missing interaction module`);
+  assert(html.includes(`assets/capital-upgrade.css?v=${assetVersion}`), `${page}: missing upgrade stylesheet`);
+  assert(html.includes(`assets/capital-data.js?v=${assetVersion}`), `${page}: missing central data module`);
+  assert(html.includes(`assets/capital-upgrade.js?v=${assetVersion}`), `${page}: missing interaction module`);
 
   const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
   const duplicates = ids.filter((id, index) => ids.indexOf(id) !== index);
@@ -67,9 +68,12 @@ assert(!allHtml.includes('93,700'), 'obsolete 93,700 area figure remains in gene
 assert(!allHtml.includes('41 Storeys'), 'obsolete 41-storey figure remains in generated HTML');
 assert(allHtml.includes('93,000'), 'verified 93,000 sqm figure is missing');
 assert(allHtml.includes('37 Storeys Per Tower'), 'verified 37-storey label is missing');
+assert(!/#[Bb]89[Bb]5[Ee]|#[89][Ff]753[Ff]|#[Dd]6[Cc]08[Aa]|#[Cc]9[Aa]866/.test(allHtml), 'legacy gold accent remains in HTML');
+assert(!allHtml.toLowerCase().includes('unsplash'), 'third-party Unsplash asset remains in HTML');
+assert(!allHtml.includes('2015'), 'obsolete opening date remains in HTML');
 
 const requiredHooks = {
-  'index.html': ['data-home-availability', 'availability.html#space-finder'],
+  'index.html': ['availability.html', '2020', 'assets/images/official/'],
   'office.html': ['data-space-finder', 'office-specifications', 'stack-shell'],
   'availability.html': ['data-space-finder', 'data-availability-list', 'data-filter-status'],
   'space.html': ['data-space-page', 'data-space-plan', 'data-space-action="viewing"'],
@@ -86,13 +90,22 @@ for (const [page, hooks] of Object.entries(requiredHooks)) {
 }
 
 const dataJs = fs.readFileSync(path.join(root, 'assets/capital-data.js'), 'utf8');
-for (const status of ['available', 'available-soon', 'under-offer', 'leased', 'future-availability', 'on-request']) {
-  assert(dataJs.includes(`${status}:`) || dataJs.includes(`'${status}':`), `capital-data.js: missing status ${status}`);
-}
+assert(dataJs.includes("'on-request':"), 'capital-data.js: confirmation-required status is missing');
 assert(dataJs.includes("leasingEmail: 'leasing@capitalplace.vn'"), 'capital-data.js: verified leasing email missing');
 assert(dataJs.includes('leasableAreaSqm: 93000'), 'capital-data.js: verified area missing');
 assert(dataJs.includes('storeysPerTower: 37'), 'capital-data.js: verified storeys missing');
-assert((dataJs.match(/id: 't\d-l\d+'/g) || []).length >= 6, 'capital-data.js: insufficient demonstration availability states');
+assert((dataJs.match(/id: 'reference-/g) || []).length === 2, 'capital-data.js: expected two public reference floor plates');
+assert(dataJs.includes("availabilityMode: 'leasing-confirmation'"), 'capital-data.js: leasing-confirmation mode missing');
+
+const publicAssetFiles = [
+  'assets/style.css', 'assets/capital-upgrade.css', 'assets/main.js',
+  'assets/capital-data.js', 'assets/capital-upgrade.js', 'assets/ui-feedback.js'
+];
+const publicAssets = publicAssetFiles.map((file) => fs.readFileSync(path.join(root, file), 'utf8')).join('\n');
+assert(publicAssets.includes('--brand-orange:#F15F22'), 'official brand orange token is missing');
+assert(publicAssets.includes('--brand-cream:#F0EFE9'), 'official brand cream token is missing');
+assert(!/#(?:B89B5E|8F753F|D6C08A|C9A866|F5A623|FEF3C7|FCD34D|FACC15|F59E0B)/i.test(publicAssets), 'legacy yellow/gold color remains in public assets');
+assert(!publicAssets.includes('Fraunces'), 'legacy serif font remains in public assets');
 
 for (const cssFile of ['assets/style.css', 'assets/capital-upgrade.css']) {
   const css = fs.readFileSync(path.join(root, cssFile), 'utf8');
@@ -105,5 +118,5 @@ if (failures.length) {
   process.exitCode = 1;
 } else {
   console.log(`PASS: ${assertions} Capital Place structural, data and leasing-flow assertions`);
-  console.log(`Pages: ${pages.length} · Availability states: 6 · Central facts: verified`);
+  console.log(`Pages: ${pages.length} · Reference floor plates: 2 · Central facts: verified`);
 }

@@ -166,7 +166,7 @@ document.querySelectorAll('.stat-num[data-target]').forEach(el => countIO.observ
     if (mod && typeof mod.createUIFeedback === 'function') {
       const instance = mod.createUIFeedback({
         storageKey: 'capital-ui-feedback',
-        accent: '#c9a866',
+        accent: '#F15F22',
         githubRepo: 'Ngh1aa/Capital',
         startActive: debugFeedback
       });

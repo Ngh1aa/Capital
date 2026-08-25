@@ -46,7 +46,7 @@ Thay thế toolbar dọc thành **Floating Dock Bar** sang trọng với hiệu 
 ```
 
 - **Cấu trúc nút**: Icon SVG sắc nét + Label tiếng Việt/Anh trực quan.
-- **Trạng thái Active**: Đường underline accent thanh lịch (màu vàng gold `#c9a866` hoặc accent chỉ định) thay vì phủ màu toàn nút.
+- **Trạng thái Active**: Đường underline màu cam thương hiệu `#F15F22` thay vì phủ màu toàn nút.
 - **Tính năng thu gọn**: Double click hoặc bấm nút Collapse để thu gọn thành **Floating Bubble icon** nhỏ ở góc màn hình.
 - **Kéo thả linh hoạt**: Kéo thả tự do theo 4 góc/cạnh màn hình với snap tự động vào mép gần nhất.
 

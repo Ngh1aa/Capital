@@ -7,12 +7,12 @@
   <meta name="description" content="Find indicative office opportunities by area, team size, move-in timing and tower at Capital Place Hanoi." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/style.css" />
   
-<meta name="theme-color" content="#111111" />
+<meta name="theme-color" content="#231F20" />
   <meta property="og:site_name" content="Capital Place Hanoi" />
-  <link rel="stylesheet" href="assets/capital-upgrade.css?v=ux-20260824-1" />
+  <link rel="stylesheet" href="assets/capital-upgrade.css?v=brand-20260825-1" />
 </head>
 <body>
 <nav id="main-nav">
@@ -50,9 +50,9 @@
   </div>
 </nav>
 <main id="main-content">
-<div class="page-header" style="--hero-position:center 48%;background-image:url(assets/images/feedback/office-page-header.jpg);background-position:center 48%">
-  <img class="page-header-media" src="assets/images/feedback/office-page-header.jpg" alt="Capital Place twin office towers in Hanoi" fetchpriority="high" />
-  <div class="container"><p class="page-header-eyebrow">Office Availability</p><h1>Find a space<br><em>for what’s next</em></h1><p>Explore indicative opportunities across both towers, evaluate fit and continue directly to a viewing or proposal request.</p><div class="page-header-actions ux-actions"><a class="btn-gold" href="#space-finder">Find a Space <span aria-hidden="true">→</span></a><a class="btn-outline-gold" href="#current-opportunities">View Availability</a></div></div>
+<div class="page-header" style="--hero-position:center 48%;background-image:url(assets/images/official/office-hero.jpg);background-position:center 48%">
+  <img class="page-header-media" src="assets/images/official/office-hero.jpg" alt="Capital Place Grade A office building" fetchpriority="high" />
+  <div class="container"><p class="page-header-eyebrow">Office Availability</p><h1>Find a space<br><em>for what’s next</em></h1><p>Start with your area, team size and move-in plan. The leasing team will confirm matching floors and current commercial availability.</p><div class="page-header-actions ux-actions"><a class="btn-accent" href="#space-finder">Find a Space <span aria-hidden="true">→</span></a><a class="btn-outline-accent" href="#current-opportunities">View Floor Plates</a></div></div>
 </div>
 <section class="ux-section alt" id="space-finder" aria-labelledby="space-finder-title"><div class="container"><div class="ux-section-head"><div><p class="eyebrow">Space Finder</p><h2 id="space-finder-title" class="section-title">Start with your<br><em>requirement</em></h2></div><p class="ux-section-copy">Search by required area or team size, then refine by move-in timing and preferred tower.</p></div><div class="finder-shell" data-space-finder>
   <div class="finder-progress" aria-label="Space finder steps"><span class="active">1 · Requirement</span><span>2 · Timeline</span><span>3 · Results</span></div>
@@ -70,20 +70,20 @@
     </div>
     <div class="finder-estimate" data-finder-estimate hidden></div>
     <p class="finder-assumption">Availability and capacity are indicative only. Final requirements, timing and divisibility are confirmed by the leasing and workplace teams.</p>
-    <div class="ux-actions"><button type="submit" class="btn-gold">Find Matching Spaces <span aria-hidden="true">→</span></button><a class="btn-outline-gold" href="leasing.html?intent=office">Talk to Leasing</a></div>
+    <div class="ux-actions"><button type="submit" class="btn-accent">Find Matching Spaces <span aria-hidden="true">→</span></button><a class="btn-outline-accent" href="leasing.html?intent=office">Talk to Leasing</a></div>
   </form>
   <div class="finder-results" data-finder-results hidden aria-live="polite"></div>
 </div></div></section>
-<section class="ux-section" id="current-opportunities" aria-labelledby="availability-title"><div class="container"><div class="ux-section-head"><div><p class="eyebrow">Current Opportunities</p><h2 id="availability-title" class="section-title">Explore the<br><em>building</em></h2></div><div><p class="ux-section-copy">Availability is represented as a decision-support layer rather than a live commercial schedule.</p><div class="ux-notice">Indicative opportunities for website demonstration. Current availability, areas and commercial terms must be confirmed by the Capital Place leasing team.</div></div></div>
+<section class="ux-section" id="current-opportunities" aria-labelledby="availability-title"><div class="container"><div class="ux-section-head"><div><p class="eyebrow">Reference Floor Plates</p><h2 id="availability-title" class="section-title">Evaluate the<br><em>right scale</em></h2></div><div><p class="ux-section-copy">Use published reference floor plates for early space planning, then ask leasing to match the requirement to current or future floors.</p><div class="ux-notice">Capital Place does not publish a live commercial schedule. Floor availability, divisibility, timing and commercial terms are confirmed directly by the leasing team.</div></div></div>
   <div class="availability-toolbar" aria-label="Filter office opportunities">
     <div class="ux-field"><label for="availability-area">Required Area</label><select id="availability-area" data-filter-area><option value="all">All areas</option><option value="lt500">Under 500 m²</option><option value="500-1000">500–1,000 m²</option><option value="1000-2000">1,000–2,000 m²</option><option value="2000plus">2,000+ m²</option></select></div>
     <div class="ux-field"><label for="availability-tower">Tower</label><select id="availability-tower" data-filter-tower><option value="all">Both towers</option><option value="1">Tower 01</option><option value="2">Tower 02</option></select></div>
     <div class="ux-field"><label for="availability-timeline">Move-in</label><select id="availability-timeline" data-filter-timeline><option value="all">Any timing</option><option value="immediate">Immediately</option><option value="0-3">0–3 months</option><option value="3-6">3–6 months</option><option value="6-12">6–12 months</option><option value="12plus">12+ months</option></select></div>
-    <div class="ux-field"><label for="availability-status">Status</label><select id="availability-status" data-filter-status><option value="all">All statuses</option><option value="available">Available</option><option value="available-soon">Available Soon</option><option value="under-offer">Under Offer</option><option value="future-availability">Future Availability</option><option value="on-request">On Request</option><option value="leased">Leased</option></select></div>
+    <div class="ux-field"><label for="availability-status">Commercial Status</label><select id="availability-status" data-filter-status><option value="all">Confirmation required</option><option value="on-request">On Request</option></select></div>
   </div>
   <p class="availability-count" data-availability-count aria-live="polite"></p><div data-availability-list></div>
 </div></section>
-<section class="ux-section graphite"><div class="container"><div class="ux-section-head"><div><p class="eyebrow">Evaluate Further</p><h2 class="section-title">From opportunity<br><em>to decision</em></h2></div><p class="ux-section-copy">Review the stacking plan, illustrative floor plates, building specifications and sustainability credentials before requesting a site visit.</p></div><div class="gateway-grid"><a class="gateway-link" href="office.html#floor-explorer"><div><h3>Floor Plans</h3><p>Review typical floor plates and early capacity assumptions.</p></div><span>Explore Plans →</span></a><a class="gateway-link" href="resources.html"><div><h3>Leasing Resources</h3><p>Building facts, specifications, sustainability and location resources.</p></div><span>View Resources →</span></a><a class="gateway-link" href="leasing.html?intent=viewing"><div><h3>Request a Viewing</h3><p>Share a preferred date and time for leasing-team confirmation.</p></div><span>Request Viewing →</span></a></div></div></section>
+<section class="ux-section graphite"><div class="container"><div class="ux-section-head"><div><p class="eyebrow">Evaluate Further</p><h2 class="section-title">From reference<br><em>to decision</em></h2></div><p class="ux-section-copy">Review the stacking plan, reference floor plates, building specifications and sustainability credentials before requesting a site visit.</p></div><div class="gateway-grid"><a class="gateway-link" href="office.html#floor-explorer"><div><h3>Floor Plans</h3><p>Review typical floor plates and early capacity assumptions.</p></div><span>Explore Plans →</span></a><a class="gateway-link" href="resources.html"><div><h3>Leasing Resources</h3><p>Building facts, specifications, sustainability and location resources.</p></div><span>View Resources →</span></a><a class="gateway-link" href="leasing.html?intent=viewing"><div><h3>Request a Viewing</h3><p>Share a preferred date and time for leasing-team confirmation.</p></div><span>Request Viewing →</span></a></div></div></section>
 </main>
 <footer>
   <div class="container">
@@ -122,7 +122,7 @@
   </div>
 </footer>
 <script src="assets/main.js"></script>
-<script src="assets/capital-data.js?v=ux-20260824-1"></script>
-<script src="assets/capital-upgrade.js?v=ux-20260824-1"></script>
+<script src="assets/capital-data.js?v=brand-20260825-1"></script>
+<script src="assets/capital-upgrade.js?v=brand-20260825-1"></script>
 </body>
 </html>

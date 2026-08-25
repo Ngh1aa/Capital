@@ -84,8 +84,8 @@
   function availabilityRow(space) {
     const status = getStatus(space);
     const link = status.actionable
-      ? `<a class="availability-link" href="space.html?id=${encodeURIComponent(space.id)}" data-space-link="${escapeHtml(space.id)}">View Floor →</a>`
-      : '<a class="availability-link" href="availability.html">View Other Spaces →</a>';
+      ? `<a class="availability-link" href="space.html?id=${encodeURIComponent(space.id)}" data-space-link="${escapeHtml(space.id)}">View Reference →</a>`
+      : '<a class="availability-link" href="leasing.html?intent=office">Ask Leasing →</a>';
     return `<article class="availability-row" data-status="${escapeHtml(space.status)}" data-space-id="${escapeHtml(space.id)}">
       <div><h3 class="availability-space-title">${escapeHtml(space.tower)} · ${escapeHtml(space.floor)}</h3><span class="availability-space-suite">${escapeHtml(space.suite)}</span></div>
       <div><span class="availability-meta-key">Area</span><span class="availability-area">${formatArea(space.areaSqm)}</span></div>
@@ -98,7 +98,7 @@
   function renderAvailability(container, spaces, options = {}) {
     if (!container) return;
     if (!spaces.length) {
-      container.innerHTML = `<div class="ux-empty"><h3>No exact opportunity matches.</h3><p>Availability changes over time. Share your requirement and the leasing team can identify the closest current or future option.</p><div class="ux-actions"><a class="btn-gold" href="leasing.html?intent=future-availability">Register Future Interest</a><a class="btn-outline-gold" href="leasing.html?intent=office">Talk to Leasing</a></div></div>`;
+      container.innerHTML = `<div class="ux-empty"><h3>No reference floor plate matches exactly.</h3><p>Share your requirement and the leasing team can identify a current option, divisibility strategy or future opportunity.</p><div class="ux-actions"><a class="btn-accent" href="leasing.html?intent=future-availability">Register Your Requirement</a><a class="btn-outline-accent" href="leasing.html?intent=office">Talk to Leasing</a></div></div>`;
       return;
     }
     const prefix = options.heading ? `<p class="availability-count">${escapeHtml(options.heading)}</p>` : '';
@@ -155,7 +155,7 @@
 
     const update = () => {
       const filtered = data.spaces.filter((space) => {
-        const towerOk = !controls.tower?.value || controls.tower.value === 'all' || String(space.towerNumber) === controls.tower.value;
+        const towerOk = !controls.tower?.value || controls.tower.value === 'all' || space.towerNumber === 0 || String(space.towerNumber) === controls.tower.value;
         const statusOk = !controls.status?.value || controls.status.value === 'all' || space.status === controls.status.value;
         const areaOk = spaceCanFit(space, areaBounds(controls.area?.value || 'all'));
         const timelineOk = statusMatchesTimeline(space.status, controls.timeline?.value || 'all');
@@ -163,7 +163,7 @@
       }).sort((a, b) => getStatus(a).order - getStatus(b).order || a.areaSqm - b.areaSqm);
       renderAvailability(list, filtered);
       const count = $('[data-availability-count]');
-      if (count) count.textContent = `${filtered.length} ${filtered.length === 1 ? 'opportunity' : 'opportunities'} shown`;
+      if (count) count.textContent = `${filtered.length} ${filtered.length === 1 ? 'reference floor plate' : 'reference floor plates'} shown`;
     };
     Object.values(controls).filter(Boolean).forEach((control) => control.addEventListener('change', update));
     update();
@@ -173,13 +173,13 @@
   function finderCandidates(requirement) {
     const active = data.spaces.filter((space) => space.status !== 'leased');
     const exact = active.filter((space) => {
-      const towerOk = requirement.tower === 'all' || String(space.towerNumber) === requirement.tower;
+      const towerOk = requirement.tower === 'all' || space.towerNumber === 0 || String(space.towerNumber) === requirement.tower;
       return towerOk && statusMatchesTimeline(space.status, requirement.timeline) && spaceCanFit(space, requirement.bounds);
     });
     if (exact.length) return { exact: true, spaces: exact.sort((a, b) => getStatus(a).order - getStatus(b).order || a.areaSqm - b.areaSqm) };
     const target = requirement.bounds[0] || (Number.isFinite(requirement.bounds[1]) ? requirement.bounds[1] : 1000);
     const closest = active
-      .filter((space) => requirement.tower === 'all' || String(space.towerNumber) === requirement.tower)
+      .filter((space) => requirement.tower === 'all' || space.towerNumber === 0 || String(space.towerNumber) === requirement.tower)
       .sort((a, b) => Math.abs(a.areaSqm - target) - Math.abs(b.areaSqm - target))
       .slice(0, 3);
     return { exact: false, spaces: closest };
@@ -243,11 +243,11 @@
         results.hidden = false;
         renderAvailability(results, result.spaces, {
           heading: result.exact
-            ? `${result.spaces.length} ${result.spaces.length === 1 ? 'opportunity matches' : 'opportunities match'} your requirement`
-            : 'No exact match · closest opportunities'
+            ? `${result.spaces.length} ${result.spaces.length === 1 ? 'reference floor plate fits' : 'reference floor plates fit'} your requirement`
+            : 'No exact match · closest reference floor plates'
         });
         if (!result.exact) {
-          results.insertAdjacentHTML('beforeend', '<div class="ux-actions"><a class="btn-gold" href="leasing.html?intent=future-availability">Register Future Interest</a><a class="btn-outline-gold" href="leasing.html?intent=office">Talk to Leasing</a></div>');
+          results.insertAdjacentHTML('beforeend', '<div class="ux-actions"><a class="btn-accent" href="leasing.html?intent=future-availability">Register Future Interest</a><a class="btn-outline-accent" href="leasing.html?intent=office">Talk to Leasing</a></div>');
         }
         results.scrollIntoView({ behavior: global.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
         track('complete_space_finder', { mode, area, teamSizeBand: team ? `${Math.floor(team / 50) * 50}+` : '', timeline: requirement.timeline, tower: requirement.tower, exactMatch: result.exact });
@@ -342,17 +342,17 @@
 
   function planSvg(space) {
     const label = `${space.tower} · ${space.floor}`;
-    return `<svg viewBox="0 0 760 500" role="img" aria-label="Illustrative floor plan for ${escapeHtml(label)}">
-      <rect x="35" y="35" width="690" height="430" fill="none" stroke="#8F753F" stroke-width="2"/>
-      <rect x="285" y="155" width="190" height="190" fill="#D8D0C1" stroke="#8F753F" stroke-width="1.5"/>
-      <rect x="310" y="180" width="42" height="55" fill="none" stroke="#8F753F"/><rect x="360" y="180" width="42" height="55" fill="none" stroke="#8F753F"/><rect x="410" y="180" width="42" height="55" fill="none" stroke="#8F753F"/>
-      <rect x="310" y="250" width="60" height="62" fill="none" stroke="#8F753F"/><rect x="390" y="250" width="62" height="62" fill="none" stroke="#8F753F"/>
-      <path d="M55 70H265V135H495V70H705M55 430H270V365H490V430H705" fill="none" stroke="#B89B5E" stroke-width="1" stroke-dasharray="6 7"/>
-      <path d="M70 90v320M690 90v320" stroke="#B89B5E" stroke-width="1" stroke-dasharray="6 7"/>
-      <text x="380" y="252" text-anchor="middle" fill="#8F753F" font-size="12" letter-spacing="4" font-family="sans-serif">CORE</text>
-      <text x="380" y="22" text-anchor="middle" fill="#8F753F" font-size="11" letter-spacing="3" font-family="sans-serif">N</text>
-      <text x="380" y="488" text-anchor="middle" fill="#8F753F" font-size="10" letter-spacing="2" font-family="sans-serif">ILLUSTRATIVE FLOOR PLATE · NOT FOR CONSTRUCTION</text>
-      <line x1="650" y1="70" x2="650" y2="25" stroke="#8F753F"/><polygon points="650,16 644,29 656,29" fill="#8F753F"/>
+    return `<svg viewBox="0 0 760 500" role="img" aria-label="Illustrative planning diagram for ${escapeHtml(label)}">
+      <rect x="35" y="35" width="690" height="430" fill="none" stroke="#F15F22" stroke-width="2"/>
+      <rect x="285" y="155" width="190" height="190" fill="#D9D9D9" stroke="#F15F22" stroke-width="1.5"/>
+      <rect x="310" y="180" width="42" height="55" fill="none" stroke="#F15F22"/><rect x="360" y="180" width="42" height="55" fill="none" stroke="#F15F22"/><rect x="410" y="180" width="42" height="55" fill="none" stroke="#F15F22"/>
+      <rect x="310" y="250" width="60" height="62" fill="none" stroke="#F15F22"/><rect x="390" y="250" width="62" height="62" fill="none" stroke="#F15F22"/>
+      <path d="M55 70H265V135H495V70H705M55 430H270V365H490V430H705" fill="none" stroke="#F15F22" stroke-width="1" stroke-dasharray="6 7"/>
+      <path d="M70 90v320M690 90v320" stroke="#F15F22" stroke-width="1" stroke-dasharray="6 7"/>
+      <text x="380" y="252" text-anchor="middle" fill="#F15F22" font-size="12" letter-spacing="4" font-family="sans-serif">CORE</text>
+      <text x="380" y="22" text-anchor="middle" fill="#F15F22" font-size="11" letter-spacing="3" font-family="sans-serif">N</text>
+      <text x="380" y="488" text-anchor="middle" fill="#F15F22" font-size="10" letter-spacing="2" font-family="sans-serif">PLANNING DIAGRAM · NOT FOR CONSTRUCTION</text>
+      <line x1="650" y1="70" x2="650" y2="25" stroke="#F15F22"/><polygon points="650,16 644,29 656,29" fill="#F15F22"/>
     </svg>`;
   }
 

@@ -7,41 +7,41 @@
   <meta name="description" content="Capital Place is Hanoi's premier Grade-A office address. 93,000 SQM, LEED Platinum, 29 Lieu Giai, Ba Dinh." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/style.css" />
   <style>
 #hero{position:relative;height:100svh;min-height:680px;overflow:hidden;background:var(--bg)}
 .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
-.ov1{position:absolute;inset:0;background:rgba(17,17,17,.35)}
-.ov2{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(17,17,17,.65) 0%,transparent 50%,var(--bg) 100%)}
+.ov1{position:absolute;inset:0;background:rgba(35,31,32,.35)}
+.ov2{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(35,31,32,.65) 0%,transparent 50%,var(--bg) 100%)}
 .ov3{position:absolute;bottom:0;left:0;right:0;height:45%;background:linear-gradient(to top,var(--bg),transparent)}
 .hero-badges{position:absolute;top:86px;right:var(--px);display:flex;flex-direction:column;align-items:flex-end;gap:8px;animation:fadeIn .9s .6s both}
-.badge{font-family:var(--sans);font-size:9px;letter-spacing:.45em;text-transform:uppercase;border:1px solid;padding:7px 12px;backdrop-filter:blur(4px);background:rgba(17,17,17,.3)}
-.badge-gold{color:var(--gold);border-color:rgba(184,155,94,.35)}
-.badge-dim{color:rgba(184,155,94,.55);border-color:rgba(184,155,94,.15)}
+.badge{font-family:var(--sans);font-size:9px;letter-spacing:.45em;text-transform:uppercase;border:1px solid;padding:7px 12px;backdrop-filter:blur(4px);background:rgba(35,31,32,.3)}
+.badge-accent{color:var(--accent);border-color:rgba(241,95,34,.35)}
+.badge-dim{color:rgba(241,95,34,.55);border-color:rgba(241,95,34,.15)}
 .hero-content{position:absolute;bottom:clamp(4rem,8vw,5rem);left:0;right:0}
-.hero-eyebrow{color:var(--gold);font-size:9px;letter-spacing:.55em;text-transform:uppercase;font-family:var(--sans);margin-bottom:1.5rem;animation:fadeUp 1.2s .1s both}
+.hero-eyebrow{color:var(--accent);font-size:9px;letter-spacing:.55em;text-transform:uppercase;font-family:var(--sans);margin-bottom:1.5rem;animation:fadeUp 1.2s .1s both}
 .hero-h1{font-family:var(--serif);font-weight:300;color:#fff;line-height:.88}
 .hero-h1 span{display:block;font-size:clamp(2.8rem,7.5vw,6.5rem)}
-.hero-h1 .italic{font-style:italic;color:var(--gold)}
+.hero-h1 .italic{font-style:italic;color:var(--accent)}
 .hero-h1 span:nth-child(1){animation:fadeUp 1s .2s both}
 .hero-h1 span:nth-child(2){animation:fadeUp 1s .32s both}
 .hero-h1 span:nth-child(3){animation:fadeUp 1s .44s both}
 .hero-specs{margin-top:1.75rem;display:flex;flex-wrap:wrap;align-items:center;gap:1.25rem;animation:fadeUp 1s .5s both}
 .hero-spec{display:flex;align-items:center;gap:1.25rem;font-family:var(--sans);font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.28)}
-.spec-sep{width:1px;height:12px;background:rgba(184,155,94,.25)}
+.spec-sep{width:1px;height:12px;background:rgba(241,95,34,.25)}
 .hero-ctas{margin-top:2.25rem;display:flex;flex-wrap:wrap;gap:1rem;animation:fadeUp 1s .55s both}
 .scroll-cue{position:absolute;bottom:28px;right:var(--px);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.18)}
 .scroll-cue span{font-family:var(--sans);font-size:8px;letter-spacing:.4em;text-transform:uppercase}
 .scroll-cue svg{width:12px;height:12px;margin-top:4px}
-#specbar{border-top:1px solid var(--gold-b);border-bottom:1px solid var(--gold-b);background:var(--bg)}
+#specbar{border-top:1px solid var(--accent-border);border-bottom:1px solid var(--accent-border);background:var(--bg)}
 .spec-grid{display:grid;grid-template-columns:repeat(2,1fr)}
 @media(min-width:768px){.spec-grid{grid-template-columns:repeat(4,1fr)}}
-.stat-cell{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2.5rem 1.5rem;gap:8px;border-right:1px solid var(--gold-b);border-bottom:1px solid var(--gold-b)}
+.stat-cell{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2.5rem 1.5rem;gap:8px;border-right:1px solid var(--accent-border);border-bottom:1px solid var(--accent-border)}
 @media(min-width:768px){.stat-cell{border-bottom:none}}
 .stat-cell:last-child{border-right:none}
 .stat-num{font-family:var(--serif);font-weight:300;color:#fff;font-size:clamp(2rem,4vw,3.5rem)}
-.stat-label{font-family:var(--sans);font-size:9px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold)}
+.stat-label{font-family:var(--sans);font-size:9px;letter-spacing:.42em;text-transform:uppercase;color:var(--accent)}
 #explore{background:var(--bg);padding:clamp(6rem,12vw,9rem) 0}
 .exp-header{margin-bottom:clamp(3.5rem,7vw,4.5rem);display:flex;flex-direction:column;gap:1.5rem}
 @media(min-width:768px){.exp-header{flex-direction:row;align-items:flex-end}}
@@ -49,20 +49,20 @@
 .exp-header>p{color:rgba(255,255,255,.42);font-size:14px;max-width:280px;line-height:1.7}@media(min-width:1100px){.exp-header>p{max-width:none;white-space:nowrap}}
 .exp-grid{display:grid}
 @media(min-width:1024px){.exp-grid{grid-template-columns:1fr 1.4fr}}
-.zone-list{border-top:1px solid var(--gold-b)}
-.zone-item{width:100%;text-align:left;border-bottom:1px solid var(--gold-b);padding:1.5rem 0;display:flex;align-items:flex-start;gap:1.5rem;transition:opacity .3s;background:none}
+.zone-list{border-top:1px solid var(--accent-border)}
+.zone-item{width:100%;text-align:left;border-bottom:1px solid var(--accent-border);padding:1.5rem 0;display:flex;align-items:flex-start;gap:1.5rem;transition:opacity .3s;background:none}
 .zone-item.inactive{opacity:.3}.zone-item.inactive:hover{opacity:.6}
 .zone-num{font-family:var(--sans);font-size:9px;letter-spacing:.4em;padding-top:2px;flex-shrink:0;min-width:24px;transition:color .3s;color:rgba(255,255,255,.3)}
-.zone-item.active .zone-num{color:var(--gold)}
+.zone-item.active .zone-num{color:var(--accent)}
 .zone-body{flex:1;min-width:0}
 .zone-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:4px}
 .zone-head h3{font-family:var(--serif);font-weight:300;font-size:clamp(1.1rem,2vw,1.3rem);line-height:1.2;transition:color .3s;color:rgba(255,255,255,.7)}
 .zone-item.active .zone-head h3{color:#fff}
 .zone-chevron{width:13px;height:13px;flex-shrink:0;transition:opacity .3s}
-.zone-item.active .zone-chevron{color:var(--gold);opacity:1}
+.zone-item.active .zone-chevron{color:var(--accent);opacity:1}
 .zone-item.inactive .zone-chevron{opacity:0}
 .zone-sub{font-family:var(--sans);font-size:9px;letter-spacing:.22em;text-transform:uppercase;transition:color .3s;color:rgba(255,255,255,.22)}
-.zone-item.active .zone-sub{color:rgba(184,155,94,.65)}
+.zone-item.active .zone-sub{color:rgba(241,95,34,.65)}
 .zone-detail{font-size:14px;line-height:1.7;color:var(--warm-ivory);overflow:hidden;max-height:0;opacity:0;transition:max-height .4s cubic-bezier(.22,1,.36,1),opacity .35s ease,margin-top .35s;margin-top:0}
 .zone-detail.open{max-height:120px;opacity:1;margin-top:12px}
 .img-panel{display:block;padding-left:0;margin-top:2rem}
@@ -72,28 +72,28 @@
 .img-wrap{position:relative;overflow:hidden;background:var(--card);height:min(72vh,640px)}
 .zone-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .7s ease,transform .7s ease;opacity:0;transform:scale(1.04)}
 .zone-img.active{opacity:1;transform:scale(1)}
-.img-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(17,17,17,.85) 0%,transparent 60%,rgba(17,17,17,.15) 100%)}
+.img-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(35,31,32,.85) 0%,transparent 60%,rgba(35,31,32,.15) 100%)}
 .img-lbl{position:absolute;bottom:0;left:0;right:0;padding:3.75rem 2rem 2rem;z-index:2;overflow:hidden}.img-lbl::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(4,10,14,.96) 0%,rgba(4,10,14,.72) 48%,transparent 100%);z-index:-1;pointer-events:none}
-.img-lbl-sub{font-family:var(--sans);font-size:9px;letter-spacing:.45em;text-transform:uppercase;color:var(--gold)}
+.img-lbl-sub{font-family:var(--sans);font-size:9px;letter-spacing:.45em;text-transform:uppercase;color:var(--accent)}
 .img-lbl-title{font-family:var(--serif);font-weight:300;color:#fff;font-size:clamp(1.4rem,2.5vw,1.8rem);margin-top:4px}
 .zone-dots{position:absolute;right:24px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px}
 .zone-dot{width:1px;background:rgba(255,255,255,.2);transition:height .3s,background .3s;height:16px;border:none}
-.zone-dot.active{height:32px;background:var(--gold)}.zone-dot:hover{background:rgba(255,255,255,.4)}
-.quick-links{background:var(--bg2);border-top:1px solid var(--gold-b);padding:clamp(4rem,8vw,6rem) 0}
-.ql-grid{display:grid;gap:1px;background:var(--gold-b)}
+.zone-dot.active{height:32px;background:var(--accent)}.zone-dot:hover{background:rgba(255,255,255,.4)}
+.quick-links{background:var(--bg2);border-top:1px solid var(--accent-border);padding:clamp(4rem,8vw,6rem) 0}
+.ql-grid{display:grid;gap:1px;background:var(--accent-border)}
 @media(min-width:768px){.ql-grid{grid-template-columns:repeat(4,1fr)}}
 .ql-card{background:var(--bg2);padding:2.5rem 2rem;display:flex;flex-direction:column;gap:1rem;transition:background .25s,transform .25s,border-color .25s;position:relative;border:1px solid transparent}
-.ql-card:hover{background:var(--card);border-color:rgba(184,155,94,.34);transform:translateY(-4px);z-index:1}.ql-card:focus-visible{background:var(--card);border-color:var(--gold);transform:translateY(-4px);z-index:1}
-.ql-num{font-family:var(--sans);font-size:9px;letter-spacing:.4em;color:rgba(184,155,94,.4)}
+.ql-card:hover{background:var(--card);border-color:rgba(241,95,34,.34);transform:translateY(-4px);z-index:1}.ql-card:focus-visible{background:var(--card);border-color:var(--accent);transform:translateY(-4px);z-index:1}
+.ql-num{font-family:var(--sans);font-size:9px;letter-spacing:.4em;color:rgba(241,95,34,.4)}
 .ql-title{font-family:var(--serif);font-weight:300;color:#fff;font-size:1.25rem;line-height:1.2}
 .ql-desc{font-family:var(--sans);font-size:13px;color:rgba(255,255,255,.3);line-height:1.6}
-.ql-arrow{margin-top:auto;color:var(--gold);display:flex;align-items:center;gap:8px;font-family:var(--sans);font-size:10px;letter-spacing:.25em;text-transform:uppercase}
+.ql-arrow{margin-top:auto;color:var(--accent);display:flex;align-items:center;gap:8px;font-family:var(--sans);font-size:10px;letter-spacing:.25em;text-transform:uppercase}
 .ql-arrow svg{width:12px;height:12px;transition:transform .2s}
 .ql-card:hover .ql-arrow svg{transform:translateX(3px)}
 </style>
-<meta name="theme-color" content="#111111" />
+<meta name="theme-color" content="#231F20" />
   <meta property="og:site_name" content="Capital Place Hanoi" />
-  <link rel="stylesheet" href="assets/capital-upgrade.css?v=ux-20260824-1" />
+  <link rel="stylesheet" href="assets/capital-upgrade.css?v=brand-20260825-1" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Place","name":"Capital Place","description":"Grade A office building comprising two 37-storey towers and approximately 93,000 sqm of office and retail space.","address":{"@type":"PostalAddress","streetAddress":"29 Lieu Giai","addressLocality":"Hanoi","addressCountry":"VN"},"telephone":"18009289","email":"leasing@capitalplace.vn","url":"https://ngh1aa.github.io/Capital/"}</script>
 </head>
 <body>
@@ -133,7 +133,7 @@
 </nav>
 <main id="main-content">
 <section id="hero">
-  <video class="hero-bg" autoplay muted loop playsinline preload="metadata" aria-label="Capital Place exterior architecture" poster="https://images.unsplash.com/photo-1690944851207-3f288c8fcd0b?w=1600&h=2000&fit=crop&auto=format&q=90">
+  <video class="hero-bg" autoplay muted loop playsinline preload="metadata" aria-label="Capital Place exterior architecture" poster="assets/images/official/location-hero.jpg">
     <source src="https://capitalplace.com.vn/wp-content/uploads/2026/05/CAPITAL-PLACE-TVC_1080p.mp4" type="video/mp4">
   </video>
   <button class="hero-media-toggle" type="button" aria-label="Pause background video" aria-pressed="false">
@@ -161,7 +161,7 @@
     <div class="stat-cell fade-up"><span class="stat-num" data-target="93700" data-fmt="comma">93,000</span><span class="stat-label">SQM Leasable Area</span></div>
     <div class="stat-cell fade-up" style="transition-delay:.1s"><span class="stat-num" data-target="2">2</span><span class="stat-label">Towers</span></div>
     <div class="stat-cell fade-up" style="transition-delay:.2s"><span class="stat-num" data-target="37">37</span><span class="stat-label">Storeys Per Tower</span></div>
-    <div class="stat-cell fade-up" style="transition-delay:.3s"><span class="stat-num" data-target="2015">2015</span><span class="stat-label">Completed</span></div>
+    <div class="stat-cell fade-up" style="transition-delay:.3s"><span class="stat-num" data-target="2020">2020</span><span class="stat-label">Opened</span></div>
   </div>
 </section>
 <section id="explore">
@@ -186,7 +186,7 @@
       <div>
         <p class="eyebrow" style="margin-bottom:1rem">The Address In Full</p>
         <h2 id="leasing-tease-title" class="section-title">Make space<br><em>for more.</em></h2>
-        <p class="leasing-tease-copy">Explore available floor plates, view the building layout, or speak with the Capital Place leasing team.</p>
+        <p class="leasing-tease-copy">Explore reference floor plates, view the building layout, or speak with the Capital Place leasing team.</p>
       </div>
       <div class="leasing-tease-actions">
         <a href="availability.html" class="btn-primary">View Availability<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
@@ -198,7 +198,6 @@
     </div>
   </div>
 </section>
-<section class="home-availability" data-home-availability aria-labelledby="home-availability-title"><div class="container"><div class="home-availability-grid"><div><p class="eyebrow" style="margin-bottom:1rem">Current Opportunities</p><h2 id="home-availability-title" class="section-title">Space for the<br><em>next move.</em></h2><p class="leasing-tease-copy">Start with indicative availability across both towers, then evaluate the floor, capacity and specifications in context.</p><div class="ux-actions"><a class="btn-gold" href="availability.html">View Availability <span aria-hidden="true">→</span></a><a class="btn-outline-gold" href="availability.html#space-finder">Find a Space</a></div></div><div class="home-availability-summary"><div class="home-availability-line"><strong>Tower 01</strong><span data-home-tower="1">Opportunities on request</span></div><div class="home-availability-line"><strong>Tower 02</strong><span data-home-tower="2">Opportunities on request</span></div><div class="home-availability-line"><strong>Area Range</strong><span data-home-area-range>Confirmed by leasing</span></div><p class="home-availability-note">Illustrative availability only. Current spaces and commercial terms are confirmed by the leasing team.</p></div></div></div></section>
 <section class="quick-links">
   <div class="container">
     <p class="eyebrow" style="margin-bottom:2.5rem">Explore More</p>
@@ -206,18 +205,18 @@
       <a href="location.html" class="ql-card"><span class="ql-num">01</span><h3 class="ql-title">Location</h3><p class="ql-desc">Prime Ba Dinh diplomatic quarter, steps from major embassies and government offices.</p><span class="ql-arrow">View<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span></a>
       <a href="office.html" class="ql-card"><span class="ql-num">02</span><h3 class="ql-title">Office</h3><p class="ql-desc">Column-free floor plates, flexible workplace layouts and full-height glazing.</p><span class="ql-arrow">View<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span></a>
       <a href="sustainability.html" class="ql-card"><span class="ql-num">03</span><h3 class="ql-title">Sustainability</h3><p class="ql-desc">Dual LEED certified &mdash; Platinum for operations and Gold for design.</p><span class="ql-arrow">View<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span></a>
-      <a href="amenities.html" class="ql-card"><span class="ql-num">04</span><h3 class="ql-title">Amenities</h3><p class="ql-desc">Sky Lounge, fitness centre, conference halls and fine dining across the podium.</p><span class="ql-arrow">View<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span></a>
+      <a href="amenities.html" class="ql-card"><span class="ql-num">04</span><h3 class="ql-title">Amenities</h3><p class="ql-desc">Discover The Link, The Nexus, meeting spaces, fitness, dining and everyday services.</p><span class="ql-arrow">View<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span></a>
     </div>
   </div>
 </section>
 <script>
 const ZONES=[
-  {num:"01",id:"lobby",label:"Grand Lobby",sub:"Ground Floor · Triple-height atrium",detail:"Marble floors, bamboo-inspired columns, and site-specific Vietnamese art define the arrival. The 18 m atrium opens both towers.",img:"https://www.hanoi-office.com/uploads/files/capital%20place/toa_nha_capital_place_8.jpg"},
-  {num:"02",id:"office",label:"Office Floors",sub:"L6 – L38 · Both towers · 93,000 SQM",detail:"Column-free, open-plan floorplates with full-height glazing. GFA 1,850–2,100 SQM per floor. NBF-compliant fresh air.",img:"https://thanhnien.mediacdn.vn/uploaded/quochung.qc/2020_10_12/capitalplace/2_AYLF.jpg?width=1200"},
-  {num:"03",id:"fitness",label:"Fitness & Wellness",sub:"Podium Level 3",detail:"Full gym, yoga studio, meditation zone, spa showers, and end-of-trip cyclist facilities. Open to all tower tenants.",img:"https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=1200&h=900&fit=crop&auto=format"},
-  {num:"04",id:"dining",label:"Dining & Retail",sub:"Ground · L1 · L2",detail:"A curated selection of cafés, restaurants, and specialty retail across the podium.",img:"https://images.unsplash.com/photo-1587702068694-a909ef4aa346?w=1200&h=900&fit=crop&auto=format"},
-  {num:"05",id:"sky",label:"Sky Lounge",sub:"Level 39 · Tower A",detail:"An exclusive tenant amenity floor with 360° panoramic views of Hanoi.",img:"https://images.unsplash.com/photo-1758193431353-87812fbff5cd?w=1200&h=900&fit=crop&auto=format"},
-  {num:"06",id:"conference",label:"Conference Centre",sub:"Podium L4 – L5",detail:"Divisible event halls, tiered auditorium (200 pax), breakout suites, and a dedicated event team.",img:"https://images.unsplash.com/photo-1617761141732-d481912af1a9?w=1400&h=950&fit=crop&auto=format"},
+  {num:"01",id:"lobby",label:"Grand Lobby",sub:"Arrival · Art · Architecture",detail:"The dragon-scale façade flows into a grand lobby shaped by Vietnamese cultural references, contemporary art and a warm arrival experience.",img:"assets/images/official/office-hero.jpg"},
+  {num:"02",id:"office",label:"Office Floors",sub:"Two towers · 37 storeys · 93,000 SQM",detail:"Large column-free floor plates, full-height glazing and scalable layouts support a wide range of workplace strategies.",img:"assets/images/official/office-hero.jpg"},
+  {num:"03",id:"the-link",label:"The Link",sub:"Basement 1 · Retail & everyday services",detail:"A multifunctional retail and lifestyle destination connecting dining, convenience, wellness and the Capital Place community.",img:"assets/images/official/the-link.jpg"},
+  {num:"04",id:"the-nexus",label:"The Nexus",sub:"Work · Meet · Connect",detail:"A garden of ideas bringing together private studios, meeting rooms, event spaces and shared areas for focused work and collaboration.",img:"assets/images/official/the-nexus.jpg"},
+  {num:"05",id:"lounge",label:"Premium & VIP Lounge",sub:"Executive setting · Panoramic views",detail:"A private, hotel-inspired environment for executive meetings and high-level business engagements, supported by professional beverage service.",img:"assets/images/official/premium-lounge.jpeg"},
+  {num:"06",id:"events",label:"Meeting & Event Spaces",sub:"8–60 people · Multiple room formats",detail:"Professional meeting and event spaces support team discussions, presentations, talks and corporate gatherings.",img:"assets/images/official/lily-event-space.jpeg"},
 ];
 let aZ=0;
 (function(){
@@ -278,7 +277,7 @@ function sz(i){if(i===aZ)return;aZ=i;
   </div>
 </footer>
 <script src="assets/main.js"></script>
-<script src="assets/capital-data.js?v=ux-20260824-1"></script>
-<script src="assets/capital-upgrade.js?v=ux-20260824-1"></script>
+<script src="assets/capital-data.js?v=brand-20260825-1"></script>
+<script src="assets/capital-upgrade.js?v=brand-20260825-1"></script>
 </body>
 </html>

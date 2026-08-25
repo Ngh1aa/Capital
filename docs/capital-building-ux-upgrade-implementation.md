@@ -2,8 +2,8 @@
 
 ## Outcome
 
-Capital Place keeps its existing Grade-A visual language — Fraunces and DM
-Sans typography, graphite / gold palette, cinematic architectural imagery,
+Capital Place uses a brand-aligned Grade-A visual language — DM Sans
+typography, graphite / cream / brand-orange palette, architectural imagery,
 large spacing, editorial composition and restrained motion — while adding the
 decision-support layer required for office leasing.
 
@@ -47,7 +47,7 @@ Supported states:
 - Leased.
 
 State is communicated by text, line and opacity rather than bright marketplace
-badges. Demonstration inventory is always labelled as illustrative and is not
+badges. Public floor plates are presented as planning references and are not
 presented as live commercial data.
 
 ### Space Finder
@@ -135,4 +135,3 @@ node scripts/qa_capital.mjs
 
 The QA script validates all generated routes, local dependencies, duplicate
 IDs, central facts, availability states and the required leasing-flow hooks.
-
