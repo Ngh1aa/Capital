@@ -1,0 +1,20 @@
+/* Capital Place global Hero contrast contract.
+   Layer order: background image (0) -> one black gradient shade (1) -> text/controls (2).
+   This file is loaded last on every page with an image-led Hero. */
+:is(.page-header,.hc-hero,.lc-hero,.oc-hero,.av-hero,.ss-hero,.ac-hero,.sp-hero,.la-hero,.rl-hero,.v-hero,.sup-hero,.r-hero,.o-hero,.vision-hero){position:relative;isolation:isolate;overflow:hidden}
+.page-header-media,
+:is(.hc-hero,.lc-hero,.oc-hero,.av-hero,.ss-hero,.ac-hero,.sp-hero,.la-hero,.rl-hero,.v-hero,.sup-hero,.r-hero,.o-hero,.vision-hero)>img,
+:is(.hc-hero,.lc-hero,.oc-hero,.av-hero,.ss-hero,.ac-hero,.sp-hero,.la-hero,.rl-hero,.v-hero,.sup-hero,.r-hero,.o-hero,.vision-hero)>.hero-bg{z-index:0!important}
+.page-header::before,
+:is(.hc-hero-shade,.lc-hero-shade,.oc-hero-shade,.av-hero-shade,.ss-hero-shade,.ac-hero-shade,.sp-hero-shade,.la-hero-shade,.rl-hero-shade,.v-hero-shade,.sup-hero-shade,.r-hero-shade,.o-hero-shade,.vision-hero-shade){z-index:1!important}
+.page-header .container,
+:is(.hc-hero-content,.hc-hero-facts,.lc-hero-copy,.oc-hero-copy,.av-hero-copy,.av-hero-facts,.ss-hero-copy,.ss-hero-credentials,.ac-hero-copy,.sp-hero-copy,.sp-hero-status,.la-hero-copy,.la-hero-mark,.la-hero-stats,.rl-hero-copy,.rl-hero-mark,.rl-hero-stats,.v-hero-copy,.v-hero-context,.sup-hero-copy,.sup-hero-context,.r-hero-copy,.r-hero-docs,.r-hero-context,.o-hero-copy,.o-hero-context,.vision-hero-grid,.vision-hero-copy,.availability-hero-copy,.availability-hero-proof){position:relative;z-index:2}
+:is(.hc-hero-facts,.la-hero-mark,.la-hero-stats,.rl-hero-mark,.rl-hero-stats,.sp-hero-status,.v-hero-context,.sup-hero-context,.r-hero-docs,.r-hero-context,.o-hero-context,.availability-hero-proof){position:absolute;z-index:2}
+
+/* Preserve Home Hero's intentional bottom-left composition while keeping it above the shade. */
+.hc-hero-content{position:absolute!important;left:0;right:0;bottom:14%;z-index:2!important}
+.hc-hero-facts{z-index:2!important}
+
+/* Amenities uses a two-image montage wrapper inside the Hero; keep the entire image plane below the single shade. */
+.ac-hero-montage{position:absolute;z-index:0!important}
+.ac-hero-montage img{position:relative;z-index:0!important}
