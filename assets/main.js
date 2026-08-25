@@ -36,7 +36,10 @@ function setLang(l) {
   document.querySelectorAll('.nav-links a, #mob-menu a').forEach(a => {
     const href = a.getAttribute('href') || '';
     const target = href.split('/').pop();
-    if (target === page) a.classList.add('active');
+    if (target === page) {
+      a.classList.add('active');
+      a.setAttribute('aria-current', 'page');
+    }
   });
 })();
 
