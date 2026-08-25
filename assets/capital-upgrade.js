@@ -426,14 +426,33 @@
     const contextPanel = $('[data-leasing-context]');
     const intentButtons = $$('[data-intent]');
     const success = $('[data-form-success]');
-    let intent = params.get('intent') || 'office';
+    const supportedIntents = ['office', 'availability', 'proposal', 'viewing', 'future-availability', 'retail', 'technical-package'];
+    let intent = supportedIntents.includes(params.get('intent')) ? params.get('intent') : 'office';
     const space = getSpace(params.get('space'));
     const reference = params.get('reference');
 
     function updateIntent(nextIntent) {
       intent = nextIntent;
       intentInput.value = intent;
-      intentButtons.forEach((button) => button.classList.toggle('active', button.dataset.intent === intent));
+      intentButtons.forEach((button) => {
+        const active = button.dataset.intent === intent;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
+      const routeNotes = {
+        office: ['Office leasing', 'Start with your area, move-in timing and workplace requirement.'],
+        viewing: ['Private viewing', 'Choose a preferred date and time; the leasing team confirms the appointment.'],
+        retail: ['Retail / F&B', 'Tell us about your brand, category, area requirement and target opening.'],
+        availability: ['Current availability', 'Share your requirement and the team will confirm the latest floor schedule.'],
+        proposal: ['Proposal request', 'Attach your requirement to a selected floor or reference plate.'],
+        'future-availability': ['Future availability', 'Register your timing so the team can advise on the next suitable opportunity.'],
+        'technical-package': ['Technical package', 'Request the documentation your ESG, workplace or technical team needs.']
+      };
+      const routeNote = routeNotes[intent] || routeNotes.office;
+      const routeTitle = $('[data-route-note-title]');
+      const routeCopy = $('[data-route-note-copy]');
+      if (routeTitle) routeTitle.textContent = routeNote[0];
+      if (routeCopy) routeCopy.textContent = routeNote[1];
       $$('[data-conditional]', form).forEach((group) => {
         const modes = group.dataset.conditional.split(' ');
         group.hidden = !modes.includes(intent);

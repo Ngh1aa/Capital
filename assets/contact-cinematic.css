@@ -1,0 +1,40 @@
+/* Capital Place Contact / Leasing — conversion layer */
+body:has(.leasing-form){background:var(--bg);color:var(--warm-ivory)}
+body:has(.leasing-form) .page-header{min-height:72vh;isolation:isolate;overflow:hidden;background:#181818!important}
+body:has(.leasing-form) .page-header::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,17,17,.82),rgba(17,17,17,.2) 78%),linear-gradient(0deg,rgba(17,17,17,.65),transparent 68%);z-index:-1}
+body:has(.leasing-form) .page-header .container{position:relative;z-index:1;max-width:1180px;padding-top:18vh}
+body:has(.leasing-form) .page-header h1{font-size:clamp(4rem,8vw,8rem);line-height:.84;max-width:9ch}
+body:has(.leasing-form) .page-header>img{filter:saturate(.48);transform:scale(1.02)}
+body:has(.leasing-form) .ux-section{padding-top:clamp(4rem,9vw,8rem);padding-bottom:clamp(5rem,10vw,9rem)}
+body:has(.leasing-form) .ux-section-head{margin-bottom:2rem}
+body:has(.leasing-form) .intent-grid{background:rgba(240,239,233,.26);border:1px solid rgba(240,239,233,.26);margin-top:2rem;margin-bottom:.75rem}
+body:has(.leasing-form) .intent-option{min-height:155px;background:var(--bg2);border:1px solid transparent;padding:clamp(1.2rem,3vw,2rem)}
+body:has(.leasing-form) .intent-option:hover,body:has(.leasing-form) .intent-option:focus-visible,body:has(.leasing-form) .intent-option.active{background:var(--graphite);border-color:var(--accent)}
+body:has(.leasing-form) .intent-option:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+body:has(.leasing-form) .intent-option strong{font-size:clamp(1.45rem,2.5vw,2rem)}
+.leasing-route-note{display:flex;flex-wrap:wrap;align-items:baseline;gap:.55rem 1rem;padding:1.1rem 1.3rem;border:1px solid var(--accent-border);background:rgba(240,239,233,.08)}
+.leasing-route-label{width:100%;color:var(--accent);font:9px var(--sans);letter-spacing:.25em;text-transform:uppercase}
+.leasing-route-note strong{color:var(--warm-ivory);font:300 1.45rem/1 var(--serif)}
+.leasing-route-note [data-route-note-copy]{color:rgba(240,239,233,.54);font:11px/1.5 var(--sans)}
+body:has(.leasing-form) .leasing-layout{margin-top:clamp(2rem,5vw,4rem)}
+body:has(.leasing-form) .leasing-layout>aside{position:relative}
+@media(min-width:980px){body:has(.leasing-form) .leasing-layout>aside{position:sticky;top:110px}}
+body:has(.leasing-form) [data-form-title]{font-size:clamp(2.6rem,4.8vw,5rem);line-height:.9;margin-bottom:1.8rem}
+.leasing-response-note{border-top:1px solid var(--accent-border);margin-top:1.5rem;padding-top:1.25rem}
+.leasing-response-note span{display:block;color:var(--accent);font:9px var(--sans);letter-spacing:.24em;text-transform:uppercase}
+.leasing-response-note strong{display:block;color:var(--warm-ivory);font:300 2rem var(--serif);margin:.45rem 0}
+.leasing-response-note p{color:rgba(240,239,233,.48);font:11px/1.65 var(--sans);max-width:23rem}
+body:has(.leasing-form) .leasing-form{border:1px solid var(--accent-border);background:rgba(35,31,32,.28);padding:clamp(1.2rem,3vw,2.2rem)}
+body:has(.leasing-form) .ux-field label{color:rgba(240,239,233,.72);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase}
+body:has(.leasing-form) .ux-field input,body:has(.leasing-form) .ux-field select,body:has(.leasing-form) .ux-field textarea{border-color:rgba(240,239,233,.25);background:rgba(17,17,17,.35);color:var(--warm-ivory);min-height:48px}
+body:has(.leasing-form) .ux-field input:focus,body:has(.leasing-form) .ux-field select:focus,body:has(.leasing-form) .ux-field textarea:focus{border-color:var(--accent);outline:2px solid rgba(255,105,56,.25);outline-offset:2px}
+body:has(.leasing-form) .ux-field input::placeholder,body:has(.leasing-form) .ux-field textarea::placeholder{color:rgba(240,239,233,.33)}
+body:has(.leasing-form) .form-consent{border-top:1px solid var(--accent-border);padding-top:1rem}
+body:has(.leasing-form) .form-submit-row{border-top:1px solid var(--accent-border);padding-top:1rem}
+body:has(.leasing-form) .form-submit-row .btn-accent{min-height:48px}
+body:has(.leasing-form) .form-submit-note{max-width:27rem}
+body:has(.leasing-form) .form-success{padding:clamp(1.5rem,4vw,3rem);background:rgba(35,31,32,.28);border:1px solid var(--accent-border)}
+body:has(.leasing-form) .form-success h2{font-size:clamp(2.8rem,5vw,5rem);line-height:.88}
+body:has(.leasing-form) footer{background:var(--brand-cream);color:#111}
+@media(max-width:720px){body:has(.leasing-form) .page-header{min-height:78vh}body:has(.leasing-form) .page-header .container{padding-top:24vh}.leasing-route-note{display:block}.leasing-route-note strong{display:block;margin:.35rem 0}.leasing-route-note [data-route-note-copy]{display:block}.leasing-response-note{margin-top:1.25rem}}
+@media(prefers-reduced-motion:reduce){body:has(.leasing-form) .page-header>img{transform:none}.intent-option{transition:none}}
