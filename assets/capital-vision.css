@@ -205,7 +205,7 @@
   .vision-hero-scale{grid-template-columns:1fr;margin-top:1rem;border-top:1px solid rgba(255,255,255,.24)}
   .vision-hero-scale div,.vision-hero-scale div+div{display:grid;grid-template-columns:110px 1fr;align-items:baseline;padding:.8rem 0;border-right:0;border-bottom:1px solid rgba(255,255,255,.15)}
   .vision-hero-scale div:last-child{border-bottom:0}.vision-hero-scale strong{font-size:1.65rem}.vision-hero-scale span{margin-top:0}
-  .hero-media-toggle{left:auto;right:var(--px)}
+
   .scale-visual{min-height:840px}.scale-ghost{top:10%;font-size:22vw}.scale-copy h2{font-size:clamp(3rem,13vw,5rem)}
   .scale-proof{grid-template-columns:1fr 1fr}.scale-proof div:nth-child(2){border-right:0}.scale-proof div:nth-child(3),.scale-proof div:nth-child(4){border-top:1px solid rgba(255,255,255,.17);padding-top:1rem}.scale-proof div:nth-child(3){padding-left:0}
   .space-gateway-visual{min-height:420px}
