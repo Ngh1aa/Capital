@@ -457,6 +457,12 @@
     if (error) error.textContent = message;
   }
 
+  function getBriefRequirement(form) {
+    const team = $('[name="teamSize"]', form)?.value.trim() || '';
+    const area = $('[name="requiredArea"]', form)?.value.trim() || '';
+    return team ? `${team} people` : (area || 'Not added');
+  }
+
   function initLeasingForm() {
     const form = $('[data-leasing-form]');
     if (!form) return;
@@ -498,6 +504,7 @@
         group.hidden = !modes.includes(intent);
         $$('[data-required-when-visible]', group).forEach((field) => { field.required = !group.hidden; });
       });
+      updateBrief();
       const title = $('[data-form-title]');
       const labels = {
         office: 'Office Leasing Enquiry',
@@ -514,9 +521,32 @@
       if (submitLabel) submitLabel.textContent = submitLabels[intent] || submitLabels.office;
     }
 
+    function updateBrief() {
+      const get = (selector) => $(selector, form)?.value.trim() || '';
+      const setBrief = (selector, value, empty = !value) => { const element = $(selector); if (!element) return; element.textContent = value || 'Not added'; element.dataset.empty = String(empty); };
+      const requirement = get('[name="teamSize"]') ? `${get('[name="teamSize"]')} people` : get('[name="requiredArea"]');
+      const selectedValue = contextInput?.value || spaceParam || '';
+      setBrief('[data-brief-company]', get('[name="company"]'));
+      setBrief('[data-brief-requirement]', requirement);
+      setBrief('[data-brief-space]', selectedValue, !selectedValue);
+      setBrief('[data-brief-tower]', selectedValue ? (selectedValue.match(/Tower 0[12]/)?.[0] || 'Either') : 'Either', false);
+      setBrief('[data-brief-movein]', get('[name="targetMoveIn"]'));
+      const interest = $('[data-brief-interest]');
+      if (interest) interest.textContent = routeNotesForBrief[intent] || 'Office leasing';
+    }
+    const routeNotesForBrief = { office: 'Office leasing', availability: 'Current availability', proposal: 'Proposal request', viewing: 'Private viewing', retail: 'Retail / F&B', 'future-availability': 'Future availability', 'technical-package': 'Technical package' };
     intentButtons.forEach((button) => button.addEventListener('click', () => updateIntent(button.dataset.intent)));
+    $$('.la-route-panel').forEach((link) => {
+      if (!spaceParam && !reference) return;
+      const next = new URL(link.getAttribute('href'), global.location.href);
+      if (spaceParam) next.searchParams.set('space', spaceParam);
+      if (reference) next.searchParams.set('reference', reference);
+      link.href = `${next.pathname.split('/').pop()}?${next.searchParams.toString()}`;
+    });
     updateIntent(intent);
 
+    const noSpace = $('[data-leasing-no-space]');
+    if (noSpace) noSpace.hidden = Boolean(space || spaceParam || reference);
     if (space || spaceParam || reference) {
       const value = space ? `${space.tower} · ${space.floor} · ${formatArea(space.areaSqm)}` : (spaceParam || reference);
       contextInput.value = value;
@@ -529,6 +559,7 @@
         $('[data-leasing-selected-view]', contextPanel).textContent = space?.viewDirection || 'Orientation on request';
         $('[data-leasing-selected-status]', contextPanel).textContent = space ? getStatus(space).label : 'Current status via Leasing';
       }
+      updateBrief();
     }
 
     const dateInput = $('[name="preferredDate"]', form);
@@ -538,7 +569,7 @@
       dateInput.min = tomorrow.toISOString().slice(0, 10);
     }
 
-    $$('input,select,textarea', form).forEach((field) => field.addEventListener('input', () => setFieldError(field, '')));
+    $$('input,select,textarea', form).forEach((field) => field.addEventListener('input', () => { setFieldError(field, ''); updateBrief(); }));
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       let firstInvalid = null;
@@ -574,6 +605,13 @@
       const mailto = `${data.facts.leasingEmailHref}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
       const fallback = $('[data-email-fallback]', success);
       if (fallback) fallback.href = mailto;
+      const successValues = {
+        '[data-success-space]': contextInput?.value || spaceParam || 'Not selected',
+        '[data-success-requirement]': getBriefRequirement(form),
+        '[data-success-movein]': $('[name="targetMoveIn"]', form)?.value || 'Not added',
+        '[data-success-interest]': routeNotesForBrief[intent] || 'Office leasing'
+      };
+      Object.entries(successValues).forEach(([selector, value]) => { const element = $(selector, success); if (element) element.textContent = value; });
       form.hidden = true;
       success.hidden = false;
       success.focus();
