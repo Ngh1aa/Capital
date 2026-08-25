@@ -76,36 +76,14 @@ const countIO = new IntersectionObserver(
 );
 document.querySelectorAll('.stat-num[data-target]').forEach(el => countIO.observe(el));
 
-// ── Background video control and reduced-motion fallback
-(function initHeroMediaControl() {
+// ── Background video autoplay and reduced-motion fallback
+(function initHeroMediaPlayback() {
   const video = document.querySelector('.hero-bg:is(video)');
-  const toggle = document.querySelector('.hero-media-toggle');
-  if (!video || !toggle) return;
+  if (!video) return;
 
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const label = toggle.querySelector('span:last-child');
-  const icon = toggle.querySelector('span:first-child');
-
-  const render = () => {
-    const paused = video.paused;
-    toggle.setAttribute('aria-pressed', String(paused));
-    toggle.setAttribute('aria-label', paused ? 'Play background video' : 'Pause background video');
-    if (label) label.textContent = paused ? 'Play motion' : 'Pause motion';
-    if (icon) icon.textContent = paused ? '▶' : 'Ⅱ';
-  };
-
-  if (reducedMotion) video.pause();
-  render();
-  toggle.addEventListener('click', async () => {
-    if (video.paused) {
-      try { await video.play(); } catch { /* Browser can keep media paused. */ }
-    } else {
-      video.pause();
-    }
-    render();
-  });
-  video.addEventListener('play', render);
-  video.addEventListener('pause', render);
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    video.pause();
+  }
 })();
 
 // ── Architectural motion system
