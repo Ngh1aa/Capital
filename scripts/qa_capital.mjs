@@ -114,6 +114,7 @@ assert((publicAssets.match(/#F15F22/g) || []).length === 1, 'orange must appear 
 assert(!/rgba\(241,95,34|#(?:F37024|A63C12)/i.test(publicAssets), 'orange remains outside the CTA token');
 assert(publicAssets.includes('body [hidden]{display:none!important}'), 'hidden interactive fields can be exposed by author CSS');
 assert(publicAssets.includes("a.setAttribute('aria-current', 'page')"), 'current navigation item is not exposed accessibly');
+assert(publicAssets.includes('queueViewportReveal'), 'anchor and fast-scroll motion safety is missing');
 assert(publicAssets.includes('availability-journey-grid'), 'image-led availability journey styles are missing');
 assert(publicAssets.includes('toa-nha-capital-place-lieu-giai-1.jpg'), 'requested office leasing image is missing');
 assert(publicAssets.includes('dji-0315-1659320628621.jpeg'), 'requested location CTA image is missing');

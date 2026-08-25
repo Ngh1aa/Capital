@@ -154,6 +154,26 @@ document.querySelectorAll('.stat-num[data-target]').forEach(el => countIO.observ
   }
 
   prepare();
+  let revealQueued = false;
+  const revealViewport = () => {
+    revealQueued = false;
+    document.querySelectorAll('.capital-motion-item:not(.is-motion-visible)').forEach((node) => {
+      const rect = node.getBoundingClientRect();
+      if (rect.top <= innerHeight * 1.08 && rect.bottom >= -innerHeight * .08) {
+        node.classList.add('is-motion-visible');
+        observer?.unobserve(node);
+      }
+    });
+  };
+  const queueViewportReveal = () => {
+    if (revealQueued) return;
+    revealQueued = true;
+    requestAnimationFrame(revealViewport);
+  };
+  queueViewportReveal();
+  setTimeout(queueViewportReveal, 180);
+  window.addEventListener('scroll', queueViewportReveal, { passive: true });
+  window.addEventListener('hashchange', queueViewportReveal);
   const mutations = new MutationObserver((records) => {
     records.forEach((record) => record.addedNodes.forEach((node) => {
       if (node instanceof Element) prepare(node);
