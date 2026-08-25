@@ -11,7 +11,7 @@ const pages = [
 const failures = [];
 let assertions = 0;
 const assetVersion = 'vision-20260825-2';
-const whiteAssetVersion = 'white-20260825-1';
+const whiteAssetVersion = 'white-20260825-2';
 
 function assert(condition, message) {
   assertions += 1;

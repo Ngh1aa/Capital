@@ -73,9 +73,10 @@ footer .official-logo{filter:invert(1)}
 /* Homepage: monumental photography framed by white editorial space. */
 .scale-stage{background:#fff}
 .scale-visual{min-height:min(900px,100svh)}
-.scale-visual>img{width:min(55vw,880px);object-position:right bottom}
-.scale-wash{background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.98) 37%,rgba(255,255,255,.48) 68%,rgba(255,255,255,.05) 100%),linear-gradient(180deg,rgba(255,255,255,.2),#fff 98%)}
-.scale-ghost{color:rgba(35,31,32,.06)}
+.scale-visual>img{z-index:0;width:min(55vw,880px);object-position:right bottom;filter:saturate(.82) contrast(1.03)}
+.scale-wash{z-index:1;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.98) 38%,rgba(255,255,255,.38) 65%,rgba(255,255,255,.04) 100%)}
+.scale-ghost{z-index:2;color:rgba(35,31,32,.06)}
+.scale-copy{position:relative;z-index:2}
 .scale-copy h2,.scale-proof strong{color:var(--capital-black)}
 .scale-proof{border-color:rgba(35,31,32,.3)}
 .scale-proof div{border-color:rgba(35,31,32,.14)}
