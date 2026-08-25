@@ -263,3 +263,130 @@ section#amenity-directory .am-dir-card:focus-visible .am-dir-explore {
     height: 240px;
   }
 }
+
+
+/* UI feedback updates — 2026-08-25 16:44 */
+/* Location: use dark editorial overlays wherever copy sits over photography. */
+.loc-metro {
+  background-image: linear-gradient(90deg, rgba(17,17,17,.96) 0%, rgba(17,17,17,.84) 48%, rgba(17,17,17,.24) 78%), url("images/feedback/location-page-header.jpg") !important;
+}
+.loc-metro-copy {
+  background: rgba(17,17,17,.84) !important;
+  border-color: rgba(255,255,255,.16) !important;
+  color: #fff !important;
+}
+.loc-metro-copy h2,
+.loc-metro-copy h2 em,
+.loc-metro-copy > p:not(.eyebrow),
+.loc-metro-copy .loc-metro-stat strong,
+.loc-metro-copy .loc-metro-stat span {
+  color: #fff !important;
+}
+.loc-v2-section.alt:has(.loc-lifestyle-copy) {
+  background-image: linear-gradient(90deg, rgba(17,17,17,.96) 0%, rgba(17,17,17,.84) 48%, rgba(17,17,17,.2) 78%), url("images/feedback/fb4-the-link.jpg") !important;
+}
+.loc-v2-section.alt:has(.loc-lifestyle-copy) .loc-lifestyle-copy {
+  background: rgba(17,17,17,.84) !important;
+  border: 1px solid rgba(255,255,255,.16);
+  padding: clamp(1.5rem, 4vw, 3rem);
+  color: #fff !important;
+}
+.loc-v2-section.alt:has(.loc-lifestyle-copy) .loc-lifestyle-copy .section-title,
+.loc-v2-section.alt:has(.loc-lifestyle-copy) .loc-lifestyle-copy .section-title em,
+.loc-v2-section.alt:has(.loc-lifestyle-copy) .loc-lifestyle-copy > p:not(.eyebrow),
+.loc-v2-section.alt:has(.loc-lifestyle-copy) .loc-lifestyle-copy .loc-category,
+.loc-v2-section.alt:has(.loc-lifestyle-copy) .loc-lifestyle-copy .loc-category strong,
+.loc-v2-section.alt:has(.loc-lifestyle-copy) .loc-lifestyle-copy .loc-category span {
+  color: #fff !important;
+}
+body:has(.loc-v2-hero) footer .ft-grid,
+body:has(.loc-v2-hero) footer .ft-grid * {
+  color: #111111 !important;
+}
+
+/* Office: dark photographic gradients and explicit contrast for light/dark cards. */
+.office-numbers {
+  background-image: linear-gradient(90deg, rgba(17,17,17,.96) 0%, rgba(17,17,17,.82) 50%, rgba(17,17,17,.2) 80%), url("images/official/capital-place-towers.jpg") !important;
+}
+.office-numbers > .container > .eyebrow,
+.office-numbers > .container > .section-title,
+.office-numbers > .container > .section-title em {
+  color: #fff !important;
+}
+.finder-progress {
+  background: #d9d9d9 !important;
+}
+.finder-progress span {
+  background: #fff !important;
+  color: #111111 !important;
+  border: 1px solid #d9d9d9;
+}
+.finder-progress span.active {
+  background: #111111 !important;
+  color: #fff !important;
+  border-color: #111111;
+}
+#floor-detail-card > div {
+  background: #111111 !important;
+  color: #fff !important;
+  border-color: #111111 !important;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+#floor-detail-card > div .floor-detail-kicker,
+#floor-detail-card > div .floor-detail-title,
+#floor-detail-card > div .floor-detail-title em,
+#floor-detail-card > div .floor-detail-area,
+#floor-detail-card > div .floor-meta-key,
+#floor-detail-card > div .floor-meta-value {
+  color: #fff !important;
+}
+.office-specs {
+  background-image: linear-gradient(90deg, rgba(17,17,17,.96) 0%, rgba(17,17,17,.84) 52%, rgba(17,17,17,.18) 80%), url("images/official/the-nexus.jpg") !important;
+}
+.office-specs > .container > .eyebrow,
+.office-specs > .container > .section-title,
+.office-specs > .container > .section-title em {
+  color: #fff !important;
+}
+.office-fitout {
+  background-image: linear-gradient(90deg, rgba(17,17,17,.94) 0%, rgba(17,17,17,.78) 50%, rgba(17,17,17,.16) 80%), url("images/official/peony-meeting-room.jpg") !important;
+}
+.office-fitout > .container > .eyebrow,
+.office-fitout > .container > .section-title,
+.office-fitout > .container > .section-title em,
+.office-fitout > .container > .fitout-copy {
+  color: #fff !important;
+}
+
+/* Sustainability: preserve the image-led sections while making their copy sit on dark overlays. */
+.sus-performance {
+  background-image: linear-gradient(90deg, rgba(17,17,17,.96) 0%, rgba(17,17,17,.84) 52%, rgba(17,17,17,.18) 80%), url("images/feedback/sustainability-generated.jpg") !important;
+}
+.sus-performance .sus-section-head,
+.sus-technical .sus-section-head,
+.sus-future .sus-section-head {
+  background: rgba(17,17,17,.84) !important;
+  border-color: rgba(255,255,255,.16) !important;
+}
+.sus-performance .sus-section-head .section-title,
+.sus-performance .sus-section-head .section-title em,
+.sus-performance .sus-section-head > p:not(.eyebrow),
+.sus-technical .sus-section-head .section-title,
+.sus-technical .sus-section-head .section-title em,
+.sus-technical .sus-section-head > p:not(.eyebrow),
+.sus-future .sus-section-head .section-title,
+.sus-future .sus-section-head .section-title em,
+.sus-future .sus-section-head > p:not(.eyebrow) {
+  color: #fff !important;
+}
+.sus-technical {
+  background-image: linear-gradient(90deg, rgba(17,17,17,.96) 0%, rgba(17,17,17,.86) 67%, rgba(17,17,17,.18)), url("images/feedback/sustainability-generated-2.jpg") !important;
+}
+.sus-future {
+  background-image: linear-gradient(90deg, rgba(17,17,17,.96) 0%, rgba(17,17,17,.82) 52%, rgba(17,17,17,.18) 80%), url("images/official/sustainability-hero.jpg") !important;
+}
+
+/* Amenities: keep the requested 16px inset explicit for motion-enabled cards too. */
+section#amenity-directory .am-dir-card .am-dir-copy {
+  padding-inline-start: 16px !important;
+}
