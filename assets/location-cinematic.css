@@ -51,3 +51,22 @@
 section#city-context > div.container.lc-context-grid > div.lc-context-copy:nth-of-type(2) {
   translate: -36px;
 }
+
+
+/* CSS Feedback Tool export: css_capital2.md — applied 2026-08-26 */
+/* Feedback item(s): Location 1 */
+main#main-content > section.lc-metro.capital-motion-item:nth-of-type(5) {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): Location 2 */
+main#main-content > section.lc-day.capital-motion-item:nth-of-type(7) {
+  background-color: rgb(250, 250, 250);
+}
+/* Feedback item(s): Location 3 */
+section#neighbourhood-map {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): Location 4 — scoped correction wins over legacy .lc-location footer rule. */
+body.lc-location footer {
+  background-color: rgb(255, 255, 255);
+}

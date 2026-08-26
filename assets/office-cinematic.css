@@ -57,3 +57,10 @@ div#office-floor-detail > div.oc-floor-detail-plan.media-frame:nth-of-type(2) {
 main#main-content > section.oc-fitout.capital-motion-item:nth-of-type(11) {
   background-color: rgb(255, 255, 255);
 }
+
+
+/* CSS Feedback Tool export: css_capital2.md — applied 2026-08-26 */
+/* Feedback item(s): Office 1 */
+section#building-stack > div.container > div.oc-stack-shell:nth-of-type(3) {
+  background-color: rgb(255, 255, 255);
+}
