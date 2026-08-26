@@ -1,0 +1,87 @@
+/*
+ * Capital Place Media Frame System
+ * Portable primitive for image-led sections and photography cards.
+ * Layering/overlay z-index remains owned by hero-contrast.css.
+ */
+
+:root {
+  --media-fit: cover;
+  --media-position: 50% 50%;
+  --media-surface: #eee;
+}
+
+.media-frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--media-surface);
+}
+
+.media-frame > img,
+.media-frame > video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: var(--media-fit, cover);
+  object-position: var(--media-position, 50% 50%);
+}
+
+/* Presets. Existing editorial/full-bleed sections may keep their own min-height. */
+.media-frame--hero {
+  min-height: clamp(560px, 88vh, 960px);
+}
+
+/* Existing absolute-positioned media wrappers must retain their full-bleed geometry. */
+.media-frame--absolute {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto !important;
+}
+
+.media-frame--cinematic {
+  aspect-ratio: 1.85 / 1;
+}
+
+.media-frame--landscape {
+  aspect-ratio: 16 / 9;
+}
+
+.media-frame--wide {
+  aspect-ratio: 3 / 2;
+}
+
+.media-frame--portrait {
+  aspect-ratio: 4 / 5;
+}
+
+.media-frame--square {
+  aspect-ratio: 1 / 1;
+}
+
+/* Technical visuals must remain fully visible rather than being cropped. */
+.media-frame--contain {
+  --media-fit: contain;
+  background: var(--media-surface, #f3f0e9);
+}
+
+/* Shared focal-point vocabulary. Inline --media-position remains supported for precision. */
+.media-frame[data-focus="center"] { --media-position: 50% 50%; }
+.media-frame[data-focus="top"] { --media-position: 50% 25%; }
+.media-frame[data-focus="bottom"] { --media-position: 50% 75%; }
+.media-frame[data-focus="left"] { --media-position: 30% 50%; }
+.media-frame[data-focus="right"] { --media-position: 70% 50%; }
+
+/* Safe defaults for lazy-loaded photography without affecting logos/diagrams outside a frame. */
+.media-frame > img,
+.media-frame > video {
+  max-width: 100%;
+}
+
+@media (max-width: 700px) {
+  .media-frame--hero {
+    min-height: clamp(520px, 82svh, 760px);
+  }
+}
+
