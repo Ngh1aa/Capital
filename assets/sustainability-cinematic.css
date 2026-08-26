@@ -38,9 +38,35 @@ section#community {
 section#sustainability-resources {
   background-color: rgb(255, 255, 255);
 }
-/* Feedback item(s): 7 */
-nav#main-nav {
-  background-color: rgb(255, 255, 255);
+/* Feedback item(s): 7 — nav must retain contrast in both top and scrolled states. */
+body.ss-page nav#main-nav:not(.scrolled) {
+  background-color: rgba(17, 17, 17, 0.72);
+  border-bottom-color: rgba(255, 255, 255, 0.14);
+}
+body.ss-page nav#main-nav:not(.scrolled) .nav-links a,
+body.ss-page nav#main-nav:not(.scrolled) .lang-btns button,
+body.ss-page nav#main-nav:not(.scrolled) .nav-ham {
+  color: rgba(255, 255, 255, 0.82);
+}
+body.ss-page nav#main-nav:not(.scrolled) .nav-links a.active,
+body.ss-page nav#main-nav:not(.scrolled) .nav-links a:hover,
+body.ss-page nav#main-nav:not(.scrolled) .lang-btns button.active,
+body.ss-page nav#main-nav:not(.scrolled) .lang-btns button:hover {
+  color: #ff6938;
+}
+body.ss-page nav#main-nav.scrolled {
+  background-color: rgba(255, 255, 255, 0.96);
+}
+body.ss-page nav#main-nav.scrolled .nav-links a,
+body.ss-page nav#main-nav.scrolled .lang-btns button,
+body.ss-page nav#main-nav.scrolled .nav-ham {
+  color: rgba(35, 31, 32, 0.68);
+}
+body.ss-page nav#main-nav.scrolled .nav-links a.active,
+body.ss-page nav#main-nav.scrolled .nav-links a:hover,
+body.ss-page nav#main-nav.scrolled .lang-btns button.active,
+body.ss-page nav#main-nav.scrolled .lang-btns button:hover {
+  color: #231f20;
 }
 /* Feedback item(s): 8 */
 footer {
