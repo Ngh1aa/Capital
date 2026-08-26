@@ -43,3 +43,24 @@
 :is(.ss-leed-panel,.hc-leed)>img{position:absolute;z-index:0!important}
 :is(.ss-leed-panel,.hc-leed)>[class*="-shade"]{z-index:1!important;pointer-events:none}
 :is(.ss-leed-panel,.hc-leed)>:is([class*="-copy"],[class*="-content"]){position:absolute;z-index:2!important}
+
+
+/* Hybrid Hero short-height desktop correction: keep proposition, wordmark and facts in separate bands. */
+@media (min-width: 801px) and (max-height: 640px) {
+  .hc-hero > .hc-hero-content {
+    top: 3.75rem;
+    bottom: auto !important;
+  }
+  .hc-hero-wordmark {
+    bottom: 6.3rem;
+    font-size: clamp(2.5rem, 5.5vw, 6rem);
+    line-height: .65;
+  }
+  .hc-hero > .hc-hero-facts {
+    bottom: .65rem !important;
+    padding-top: .35rem;
+  }
+  .hc-hero > .hc-hero-facts strong {
+    font-size: clamp(1.5rem, 1.9vw, 2.25rem);
+  }
+}
