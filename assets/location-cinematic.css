@@ -20,3 +20,27 @@
 .lc-route-stage,.lc-context-map,.lc-metro-diagram{background-repeat:no-repeat;background-position:0% 0%;}
 .lc-business>img{z-index:-2;}
 .lc-business-shade{z-index:-1;background:linear-gradient(90deg,rgba(8,8,8,.92),rgba(8,8,8,.34) 72%,rgba(8,8,8,.1));}
+
+
+/* Google Static Maps Hybrid neighbourhood layer — public referrer-restricted key, HTML POIs. */
+.lc-map-visual{aspect-ratio:4 / 3;min-height:0;background:#dcd8d0}
+.lc-map-visual:before{content:none}
+.lc-map-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(242,239,232,.04),rgba(242,239,232,.16));z-index:1;pointer-events:none}
+.lc-map-base{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;filter:saturate(.68) contrast(.92) brightness(1.04);z-index:0}
+.lc-map-base.is-fallback{filter:saturate(.68) contrast(.92) brightness(1.04)}
+.lc-map-status{position:absolute;left:1rem;top:1rem;max-width:20rem;padding:.65rem .8rem;background:rgba(17,17,17,.84);color:rgba(255,255,255,.78);font-size:.58rem;line-height:1.45;letter-spacing:.06em;z-index:4}
+.map-pois{position:absolute;inset:0;z-index:3}
+.lc-map-road,.lc-map-label{display:none}
+.map-poi{position:absolute;left:50%;top:50%;right:auto;bottom:auto;width:13px;height:13px;border:1.5px solid #111;border-radius:50%;background:#f7f3eb;transform:translate(-50%,-50%);cursor:pointer;transition:transform .25s var(--lc-ease),background .25s var(--lc-ease),opacity .25s var(--lc-ease);padding:0}
+.map-poi:hover,.map-poi:focus-visible,.map-poi.is-active{transform:translate(-50%,-50%) scale(1.35);background:#111}
+.map-poi:focus-visible{outline:2px solid var(--lc-accent);outline-offset:4px}
+.map-poi--capital{width:16px;height:16px;background:var(--lc-accent);border:2px solid #111;z-index:4}
+.map-poi[hidden]{display:none}
+.lc-map-detail{z-index:5}
+.lc-map-detail-copy{min-width:0}
+.lc-map-detail-copy small{display:block;color:var(--lc-accent);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase}
+.lc-map-detail-copy strong{margin-top:.3rem}
+.lc-map-detail-copy span{display:block}
+.lc-map-detail-copy p{max-width:26rem;margin:.65rem 0 0;color:rgba(255,255,255,.68);font-size:.72rem;line-height:1.45}
+.lc-map-detail a{display:inline-flex;align-items:center;gap:.35rem}
+@media(max-width:850px){.lc-map-visual{aspect-ratio:4 / 3}.lc-map-detail-copy p{max-width:none}}

@@ -45,3 +45,7 @@ The following local assets are sourced from the official Capital Place website a
 - [Amenities brand photography](https://capitalplace.com.vn/the-link/) — local files under `assets/images/official/brands/`, including Highlands Coffee, KOI Thé, 7-Eleven, Bite Bowl, Tossful, Iroiro Don, Dzính, Akademy Fitness, Elegant, Saga Kids and Révi.
 
 These materials remain the property of their respective owners and are used here only to demonstrate a non-commercial website redesign concept.
+
+## Google Static Maps Hybrid
+
+The neighbourhood map implementation is prepared for the [Google Maps Static API](https://developers.google.com/maps/documentation/maps-static/start), using a referrer-restricted browser key configured locally in `assets/location-map-config.js`. Google Static Maps imagery and labels remain subject to Google Maps Platform terms.
