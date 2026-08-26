@@ -17,4 +17,22 @@
 
 /* Amenities uses a two-image montage wrapper inside the Hero; keep the entire image plane below the single shade. */
 .ac-hero-montage{position:absolute;z-index:0!important}
-.ac-hero-montage img{position:relative;z-index:0!important}
+.hc-hero-montage img{position:relative;z-index:0!important}
+
+/* Home uses media wrappers and a pseudo-element gradient instead of a direct shade. */
+.hc-address-media{z-index:0!important}
+.hc-community-media{z-index:0!important}
+.hc-community::after{z-index:1!important}
+.hc-community-copy{z-index:2!important}
+
+/* Global image-overlay layer contract — image 0 → gradient 1 → content 2. */
+:is(.hc-hero,.hc-view,.hc-address,.hc-final,.lc-hero,.lc-business,.lc-cta,.oc-hero,.oc-breathing,.oc-columnfree,.oc-views,.oc-final,.av-hero,.av-view,.av-final,.ss-hero,.ss-health,.ss-green,.ss-cta,.ac-hero,.ac-link,.ac-community,.ac-final,.sp-hero,.sp-view,.la-hero,.la-scale,.la-scale-section,.la-visual-band,.la-final-address,.rl-hero,.rl-full,.rl-full-band,.rl-final,.sup-hero,.o-hero,.o-final,.r-hero,.r-final,.v-hero,.v-final,.vision-hero){position:relative;isolation:isolate;overflow:hidden}
+:is(.hc-hero,.hc-view,.hc-address,.hc-final,.lc-hero,.lc-business,.lc-cta,.oc-hero,.oc-breathing,.oc-columnfree,.oc-views,.oc-final,.av-hero,.av-view,.av-final,.ss-hero,.ss-health,.ss-green,.ss-cta,.ac-hero,.ac-link,.ac-community,.ac-final,.sp-hero,.sp-view,.la-hero,.la-scale,.la-scale-section,.la-visual-band,.la-final-address,.rl-hero,.rl-full,.rl-full-band,.rl-final,.sup-hero,.o-hero,.o-final,.r-hero,.r-final,.v-hero,.v-final,.vision-hero)>img,
+:is(.hc-hero,.hc-view,.hc-address,.hc-final,.lc-hero,.lc-business,.lc-cta,.oc-hero,.oc-breathing,.oc-columnfree,.oc-views,.oc-final,.av-hero,.av-view,.av-final,.ss-hero,.ss-health,.ss-green,.ss-cta,.ac-hero,.ac-link,.ac-community,.ac-final,.sp-hero,.sp-view,.la-hero,.la-scale,.la-scale-section,.la-visual-band,.la-final-address,.rl-hero,.rl-full,.rl-full-band,.rl-final,.sup-hero,.o-hero,.o-final,.r-hero,.r-final,.v-hero,.v-final,.vision-hero)>.hero-bg{position:absolute;z-index:0!important}
+:is(.hc-hero,.hc-view,.hc-address,.hc-final,.lc-hero,.lc-business,.lc-cta,.oc-hero,.oc-breathing,.oc-columnfree,.oc-views,.oc-final,.av-hero,.av-view,.av-final,.ss-hero,.ss-health,.ss-green,.ss-cta,.ac-hero,.ac-link,.ac-community,.ac-final,.sp-hero,.sp-view,.la-hero,.la-scale,.la-scale-section,.la-visual-band,.la-final-address,.rl-hero,.rl-full,.rl-full-band,.rl-final,.sup-hero,.o-hero,.o-final,.r-hero,.r-final,.v-hero,.v-final,.vision-hero)>[class*="-shade"]{z-index:1!important;pointer-events:none}
+:is(.hc-hero,.hc-view,.hc-address,.hc-final,.lc-hero,.lc-business,.lc-cta,.oc-hero,.oc-breathing,.oc-columnfree,.oc-views,.oc-final,.av-hero,.av-view,.av-final,.ss-hero,.ss-health,.ss-green,.ss-cta,.ac-hero,.ac-link,.ac-community,.ac-final,.sp-hero,.sp-view,.la-hero,.la-scale,.la-scale-section,.la-visual-band,.la-final-address,.rl-hero,.rl-full,.rl-full-band,.rl-final,.sup-hero,.o-hero,.o-final,.r-hero,.r-final,.v-hero,.v-final,.vision-hero)>:is([class*="-copy"],[class*="-content"],[class*="-facts"],[class*="-stats"],[class*="-mark"],[class*="-status"],[class*="-context"],[class*="-docs"],[class*="-proof"]){position:relative;z-index:2!important}
+
+/* Card-level overlay stacks: image 0 → card gradient 1 → card copy 2. */
+:is(.ss-leed-panel,.hc-leed)>img{position:absolute;z-index:0!important}
+:is(.ss-leed-panel,.hc-leed)>[class*="-shade"]{z-index:1!important;pointer-events:none}
+:is(.ss-leed-panel,.hc-leed)>:is([class*="-copy"],[class*="-content"]){position:absolute;z-index:2!important}
