@@ -32,6 +32,9 @@
 :is(.hc-hero,.hc-view,.hc-address,.hc-final,.lc-hero,.lc-business,.lc-cta,.oc-hero,.oc-breathing,.oc-columnfree,.oc-views,.oc-final,.av-hero,.av-view,.av-final,.ss-hero,.ss-health,.ss-green,.ss-cta,.ac-hero,.ac-link,.ac-community,.ac-final,.sp-hero,.sp-view,.la-hero,.la-scale,.la-scale-section,.la-visual-band,.la-final-address,.rl-hero,.rl-full,.rl-full-band,.rl-final,.sup-hero,.o-hero,.o-final,.r-hero,.r-final,.v-hero,.v-final,.vision-hero)>[class*="-shade"]{z-index:1!important;pointer-events:none}
 :is(.hc-hero,.hc-view,.hc-address,.hc-final,.lc-hero,.lc-business,.lc-cta,.oc-hero,.oc-breathing,.oc-columnfree,.oc-views,.oc-final,.av-hero,.av-view,.av-final,.ss-hero,.ss-health,.ss-green,.ss-cta,.ac-hero,.ac-link,.ac-community,.ac-final,.sp-hero,.sp-view,.la-hero,.la-scale,.la-scale-section,.la-visual-band,.la-final-address,.rl-hero,.rl-full,.rl-full-band,.rl-final,.sup-hero,.o-hero,.o-final,.r-hero,.r-final,.v-hero,.v-final,.vision-hero)>:is([class*="-copy"],[class*="-content"],[class*="-facts"],[class*="-stats"],[class*="-mark"],[class*="-status"],[class*="-context"],[class*="-docs"],[class*="-proof"]){position:relative;z-index:2!important}
 
+/* Home facts are intentionally anchored to the Hero bottom-right, not in normal flow. */
+.hc-hero > .hc-hero-facts{position:absolute!important}
+
 /* Card-level overlay stacks: image 0 → card gradient 1 → card copy 2. */
 :is(.ss-leed-panel,.hc-leed)>img{position:absolute;z-index:0!important}
 :is(.ss-leed-panel,.hc-leed)>[class*="-shade"]{z-index:1!important;pointer-events:none}
