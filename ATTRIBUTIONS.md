@@ -39,7 +39,7 @@ The following local assets are sourced from the official Capital Place website a
 
 - [Office high-zone floor reference](https://capitalplace.com.vn/wp-content/themes/capitalplace/assets/images/floor/current-floor-1-high.jpg) — saved locally as `assets/images/official/floor-standard.png`.
 - [Office upper-floor panorama](https://capitalplace.com.vn/wp-content/themes/capitalplace/assets/images/floor-standard.png) — saved locally as `assets/images/official/upper-floor-panorama.png`.
-- [Green Station](https://capitalplace.com.vn/wp-content/uploads/2026/05/green-station-01-445x556.jpg) — `assets/images/official/green-station-2026.jpg`.
+- [Green Station](https://capitalplace.com.vn/wp-content/uploads/2026/05/green-station-01.jpg) — `assets/images/official/green-station-2026.webp` (original 1830×992 asset).
 - [Blood Donation Day](https://capitalplace.com.vn/wp-content/uploads/2026/05/drop-save-01-445x556.jpg) — `assets/images/official/blood-donation-2026.jpg`.
 - [First Aid Training](https://capitalplace.com.vn/wp-content/uploads/2026/05/first-aid-01-445x556.jpg) — `assets/images/official/first-aid-training-2026.jpg`.
 - [Amenities brand photography](https://capitalplace.com.vn/the-link/) — local files under `assets/images/official/brands/`, including Highlands Coffee, KOI Thé, 7-Eleven, Bite Bowl, Tossful, Iroiro Don, Dzính, Akademy Fitness, Elegant, Saga Kids and Révi.
