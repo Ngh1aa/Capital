@@ -44,24 +44,6 @@
     const note = $('[data-space-save-note]');
     if (note) { note.textContent = index >= 0 ? 'Removed from your shortlist.' : items.length > 1 ? 'Saved. Compare it with another space in Availability.' : 'Saved. Add one more space to compare.'; note.classList.add('is-visible'); global.setTimeout(() => note.classList.remove('is-visible'), 3200); }
   }
-  function initViews() {
-    const image = $('[data-space-view-image]');
-    const caption = $('[data-space-view-caption]');
-    const copy = $('[data-space-view-copy]');
-    const views = {
-      north: ['assets/images/official/location-hero.jpg', 'Hanoi skyline and West Lake from Capital Place', 'North-facing outlook is confirmed with the final floor and test-fit package.'],
-      east: ['assets/images/official/capital-place-towers.jpg', 'Capital Place towers and eastern Hanoi skyline', 'East-facing outlook is confirmed with the final floor and test-fit package.'],
-      south: ['assets/images/official/office-hero.jpg', 'Workplace interior view toward Hanoi', 'South-facing outlook is confirmed with the final floor and test-fit package.'],
-      west: ['assets/images/official/location-hero.jpg', 'West Lake and western Hanoi outlook', 'West-facing outlook is confirmed with the final floor and test-fit package.']
-    };
-    $$('[data-space-view-direction]').forEach((button) => button.addEventListener('click', () => {
-      $$('[data-space-view-direction]').forEach((item) => { const active = item === button; item.classList.toggle('is-active', active); item.setAttribute('aria-pressed', String(active)); });
-      const [src, alt, text] = views[button.dataset.spaceViewDirection] || views.north;
-      if (image) { image.src = src; image.alt = alt; }
-      if (copy) copy.textContent = text;
-      if (caption) caption.textContent = `${button.textContent.trim()} · orientation on request`;
-    }));
-  }
   function initPlan() {
     const target = $('[data-space-plan]');
     $$('[data-space-plan-mode]').forEach((button) => button.addEventListener('click', () => {
@@ -73,7 +55,6 @@
   }
   $('[data-space-save]')?.addEventListener('click', toggleSave);
   $('[data-space-compare]')?.addEventListener('click', () => { global.location.href = 'availability.html#compare-spaces'; });
-  initViews();
   initPlan();
   syncSaveState();
 })(window, document);

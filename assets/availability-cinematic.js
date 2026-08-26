@@ -179,23 +179,6 @@
     }
   }
 
-  function initViews() {
-    const buttons = $$('[data-av-view-direction]');
-    const image = $('[data-av-view-image]');
-    const copy = $('[data-av-view-copy]');
-    if (!buttons.length || !image) return;
-    const views = {
-      north: ['assets/images/official/location-hero.jpg', 'Panoramic Hanoi skyline and West Lake view from Capital Place', 'Orientation is confirmed with the final floor and test-fit package.'],
-      east: ['assets/images/official/capital-place-towers.jpg', 'Capital Place towers and eastern Hanoi skyline', 'East-facing outlook is confirmed with the final floor and test-fit package.'],
-      south: ['assets/images/official/office-hero.jpg', 'Capital Place workplace view toward Hanoi', 'South-facing outlook is confirmed with the final floor and test-fit package.'],
-      west: ['assets/images/official/location-hero.jpg', 'West Lake and Hanoi view from Capital Place', 'West-facing outlook is confirmed with the final floor and test-fit package.']
-    };
-    buttons.forEach((button) => button.addEventListener('click', () => {
-      buttons.forEach((item) => { const active = item === button; item.classList.toggle('is-active', active); item.setAttribute('aria-pressed', String(active)); });
-      const [src, alt, text] = views[button.dataset.avViewDirection] || views.north;
-      image.src = src; image.alt = alt; if (copy) copy.textContent = text;
-    }));
-  }
 
   function init() {
     loadShortlist();
@@ -203,7 +186,6 @@
     renderMatches();
     renderCompare();
     updateDetail();
-    initViews();
     $$('[data-av-mode]').forEach((button) => button.addEventListener('click', () => {
       $$('[data-av-mode]').forEach((item) => { const active = item === button; item.classList.toggle('is-active', active); item.setAttribute('aria-pressed', String(active)); });
       const headcountField = $('[data-av-headcount-field]'); const areaField = $('[data-av-area-field]');
