@@ -114,7 +114,7 @@ body.hc-home footer {
   animation: hc-wordmark-reveal .9s var(--hc-ease) .45s forwards;
 }
 .hc-hero-content { bottom: 32%; }
-.hc-hero-bg { animation: hc-hero-image-settle 1.4s var(--hc-ease) both; }
+.hc-hero-bg { animation: hc-hero-image-settle 1.4s var(--hc-ease) both; scale: 1; }
 .hc-hero-proposition {
   max-width: 24rem!important;
   font-size: clamp(1.9rem, 3.4vw, 4.2rem)!important;
@@ -170,5 +170,5 @@ body.hc-home footer {
 }
 @media (prefers-reduced-motion: reduce) {
   .hc-hero-wordmark { animation: none; transform: none; }
-  .hc-hero-bg { animation: none; transform: none; }
+  .hc-hero-bg { animation: none; transform: none; scale: 1; }
 }

@@ -35,6 +35,31 @@
     }
   }
 
+  function initHeroMotion() {
+    const hero = document.querySelector('.hc-hero');
+    const wordmark = hero && hero.querySelector('.hc-hero-wordmark');
+    const image = hero && hero.querySelector('.hc-hero-bg');
+    if (!hero || !wordmark || !image || !('requestAnimationFrame' in global)) return;
+    if (global.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const rect = hero.getBoundingClientRect();
+      const progress = Math.max(0, Math.min(1, -rect.top / Math.max(rect.height, 1)));
+      wordmark.style.translate = `0 ${-(progress * 2.8 * 16).toFixed(2)}px`;
+      image.style.scale = (1 + progress * .03).toFixed(4);
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        global.requestAnimationFrame(update);
+      }
+    };
+    global.addEventListener('scroll', onScroll, { passive: true });
+    update();
+  }
+
   function initAnatomy() {
     const parts = Array.from(document.querySelectorAll('[data-anatomy-part]'));
     if (!parts.length) return;
@@ -48,6 +73,7 @@
   }
 
   function init() {
+    initHeroMotion();
     initScaleStory();
     initAnatomy();
   }
