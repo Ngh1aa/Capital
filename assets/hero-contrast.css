@@ -35,6 +35,10 @@
 /* Home facts are intentionally anchored to the Hero bottom-right, not in normal flow. */
 .hc-hero > .hc-hero-facts{position:absolute!important}
 
+/* Hybrid Hero: keep the supporting proposition above the bottom wordmark. */
+.hc-hero > .hc-hero-content{bottom:32%!important}
+@media(max-width:800px){.hc-hero > .hc-hero-content{bottom:29%!important}}
+
 /* Card-level overlay stacks: image 0 → card gradient 1 → card copy 2. */
 :is(.ss-leed-panel,.hc-leed)>img{position:absolute;z-index:0!important}
 :is(.ss-leed-panel,.hc-leed)>[class*="-shade"]{z-index:1!important;pointer-events:none}
