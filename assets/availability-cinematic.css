@@ -14,3 +14,62 @@
 @media(prefers-reduced-motion:reduce){.av-view-directions button{transition:none}}
 /* UI feedback 25 Aug 2026 — targeted text contrast */
 .av-hero-shade,.av-view-shade,.av-final-shade{background:linear-gradient(90deg,rgba(0,0,0,.95),rgba(0,0,0,.36) 74%,rgba(0,0,0,.12))}
+
+/* CSS Feedback Tool export: css_capital.md — applied 2026-08-26 */
+/* 56 source requests; repeated selector/property values use the final requested state. */
+/* Feedback item(s): 1 */
+section#building-availability {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 2 */
+section#floor-explorer > div.container.av-explorer-grid > div.av-stack-column > div.av-stack-shell:nth-of-type(2) {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 3 */
+section#matching-spaces {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 4 */
+section#matching-spaces > div.container > div.av-match-grid:nth-of-type(2) > article.av-match-card.capital-motion-item:nth-of-type(1) {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 5 */
+section#matching-spaces > div.container > div.av-match-grid:nth-of-type(2) > article.av-match-card.capital-motion-item:nth-of-type(2) {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 6 */
+section#floor-detail {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 7 */
+section#floor-detail > div.container.av-detail-grid > div.av-detail-plan:nth-of-type(1) {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 8 */
+main#main-content > section.av-context.capital-motion-item:nth-of-type(8) {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 9 */
+main#main-content > section.av-context.capital-motion-item:nth-of-type(8) > div.container.av-context-grid > div.av-reference-links:nth-of-type(2) > a:nth-of-type(1) {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 10 */
+main#main-content > section.av-context.capital-motion-item:nth-of-type(8) > div.container.av-context-grid > div.av-reference-links:nth-of-type(2) > a:nth-of-type(2) {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 11 */
+footer {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 12 */
+main#main-content > section.av-final.capital-motion-item:nth-of-type(9) > div.container.av-final-copy:nth-of-type(2) {
+  translate: 0px -64px;
+}
+/* Feedback item(s): 13 */
+section#availability-hero > div.container.av-hero-copy:nth-of-type(2) {
+  translate: 0px -24px;
+}
+/* CSS Feedback Tool cascade correction: enforce the requested white Availability footer. */
+body.av-page footer {
+  background-color: rgb(255, 255, 255);
+}

@@ -10,3 +10,47 @@
 .ss-cutaway-image{display:block;width:100%;height:100%;min-height:600px;object-fit:contain;mix-blend-mode:screen;opacity:.92}
 .ss-cutaway-caption{position:absolute;left:1.5rem;bottom:1.25rem;color:rgba(255,255,255,.68);font-size:.56rem;text-transform:uppercase;letter-spacing:.14em}
 @media(max-width:850px){.ss-cutaway-image{min-height:450px}}
+
+/* CSS Feedback Tool export: css_capital.md — applied 2026-08-26 */
+/* 56 source requests; repeated selector/property values use the final requested state. */
+/* Feedback item(s): 1 */
+section#low-e-facade > div.ss-facade-copy:nth-of-type(2) {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 2, 10 */
+section#low-e-facade {
+  background-color: rgb(255, 255, 255);
+  --capital-motion-delay: 300ms;
+}
+/* Feedback item(s): 3 */
+section#water-journey {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 4 */
+section#business-value {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 5 */
+section#community {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 6 */
+section#sustainability-resources {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 7 */
+nav#main-nav {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 8 */
+footer {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 9 */
+section#performance-scale {
+  background-color: rgb(255, 255, 255);
+}
+/* CSS Feedback Tool cascade correction: enforce the requested white Sustainability footer. */
+body.ss-page footer {
+  background-color: rgb(255, 255, 255);
+}

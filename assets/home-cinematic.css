@@ -40,3 +40,55 @@
 .hc-home footer{background:#f3f0e9;color:#111}.hc-home footer .ft-grid,.hc-home footer .ft-grid *{color:#111!important}
 @media(max-width:800px){.hc-hero,.hc-view{min-height:88svh}.hc-leed,.hc-address,.hc-final{min-height:96svh}.hc-hero-content{bottom:14%}.hc-hero-content h1{font-size:clamp(3.6rem,16vw,6rem)}.hc-hero-facts{left:1.2rem;right:auto;bottom:6%;gap:1rem}.hc-hero-facts strong{font-size:2.3rem}.hc-scale-stage,.hc-anatomy-grid,.hc-workplace-grid,.hc-workday-scene,.hc-availability-grid{grid-template-columns:1fr}.hc-scale-media{min-height:55svh;max-height:70svh}.hc-scale-steps{padding:2rem 1.2rem}.hc-anatomy-visual{min-height:0}.hc-architecture{min-height:150svh}.hc-architecture-facade{inset:0 0 53% 0}.hc-architecture-lobby{width:67%;height:39%;bottom:8%}.hc-architecture-art{left:3%;width:31%;height:23%}.hc-architecture-copy{padding-top:15vh;min-height:55vh}.hc-architecture-copy h2{font-size:clamp(3.5rem,15vw,6rem)}.hc-workday-head{display:block}.hc-workday-head>p:last-child{margin-top:1rem}.hc-workday-scene{min-height:0}.hc-workday-image-wrap{min-height:48svh}.hc-workday-copy{min-height:30svh}.hc-workday-tabs{overflow:auto}.hc-workday-tabs button{min-width:8.5rem}.hc-leed-copy{padding-top:19vh}.hc-leed-credentials{grid-template-columns:1fr 1fr}.hc-community{min-height:100svh}.hc-community-media{inset:35% 0 0}.hc-community:after{background:linear-gradient(0deg,rgba(214,208,198,.1),#d6d0c6 60%)}.hc-community-copy{padding-bottom:30vh}.hc-finder-form,.hc-finder-results .availability-list{grid-template-columns:1fr}.hc-address-copy{padding-top:16vh}.hc-address-times{gap:.8rem}.hc-address-times span{min-width:0;flex:1}.hc-address-times strong{font-size:2.4rem}.hc-final-copy{padding-top:22vh}}
 @media(prefers-reduced-motion:reduce){.hc-scale-media img,.hc-workday-image-wrap img,.hc-scale-step,.hc-anatomy-part{transition:none!important}.hc-hero-bg{display:none}.hc-hero{background:url("images/official/capital-place-towers.jpg") center/cover no-repeat}}
+
+/* CSS Feedback Tool export: css_capital.md — applied 2026-08-26 */
+/* 56 source requests; repeated selector/property values use the final requested state. */
+/* Feedback item(s): 1 */
+main#main-content > section.hc-community.capital-motion-item:nth-of-type(9) > div.container.hc-community-copy:nth-of-type(2) {
+  translate: -200px;
+}
+/* Feedback item(s): 2, 3, 4 */
+main#main-content > section.hc-architecture.capital-motion-item:nth-of-type(4) > div.container.hc-architecture-copy:nth-of-type(4) {
+  translate: 0px -200px;
+}
+/* Feedback item(s): 5 */
+main#main-content > section.hc-architecture.capital-motion-item:nth-of-type(4) > div.hc-architecture-media.hc-architecture-art:nth-of-type(3) {
+  translate: 0px -59px;
+}
+/* Feedback item(s): 6 */
+main#main-content > section.hc-leed.capital-motion-item:nth-of-type(8) > div.container.hc-leed-copy:nth-of-type(2) {
+  translate: 98px;
+}
+/* Feedback item(s): 7 */
+section#scale {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 8 */
+main#main-content > section.hc-anatomy.capital-motion-item:nth-of-type(3) {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 9 */
+main#main-content > section.hc-anatomy.capital-motion-item:nth-of-type(3) > div.container.hc-anatomy-grid > div.hc-anatomy-visual:nth-of-type(2) {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 10 */
+main#main-content > section.hc-workplace.capital-motion-item:nth-of-type(5) {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 11 */
+main#main-content > section.hc-workplace.capital-motion-item:nth-of-type(5) > div.container.hc-workplace-grid > div.hc-workplace-visual:nth-of-type(2) {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 12 */
+section#find-space > div.container.hc-availability-grid > div.hc-finder-shell:nth-of-type(2) {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 13 */
+footer {
+  background-color: rgb(255, 255, 255);
+}
+
+/* CSS Feedback Tool cascade correction: preserve the requested white Home footer over the legacy beige rule. */
+body.hc-home footer {
+  background-color: rgb(255, 255, 255);
+}

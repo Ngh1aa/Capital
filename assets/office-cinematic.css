@@ -22,3 +22,38 @@
 .oc-floorplate-image{margin:2rem 0;max-height:34rem}
 .oc-floor-detail-plan img{max-height:28rem}
 @media(max-width:850px){.oc-floorplate-image{max-height:28rem}.oc-floor-detail-plan img{max-height:24rem}}
+
+/* CSS Feedback Tool export: css_capital.md — applied 2026-08-26 */
+/* 56 source requests; repeated selector/property values use the final requested state. */
+/* Feedback item(s): 1 */
+section#building-anatomy {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 2 */
+section#building-anatomy > div.container.oc-anatomy-grid > div.oc-anatomy-visual:nth-of-type(2) {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 3 */
+section#floor-plate {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 4 */
+section#floor-plate > div.container.oc-floorplate-grid > div.oc-floorplate-visual:nth-of-type(1) {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 5 */
+section#space-finder > div.container.oc-finder-grid > div.oc-finder-shell:nth-of-type(2) {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 6 */
+section#building-stack {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 7 */
+div#office-floor-detail > div.oc-floor-detail-plan.media-frame:nth-of-type(2) {
+  background-color: rgb(255, 255, 255);
+}
+/* Feedback item(s): 8 */
+main#main-content > section.oc-fitout.capital-motion-item:nth-of-type(11) {
+  background-color: rgb(255, 255, 255);
+}

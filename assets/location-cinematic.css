@@ -44,3 +44,10 @@
 .lc-map-detail-copy p{max-width:26rem;margin:.65rem 0 0;color:rgba(255,255,255,.68);font-size:.72rem;line-height:1.45}
 .lc-map-detail a{display:inline-flex;align-items:center;gap:.35rem}
 @media(max-width:850px){.lc-map-visual{aspect-ratio:4 / 3}.lc-map-detail-copy p{max-width:none}}
+
+/* CSS Feedback Tool export: css_capital.md — applied 2026-08-26 */
+/* 56 source requests; repeated selector/property values use the final requested state. */
+/* Feedback item(s): 1 */
+section#city-context > div.container.lc-context-grid > div.lc-context-copy:nth-of-type(2) {
+  translate: -36px;
+}
