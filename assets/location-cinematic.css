@@ -70,3 +70,18 @@ section#neighbourhood-map {
 body.lc-location footer {
   background-color: rgb(255, 255, 255);
 }
+
+
+/* UI Feedback Tool export: ui-changes-2026-08-26T08-10-46.md — applied 2026-08-26 */
+/* Location 1 */
+section#location-hero > div.container.lc-hero-copy:nth-of-type(2) {
+  translate: 0px -80px;
+}
+/* Location 2 */
+main#main-content > section.lc-business.capital-motion-item:nth-of-type(4) > div.container.lc-business-copy:nth-of-type(2) {
+  translate: 0px -64px;
+}
+/* Location 3 */
+section#neighbourhood-map > div.container > div.lc-map-layout:nth-of-type(2) > div.lc-map-visual > div.lc-map-detail:nth-of-type(3) {
+  opacity: 0.5;
+}
