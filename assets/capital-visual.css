@@ -396,3 +396,9 @@ section#amenity-directory .am-dir-card .am-dir-copy {
 section#amenity-directory .am-dir-card {
   border: 1px solid rgba(17, 17, 17, .14) !important;
 }
+
+/* UI feedback 2026-08-26: current-page nav is orange and bold before scrolling. */
+body.hc-home #main-nav:not(.scrolled) .nav-links a.active,
+body.hc-home #main-nav:not(.scrolled) .nav-links a[aria-current="page"],
+body.hc-home #main-nav:not(.scrolled) #mob-menu a.active,
+body.hc-home #main-nav:not(.scrolled) #mob-menu a[aria-current="page"]{color:#ff6938;font-weight:700}
