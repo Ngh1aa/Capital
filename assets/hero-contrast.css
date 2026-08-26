@@ -46,7 +46,7 @@
 
 
 /* Hybrid Hero short-height desktop correction: keep proposition, wordmark and facts in separate bands. */
-@media (min-width: 801px) and (max-height: 640px) {
+@media (min-width: 801px) and (max-height: 900px) {
   .hc-hero > .hc-hero-content {
     top: 3.75rem;
     bottom: auto !important;
