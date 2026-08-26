@@ -245,19 +245,24 @@ footer .official-logo{filter:invert(1)}
   color: #ff6938 !important;
 }
 #main-nav.scrolled {
-  background-color: rgba(255, 255, 255, 0.96) !important;
+  background-color: #111111 !important;
+  border-bottom-color: rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.24) !important;
 }
 #main-nav.scrolled .official-logo {
-  filter: invert(1) !important;
+  filter: none !important;
 }
 #main-nav.scrolled .nav-links a,
 #main-nav.scrolled .lang-btns button,
 #main-nav.scrolled .nav-ham {
-  color: rgba(35, 31, 32, 0.68) !important;
+  color: rgba(255, 255, 255, 0.82) !important;
 }
 #main-nav.scrolled .nav-links a.active,
 #main-nav.scrolled .nav-links a:hover,
 #main-nav.scrolled .lang-btns button.active,
 #main-nav.scrolled .lang-btns button:hover {
-  color: #231f20 !important;
+  color: #ffffff !important;
+}
+#main-nav.scrolled .nav-sep {
+  background: rgba(255, 255, 255, 0.18) !important;
 }
