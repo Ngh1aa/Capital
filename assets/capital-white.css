@@ -223,3 +223,41 @@ footer .official-logo{filter:invert(1)}
   .tower-zone{grid-template-columns:1fr}.tower-zone .btn-accent{width:100%;justify-content:center}
   .office-status-callout{align-items:stretch;flex-direction:column}.office-status-callout .btn-accent{justify-content:center;text-align:center;width:100%}
 }
+
+
+/* Global navigation contrast contract — synchronized from Sustainability review — 2026-08-26 */
+#main-nav:not(.scrolled) {
+  background-color: rgba(17, 17, 17, 0.72) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.14) !important;
+}
+#main-nav:not(.scrolled) .official-logo {
+  filter: none !important;
+}
+#main-nav:not(.scrolled) .nav-links a,
+#main-nav:not(.scrolled) .lang-btns button,
+#main-nav:not(.scrolled) .nav-ham {
+  color: rgba(255, 255, 255, 0.82) !important;
+}
+#main-nav:not(.scrolled) .nav-links a.active,
+#main-nav:not(.scrolled) .nav-links a:hover,
+#main-nav:not(.scrolled) .lang-btns button.active,
+#main-nav:not(.scrolled) .lang-btns button:hover {
+  color: #ff6938 !important;
+}
+#main-nav.scrolled {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+}
+#main-nav.scrolled .official-logo {
+  filter: invert(1) !important;
+}
+#main-nav.scrolled .nav-links a,
+#main-nav.scrolled .lang-btns button,
+#main-nav.scrolled .nav-ham {
+  color: rgba(35, 31, 32, 0.68) !important;
+}
+#main-nav.scrolled .nav-links a.active,
+#main-nav.scrolled .nav-links a:hover,
+#main-nav.scrolled .lang-btns button.active,
+#main-nav.scrolled .lang-btns button:hover {
+  color: #231f20 !important;
+}
