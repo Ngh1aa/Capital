@@ -45,19 +45,19 @@
 /* 56 source requests; repeated selector/property values use the final requested state. */
 /* Feedback item(s): 1 */
 main#main-content > section.hc-location-community-group > div.hc-community > div.container.hc-community-copy {
-  translate: -200px;
+  translate: none;
 }
 /* Feedback item(s): 2, 3, 4 */
 main#main-content > section.hc-architecture-group > div.hc-architecture > div.container.hc-architecture-copy {
-  translate: 0px -200px;
+  translate: none;
 }
 /* Feedback item(s): 5 */
 main#main-content > section.hc-architecture-group > div.hc-architecture > div.hc-architecture-media.hc-architecture-art:nth-of-type(3) {
-  translate: 0px -59px;
+  translate: none;
 }
 /* Feedback item(s): 6 */
 main#main-content > section.hc-leed-group > div.hc-leed > div.container.hc-leed-copy {
-  translate: 98px;
+  translate: none;
 }
 /* Feedback item(s): 7 */
 section#scale > div.hc-scale {
