@@ -85,3 +85,21 @@ main#main-content > section.lc-business.capital-motion-item:nth-of-type(4) > div
 section#neighbourhood-map > div.container > div.lc-map-layout:nth-of-type(2) > div.lc-map-visual > div.lc-map-detail:nth-of-type(3) {
   opacity: 0.5;
 }
+
+/* Compact editorial mode: retain the address story through large image-led anchors. */
+.lc-location .lc-context,
+.lc-location .lc-connected,
+.lc-location .lc-life,
+.lc-location .lc-day,
+.lc-location .lc-map,
+.lc-location .lc-cta{padding-top:clamp(3.5rem,7vw,6.5rem);padding-bottom:clamp(3.5rem,7vw,6.5rem)}
+.lc-location .lc-business,
+.lc-location .lc-metro,
+.lc-location .lc-arrival{display:none}
+.lc-location .lc-context,
+.lc-location .lc-connected,
+.lc-location .lc-life,
+.lc-location .lc-day,
+.lc-location .lc-map,
+.lc-location .lc-cta{display:block}
+@media(max-width:850px){.lc-location .lc-context,.lc-location .lc-connected,.lc-location .lc-life,.lc-location .lc-day,.lc-location .lc-map,.lc-location .lc-cta{padding-top:3.5rem;padding-bottom:3.5rem}}

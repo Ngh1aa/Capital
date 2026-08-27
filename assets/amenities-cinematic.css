@@ -68,3 +68,25 @@ main#main-content > section.ac-value.capital-motion-item:nth-of-type(11) > div.c
 main#main-content > section.ac-value.capital-motion-item:nth-of-type(11) > div.container > div.ac-value-grid > div:nth-of-type(3) {
   background-color: rgb(255, 255, 255);
 }
+
+/* Compact editorial mode: keep hero imagery, the workday track, directory and conversion CTA. */
+.ac-amenities .ac-day,
+.ac-amenities .ac-link,
+.ac-amenities .ac-meet,
+.ac-amenities .ac-focus,
+.ac-amenities .ac-hospitality,
+.ac-amenities .ac-wellbeing,
+.ac-amenities .ac-community,
+.ac-amenities .ac-value{padding-top:clamp(3.5rem,7vw,6.5rem);padding-bottom:clamp(3.5rem,7vw,6.5rem)}
+.ac-amenities .ac-nexus,
+.ac-amenities .ac-meet,
+.ac-amenities .ac-focus,
+.ac-amenities .ac-hospitality,
+.ac-amenities .ac-wellbeing,
+.ac-amenities .ac-community,
+.ac-amenities .ac-value{display:none}
+.ac-amenities .ac-day,
+.ac-amenities .ac-link,
+.ac-amenities .ac-directory,
+.ac-amenities .ac-final{display:block}
+@media(max-width:850px){.ac-amenities .ac-day,.ac-amenities .ac-link{padding-top:3.5rem;padding-bottom:3.5rem}}

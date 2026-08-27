@@ -3,3 +3,22 @@
 @media(max-width:900px){.v-split-heading,.v-context-shell,.v-lobby-grid,.v-prepared-grid,.v-leasing-grid,.v-directions-grid{grid-template-columns:1fr}.v-city-grid{grid-template-columns:1fr 1fr}.v-city-note{grid-column:1 / -1;min-height:16rem}.v-purpose-result{grid-template-columns:1fr;height:auto;min-height:0}.v-purpose-visual{height:auto;aspect-ratio:4 / 3;min-height:0}.v-purpose-copy{min-height:21rem}.v-sequence-item{grid-template-columns:3rem 1fr 11rem}.v-beyond-mosaic{grid-template-columns:1.4fr 1fr;grid-template-rows:15rem 15rem 15rem}.v-beyond-mosaic figure:first-child{grid-row:1 / span 2}.v-beyond-mosaic figure:last-child{grid-column:2}.v-leasing-image,.v-lobby-image{min-height:28rem}.v-contact-card{min-height:24rem}}
 @media(max-width:560px){.v-hero{min-height:88svh}.v-hero-copy{padding-top:19vh}.v-hero h1,.v-split-heading h2,.v-context-shell h2{font-size:clamp(3.3rem,15vw,6rem)}.v-hero-context{position:relative;right:auto;bottom:auto;margin:2rem 1.2rem 0}.v-city-grid{grid-template-columns:1fr}.v-city-note{grid-column:auto}.v-image-frame,.v-image-frame.v-wide{min-height:22rem}.v-scale,.v-scale-copy{min-height:70svh}.v-scale-copy h2,.v-final-copy h2{font-size:clamp(3.8rem,16vw,7rem)}.v-stat-line{gap:.7rem}.v-stat-line span+span{padding-left:.7rem}.v-sequence-item{grid-template-columns:2.4rem 1fr;min-height:6.5rem}.v-sequence-item img{grid-column:2;height:8rem}.v-boardroom{min-height:75svh}.v-boardroom-caption{padding:18rem 1rem 3rem}.v-boardroom-caption h2{font-size:clamp(3.7rem,16vw,7rem)}.v-access-diagram{min-height:28rem}.v-site-core{left:15%;right:15%;top:29%;bottom:29%}.v-site-core>div{gap:.5rem;flex-direction:column}.v-route{width:15%}.v-route span{font-size:.52rem}.v-route-left{left:0}.v-route-right{right:0}.v-purpose-tabs{display:grid;grid-template-columns:1fr 1fr}.v-purpose-tabs button{min-height:3.1rem}.v-purpose-visual{height:auto;aspect-ratio:4 / 3;min-height:0}.v-purpose-copy{min-height:20rem;padding:1.5rem}.v-purpose-copy h3{font-size:clamp(2.7rem,13vw,5rem)}.v-prepared-image,.v-lobby-image,.v-leasing-image{min-height:22rem}.v-prepared-list{padding:.7rem}.v-tower-picker{grid-template-columns:1fr}.v-tower-card{min-height:20rem}.v-ground-plan{min-height:24rem}.v-plan-building{left:16%;right:16%;top:17%;bottom:17%}.v-plan-road{width:16%;writing-mode:vertical-rl;padding:0 0 1rem}.v-plan-road span{margin-top:.5rem}.v-plan-arrow-lieu{left:14%}.v-plan-arrow-kim{right:14%}.v-minutes-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory}.v-minutes-track>div{min-width:74vw;scroll-snap-align:start}.v-beyond-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:13rem 13rem 13rem}.v-beyond-mosaic figure:first-child{grid-row:1 / span 2}.v-beyond-mosaic figure:last-child{grid-column:auto}.v-directions-grid .sup-map{height:22rem}.v-final{min-height:72svh}.v-final-copy{min-height:72svh}}
 @media(prefers-reduced-motion:reduce){.visit-page *{scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+/* Compact editorial mode: preserve the image-led journey while removing repeated long-form blocks. */
+.visit-page .v-section{padding:clamp(3.5rem,7vw,6.5rem) 0}
+.visit-page .v-city,
+.visit-page .v-sequence,
+.visit-page .v-boardroom,
+.visit-page .v-access,
+.visit-page .v-towers,
+.visit-page .v-visit-context,
+.visit-page .v-ground,
+.visit-page .v-minutes,
+.visit-page .v-beyond{display:none}
+.visit-page .v-purpose,
+.visit-page .v-prepared,
+.visit-page .v-lobby,
+.visit-page .v-leasing,
+.visit-page .v-directions,
+.visit-page .v-final{display:block}
+@media(max-width:900px){.visit-page .v-section{padding:3.5rem 0}}

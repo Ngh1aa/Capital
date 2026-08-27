@@ -10,3 +10,18 @@
 .r-fitout-spreads strong{overflow-wrap:anywhere}
 
 @media(max-width:560px){.r-fitout-grid{max-width:calc(100% - 24px)}}
+
+/* Compact editorial mode: keep decision tools above the fold and reduce deep reference sections. */
+.resources-page .r-section{padding-top:clamp(3.5rem,7vw,6.5rem);padding-bottom:clamp(3.5rem,7vw,6.5rem)}
+.resources-page .r-building-book,
+.resources-page .r-fitout,
+.resources-page .r-sustainability,
+.resources-page .r-location,
+.resources-page .r-library{display:none}
+.resources-page .r-floor-plans,
+.resources-page .r-stacking,
+.resources-page .r-technical,
+.resources-page .r-finder,
+.resources-page .r-package,
+.resources-page .r-technical-cta{display:block}
+@media(max-width:900px){.resources-page .r-section{padding-top:3.5rem;padding-bottom:3.5rem}}

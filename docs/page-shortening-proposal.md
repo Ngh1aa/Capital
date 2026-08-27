@@ -52,8 +52,20 @@ Resources là trang có lý do chính đáng để dài. Nên giữ các vùng t
 | Giữ anchor | Không xóa ID hiện có; nếu gộp section, giữ anchor cũ trên wrapper mới hoặc thêm redirect nội bộ. |
 | Mobile ưu tiên nội dung | Trên mobile, ảnh dùng aspect ratio cố định, nội dung bổ trợ có thể thu gọn sau phần tóm tắt. |
 
+## Trạng thái triển khai compact mode
+
+Bản compact mode đã được áp dụng cho **Home, Location, Amenities, Visit và Resources**. Các khối hình ảnh chính, gallery, directory, floor plan, technical core, role finder, package builder và CTA vẫn được giữ; các section mô tả lặp hoặc tài liệu chuyên sâu được ẩn khỏi luồng cuộn chính bằng CSS để ưu tiên ảnh lớn và giảm chữ. Những section bị ẩn vẫn còn trong HTML và Git, vì vậy có thể khôi phục hoặc chuyển thành accordion ở bước tiếp theo.
+
+| Trang | Cách rút gọn đã áp dụng |
+|---|---|
+| Home | Giảm các min-height full-screen lặp lại, không loại bỏ ảnh chính. |
+| Location | Giữ Hero, context, route map, gallery, day track, neighbourhood map và CTA; ẩn các khối business/metro/arrival riêng lẻ. |
+| Amenities | Giữ Hero, day track, The Link directory và CTA; ẩn các khối mô tả Nexus/Meet/Focus/Hospitality/Wellbeing/Community/Value. |
+| Visit | Giữ Hero, purpose, prepared, lobby, leasing, directions và CTA; ẩn các chuỗi context/sequence/boardroom/access/tower/ground/minutes/beyond. |
+| Resources | Giữ floor plans, stacking, technical core, role finder, package builder và CTA; ẩn building book, fit-out, sustainability evidence, location resource và library. |
+
 ## Lộ trình triển khai an toàn
 
 Giai đoạn đầu chỉ nên áp dụng cho **Visit, Amenities và Location**, vì đây là ba trang có nhiều section lặp lại nhất. Sau khi kiểm tra analytics, scroll depth và tỷ lệ click CTA, mới quyết định rút gọn Home và Resources. Không nên cắt nội dung Sustainability, Office hoặc Availability trước khi xác định mục tiêu chuyển đổi của từng trang.
 
-Bản rút gọn nên được triển khai theo feature flag hoặc bản sao route trong giai đoạn kiểm thử. Khi đã xác nhận các anchor, tab, form tìm mặt bằng và CTA vẫn hoạt động, có thể thay thế bản hiện tại và giữ bản cũ trong Git để rollback.
+Bản compact mode hiện được triển khai trực tiếp trên route hiện tại. Khi đã xác nhận analytics, scroll depth và tỷ lệ click CTA, các section đang ẩn có thể được chuyển thành accordion hoặc feature flag thay vì xóa khỏi HTML. Các anchor chính, tab, form tìm mặt bằng và CTA vẫn cần được kiểm tra trong từng breakpoint trước khi phát hành chính thức.

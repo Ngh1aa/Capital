@@ -257,3 +257,14 @@ body.hc-home footer {
 
 /* UI review 2026-08-27: keep the community figure at the requested desktop size without affecting mobile scaling. */
 @media (min-width:801px){.hc-community-number{font-size:72px}}
+
+/* Compact editorial mode: preserve all primary Home imagery while reducing repeated full-viewport spacing. */
+.hc-home .hc-scale{padding-top:clamp(3.5rem,7vw,6.5rem)}
+.hc-home .hc-scale-stage{min-height:82svh}
+.hc-home .hc-architecture{min-height:112svh}
+.hc-home .hc-workplace,
+.hc-home .hc-workday,
+.hc-home .hc-availability{padding-top:clamp(3.5rem,7vw,6.5rem);padding-bottom:clamp(3.5rem,7vw,6.5rem)}
+.hc-home .hc-leed,
+.hc-home .hc-final{min-height:82svh}
+@media(max-width:800px){.hc-home .hc-scale-stage{min-height:72svh}.hc-home .hc-architecture{min-height:125svh}.hc-home .hc-leed,.hc-home .hc-final{min-height:84svh}}
