@@ -180,8 +180,8 @@ html{overflow-x:clip}
 /* Legacy header proportions recovery: match the original 1903px reference without changing page content widths. */
 .capital-uiux-v2 #main-nav{background:rgba(17,17,17,.98)!important;border-bottom-color:rgba(255,255,255,.08)!important}
 @media(min-width:801px){
-  .capital-uiux-v2 #main-nav .nav-inner{max-width:1600px!important;padding:0 10px 0 0!important;height:87px!important}
+  .capital-uiux-v2 #main-nav .nav-inner{max-width:1600px!important;padding:0 var(--px)!important;height:87px!important}
   .capital-uiux-v2 #main-nav .official-logo{width:89px!important;max-height:75px!important}
-  .capital-uiux-v2 #main-nav .nav-links{gap:.25rem!important}
+  .capital-uiux-v2 #main-nav .nav-links{gap:clamp(.75rem,1.5vw,1.5rem)!important}
   .capital-uiux-v2 #main-nav .nav-links>a.btn-enquire{padding:10px 28px!important}
 }
