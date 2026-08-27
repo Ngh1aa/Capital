@@ -17,8 +17,9 @@
   <link rel="stylesheet" href="assets/space-cinematic.css?v=space-20260825-1" />
   <link rel="stylesheet" href="assets/hero-contrast.css?v=hero-contrast-20260826-4" />
   <link rel="stylesheet" href="assets/media-frame.css?v=media-frame-20260826-2" />
+  <link rel="stylesheet" href="assets/capital-uiux-v2.css?v=uiux-20260827-2" />
 </head>
-<body class="sp-page">
+<body class="sp-page capital-uiux-v2">
 <nav id="main-nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="Capital Place Hanoi home">
@@ -29,12 +30,12 @@
       <a href="location.html">Location</a>
       <a href="office.html">Office</a>
       <a href="sustainability.html">Sustainability</a>
-      <a href="amenities.html">Amenities</a>
+      <a href="amenities.html">Amenities</a><a href="visit.html">Visit</a><a href="resources.html">Resources</a>
       <div class="nav-sep"></div>
       <div class="lang-btns">
-        <button type="button" class="active" onclick="setLang('EN')">EN</button>
+        <button type="button" class="active" aria-label="English" onclick="setLang('EN')">EN</button>
         <span class="lang-sep2">|</span>
-        <button type="button" onclick="setLang('VI')">VI</button>
+        <button type="button" aria-label="Vietnamese" onclick="setLang('VI')">VI</button>
       </div>
       <a href="availability.html" class="btn-enquire">Find a Space</a>
     </div>
@@ -48,7 +49,7 @@
     <a href="location.html" onclick="closeMob()">Location</a>
     <a href="office.html" onclick="closeMob()">Office</a>
     <a href="sustainability.html" onclick="closeMob()">Sustainability</a>
-    <a href="amenities.html" onclick="closeMob()">Amenities</a>
+    <a href="amenities.html" onclick="closeMob()">Amenities</a><a href="visit.html" onclick="closeMob()">Visit</a><a href="resources.html" onclick="closeMob()">Resources</a>
     <a href="availability.html" onclick="closeMob()">Availability</a>
     <a href="leasing.html" class="mob-enq" onclick="closeMob()">Leasing Enquiry</a>
   </div>
@@ -75,15 +76,15 @@
 
       <section class="sp-plan" id="space-plan" aria-labelledby="sp-plan-title"><div class="container sp-plan-grid"><div class="sp-plan-visual"><div data-space-plan></div><div class="sp-plan-tools"><span class="sp-plan-note" data-space-plan-note>Indicative planning diagram · not for construction</span><div class="sp-plan-toggle" role="group" aria-label="Floor plan layer"><button type="button" class="is-active" data-space-plan-mode="empty" aria-pressed="true">Empty</button><button type="button" data-space-plan-mode="testfit" aria-pressed="false">Test fit</button></div></div></div><div class="sp-plan-copy"><p class="sp-kicker">Floor plan</p><h2 id="sp-plan-title">See the<br /><em>possibility.</em></h2><p>Use the plan as a conversation starter. The central core, planning perimeter and published workplace reference help teams assess fit before requesting the detailed technical package.</p><div class="sp-capacity-note"><strong data-space-field="capacity">~184</strong><span>Indicative people in the published reference planning scenario.</span></div><div class="sp-notice">Illustrative reference only. It is not a live listing, construction drawing or binding commercial offer.</div></div></div></section>
 
-      <section class="sp-story" aria-labelledby="sp-story-title"><div class="container sp-story-grid"><div class="sp-story-copy"><p class="sp-kicker">Workplace logic</p><h2 id="sp-story-title">The floor<br /><em>at work.</em></h2><p>A strong floor plate should support focus, collaboration, leadership and the moments between them. The published reference gives the leasing conversation a tangible starting point.</p><div class="sp-story-points"><span><b>01</b>Column-free planning</span><span><b>02</b>Workstations + offices</span><span><b>03</b>Meeting and collaboration</span><span><b>04</b>Room to adapt</span></div></div><div class="sp-story-media"><figure><img src="assets/images/official/office-hero.jpg" alt="Open office interior reference at Capital Place" loading="lazy" /><figcaption>Work · focus · grow</figcaption></figure><figure><img src="assets/images/official/the-nexus.jpg" alt="The Nexus shared meeting and collaboration setting" loading="lazy" /><figcaption>Meet · host · connect</figcaption></figure></div></div></section>
+      <section class="sp-story" aria-labelledby="sp-story-title"><div class="container sp-story-grid"><div class="sp-story-copy"><p class="sp-kicker">Workplace logic</p><h2 id="sp-story-title">The floor<br /><em>at work.</em></h2><p>A strong floor plate should support focus, collaboration, leadership and the moments between them. The published reference gives the leasing conversation a tangible starting point.</p><div class="sp-story-points"><span><b>01</b>Column-free planning</span><span><b>02</b>Workstations + offices</span><span><b>03</b>Meeting and collaboration</span><span><b>04</b>Room to adapt</span></div></div><div class="sp-story-media"><figure><img src="assets/images/official/office-hero.jpg" alt="Open office interior reference at Capital Place" loading="lazy" width="1919" height="994" /><figcaption>Work · focus · grow</figcaption></figure><figure><img src="assets/images/official/the-nexus.jpg" alt="The Nexus shared meeting and collaboration setting" loading="lazy" width="1920" height="1280" /><figcaption>Meet · host · connect</figcaption></figure></div></div></section>
 
       <section class="sp-view" data-focus="center" aria-labelledby="sp-view-title"><img data-space-view-image src="assets/images/official/location-hero.jpg" alt="Hanoi skyline and West Lake from Capital Place" width="1920" height="1140" loading="lazy" /><div class="sp-view-shade"></div><div class="container sp-view-copy"><p class="sp-kicker">Representative Capital Place View</p><h2 id="sp-view-title">Above<br /><em>Hanoi.</em></h2><p data-space-view-copy>Exact orientation confirmed with Leasing.</p></div></section>
 
-      <section class="sp-fitout" aria-labelledby="sp-fitout-title"><div class="container sp-fitout-grid"><div class="sp-fitout-copy"><p class="sp-kicker">Fit-out</p><h2 id="sp-fitout-title">From shell<br /><em>to workplace.</em></h2><p>Compare the strategic difference between a clear floor plate and a considered workplace environment. Exact condition, handover and fit-out options are confirmed by Leasing.</p><div class="sp-notice">Detailed plans, test-fit variations and fit-out guidance are available through the leasing team.</div><a class="sp-text-link" style="color:#111;border-color:#111;margin-top:2rem" data-space-action="plan" href="leasing.html?intent=technical-package">Request the detailed plan <span aria-hidden="true">→</span></a></div><div class="sp-fitout-gallery"><figure><img src="assets/images/official/office-hero.jpg" alt="Bare office floor plate reference at Capital Place" loading="lazy" /><figcaption>01 · Bare reference</figcaption></figure><figure><img src="assets/images/official/common-area.jpg" alt="Fitted workplace and common area at Capital Place" loading="lazy" /><figcaption>02 · Fitted workplace</figcaption></figure></div></div></section>
+      <section class="sp-fitout" aria-labelledby="sp-fitout-title"><div class="container sp-fitout-grid"><div class="sp-fitout-copy"><p class="sp-kicker">Fit-out</p><h2 id="sp-fitout-title">From shell<br /><em>to workplace.</em></h2><p>Compare the strategic difference between a clear floor plate and a considered workplace environment. Exact condition, handover and fit-out options are confirmed by Leasing.</p><div class="sp-notice">Detailed plans, test-fit variations and fit-out guidance are available through the leasing team.</div><a class="sp-text-link" style="color:#111;border-color:#111;margin-top:2rem" data-space-action="plan" href="leasing.html?intent=technical-package">Request the detailed plan <span aria-hidden="true">→</span></a></div><div class="sp-fitout-gallery"><figure><img src="assets/images/official/office-hero.jpg" alt="Bare office floor plate reference at Capital Place" loading="lazy" width="1919" height="994" /><figcaption>01 · Bare reference</figcaption></figure><figure><img src="assets/images/official/common-area.jpg" alt="Fitted workplace and common area at Capital Place" loading="lazy" width="905" height="710" /><figcaption>02 · Fitted workplace</figcaption></figure></div></div></section>
 
       <section class="sp-overview" aria-labelledby="sp-next-title"><div class="container sp-overview-grid"><div class="sp-structure"><img src="assets/images/official/capital-place-towers.jpg" alt="Capital Place towers above Hanoi" width="1595" height="2048" loading="lazy" /><span class="sp-structure-caption">One address · two towers · one next step</span></div><div class="sp-overview-copy"><p class="sp-kicker">Your next decision</p><h2 id="sp-next-title">Bring this<br /><em>floor to Leasing.</em></h2><p>Save this space, compare it with another reference, or book a private viewing with the current context already attached.</p><div class="sp-hero-actions" style="margin-top:2rem"><a class="sp-primary" data-space-action="viewing" href="leasing.html?intent=viewing">Book this floor <span aria-hidden="true">→</span></a><a class="sp-secondary" style="background:#111;color:#fff;border-color:#111" data-space-action="proposal" href="leasing.html?intent=proposal">Request proposal</a></div></div></div></section>
     </div>
-    <section class="sp-invalid" data-space-invalid hidden><div class="container"><div class="sp-empty"><p class="sp-kicker">Reference update</p><h1>This floor reference<br /><em>was not found.</em></h1><p>Continue to the published reference floor plates or share your requirement directly with the Capital Place leasing team.</p><div class="sp-invalid-actions"><a href="availability.html">View reference floor plates</a><a href="leasing.html?intent=future-availability">Register interest</a></div></div></div></section>
+    <section class="sp-invalid" data-space-invalid hidden><div class="container"><div class="sp-empty"><p class="sp-kicker">Reference update</p><h2>This floor reference<br /><em>was not found.</em></h2><p>Continue to the published reference floor plates or share your requirement directly with the Capital Place leasing team.</p><div class="sp-invalid-actions"><a href="availability.html">View reference floor plates</a><a href="leasing.html?intent=future-availability">Register interest</a></div></div></div></section>
   </div>
   <section class="sp-cta" data-space-cta><div class="container sp-cta-inner"><div class="sp-cta-copy"><strong data-space-cta-title>Selected space</strong><span data-space-cta-context>Reference floor plate · Current status via Leasing</span></div><div class="sp-cta-actions"><button type="button" data-space-save aria-pressed="false">♡ Save this space</button><button type="button" data-space-compare>Compare / shortlist <span data-space-shortlist-count>0 saved</span></button><a data-space-cta-book href="leasing.html?intent=viewing">Book this floor →</a></div><span class="sp-save-note" data-space-save-note role="status"></span></div></section>
 </main>
@@ -127,5 +128,6 @@
 <script src="assets/capital-data.js?v=vision-20260825-2"></script>
 <script src="assets/capital-upgrade.js?v=vision-20260825-4"></script>
 <script src="assets/space-cinematic.js?v=space-20260825-1"></script>
+  <script src="assets/capital-uiux-v2.js?v=uiux-20260827-2"></script>
 </body>
 </html>

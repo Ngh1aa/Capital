@@ -19,15 +19,16 @@
   <link rel="stylesheet" href="assets/home-cinematic.css?v=home-20260826-3" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Place","name":"Capital Place","description":"Grade A office building comprising two 37-storey towers and approximately 93,000 sqm of office and retail space.","address":{"@type":"PostalAddress","streetAddress":"29 Lieu Giai","addressLocality":"Ngoc Ha, Hanoi","addressCountry":"VN"},"telephone":"18009289","email":"leasing@capitalplace.vn","url":"https://ngh1aa.github.io/Capital/"}</script>
   <link rel="stylesheet" href="assets/hero-contrast.css?v=hero-contrast-20260826-8" />
+  <link rel="stylesheet" href="assets/capital-uiux-v2.css?v=uiux-20260827-2" />
 </head>
-<body class="vision-home hc-home">
+<body class="vision-home hc-home capital-uiux-v2">
 <nav id="main-nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo" aria-label="Capital Place Hanoi home"><img class="official-logo" src="assets/brand/capital-place-logo.svg" alt="Capital Place Hanoi" width="89" height="75" /></a>
     <div class="nav-links">
-      <a href="index.html">Home</a><a href="location.html">Location</a><a href="office.html">Office</a><a href="sustainability.html">Sustainability</a><a href="amenities.html">Amenities</a>
+      <a href="index.html">Home</a><a href="location.html">Location</a><a href="office.html">Office</a><a href="sustainability.html">Sustainability</a><a href="amenities.html">Amenities</a><a href="visit.html">Visit</a><a href="resources.html">Resources</a>
       <div class="nav-sep"></div>
-      <div class="lang-btns"><button type="button" class="active" onclick="setLang('EN')">EN</button><span class="lang-sep2">|</span><button type="button" onclick="setLang('VI')">VI</button></div>
+      <div class="lang-btns"><button type="button" class="active" aria-label="English" onclick="setLang('EN')">EN</button><span class="lang-sep2">|</span><button type="button" aria-label="Vietnamese" onclick="setLang('VI')">VI</button></div>
       <a href="availability.html" class="btn-enquire">Find a Space</a>
     </div>
     <button type="button" class="nav-ham" id="hamburger" aria-label="Toggle menu" aria-controls="mob-menu" aria-expanded="false">
@@ -35,7 +36,7 @@
       <svg id="icon-close" style="display:none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
   </div>
-  <div id="mob-menu"><a href="index.html" onclick="closeMob()">Home</a><a href="location.html" onclick="closeMob()">Location</a><a href="office.html" onclick="closeMob()">Office</a><a href="sustainability.html" onclick="closeMob()">Sustainability</a><a href="amenities.html" onclick="closeMob()">Amenities</a><a href="availability.html" onclick="closeMob()">Availability</a><a href="leasing.html" class="mob-enq" onclick="closeMob()">Leasing Enquiry</a></div>
+  <div id="mob-menu"><a href="index.html" onclick="closeMob()">Home</a><a href="location.html" onclick="closeMob()">Location</a><a href="office.html" onclick="closeMob()">Office</a><a href="sustainability.html" onclick="closeMob()">Sustainability</a><a href="amenities.html" onclick="closeMob()">Amenities</a><a href="visit.html" onclick="closeMob()">Visit</a><a href="resources.html" onclick="closeMob()">Resources</a><a href="availability.html" onclick="closeMob()">Availability</a><a href="leasing.html" class="mob-enq" onclick="closeMob()">Leasing Enquiry</a></div>
 </nav>
 
 <main id="main-content">
@@ -49,7 +50,7 @@
   </section>
 
   <section class="hc-home-group hc-scale-group" id="scale" aria-labelledby="hc-scale-title">
-    <div class="hc-scale" id="scale" aria-labelledby="hc-scale-title">
+    <div class="hc-scale" aria-labelledby="hc-scale-title">
     <div class="container hc-section-intro"><p class="hc-kicker">The scale of Capital Place</p><h2 id="hc-scale-title">Big enough to <em>move business forward.</em></h2></div>
     <div class="hc-scale-stage">
       <div class="hc-scale-media"><img src="assets/images/official/capital-place-towers.jpg" alt="Capital Place twin towers above Hanoi" width="1595" height="2048" loading="lazy" data-scale-image /></div>
@@ -119,10 +120,10 @@
   </section>
 
   <section class="hc-home-group hc-conversion-group" id="find-space" aria-labelledby="hc-availability-title">
-    <div class="hc-availability" id="find-space" aria-labelledby="hc-availability-title" data-space-finder>
+    <div class="hc-availability" aria-labelledby="hc-availability-title" data-space-finder>
     <div class="container hc-availability-grid"><div class="hc-availability-copy"><p class="hc-kicker">Find your place</p><h2 id="hc-availability-title">At Capital <em>Place.</em></h2><p>Now that you have seen the building, explore the published planning references closest to your business requirement.</p><a href="availability.html">View all available spaces →</a></div><div class="hc-finder-shell"><div class="hc-finder-mode" role="group" aria-label="Choose how to search"><button type="button" class="active" data-finder-mode="area" aria-pressed="true">I know my area</button><button type="button" data-finder-mode="headcount" aria-pressed="false">I know my team size</button></div><form class="hc-finder-form"><div data-finder-area-field><label for="home-required-area">Required area</label><select id="home-required-area" name="requiredArea"><option value="unsure">Not sure yet</option><option value="lt500">Under 500 m²</option><option value="500-1000">500–1,000 m²</option><option value="1000-2000">1,000–2,000 m²</option><option value="2000plus">2,000+ m²</option></select></div><div data-finder-headcount-field hidden><label for="home-team-size">Team size</label><input id="home-team-size" name="teamSize" type="number" min="1" inputmode="numeric" placeholder="e.g. 120" /></div><div data-finder-estimate class="hc-finder-estimate" hidden></div><div><label for="home-timeline">Target move-in</label><select id="home-timeline" name="timeline"><option value="planning">Planning ahead</option><option value="immediate">Immediately</option><option value="0-3">0–3 months</option><option value="3-6">3–6 months</option><option value="6-12">6–12 months</option></select></div><div><label for="home-tower">Preferred tower</label><select id="home-tower" name="tower"><option value="all">Either tower</option><option value="1">Tower 01</option><option value="2">Tower 02</option></select></div><button class="hc-finder-submit" type="submit">Find matching spaces <span aria-hidden="true">→</span></button></form><div class="hc-finder-results" data-finder-results hidden></div></div></div>
   </div>
-    <div class="hc-final" aria-labelledby="hc-final-title"><img src="assets/images/official/capital-place-towers.jpg" alt="Capital Place towers illuminated above Hanoi" width="1595" height="2048" loading="lazy" /><div class="hc-final-shade"></div><div class="container hc-final-copy"><p class="hc-kicker">Your next address</p><h2 id="hc-final-title">Make Capital Place <em>is your next address.</em></h2><p>Capital Place · 29 Lieu Giai · Ngoc Ha · Hanoi</p><div class="hc-final-actions"><a class="hc-primary-cta" href="availability.html">View Available Spaces <span aria-hidden="true">→</span></a><a class="hc-secondary-cta" href="leasing.html?intent=viewing">Book a Private Tour <span aria-hidden="true">→</span></a></div></div></div>
+    <div class="hc-final" aria-labelledby="hc-final-title"><img src="assets/images/official/capital-place-towers.jpg" alt="Capital Place towers illuminated above Hanoi" width="1595" height="2048" loading="lazy" /><div class="hc-final-shade"></div><div class="container hc-final-copy"><p class="hc-kicker">Your next address</p><h2 id="hc-final-title">Make Capital Place <em>your next address.</em></h2><p>Capital Place · 29 Lieu Giai · Ngoc Ha · Hanoi</p><div class="hc-final-actions"><a class="hc-primary-cta" href="availability.html">View Available Spaces <span aria-hidden="true">→</span></a><a class="hc-secondary-cta" href="leasing.html?intent=viewing">Book a Private Tour <span aria-hidden="true">→</span></a></div></div></div>
   </section></main>
 
 <footer>
@@ -133,5 +134,6 @@
 <script src="assets/capital-upgrade.js?v=vision-20260825-4"></script>
 <script src="assets/capital-vision.js?v=vision-20260825-2"></script>
 <script src="assets/home-cinematic.js?v=home-20260826-2"></script>
+  <script src="assets/capital-uiux-v2.js?v=uiux-20260827-2"></script>
 </body>
 </html>

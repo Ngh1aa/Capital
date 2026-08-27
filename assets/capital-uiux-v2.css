@@ -1,0 +1,93 @@
+/* Capital Place UI/UX v2 — shared prototype design system */
+:root{
+  --ui-ink:#151515;
+  --ui-ink-soft:#343434;
+  --ui-muted:#68635d;
+  --ui-paper:#f5f2ec;
+  --ui-surface:#fffdf9;
+  --ui-dark:#171717;
+  --ui-dark-soft:#242424;
+  --ui-accent:#ff6938;
+  --ui-accent-deep:#c84725;
+  --ui-focus:#ffb394;
+  --ui-line:rgba(21,21,21,.16);
+  --ui-line-dark:rgba(255,255,255,.22);
+  --ui-radius:14px;
+  --ui-radius-sm:8px;
+  --ui-ease:cubic-bezier(.23,1,.32,1);
+  --ui-container:1360px;
+  --ui-shadow:0 18px 60px rgba(17,17,17,.12);
+}
+
+.capital-uiux-v2{background:var(--ui-paper);color:var(--ui-ink)}
+.capital-uiux-v2 ::selection{background:var(--ui-accent);color:var(--ui-ink)}
+.capital-uiux-v2 :focus-visible{outline:3px solid var(--ui-focus);outline-offset:4px}
+.capital-uiux-v2 .skip-link{position:fixed;left:1rem;top:.75rem;z-index:1000;transform:translateY(-160%);background:var(--ui-accent);color:#111;padding:.8rem 1rem;font-weight:700;text-decoration:none;transition:transform .2s var(--ui-ease)}
+.capital-uiux-v2 .skip-link:focus{transform:translateY(0)}
+
+.capital-uiux-v2 #main-nav{transition:background .3s ease,border-color .3s ease,box-shadow .3s ease}
+.capital-uiux-v2 #main-nav.scrolled{background:rgba(17,17,17,.88);border-bottom-color:rgba(255,255,255,.16);box-shadow:0 10px 30px rgba(0,0,0,.16);backdrop-filter:blur(18px)}
+.capital-uiux-v2 #main-nav .nav-links{gap:.25rem}
+.capital-uiux-v2 #main-nav .nav-links>a{position:relative;padding:.65rem .7rem;border-radius:999px;transition:background .2s ease,color .2s ease}
+.capital-uiux-v2 #main-nav .nav-links>a:hover,.capital-uiux-v2 #main-nav .nav-links>a:focus-visible,.capital-uiux-v2 #main-nav .nav-links>a.active{background:rgba(255,255,255,.1);color:#fff}
+.capital-uiux-v2 #main-nav .nav-links>a.active:after{content:"";position:absolute;left:.7rem;right:.7rem;bottom:.25rem;height:2px;background:var(--ui-accent);border-radius:2px}
+.capital-uiux-v2 #main-nav .lang-btns{display:flex;align-items:center;gap:.35rem;margin-left:.35rem}
+.capital-uiux-v2 #main-nav .lang-btns button{min-width:2.25rem;min-height:2.25rem;border:1px solid transparent;border-radius:999px;background:transparent;color:rgba(255,255,255,.62);cursor:pointer;transition:color .2s ease,background .2s ease,border-color .2s ease}
+.capital-uiux-v2 #main-nav .lang-btns button:hover,.capital-uiux-v2 #main-nav .lang-btns button:focus-visible,.capital-uiux-v2 #main-nav .lang-btns button.active{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:#fff}
+.capital-uiux-v2 #main-nav .btn-enquire{box-shadow:0 8px 24px rgba(255,105,56,.22);transition:transform .2s var(--ui-ease),background .2s ease,color .2s ease}
+.capital-uiux-v2 #main-nav .btn-enquire:hover{transform:translateY(-2px);background:#fff;color:#111}
+.capital-uiux-v2 #mob-menu{z-index:50;padding:5.5rem 1.25rem 2rem;overscroll-behavior:contain}
+.capital-uiux-v2 #mob-menu a{font-size:clamp(1.8rem,8vw,3.2rem);line-height:1.05;padding:.45rem 0}
+.capital-uiux-v2 #mob-menu a.active{color:var(--ui-accent)}
+.capital-uiux-v2 #mob-menu .mob-enq{margin-top:1rem;font-size:1rem;line-height:1.2;letter-spacing:.14em}
+
+.capital-uiux-v2 .container{width:min(calc(100% - 3rem),var(--ui-container));margin-inline:auto}
+.capital-uiux-v2 .sup-button,.capital-uiux-v2 .sup-outline,.capital-uiux-v2 .rl-button,.capital-uiux-v2 .rl-outline,.capital-uiux-v2 .sp-primary,.capital-uiux-v2 .sp-secondary,.capital-uiux-v2 .la-button,.capital-uiux-v2 button[type=submit]{min-height:3rem}
+.capital-uiux-v2 a,.capital-uiux-v2 button{touch-action:manipulation}
+.capital-uiux-v2 button[aria-disabled=true],.capital-uiux-v2 a[aria-disabled=true]{pointer-events:none;opacity:.5}
+
+.cu2-progress{position:fixed;inset:0 0 auto 0;height:3px;z-index:90;pointer-events:none;background:transparent}
+.cu2-progress span{display:block;width:0;height:100%;background:var(--ui-accent);box-shadow:0 0 16px rgba(255,105,56,.8);transition:width .1s linear}
+.cu2-backtop{position:fixed;right:1.25rem;bottom:1.25rem;z-index:70;width:2.75rem;height:2.75rem;border:1px solid rgba(255,255,255,.2);border-radius:50%;background:rgba(17,17,17,.86);color:#fff;display:grid;place-items:center;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .2s ease,transform .2s var(--ui-ease),visibility .2s ease}
+.cu2-backtop.is-visible{opacity:1;visibility:visible;transform:none}
+.cu2-backtop:hover{background:var(--ui-accent);color:#111}
+.cu2-mobile-actions{display:none}
+.cu2-toast{position:fixed;left:50%;bottom:1.25rem;z-index:100;max-width:min(32rem,calc(100vw - 2rem));padding:.85rem 1rem;border:1px solid rgba(255,255,255,.16);border-radius:var(--ui-radius-sm);background:#171717;color:#fff;box-shadow:var(--ui-shadow);font-size:.78rem;line-height:1.4;opacity:0;pointer-events:none;transform:translate(-50%,1rem);transition:opacity .2s ease,transform .2s var(--ui-ease)}
+.cu2-toast.is-visible{opacity:1;transform:translate(-50%,0)}
+
+@media(max-width:800px){
+  .capital-uiux-v2 .container{width:min(calc(100% - 2rem),var(--ui-container))}
+  .capital-uiux-v2 #main-nav .nav-links{display:none}
+  .capital-uiux-v2 .cu2-backtop{bottom:5rem;right:1rem}
+  .cu2-mobile-actions{position:fixed;left:.75rem;right:.75rem;bottom:.75rem;z-index:65;display:grid;grid-template-columns:1fr 1fr;gap:.5rem;padding:.45rem;border:1px solid rgba(255,255,255,.14);border-radius:14px;background:rgba(17,17,17,.9);box-shadow:0 14px 40px rgba(0,0,0,.22);backdrop-filter:blur(14px)}
+  .cu2-mobile-actions a{display:flex;min-height:2.75rem;align-items:center;justify-content:center;padding:.5rem .6rem;border-radius:9px;color:#fff;text-decoration:none;text-align:center;text-transform:uppercase;letter-spacing:.12em;font-size:.57rem;font-weight:700}
+  .cu2-mobile-actions a:first-child{background:var(--ui-accent);color:#111}
+  .cu2-mobile-actions a:last-child{border:1px solid rgba(255,255,255,.24)}
+}
+@media(prefers-reduced-motion:reduce){.capital-uiux-v2 *, .capital-uiux-v2 *:before,.capital-uiux-v2 *:after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}.cu2-progress{display:none}}
+
+/* Navigation safety: seven primary routes need a menu before the header becomes cramped. */
+@media (max-width:1150px){
+  .capital-uiux-v2 #main-nav .nav-links{display:none!important}
+  .capital-uiux-v2 #main-nav .nav-ham{display:flex!important}
+  .capital-uiux-v2 #mob-menu.open{display:flex!important}
+}
+
+/* Shared interaction language for forms, tabs and filter controls. */
+.capital-uiux-v2 input:not([type=checkbox]):not([type=radio]),
+.capital-uiux-v2 select,
+.capital-uiux-v2 textarea{border-radius:var(--ui-radius-sm);font-size:max(1rem,16px);transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}
+.capital-uiux-v2 input:not([type=checkbox]):not([type=radio]):focus,
+.capital-uiux-v2 select:focus,
+.capital-uiux-v2 textarea:focus{border-color:var(--ui-accent);box-shadow:0 0 0 4px rgba(255,105,56,.16);outline:none}
+.capital-uiux-v2 input[aria-invalid=true],
+.capital-uiux-v2 select[aria-invalid=true],
+.capital-uiux-v2 textarea[aria-invalid=true]{border-color:#b52828;box-shadow:0 0 0 3px rgba(181,40,40,.12)}
+.capital-uiux-v2 [role=tab],
+.capital-uiux-v2 [aria-pressed=true],
+.capital-uiux-v2 .is-active{transition:color .2s ease,background .2s ease,border-color .2s ease,transform .2s var(--ui-ease)}
+.capital-uiux-v2 [role=tab]:active,
+.capital-uiux-v2 button:active{transform:translateY(1px)}
+.capital-uiux-v2 label{cursor:pointer}
+
+@media(max-width:800px){body.capital-uiux-v2{padding-bottom:4.5rem}}
