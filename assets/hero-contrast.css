@@ -30,7 +30,7 @@
 :is(.hc-hero,.hc-view,.hc-address,.hc-final,.lc-hero,.lc-business,.lc-cta,.oc-hero,.oc-breathing,.oc-columnfree,.oc-views,.oc-final,.av-hero,.av-view,.av-final,.ss-hero,.ss-health,.ss-green,.ss-cta,.ac-hero,.ac-link,.ac-community,.ac-final,.sp-hero,.sp-view,.la-hero,.la-scale,.la-scale-section,.la-visual-band,.la-final-address,.rl-hero,.rl-full,.rl-full-band,.rl-final,.sup-hero,.o-hero,.o-final,.r-hero,.r-final,.v-hero,.v-final,.vision-hero)>img,
 :is(.hc-hero,.hc-view,.hc-address,.hc-final,.lc-hero,.lc-business,.lc-cta,.oc-hero,.oc-breathing,.oc-columnfree,.oc-views,.oc-final,.av-hero,.av-view,.av-final,.ss-hero,.ss-health,.ss-green,.ss-cta,.ac-hero,.ac-link,.ac-community,.ac-final,.sp-hero,.sp-view,.la-hero,.la-scale,.la-scale-section,.la-visual-band,.la-final-address,.rl-hero,.rl-full,.rl-full-band,.rl-final,.sup-hero,.o-hero,.o-final,.r-hero,.r-final,.v-hero,.v-final,.vision-hero)>.hero-bg{position:absolute;z-index:0!important}
 :is(.hc-hero,.hc-view,.hc-address,.hc-final,.lc-hero,.lc-business,.lc-cta,.oc-hero,.oc-breathing,.oc-columnfree,.oc-views,.oc-final,.av-hero,.av-view,.av-final,.ss-hero,.ss-health,.ss-green,.ss-cta,.ac-hero,.ac-link,.ac-community,.ac-final,.sp-hero,.sp-view,.la-hero,.la-scale,.la-scale-section,.la-visual-band,.la-final-address,.rl-hero,.rl-full,.rl-full-band,.rl-final,.sup-hero,.o-hero,.o-final,.r-hero,.r-final,.v-hero,.v-final,.vision-hero)>[class*="-shade"]{z-index:1!important;pointer-events:none}
-:is(.hc-hero,.hc-view,.hc-address,.hc-final,.lc-hero,.lc-business,.lc-cta,.oc-hero,.oc-breathing,.oc-columnfree,.oc-views,.oc-final,.av-hero,.av-view,.av-final,.ss-hero,.ss-health,.ss-green,.ss-cta,.ac-hero,.ac-link,.ac-community,.ac-final,.sp-hero,.sp-view,.la-hero,.la-scale,.la-scale-section,.la-visual-band,.la-final-address,.rl-hero,.rl-full,.rl-full-band,.rl-final,.sup-hero,.o-hero,.o-final,.r-hero,.r-final,.v-hero,.v-final,.vision-hero)>:is([class*="-copy"],[class*="-content"],[class*="-facts"],[class*="-stats"],[class*="-mark"],[class*="-status"],[class*="-context"],[class*="-docs"],[class*="-proof"]){position:relative;z-index:2!important}
+:is(.hc-hero,.hc-view,.hc-address,.hc-final,.lc-hero,.lc-business,.lc-cta,.oc-hero,.oc-breathing,.oc-columnfree,.oc-views,.oc-final,.av-hero,.av-view,.av-final,.ss-hero,.ss-health,.ss-green,.ss-cta,.ac-hero,.ac-link,.ac-community,.ac-final,.sp-hero,.sp-view,.la-hero,.la-scale,.la-scale-section,.la-visual-band,.la-final-address,.rl-hero,.rl-full,.rl-full-band,.rl-final,.sup-hero,.o-hero,.o-final,.r-hero,.r-final,.v-hero,.v-final,.vision-hero)>:is([class*="-copy"],[class*="-content"],[class*="-facts"],[class*="-stats"],[class*="-mark"],[class*="-status"],[class*="-context"],[class*="-docs"],[class*="-proof"]):not(.hc-hero-content,.hc-hero-facts,.la-hero-mark,.la-hero-stats,.rl-hero-mark,.rl-hero-stats,.sp-hero-status,.v-hero-context,.sup-hero-context,.r-hero-docs,.r-hero-context,.o-hero-context,.availability-hero-proof){position:relative;z-index:2!important}
 
 /* Home facts are intentionally anchored to the Hero bottom-right, not in normal flow. */
 .hc-hero > .hc-hero-facts{position:absolute!important}
@@ -83,4 +83,10 @@
     animation: none;
     transform: translate(-50%, -50%);
   }
+}
+
+/* Mobile exceptions: desktop-anchored hero rails return to readable flow on narrow screens. */
+@media(max-width:560px){
+  .r-hero-docs{display:none!important}
+  .r-hero-context,.v-hero-context{position:relative!important;right:auto!important;bottom:auto!important;margin:2rem 1.2rem 0!important}
 }

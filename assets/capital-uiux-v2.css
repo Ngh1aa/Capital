@@ -106,8 +106,8 @@ html{overflow-x:clip}
   .capital-uiux-v2 .sup-hero-actions>a,.capital-uiux-v2 .la-hero .la-hero-copy>div>a,.capital-uiux-v2 .rl-hero-actions>a,.capital-uiux-v2 .rc-hero-actions>a{width:100%;justify-content:center;text-align:center}
   .capital-uiux-v2 .cu2-mobile-actions a{font-size:clamp(.48rem,2.2vw,.58rem);letter-spacing:.1em}
   .capital-uiux-v2 .v-hero-context{max-width:calc(100% - 2rem)}
-  .capital-uiux-v2 .v-hero-context strong{overflow-wrap:anywhere}
-  .capital-uiux-v2 .la-hero-mark{max-width:calc(100% - 2rem);overflow-wrap:anywhere}
+  .capital-uiux-v2 .v-hero-context strong{overflow-wrap:normal;word-break:normal}
+  .capital-uiux-v2 .la-hero-mark{max-width:calc(100% - 2rem);overflow-wrap:normal;word-break:normal}
 }
 @media(max-width:350px){
   .capital-uiux-v2 .container{width:calc(100% - 1.5rem)}
@@ -128,7 +128,7 @@ html{overflow-x:clip}
 .capital-uiux-v2 #main-nav .nav-links>a{padding:.35rem 0!important;background:transparent!important;white-space:nowrap!important}
 .capital-uiux-v2 #main-nav .nav-links>a.active:after{left:0;right:0;bottom:-.22rem;border-radius:0}
 .capital-uiux-v2 #main-nav .lang-btns button{min-width:auto!important;min-height:auto!important;padding:.35rem 0!important;background:transparent!important;border:0!important}
-.capital-uiux-v2 #main-nav .btn-enquire{padding:10px 20px!important;box-shadow:none!important}
+.capital-uiux-v2 #main-nav .btn-enquire{box-shadow:none!important}
 .capital-uiux-v2 h1,
 .capital-uiux-v2 h2,
 .capital-uiux-v2 h3{white-space:normal!important;overflow-wrap:normal!important;word-break:normal!important;hyphens:none!important;text-wrap:balance!important;max-width:min(100%,18ch)}
@@ -153,11 +153,6 @@ html{overflow-x:clip}
 .capital-uiux-v2 main#main-content > section.hc-architecture-group > div.hc-architecture > div.container.hc-architecture-copy,
 .capital-uiux-v2 main#main-content > section.hc-architecture-group > div.hc-architecture > div.hc-architecture-media.hc-architecture-art:nth-of-type(3),
 .capital-uiux-v2 main#main-content > section.hc-leed-group > div.hc-leed > div.container.hc-leed-copy{translate:none!important;transform:none!important}
-@media(min-width:801px){
-  .capital-uiux-v2 .hc-home-group h2,
-  .capital-uiux-v2 .hc-home-group h2 em{white-space:nowrap!important;text-wrap:nowrap!important;overflow-wrap:normal!important;word-break:normal!important}
-}
-
 /* Reset exported visual offsets that caused clipping in the supplied screenshots. */
 .capital-uiux-v2 main#main-content > section.ac-value.capital-motion-item:nth-of-type(11) > div.container.ac-final-copy:nth-of-type(2),
 .capital-uiux-v2 main#main-content > section.av-final.capital-motion-item:nth-of-type(9) > div.container.av-final-copy:nth-of-type(2),
@@ -181,3 +176,12 @@ html{overflow-x:clip}
 .capital-uiux-v2 .lc-context-copy h2 em,
 .capital-uiux-v2 .lc-business-copy h2 em,
 .capital-uiux-v2 .lc-cta-copy h2 em{display:block;max-width:100%;white-space:normal!important;overflow-wrap:normal!important;word-break:normal!important}
+
+/* Legacy header proportions recovery: match the original 1903px reference without changing page content widths. */
+.capital-uiux-v2 #main-nav{background:rgba(17,17,17,.98)!important;border-bottom-color:rgba(255,255,255,.08)!important}
+@media(min-width:801px){
+  .capital-uiux-v2 #main-nav .nav-inner{max-width:1600px!important;padding:0 10px 0 0!important;height:87px!important}
+  .capital-uiux-v2 #main-nav .official-logo{width:89px!important;max-height:75px!important}
+  .capital-uiux-v2 #main-nav .nav-links{gap:.25rem!important}
+  .capital-uiux-v2 #main-nav .nav-links>a.btn-enquire{padding:10px 28px!important}
+}
