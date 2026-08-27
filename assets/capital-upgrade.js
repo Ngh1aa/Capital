@@ -651,6 +651,7 @@
   }
 
   function addMobileCta() {
+    if (document.body.classList.contains('capital-uiux-v2')) return;
     if ($('.mobile-leasing-cta')) return;
     const page = global.location.pathname.split('/').pop() || 'index.html';
     const map = {

@@ -52,7 +52,12 @@
   mobileActions.className = 'cu2-mobile-actions';
   mobileActions.setAttribute('aria-label', 'Quick actions');
   mobileActions.innerHTML = `<a href="${primaryHref}">${primaryLabel}</a><a href="${secondaryHref}">${secondaryLabel}</a>`;
-  document.body.appendChild(mobileActions);
+  if (/^(404|privacy)\.html$/.test(page)) {
+    body.classList.add('cu2-no-mobile-actions');
+    mobileActions.remove();
+  } else {
+    document.body.appendChild(mobileActions);
+  }
 
   const ham = document.getElementById('hamburger');
   const menu = document.getElementById('mob-menu');
