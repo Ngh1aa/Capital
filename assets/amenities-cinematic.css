@@ -18,7 +18,7 @@
 @media(prefers-reduced-motion:reduce){.ac-day-track article img,.ac-b1-pin,.ac-final-intents a{transition:none}.ac-amenities main{scroll-behavior:auto}}
 /* UI feedback 25 Aug 2026 — targeted text contrast, Nexus offset and verified B1 floor plan */
 .ac-hero-shade,.ac-link-shade,.ac-community-shade,.ac-final-shade{background:linear-gradient(90deg,rgba(0,0,0,.95),rgba(0,0,0,.36) 74%,rgba(0,0,0,.12))}
-.ac-nexus-copy{translate:200px}
+.ac-nexus-copy{translate:32px}
 .ac-b1-map{background:#f5ede0;aspect-ratio:16/9;min-height:clamp(22rem,38vw,38rem)}
 .ac-b1-map:before{display:none}
 .ac-b1-map-image{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}

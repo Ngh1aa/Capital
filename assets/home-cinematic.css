@@ -254,3 +254,6 @@ body.hc-home footer {
     font-size: clamp(2.35rem, 10.5vw, 4.5rem) !important;
   }
 }
+
+/* UI review 2026-08-27: keep the community figure at the requested desktop size without affecting mobile scaling. */
+@media (min-width:801px){.hc-community-number{font-size:72px}}
