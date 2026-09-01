@@ -4,6 +4,7 @@ import path from 'node:path';
 const root = process.cwd();
 const pages = ['index.html','location.html','office.html','sustainability.html','amenities.html','availability.html','leasing.html','visit.html','resources.html','faq.html','occupiers.html','retail.html','space.html','privacy.html','404.html'];
 const utilityPages = new Set(['visit.html','resources.html','faq.html','occupiers.html','retail.html','space.html','privacy.html','404.html']);
+const remediatedPages = new Set(['index.html','office.html','sustainability.html','amenities.html','availability.html']);
 const failures = [];
 let assertions = 0;
 const check = (condition, message) => { assertions++; if (!condition) failures.push(message); };
@@ -21,7 +22,8 @@ for (const page of pages) {
   if (!exists(page)) continue;
   const html = fs.readFileSync(path.join(root,page),'utf8');
   check(/<body\s+class="cp6"/.test(html), `${page}: not on V6 body system`);
-  check(/assets\/capital-v6\.css\?v=20260901-1/.test(html), `${page}: missing explicit V6 CSS version`);
+  check(/assets\/capital-v6\.css\?v=20260901-(?:1|3)/.test(html), `${page}: missing explicit V6 CSS version`);
+  if (remediatedPages.has(page)) check(/assets\/capital-v6\.css\?v=20260901-3/.test(html), `${page}: rendered-QA remediation is not cache-busted`);
   check(!/capital-uiux-v2\.css/.test(html), `${page}: still loads legacy UIUX wrapper`);
   check(!/capital-art-direction-v5\.css/.test(html), `${page}: still loads v5 patch layer`);
   check(!/assets\/(style|capital-upgrade|capital-white|capital-visual|home-cinematic|office-cinematic|location-cinematic|amenities-cinematic|sustainability-cinematic|availability-cinematic)\.css/.test(html), `${page}: still loads legacy/page-patch CSS`);
@@ -54,7 +56,7 @@ check(compact.includes('@media(max-width:600px)'), 'V6: missing mobile compositi
 check(/prefers-reduced-motion/.test(css),'V6: reduced motion guard missing');
 
 // Hero matrix: core decision pages must not collapse into one copy-left/image-right template.
-check(/HERO MATRIX V6\.2/.test(css),'V6.2: hero matrix marker missing');
+check(/HERO MATRIX V6\.3/.test(css),'V6.3: hero matrix marker missing');
 const heroAssets = {
   'location.html':'location-hero.jpg',
   'office.html':'office-hero.jpg',
@@ -71,12 +73,23 @@ for (const [page,asset] of Object.entries(heroAssets)) {
   const match = html.match(/cp6-page-hero-media[^>]*>\s*<img[^>]+src="([^"]+)"/);
   if (match) seenHeroSources.add(match[1]);
 }
-check(seenHeroSources.size === Object.keys(heroAssets).length,'V6.2: core pages reuse the same hero media source');
-check(/PUBLISHED REFERENCE\s*\/\s*1,847 SQM/.test(css),'office hero: floor-plan reference signature missing');
-check(/PLATINUM\\A O\+M/.test(css) && /GOLD\\A BD\+C/.test(css),'sustainability hero: certification-led composition missing');
+check(seenHeroSources.size === Object.keys(heroAssets).length,'V6.3: core pages reuse the same hero media source');
+check(/PUBLISHED PLANNING REFERENCE\s*\/\s*1,847 SQM/.test(css),'office hero: planning-reference signature missing');
+check(/PLATINUM\s+·\s+LEED O\+M/.test(css) && /GOLD\s+·\s+LEED BD\+C/.test(css),'sustainability hero: compact certification labels missing');
 check(/08:00\s+ARRIVE/.test(css) && /18:00\s+RECHARGE/.test(css),'amenities hero: workday signature missing');
 check(/AVAILABILITY\s*\/\s*CONFIRMED BY LEASING/.test(css),'availability hero: leasing-truth signature missing');
 check(/1800 9289/.test(css) && /LEASING@CAPITALPLACE\.VN/.test(css),'leasing hero: direct-contact signature missing');
+
+// Rendered-QA regression guards from stakeholder screenshots, 2026-09-01.
+check(/body\.cp6 a\.cp6-experience-card\{color:#fff!important\}/.test(compact),'image cards: anchor inherit can override white overlay copy');
+check(/\.cp6-experience-card div\{[^}]*background:rgba\(17,16,15,\.76\)/.test(compact),'image cards: local contrast backplate missing behind copy');
+check(/\.cp6-experience-card h3\{[^}]*color:#fff!important/.test(compact),'image cards: heading color is not locked readable over photography');
+check(/\.cp6-floor-sheet img\{[^}]*max-width:min\(100%,430px\)/.test(compact),'floor preview: tiny raster is allowed to upscale excessively');
+check(/\.cp6-plate-compare figure img\{[^}]*max-width:min\(100%,430px\)/.test(compact),'availability floor preview: tiny raster is allowed to upscale excessively');
+check(!/floor-standard\.png\) center\/contain no-repeat/.test(css),'hero: low-resolution floor-standard.png is still enlarged as a hero/background');
+check(!/PLATINUM\\A O\+M/.test(css) && !/GOLD\\A BD\+C/.test(css),'sustainability: old multiline pseudo-label pattern that overlapped remains');
+check(/bottom:74px/.test(css) && /bottom:16px/.test(css),'sustainability mobile: credential labels lack separated vertical positions');
+check(/brightness\(\.8\)/.test(css),'sustainability: hero imagery remains excessively dimmed');
 
 const index = fs.readFileSync(path.join(root,'index.html'),'utf8');
 check(/A beacon for modern Hanoi/i.test(index),'home: landmark positioning missing');
@@ -104,5 +117,5 @@ if (failures.length) {
   failures.forEach(f => console.error(`- ${f}`));
   process.exit(1);
 }
-console.log(`PASS: ${assertions} Capital Place V6 design-contract assertions`);
+console.log(`PASS: ${assertions} Capital Place V6.3 design-contract and rendered-QA regression assertions`);
 console.log(`Routes: ${pages.length} · System: Architectural Editorial × Leasing Blueprint · Hero matrix: 6 core archetypes`);
