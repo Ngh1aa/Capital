@@ -1,3 +1,4 @@
-@import url("./capital-uiux-v2-legacy.css");
-@import url("./capital-research-v3.css");
-@import url("./capital-qa-v4.css");
+@import url("./capital-uiux-v2-legacy.css?v=legacy-20260827-13");
+@import url("./capital-research-v3.css?v=research-20260901-3");
+@import url("./capital-qa-v4.css?v=qa-20260901-4");
+@import url("./capital-art-direction-v5.css?v=art-20260901-5");
