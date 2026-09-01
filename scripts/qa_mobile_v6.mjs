@@ -46,7 +46,7 @@ check(/\.cp6-contact-metaa\{[^}]*min-height:44px/.test(compact), 'mobile: direct
 check(/\.cp6-utility-hero\{[^}]*safe-area-inset-top/.test(css), 'mobile utility pages: hero does not clear safe-area header');
 check(/\.cp6-error\{[^}]*safe-area-inset-top/.test(css), 'mobile 404: safe-area treatment missing');
 check(/\.cp6-resource\{[^}]*min-height:180px[^}]*padding:22px/.test(compact), 'mobile resources: compact readable card treatment missing');
-check(/\.cp6-resource span\{[^}]*font-size:13px/.test(compact), 'mobile resources: supporting text remains microtype');
+check(/\.cp6-resourcespan\{[^}]*font-size:13px/.test(compact), 'mobile resources: supporting text remains microtype');
 check(/\.cp6-step-gridarticle\{[^}]*min-height:0[^}]*padding:24px22px/.test(compact), 'mobile visit steps: desktop card height still forced');
 check(/max-width:360px/.test(css), 'mobile: 320–360px hardening breakpoint missing');
 check(/orientation:landscape/.test(css), 'mobile: landscape hardening missing');
