@@ -1,0 +1,28 @@
+{
+  "version": "1.0",
+  "project": {
+    "name": "Capital Place Hanoi",
+    "mode": "interactive_prototype",
+    "industry": "real-estate-and-building",
+    "deployment_target": "GitHub Pages",
+    "primary_business_goal": "Generate qualified office leasing interest and private viewing intent."
+  },
+  "source_of_truth": [
+    "README.md",
+    "docs/CAPITAL-PRE-DESIGN-RESEARCH-V3.md",
+    "docs/visual-signature.md",
+    "docs/capital-building-ux-upgrade-implementation.md",
+    "docs/system-reality.md",
+    "assets/capital-data.js"
+  ],
+  "constraints": [
+    "Preserve current public routes unless an explicit redirect plan is approved.",
+    "Use first-party Capital Place facts and imagery; do not invent pricing, commercial terms, live inventory or certifications.",
+    "Public availability is planning-reference plus leasing-confirmation only until a verified inventory source is connected.",
+    "Leasing forms prepare an email only until a verified CRM or server endpoint exists.",
+    "English is the only implemented locale; do not mark Vietnamese as active until translated content is connected.",
+    "Do not use scripts/build_pages.py to regenerate the current pages.",
+    "Preserve the white, graphite and cream visual system with restrained orange for primary actions and locator cues.",
+    "Mobile must be recomposed intentionally and preserve keyboard focus, reduced motion and safe-area behavior."
+  ]
+}

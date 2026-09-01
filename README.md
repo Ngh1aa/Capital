@@ -1,41 +1,69 @@
 # Capital Place — Building & Leasing Experience
 
-Static editorial website for Capital Place Hanoi, upgraded from a building
-brochure into a usable leasing decision-support experience. The interface now
-uses the official black, cream and orange visual system and public Capital
-Place imagery rather than an unrelated black-and-gold luxury treatment.
+Static editorial website for Capital Place Hanoi, evolved from a building brochure into a leasing decision-support prototype. The experience uses first-party Capital Place facts and imagery, a white / graphite / cream system, restrained orange conversion accents, architectural composition and floor-plan information.
 
 Live site: https://ngh1aa.github.io/Capital/
 
+## Project mode
+
+`INTERACTIVE_PROTOTYPE`
+
+The site is deployed as static GitHub Pages HTML/CSS/JS. It is intentionally truthful about the limits of the prototype:
+
+- no verified live commercial inventory feed;
+- no public pricing or commercial terms;
+- leasing forms validate locally and prepare an email rather than submitting to a CRM/server;
+- English is the only implemented locale;
+- analytics event collection outside the browser is not verified in this repository.
+
+See `.uiux-profile.json` and `docs/system-reality.md` before making product, content, visual or integration changes.
+
 ## Experience scope
 
-- Image-led homepage narrative that establishes the twin-tower scale before
-  moving into workplace proof and leasing conversion.
-- Interactive workday gallery using official Capital Place photography.
-- Central building and contact data.
-- Two visual public reference floor plates with official planning capacity and
-  leasing-led live-status confirmation.
-- Space Finder by area, headcount, move-in timing and tower.
-- Interactive stacking plan and mobile opportunity list.
-- Dynamic floor detail with illustrative plan, capacity and contextual CTAs.
-- Office enquiry, viewing request, proposal, technical package and future-interest flows.
-- Dedicated Retail / F&B enquiry routing.
-- Visitor guide, leasing resources and occupier gateway.
-- Accessible form states, reduced-motion support and privacy-safe analytics events.
+- Image-led homepage narrative establishing twin-tower scale and architectural identity.
+- Location, workplace, amenities and sustainability decision pages.
+- Central building/contact data with first-party evidence metadata.
+- Published 1,847 m² planning reference plus clearly labelled representative prototype planning scenarios.
+- Space Finder by area/headcount/timing/tower for early orientation.
+- Stacking/floor exploration with leasing-confirmation states rather than fake live vacancy.
+- Dynamic space detail with illustrative plan and contextual CTAs.
+- Office, viewing, proposal, technical-package and future-interest enquiry routes.
+- Retail/F&B, visitor, resources, FAQ and occupier-support routes.
+- Keyboard/reduced-motion/mobile interaction support built into shared layers.
 
-No live inventory schedule or commercial terms are presented. Current floors,
-divisibility, pricing and terms must be confirmed by the Capital Place leasing
-team. Forms prepare an email and do not transmit personal data to a CRM.
+Current floors, divisibility, pricing, timing and terms must be confirmed by Capital Place Leasing.
 
 ## Brand and content basis
 
-- Core palette: `#231F20`, `#252525`, `#F0EFE9`, `#FFFFFF`, `#D9D9D9`, `#F15F22`;
-  `#A63C12` is reserved for accessible small orange text on light surfaces.
-- Public facts and photography are based on capitalplace.com.vn.
-- Capital Place opened in 2020; the project comprises two 37-storey towers and
-  approximately 93,000 m² of office space.
-- Gold appears only where it is part of the factual LEED Gold certification,
-  not as a brand accent.
+Core project palette:
+
+- `#231F20` graphite/black
+- `#252525` charcoal
+- `#F0EFE9` cream
+- `#FFFFFF` white
+- `#D9D9D9` line/neutral
+- `#F15F22` primary conversion accent token
+
+Public facts and photography are based on Capital Place first-party sources. The current evidence review date is stored in `assets/capital-data.js`.
+
+## V3.1 design direction
+
+The shared v3 layer uses an **architectural editorial + building-directory + floor-plan precision** grammar:
+
+- planar controls rather than generic rounded SaaS chrome;
+- safe DOM section rules rather than pseudo-element overrides that can collide with cinematic overlays;
+- wide-screen-only building directory navigation;
+- route-aware navigation and truthful utility-page contrast;
+- full-screen mobile navigation with focus/state synchronization;
+- safe-area-aware mobile leasing actions;
+- unavailable VI state until Vietnamese content is actually implemented;
+- a clear bridge from the local prototype privacy explanation to Twin-Peaks' first-party privacy notice.
+
+## Source ownership
+
+The deployable source is the root HTML plus shared files under `assets/`.
+
+`scripts/build_pages.py` is intentionally disabled. Its former generated templates contained stale visual/content assumptions and must not overwrite the current brand-aligned pages.
 
 ## Local preview
 
@@ -43,19 +71,25 @@ team. Forms prepare an email and do not transmit personal data to a CRM.
 python3 -m http.server 4173
 ```
 
-The HTML and shared assets in this repository are the deployable source for
-GitHub Pages. The original generator scripts are retained as project history;
-do not run them over the brand-aligned pages without first reconciling their
-legacy templates.
-
 ## Quality checks
 
 ```bash
+node --check assets/main.js
 node --check assets/capital-data.js
 node --check assets/capital-upgrade.js
 node --check assets/capital-vision.js
+node --check assets/capital-uiux-v2.js
 node scripts/qa_capital.mjs
 ```
 
-Implementation details are documented in
-`docs/capital-building-ux-upgrade-implementation.md`.
+GitHub Actions also runs these static/source checks on pushes to `main` and on pull requests via `.github/workflows/qa-capital.yml`.
+
+A static QA pass is not a browser, screen-reader, WCAG-conformance or field-performance proof. See `docs/verification-matrix-v3.md` for verified and unverified gates.
+
+## Key documentation
+
+- `docs/CAPITAL-PRE-DESIGN-RESEARCH-V3.md`
+- `docs/visual-signature.md`
+- `docs/system-reality.md`
+- `docs/verification-matrix-v3.md`
+- `docs/capital-building-ux-upgrade-implementation.md`
