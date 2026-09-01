@@ -28,5 +28,8 @@ jobs:
           node --check assets/capital-uiux-v2.js
           node --check assets/availability-cinematic.js
           node --check scripts/qa_v6.mjs
+          node --check scripts/qa_mobile_v6.mjs
       - name: Capital V6 design-contract QA
         run: node scripts/qa_v6.mjs
+      - name: Capital V6.4 mobile QA
+        run: node scripts/qa_mobile_v6.mjs
