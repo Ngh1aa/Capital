@@ -40,7 +40,7 @@ check(/--cp-touch:44px/.test(compact), 'mobile: 44px touch token missing');
 check(/min-height:var\(--cp-touch\)/.test(compact), 'mobile: shared touch-target rule missing');
 check(/\.cp6-fieldinput,.cp6-fieldselect,.cp6-fieldtextarea\{[^}]*font-size:16px/.test(compact), 'mobile: iOS form zoom prevention missing');
 check(/\.cp6-hero-actions\{[^}]*flex-direction:column/.test(compact), 'mobile: hero CTAs are not stacked on narrow screens');
-check(/\.cp6-hero-factsspannth-child\(3\)\{[^}]*display:block!important/.test(compact), 'mobile: third building fact is still hidden');
+check(/\.cp6-hero-factsspan:nth-child\(3\)\{[^}]*display:block!important/.test(compact), 'mobile: third building fact is still hidden');
 check(/\.cp6-footera\{[^}]*min-height:44px/.test(compact), 'mobile: footer targets are too small');
 check(/max-width:360px/.test(css), 'mobile: 320–360px hardening breakpoint missing');
 check(/orientation:landscape/.test(css), 'mobile: landscape hardening missing');
