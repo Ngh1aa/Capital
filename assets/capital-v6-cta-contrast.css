@@ -1,0 +1,14 @@
+/* Capital Place V6 — CTA contrast owner
+   Ensures primary actions remain readable when the button reverses to ink on orange leasing bands.
+*/
+body.cp6 .cp6-section.orange a.cp6-primary{
+  background:var(--cp-ink);
+  border-color:var(--cp-ink);
+  color:#fff!important;
+}
+body.cp6 .cp6-section.orange a.cp6-primary:hover,
+body.cp6 .cp6-section.orange a.cp6-primary:focus-visible{
+  background:#fff;
+  border-color:#fff;
+  color:var(--cp-ink)!important;
+}
