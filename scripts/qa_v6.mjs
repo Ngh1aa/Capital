@@ -14,6 +14,7 @@ check(exists('assets/capital-v6-utility.css'),'missing capital-v6-utility.css');
 check(exists('assets/capital-v6.js'),'missing capital-v6.js');
 check(exists('docs/DESIGN-CONTRACT-V6.md'),'missing V6 design contract');
 check(exists('docs/design-reference-benchmark-v6.md'),'missing V6 reference benchmark');
+check(exists('docs/HERO-SYSTEM-V6.2.md'),'missing hero-system contract');
 
 for (const page of pages) {
   check(exists(page), `${page}: missing`);
@@ -52,6 +53,31 @@ check(compact.includes('@media(max-width:900px)'), 'V6: missing tablet/mobile co
 check(compact.includes('@media(max-width:600px)'), 'V6: missing mobile composition breakpoint');
 check(/prefers-reduced-motion/.test(css),'V6: reduced motion guard missing');
 
+// Hero matrix: core decision pages must not collapse into one copy-left/image-right template.
+check(/HERO MATRIX V6\.2/.test(css),'V6.2: hero matrix marker missing');
+const heroAssets = {
+  'location.html':'location-hero.jpg',
+  'office.html':'office-hero.jpg',
+  'sustainability.html':'sustainability-hero.jpg',
+  'amenities.html':'amenities-hero.jpg',
+  'availability.html':'capital-place-towers.jpg',
+  'leasing.html':'architecture-lobby-official.jpg'
+};
+const seenHeroSources = new Set();
+for (const [page,asset] of Object.entries(heroAssets)) {
+  const html = fs.readFileSync(path.join(root,page),'utf8');
+  check(html.includes(asset), `${page}: expected hero source ${asset} missing`);
+  check(css.includes(`img[src*="${asset}"]`), `${page}: missing page-role hero selector for ${asset}`);
+  const match = html.match(/cp6-page-hero-media[^>]*>\s*<img[^>]+src="([^"]+)"/);
+  if (match) seenHeroSources.add(match[1]);
+}
+check(seenHeroSources.size === Object.keys(heroAssets).length,'V6.2: core pages reuse the same hero media source');
+check(/PUBLISHED REFERENCE\s*\/\s*1,847 SQM/.test(css),'office hero: floor-plan reference signature missing');
+check(/PLATINUM\\A O\+M/.test(css) && /GOLD\\A BD\+C/.test(css),'sustainability hero: certification-led composition missing');
+check(/08:00\s+ARRIVE/.test(css) && /18:00\s+RECHARGE/.test(css),'amenities hero: workday signature missing');
+check(/AVAILABILITY\s*\/\s*CONFIRMED BY LEASING/.test(css),'availability hero: leasing-truth signature missing');
+check(/1800 9289/.test(css) && /LEASING@CAPITALPLACE\.VN/.test(css),'leasing hero: direct-contact signature missing');
+
 const index = fs.readFileSync(path.join(root,'index.html'),'utf8');
 check(/A beacon for modern Hanoi/i.test(index),'home: landmark positioning missing');
 check(/1,847/.test(index) && /floor-standard\.png/.test(index),'home: published floor-plan decision object missing');
@@ -79,4 +105,4 @@ if (failures.length) {
   process.exit(1);
 }
 console.log(`PASS: ${assertions} Capital Place V6 design-contract assertions`);
-console.log(`Routes: ${pages.length} · System: Architectural Editorial × Leasing Blueprint`);
+console.log(`Routes: ${pages.length} · System: Architectural Editorial × Leasing Blueprint · Hero matrix: 6 core archetypes`);
