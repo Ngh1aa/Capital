@@ -8,7 +8,7 @@
 }
 
 [id]{scroll-margin-top:calc(104px + env(safe-area-inset-top,0px))}
-body.cp6 :where(.cp6-copy,.cp6-footer a,.cp6-contact-meta a,.cp6-prose a,.cp6-form-note){overflow-wrap:anywhere}
+body.cp6 :where(.cp6-copy,.cp6-footer a,.cp6-contact-meta a,.cp6-prose a,.cp6-form-note,.cp6-resource span){overflow-wrap:anywhere}
 body.cp6 :where(a,button,input,select,textarea,summary){-webkit-tap-highlight-color:rgba(241,95,34,.18)}
 body.cp6 :where(.cp6-primary,.cp6-secondary,.cp6-link,.cp6-menu,.cp6-nav-cta,summary){touch-action:manipulation}
 body.cp6 :where(a,button,input,select,textarea,summary):focus-visible{
@@ -90,6 +90,7 @@ body.cp6 :where(a,button,input,select,textarea,summary):focus-visible{
   .cp6-menu[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
 
   .cp6-hero,.cp6-page-hero{padding-top:calc(var(--cp-mobile-nav) + env(safe-area-inset-top,0px))}
+  .cp6-utility-hero{padding-top:calc(var(--cp-mobile-nav) + env(safe-area-inset-top,0px) + 58px)}
   .cp6-hero-copy,.cp6-page-hero-copy{
     padding-left:max(var(--cp-gutter),env(safe-area-inset-left,0px));
     padding-right:max(var(--cp-gutter),env(safe-area-inset-right,0px));
@@ -101,6 +102,14 @@ body.cp6 :where(a,button,input,select,textarea,summary):focus-visible{
     padding-right:max(var(--cp-gutter),env(safe-area-inset-right,0px));
     padding-bottom:calc(28px + env(safe-area-inset-bottom,0px));
   }
+
+  .cp6-error{
+    padding-top:max(28px,env(safe-area-inset-top,0px));
+    padding-left:env(safe-area-inset-left,0px);
+    padding-right:env(safe-area-inset-right,0px);
+  }
+  .cp6-error-copy{min-width:0}
+  .cp6-error-media{min-height:52svh}
 
   @supports selector(:has(*)){
     .cp6-page-hero:has(.cp6-page-hero-media img[src*="location-hero.jpg"]){
@@ -197,6 +206,19 @@ body.cp6 :where(a,button,input,select,textarea,summary):focus-visible{
   .cp6-field textarea{min-height:140px}
   .cp6-field.full .cp6-primary{width:100%;min-height:54px;font-size:12px}
   .cp6-form-note{font-size:13px;line-height:1.55}
+  .cp6-contact-meta a{display:flex;align-items:center;min-height:44px;overflow-wrap:anywhere}
+
+  .cp6-resource{min-height:180px;padding:22px}
+  .cp6-resource small{font-size:11px;line-height:1.35}
+  .cp6-resource h3{margin:16px 0;font-size:clamp(24px,7.5vw,32px);line-height:1.08}
+  .cp6-resource span{font-size:13px;line-height:1.45}
+  .cp6-step-grid article{min-height:0;padding:24px 22px}
+  .cp6-step-grid h3{margin:30px 0 10px;font-size:23px}
+  .cp6-step-grid p{font-size:14px;line-height:1.55}
+  .cp6-faq-list summary{padding:22px 42px 22px 0;font-size:clamp(18px,5.7vw,22px);line-height:1.25}
+  .cp6-faq-list summary::after{top:20px}
+  .cp6-faq-list details p{font-size:15px;line-height:1.65;padding-bottom:24px}
+  .cp6-prose h2{margin-top:44px}
 
   .cp6-leasing-band{gap:24px}
   .cp6-leasing-band .cp6-primary{width:100%;min-width:0;min-height:54px;font-size:12px}
@@ -206,6 +228,11 @@ body.cp6 :where(a,button,input,select,textarea,summary):focus-visible{
   .cp6-footer h4{font-size:11px;margin-bottom:10px}
   .cp6-footer a{display:flex;align-items:center;min-height:44px;margin:0;font-size:14px;line-height:1.35}
   .cp6-footer-bottom{margin-top:32px;font-size:10px;line-height:1.5}
+
+  .cp6-error{min-height:100dvh;padding-top:max(22px,env(safe-area-inset-top,0px));padding-bottom:env(safe-area-inset-bottom,0px)}
+  .cp6-error-copy{padding:48px var(--cp-gutter)}
+  .cp6-error-code{font-size:clamp(96px,35vw,120px);line-height:.75}
+  .cp6-error-media{min-height:44svh}
 
   @supports selector(:has(*)){
     .cp6-page-hero:has(.cp6-page-hero-media img[src*="location-hero.jpg"]) .cp6-page-hero-copy{
@@ -240,6 +267,7 @@ body.cp6 :where(a,button,input,select,textarea,summary):focus-visible{
   .cp6-hero-facts span{padding:12px 8px}
   .cp6-experience-card div{left:10px;right:10px;bottom:10px}
   .cp6-availability-panel{padding:20px 16px}
+  .cp6-resource{padding:20px 18px}
 }
 
 @media(max-width:900px) and (orientation:landscape) and (max-height:600px){
@@ -247,6 +275,7 @@ body.cp6 :where(a,button,input,select,textarea,summary):focus-visible{
   .cp6-brand img{width:68px}
   .cp6-menu{width:44px;height:44px}
   .cp6-hero-copy,.cp6-page-hero-copy{padding-top:36px!important;padding-bottom:36px!important}
+  .cp6-utility-hero{padding-top:calc(var(--cp-mobile-nav) + env(safe-area-inset-top,0px) + 36px)}
   .cp6-hero-media,.cp6-page-hero-media{min-height:72dvh!important}
   .cp6-nav-links>a:not(.cp6-nav-cta){min-height:46px}
   .cp6-nav-cta{min-height:48px!important}
