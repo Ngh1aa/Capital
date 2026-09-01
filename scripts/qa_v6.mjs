@@ -34,7 +34,7 @@ for (const page of pages) {
     check(/class="cp6-nav-cta"/.test(html), `${page}: missing primary leasing CTA`);
     check(/<main\s+id="main-content"/.test(html), `${page}: missing main landmark`);
     check(/class="cp6-footer"/.test(html), `${page}: missing V6 footer`);
-    check(/assets\/capital-v6\.js\?v=20260901-1/.test(html), `${page}: missing explicit V6 JS version`);
+    check(/assets\/capital-v6\.js\?v=20260901-2/.test(html), `${page}: missing current V6 JS cache version`);
   }
 
   for (const match of html.matchAll(/(?:src|href|action)="([^"#?]+)(?:[?#][^"]*)?"/g)) {
