@@ -1,21 +1,41 @@
 (function initAvailabilityCinematic(global, document) {
   'use strict';
 
-  const referenceSpaces = [
-    { id: 'reference-1847', label: 'Reference Floor Plate A', area: 1847, capacity: 184, workstations: 156, offices: 16, mdOffices: 7, meetingSeats: 60, zone: 'High zone', fitOut: 'Condition on request', view: 'Orientation on request', floorPlan: 'typical-high-zone' },
-    { id: 'reference-1240', label: 'Reference Floor Plate B', area: 1240, capacity: 110, workstations: 100, offices: 10, mdOffices: 5, meetingSeats: 24, zone: 'Low zone', fitOut: 'Condition on request', view: 'Orientation on request', floorPlan: 'typical-low-zone' }
-  ];
+  const capitalData = global.CapitalData;
+  const referenceSpaces = (capitalData?.spaces || []).map((space) => ({
+    id: space.id,
+    label: space.floor,
+    area: space.areaSqm,
+    capacity: space.planningHeadcount,
+    workstations: space.workstations,
+    offices: space.offices,
+    mdOffices: space.managingDirectorOffices,
+    meetingSeats: space.meetingSeats,
+    zone: space.id === 'reference-1847' ? 'High-zone planning reference' : 'Representative planning scenario',
+    fitOut: space.fitOutStatus,
+    view: space.viewDirection,
+    floorPlan: space.floorPlanId,
+    evidence: space.evidence,
+    evidenceLabel: space.evidenceLabel || space.suite
+  }));
+
   let selected = { tower: 'Tower 01', level: 'Level 24', spaceId: null, area: null, capacity: null, zone: 'High zone', status: 'Availability on request', view: 'Orientation on request', technical: false };
   let shortlist = [];
 
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+  const prefersReducedMotion = () => global.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true;
+  const isOfficialReference = (space) => space?.evidence === 'OFFICIAL_PUBLIC_REFERENCE';
 
   function floorRows() {
     const rows = [];
     for (let floor = 37; floor >= 1; floor -= 1) rows.push({ level: `L${floor}`, zone: floor >= 21 ? 'High zone' : floor >= 7 ? 'Low zone' : 'Podium / arrival', technical: floor <= 6 });
     for (let floor = 1; floor <= 3; floor += 1) rows.push({ level: `B${floor}`, zone: 'Technical / basement', technical: true });
     return rows;
+  }
+
+  function scrollToDetail() {
+    document.querySelector('#floor-detail')?.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' });
   }
 
   function renderStack() {
@@ -36,14 +56,15 @@
     const level = button.dataset.level.replace('L', 'Level ');
     selected = { tower: button.dataset.tower, level, spaceId: `${button.dataset.tower}-${button.dataset.level}`, area: null, capacity: null, zone: button.dataset.zone, status: isTechnical ? 'Technical / podium' : 'Availability on request', view: 'Orientation on request', fitOut: 'Condition on request', technical: isTechnical };
     updateDetail();
-    document.querySelector('#floor-detail')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    scrollToDetail();
   }
 
   function selectReference(space) {
+    if (!space) return;
     selected = { tower: 'Both Towers', level: space.label, spaceId: space.id, ...space, status: 'Availability on request' };
     updateDetail();
     renderMatches();
-    document.querySelector('#floor-detail')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    scrollToDetail();
   }
 
   function updateDetail() {
@@ -59,23 +80,29 @@
     if (capacity) capacity.textContent = selected.capacity ? `${selected.capacity} people` : 'Planning reference';
     if (zone) zone.textContent = selected.zone || 'Zone on request';
     if (view) view.textContent = selected.view || 'Orientation on request';
+
     const book = $('[data-av-book]');
     const plans = $('[data-av-plans]');
     const query = encodeURIComponent(`${selected.tower} · ${selected.level}${selected.area ? ` · ${selected.area.toLocaleString()} m²` : ''}`);
-    if (book) book.href = `leasing.html?intent=viewing&space=${query}`;
+    if (book) {
+      book.href = `leasing.html?intent=viewing&space=${query}`;
+      book.textContent = 'Request a viewing →';
+    }
     if (plans) plans.href = `leasing.html?intent=technical-package&space=${query}`;
+
     const detail = $('[data-av-space-detail]');
     if (detail) {
       detail.href = selected.spaceId && selected.spaceId.startsWith('reference-')
         ? `space.html?id=${encodeURIComponent(selected.spaceId)}`
         : `space.html?tower=${encodeURIComponent(selected.tower)}&floor=${encodeURIComponent(selected.level)}`;
     }
+
     const save = $('[data-av-save]');
     if (save) {
       const saved = selected.spaceId && shortlist.some((item) => (item.id || item.spaceId) === selected.spaceId);
       const unavailable = selected.technical;
       save.disabled = Boolean(unavailable);
-      save.textContent = unavailable ? 'Technical level' : saved ? '✓ Space saved' : '♡ Save Space';
+      save.textContent = unavailable ? 'Technical level' : saved ? 'Saved' : 'Save space';
       save.setAttribute('aria-pressed', String(Boolean(saved)));
       save.classList.toggle('is-saved', Boolean(saved));
     }
@@ -97,19 +124,39 @@
     });
   }
 
+  function summaryCopy(spaces) {
+    if (!spaces.length) return 'No planning scenario matches this filter. Current floor options can still be reviewed by Leasing.';
+    const officialCount = spaces.filter(isOfficialReference).length;
+    const representativeCount = spaces.length - officialCount;
+    const parts = [];
+    if (officialCount) parts.push(`${officialCount} published planning reference${officialCount === 1 ? '' : 's'}`);
+    if (representativeCount) parts.push(`${representativeCount} representative prototype scenario${representativeCount === 1 ? '' : 's'}`);
+    return `${parts.join(' and ')} ${spaces.length === 1 ? 'matches' : 'match'} this planning view. Exact vacant floors are confirmed by Leasing.`;
+  }
+
   function renderMatches() {
     const root = $('[data-av-match-list]');
     if (!root) return;
     const spaces = matchingSpaces();
     const summary = $('[data-av-match-summary]');
-    if (summary) summary.textContent = `${spaces.length} reference floor plate type${spaces.length === 1 ? '' : 's'} match this planning view. Exact vacant floors are confirmed by Leasing.`;
+    if (summary) summary.textContent = summaryCopy(spaces);
+
     root.innerHTML = spaces.length ? spaces.map((space) => {
       const isSelected = selected.spaceId === space.id;
       const isSaved = shortlist.some((item) => item.id === space.id);
-      return `<article class="av-match-card${isSelected ? ' is-selected' : ''}" data-av-match-card="${space.id}"><span class="av-match-label">${space.label}</span><h3>Typical<br /><em>reference.</em></h3><strong class="av-match-area">${space.area.toLocaleString()} m²</strong><div class="av-match-meta"><span>~${space.capacity} people</span><span>${space.zone}</span><span>On request</span></div><p class="av-match-disclosure">Published planning reference. Availability, divisibility and handover timing are confirmed by Leasing.</p><div class="av-match-actions"><button type="button" data-av-view-reference="${space.id}">View floor</button><button type="button" data-av-save-reference="${space.id}">${isSaved ? '✓ Saved' : '♡ Save Space'}</button></div></article>`;
-    }).join('') : '<div class="av-match-card"><h3>No reference match.</h3><p class="av-match-disclosure">Ask Leasing to review your requirement and return the current floor schedule.</p></div>';
+      const official = isOfficialReference(space);
+      const heading = official ? 'Published<br /><em>reference.</em>' : 'Representative<br /><em>scenario.</em>';
+      const disclosure = official
+        ? 'Published planning reference. Availability, divisibility and handover timing are confirmed by Leasing.'
+        : 'Representative prototype scenario for early comparison only. It is not a published Capital Place floor reference or live vacancy.';
+      return `<article class="av-match-card${isSelected ? ' is-selected' : ''}" data-av-match-card="${space.id}"><span class="av-match-label">${space.label}</span><h3>${heading}</h3><strong class="av-match-area">${space.area.toLocaleString()} m²</strong><div class="av-match-meta"><span>~${space.capacity} people</span><span>${space.zone}</span><span>On request</span></div><p class="av-match-disclosure">${disclosure}</p><div class="av-match-actions"><button type="button" data-av-view-reference="${space.id}">View planning detail</button><button type="button" data-av-save-reference="${space.id}">${isSaved ? 'Saved' : 'Save space'}</button></div></article>`;
+    }).join('') : '<div class="av-match-card"><h3>No planning match.</h3><p class="av-match-disclosure">Ask Leasing to review your requirement and confirm the current floor schedule.</p></div>';
+
     $$('[data-av-view-reference]', root).forEach((button) => button.addEventListener('click', () => selectReference(referenceSpaces.find((space) => space.id === button.dataset.avViewReference))));
-    $$('[data-av-save-reference]', root).forEach((button) => button.addEventListener('click', () => { const space = referenceSpaces.find((item) => item.id === button.dataset.avSaveReference); if (space) toggleSave(space); }));
+    $$('[data-av-save-reference]', root).forEach((button) => button.addEventListener('click', () => {
+      const space = referenceSpaces.find((item) => item.id === button.dataset.avSaveReference);
+      if (space) toggleSave(space);
+    }));
   }
 
   function updateEstimate() {
@@ -131,7 +178,7 @@
     $$('[data-av-floor]').forEach((floor) => {
       const isTechnical = floor.dataset.technical === 'true';
       const towerMatch = tower === 'all' || floor.dataset.tower === `Tower 0${tower}`;
-      const requirementMatch = mode === 'area' ? area === 'any' || area === '1000-2000' || area === 'any' : !headcount || headcount <= 184;
+      const requirementMatch = mode === 'area' ? area === 'any' || area === '1000-2000' : !headcount || headcount <= 184;
       const match = !isTechnical && towerMatch && requirementMatch;
       floor.classList.toggle('is-dimmed', !match);
       floor.classList.toggle('is-match', match && !isTechnical);
@@ -153,7 +200,9 @@
     if (index >= 0) shortlist.splice(index, 1);
     else if (shortlist.length < 2) shortlist.push({ ...space, id });
     saveShortlist();
-    renderMatches(); updateDetail(); renderCompare();
+    renderMatches();
+    updateDetail();
+    renderCompare();
   }
 
   function renderCompare() {
@@ -170,39 +219,75 @@
       const area = space.area ? `${space.area.toLocaleString()} m²` : 'Area on request';
       const capacity = space.capacity ? `${space.capacity} people` : 'Planning package';
       const workstations = space.workstations ? `${space.workstations}` : 'Confirmed with Leasing';
-      return `<div class="av-compare-column"><strong>${area}</strong><h3>${title}</h3><span>Capacity · ${capacity}</span><span>Zone · ${space.zone || 'On request'}</span><span>Workstations · ${workstations}</span><span>Fit-out · ${space.fitOut || 'Condition on request'}</span><span>View · ${space.view || 'Orientation on request'}</span><span>Status · ${space.status || 'Availability on request'}</span></div>`;
+      const evidence = space.evidenceLabel || (isOfficialReference(space) ? 'Published reference' : 'Selected floor context');
+      return `<div class="av-compare-column"><strong>${area}</strong><h3>${title}</h3><span>Evidence · ${evidence}</span><span>Capacity · ${capacity}</span><span>Zone · ${space.zone || 'On request'}</span><span>Workstations · ${workstations}</span><span>Fit-out · ${space.fitOut || 'Condition on request'}</span><span>View · ${space.view || 'Orientation on request'}</span><span>Status · ${space.status || 'Availability on request'}</span></div>`;
     }).join('');
     const book = $('[data-av-compare-book]');
     if (book) {
       const context = shortlist.map((space) => space.label || `${space.tower} · ${space.level}`).join(' + ');
       book.href = `leasing.html?intent=viewing&space=${encodeURIComponent(context)}`;
+      book.textContent = 'Request a tour of both →';
     }
   }
 
+  function hideUnsupportedFilters() {
+    const timing = $('#av-timing');
+    const fitout = $('#av-fitout');
+    [timing, fitout].forEach((field) => {
+      const group = field?.closest('.av-filter-fields > div');
+      if (group) group.hidden = true;
+    });
+    const note = $('.av-filter-note');
+    if (note) note.textContent = 'Filter the planning references by area or team size and tower. Move-in timing, fit-out, current vacancy and commercial terms are confirmed by Leasing.';
+  }
 
   function init() {
     loadShortlist();
+    hideUnsupportedFilters();
     renderStack();
     renderMatches();
     renderCompare();
     updateDetail();
+
+    const statusDate = $('.av-status-bar span:first-child');
+    if (statusDate && capitalData?.facts?.dataChecked) statusDate.textContent = `Reference facts reviewed: ${capitalData.facts.dataChecked}`;
+
     $$('[data-av-mode]').forEach((button) => button.addEventListener('click', () => {
-      $$('[data-av-mode]').forEach((item) => { const active = item === button; item.classList.toggle('is-active', active); item.setAttribute('aria-pressed', String(active)); });
-      const headcountField = $('[data-av-headcount-field]'); const areaField = $('[data-av-area-field]');
+      $$('[data-av-mode]').forEach((item) => {
+        const active = item === button;
+        item.classList.toggle('is-active', active);
+        item.setAttribute('aria-pressed', String(active));
+      });
+      const headcountField = $('[data-av-headcount-field]');
+      const areaField = $('[data-av-area-field]');
       if (headcountField) headcountField.hidden = button.dataset.avMode !== 'headcount';
       if (areaField) areaField.hidden = button.dataset.avMode === 'headcount';
       applyFilters();
     }));
+
     $$('[data-av-apply]').forEach((button) => button.addEventListener('click', applyFilters));
-    $$('#av-headcount,#av-headcount,#av-area,#av-timing,#av-tower,#av-fitout').forEach((field) => field.addEventListener('input', () => { updateEstimate(); applyFilters(); }));
+    $$('#av-headcount,#av-area,#av-tower').forEach((field) => field.addEventListener('input', () => { updateEstimate(); applyFilters(); }));
+
     $$('[data-av-plan]').forEach((button) => button.addEventListener('click', () => {
-      $$('[data-av-plan]').forEach((item) => { const active = item === button; item.classList.toggle('is-active', active); item.setAttribute('aria-pressed', String(active)); });
-      const empty = $('[data-av-plan-empty]'); const testfit = $('[data-av-plan-testfit]');
+      $$('[data-av-plan]').forEach((item) => {
+        const active = item === button;
+        item.classList.toggle('is-active', active);
+        item.setAttribute('aria-pressed', String(active));
+      });
+      const empty = $('[data-av-plan-empty]');
+      const testfit = $('[data-av-plan-testfit]');
       if (empty) empty.style.opacity = button.dataset.avPlan === 'empty' ? '1' : '0';
       if (testfit) testfit.style.opacity = button.dataset.avPlan === 'testfit' ? '1' : '0';
     }));
+
     $('[data-av-save]')?.addEventListener('click', () => { if (selected.spaceId && !selected.technical) toggleSave(selected); });
-    $('[data-av-clear]')?.addEventListener('click', () => { shortlist = []; saveShortlist(); renderMatches(); renderCompare(); updateDetail(); });
+    $('[data-av-clear]')?.addEventListener('click', () => {
+      shortlist = [];
+      saveShortlist();
+      renderMatches();
+      renderCompare();
+      updateDetail();
+    });
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();

@@ -13,36 +13,38 @@
   });
 
   const statusMeta = Object.freeze({
-    'on-request': { label: 'Live Status via Leasing', order: 1, actionable: true }
+    'on-request': { label: 'Status via Leasing', order: 1, actionable: true }
   });
 
-  // Public planning references only. Capital Place does not expose a verified
+  // Public planning evidence only. Capital Place does not expose a verified
   // real-time commercial inventory feed in this static project.
   const spaces = Object.freeze([
     {
       id: 'reference-1847', tower: 'Both Towers', towerNumber: 0, floor: 'Reference Floor Plate A', floorNumber: 0,
       suite: 'Published planning reference', areaSqm: 1847, minimumAreaSqm: 1847, divisible: false,
-      status: 'on-request', availableFrom: 'Current availability confirmed by leasing', fitOutStatus: 'Condition on request',
+      status: 'on-request', availableFrom: 'Current availability confirmed by Leasing', fitOutStatus: 'Condition on request',
       viewDirection: 'Orientation on request', floorPlanId: 'typical-high-zone', planningHeadcount: 184, workstations: 156,
-      offices: 16, managingDirectorOffices: 7, meetingSeats: 60, featured: true, evidence: 'OFFICIAL_PUBLIC_REFERENCE'
+      offices: 16, managingDirectorOffices: 7, meetingSeats: 60, featured: true,
+      evidence: 'OFFICIAL_PUBLIC_REFERENCE', evidenceLabel: 'Published planning reference'
     },
     {
-      id: 'reference-1240', tower: 'Both Towers', towerNumber: 0, floor: 'Reference Floor Plate B', floorNumber: 0,
-      suite: 'Representative planning scenario', areaSqm: 1240, minimumAreaSqm: 1240, divisible: false,
-      status: 'on-request', availableFrom: 'Current availability confirmed by leasing', fitOutStatus: 'Condition on request',
+      id: 'reference-1240', tower: 'Both Towers', towerNumber: 0, floor: 'Representative Planning Scenario B', floorNumber: 0,
+      suite: 'Representative prototype scenario', areaSqm: 1240, minimumAreaSqm: 1240, divisible: false,
+      status: 'on-request', availableFrom: 'Current availability confirmed by Leasing', fitOutStatus: 'Condition on request',
       viewDirection: 'Orientation on request', floorPlanId: 'typical-low-zone', planningHeadcount: 110, workstations: 100,
-      offices: 10, managingDirectorOffices: 5, meetingSeats: 24, featured: true, evidence: 'REPRESENTATIVE_PROTOTYPE'
+      offices: 10, managingDirectorOffices: 5, meetingSeats: 24, featured: true,
+      evidence: 'REPRESENTATIVE_PROTOTYPE', evidenceLabel: 'Representative planning scenario'
     }
   ]);
 
   const resources = Object.freeze([
     { id: 'facts', title: 'Building Fact Sheet', access: 'public', href: 'office.html#building-identity', description: 'Verified building scale, grade and workplace proposition.' },
-    { id: 'availability', title: 'Planning References', access: 'public', href: 'availability.html#current-opportunities', description: 'Planning references with current availability confirmed directly by leasing.' },
+    { id: 'availability', title: 'Planning References', access: 'public', href: 'availability.html#building-availability', description: 'Planning references with current availability confirmed directly by Leasing.' },
     { id: 'floor-plans', title: 'Reference Floor Plans', access: 'public', href: 'office.html#floor-planning', description: 'Typical floor plates for early workplace evaluation.' },
     { id: 'specifications', title: 'Building Specifications', access: 'public', href: 'office.html#technical-specifications', description: 'Space, access, comfort and resilience specifications.' },
     { id: 'sustainability', title: 'Sustainability Overview', access: 'public', href: 'sustainability.html#dual-leed', description: 'LEED credentials and occupier value.' },
     { id: 'location', title: 'Location & Arrival Guide', access: 'public', href: 'visit.html', description: 'Address, transport, drop-off and visitor arrival.' },
-    { id: 'technical', title: 'Detailed Technical Package', access: 'qualified', href: 'leasing.html?intent=technical-package', description: 'CAD, detailed plans and fit-out information through leasing.' }
+    { id: 'technical', title: 'Detailed Technical Package', access: 'qualified', href: 'leasing.html?intent=technical-package', description: 'CAD, detailed plans and fit-out information through Leasing.' }
   ]);
 
   // Compatibility anchors preserve previously published deep links while the
@@ -95,6 +97,102 @@
     });
   }
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', applyDocumentCompatibility, { once: true });
-  else applyDocumentCompatibility();
+  const truthfulActionCopy = Object.freeze({
+    'Book this floor →': 'Request a viewing →',
+    'Book this floor': 'Request a viewing',
+    'Book this floor viewing →': 'Request a viewing →',
+    'Book this floor viewing': 'Request a viewing',
+    'Book a Private Viewing →': 'Request a Private Viewing →',
+    'Book a Private Viewing': 'Request a Private Viewing',
+    'Book a private viewing →': 'Request a private viewing →',
+    'Book a private viewing': 'Request a private viewing',
+    'Book a tour of both →': 'Request a tour of both →',
+    'Book a tour of both': 'Request a tour of both',
+    'Check live status': 'Confirm with Leasing',
+    '♡ Save Space': 'Save space',
+    '♡ Save this space': 'Save this space',
+    '✓ Space saved': 'Saved',
+    '✓ Saved': 'Saved'
+  });
+
+  function normalizeText(value) {
+    return String(value || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function applyTruthfulActionCopy(root = document) {
+    root.querySelectorAll?.('a,button').forEach((element) => {
+      const current = normalizeText(element.textContent);
+      const replacement = truthfulActionCopy[current];
+      if (!replacement) return;
+      element.textContent = replacement;
+    });
+  }
+
+  function applyAvailabilityIntegrity() {
+    const page = global.location.pathname.split('/').pop() || 'index.html';
+    if (page !== 'availability.html') return;
+
+    const statusDate = document.querySelector('.av-status-bar span:first-child');
+    if (statusDate) statusDate.textContent = `Reference facts reviewed: ${facts.dataChecked}`;
+
+    const summary = document.querySelector('[data-av-match-summary]');
+    if (summary) {
+      summary.textContent = 'Compare the published 1,847 m² planning reference with a representative 1,240 m² prototype scenario. Exact vacant floors are confirmed by Leasing.';
+    }
+
+    document.querySelectorAll('.av-reference-links a').forEach((link) => {
+      if (!normalizeText(link.textContent).includes('1,240 m²')) return;
+      const label = link.querySelector('span');
+      if (label) label.textContent = 'Representative planning scenario · ~110 people';
+    });
+
+    document.querySelectorAll('.av-detail-data strong').forEach((value) => {
+      if (normalizeText(value.textContent) === 'Available on request') value.textContent = 'Confirm with Leasing';
+    });
+
+    const timing = document.querySelector('#av-timing');
+    const fitout = document.querySelector('#av-fitout');
+    [timing, fitout].forEach((field) => {
+      const group = field?.closest('.av-filter-fields > div');
+      if (group) group.hidden = true;
+    });
+    const filterNote = document.querySelector('.av-filter-note');
+    if (filterNote) {
+      filterNote.textContent = 'Filter the planning references by area or team size and tower. Move-in timing, fit-out, current vacancy and commercial terms are confirmed by Leasing.';
+    }
+  }
+
+  function applyCopyIntegrity() {
+    applyTruthfulActionCopy(document);
+    document.querySelectorAll('p').forEach((paragraph) => {
+      if (/book a private viewing/i.test(paragraph.textContent || '')) {
+        paragraph.textContent = paragraph.textContent.replace(/book a private viewing/gi, 'request a private viewing');
+      }
+    });
+    const notFoundOffice = Array.from(document.querySelectorAll('a')).find((link) => normalizeText(link.textContent) === 'View Office' && /availability\.html/.test(link.getAttribute('href') || ''));
+    if (notFoundOffice) notFoundOffice.textContent = 'View availability';
+    applyAvailabilityIntegrity();
+  }
+
+  function observeDynamicCopy() {
+    if (!('MutationObserver' in global)) return;
+    const observer = new MutationObserver((records) => {
+      records.forEach((record) => record.addedNodes.forEach((node) => {
+        if (!(node instanceof Element)) return;
+        applyTruthfulActionCopy(node);
+      }));
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+
+  function runIntegrityPass() {
+    applyDocumentCompatibility();
+    global.requestAnimationFrame(() => {
+      applyCopyIntegrity();
+      observeDynamicCopy();
+    });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', runIntegrityPass, { once: true });
+  else runIntegrityPass();
 })(window);
