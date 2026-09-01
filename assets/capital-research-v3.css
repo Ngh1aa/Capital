@@ -1,0 +1,315 @@
+/* Capital Place UI/UX Research v3 — 2026-09-01
+   Direction: architectural editorial + leasing decision support.
+   This layer intentionally sits on top of the preserved v2 implementation. */
+
+:root{
+  --ui-ink:#231f20;
+  --ui-ink-soft:#3b3735;
+  --ui-muted:#6f6a64;
+  --ui-paper:#f0efe9;
+  --ui-surface:#ffffff;
+  --ui-dark:#171717;
+  --ui-dark-soft:#252525;
+  --ui-accent:#f15f22;
+  --ui-accent-deep:#a63c12;
+  --ui-focus:#ffb79a;
+  --ui-line:rgba(35,31,32,.16);
+  --ui-line-strong:rgba(35,31,32,.28);
+  --ui-line-dark:rgba(255,255,255,.20);
+  --ui-radius:4px;
+  --ui-radius-sm:2px;
+  --ui-container:1360px;
+  --cpv3-nav-h:82px;
+  --cpv3-grid:rgba(35,31,32,.065);
+  --cpv3-grid-dark:rgba(255,255,255,.055);
+}
+
+html{scroll-padding-top:calc(var(--cpv3-nav-h) + 24px)}
+body.capital-uiux-v2{background:var(--ui-paper);text-rendering:optimizeLegibility}
+body.capital-uiux-v2.cu2-menu-open{overflow:hidden}
+.capital-uiux-v2 main#main-content>section[id]{scroll-margin-top:calc(var(--cpv3-nav-h) + 28px)}
+
+/* --------------------------------------------------------------
+   1. BRAND / ARCHITECTURAL GRAMMAR
+   -------------------------------------------------------------- */
+.capital-uiux-v2 [class*="-kicker"]{
+  letter-spacing:.15em!important;
+  text-transform:uppercase;
+  font-weight:600;
+}
+
+.capital-uiux-v2 h1,
+.capital-uiux-v2 h2,
+.capital-uiux-v2 h3{
+  letter-spacing:-.035em;
+  text-wrap:balance;
+}
+
+.capital-uiux-v2 p{max-width:68ch}
+.capital-uiux-v2 em{font-style:italic}
+
+/* Thin survey/elevation rules: a domain-native cue, not decoration-heavy chrome. */
+.capital-uiux-v2 main#main-content>section[id]:not(:first-child){position:relative}
+.capital-uiux-v2 main#main-content>section[id]:not(:first-child)::before{
+  content:"";
+  position:absolute;
+  z-index:2;
+  top:0;
+  left:max(1rem,calc((100vw - var(--ui-container))/2));
+  right:max(1rem,calc((100vw - var(--ui-container))/2));
+  height:1px;
+  pointer-events:none;
+  background:linear-gradient(90deg,var(--ui-accent) 0 42px,var(--ui-line) 42px 100%);
+  opacity:.58;
+}
+
+.capital-uiux-v2 .hc-architecture-group::before,
+.capital-uiux-v2 .hc-leed-group::before,
+.capital-uiux-v2 .hc-location-community-group::before,
+.capital-uiux-v2 .hc-conversion-group::before,
+.capital-uiux-v2 .oc-columnfree::before,
+.capital-uiux-v2 section[class*="hero"]::before{display:none!important}
+
+/* --------------------------------------------------------------
+   2. NAVIGATION — quieter, more precise, still cinematic
+   -------------------------------------------------------------- */
+.capital-uiux-v2 #main-nav{
+  min-height:var(--cpv3-nav-h)!important;
+  background:rgba(18,18,18,.92)!important;
+  border-bottom:1px solid rgba(255,255,255,.10)!important;
+  box-shadow:none!important;
+  backdrop-filter:blur(14px) saturate(118%);
+  -webkit-backdrop-filter:blur(14px) saturate(118%);
+}
+.capital-uiux-v2 #main-nav.scrolled{
+  background:rgba(18,18,18,.975)!important;
+  box-shadow:0 10px 34px rgba(0,0,0,.12)!important;
+}
+.capital-uiux-v2 #main-nav .nav-inner{min-height:var(--cpv3-nav-h)!important}
+.capital-uiux-v2 #main-nav .nav-links>a:not(.btn-enquire){
+  color:rgba(255,255,255,.72)!important;
+  font-size:.72rem;
+  letter-spacing:.045em;
+}
+.capital-uiux-v2 #main-nav .nav-links>a:not(.btn-enquire):hover,
+.capital-uiux-v2 #main-nav .nav-links>a:not(.btn-enquire):focus-visible,
+.capital-uiux-v2 #main-nav .nav-links>a[aria-current="page"],
+.capital-uiux-v2 #main-nav .nav-links>a.active{color:#fff!important}
+.capital-uiux-v2 #main-nav .nav-links>a[aria-current="page"]::after,
+.capital-uiux-v2 #main-nav .nav-links>a.active::after{
+  height:2px!important;
+  background:var(--ui-accent)!important;
+}
+.capital-uiux-v2 #main-nav .btn-enquire{
+  min-height:42px!important;
+  display:inline-flex!important;
+  align-items:center;
+  justify-content:center;
+  padding:0 22px!important;
+  border:1px solid var(--ui-accent)!important;
+  background:var(--ui-accent)!important;
+  color:#171717!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-size:.64rem;
+}
+.capital-uiux-v2 #main-nav .btn-enquire:hover,
+.capital-uiux-v2 #main-nav .btn-enquire:focus-visible{
+  transform:none!important;
+  background:#fff!important;
+  border-color:#fff!important;
+}
+
+/* --------------------------------------------------------------
+   3. CONTROLS — remove generic SaaS softness
+   -------------------------------------------------------------- */
+.capital-uiux-v2 input:not([type=checkbox]):not([type=radio]),
+.capital-uiux-v2 select,
+.capital-uiux-v2 textarea{
+  border-radius:0!important;
+  border-color:var(--ui-line-strong)!important;
+  background:rgba(255,255,255,.92)!important;
+  box-shadow:none!important;
+}
+.capital-uiux-v2 input:not([type=checkbox]):not([type=radio]):hover,
+.capital-uiux-v2 select:hover,
+.capital-uiux-v2 textarea:hover{border-color:rgba(35,31,32,.48)!important}
+.capital-uiux-v2 input:not([type=checkbox]):not([type=radio]):focus,
+.capital-uiux-v2 select:focus,
+.capital-uiux-v2 textarea:focus{
+  border-color:var(--ui-accent)!important;
+  box-shadow:inset 3px 0 0 var(--ui-accent),0 0 0 2px rgba(241,95,34,.11)!important;
+}
+
+.capital-uiux-v2 a[class*="cta"],
+.capital-uiux-v2 button[type="submit"],
+.capital-uiux-v2 [class*="-submit"],
+.capital-uiux-v2 [class*="-button"],
+.capital-uiux-v2 [class*="-outline"]{border-radius:0!important}
+
+.capital-uiux-v2 button,
+.capital-uiux-v2 a{transition-timing-function:cubic-bezier(.2,.72,.2,1)}
+
+.capital-uiux-v2 button[type="submit"],
+.capital-uiux-v2 [class*="-submit"]{
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-size:.72rem;
+  font-weight:700;
+}
+
+/* Shared shells stay structured like leasing documents / floor-plan panels. */
+.capital-uiux-v2 .hc-finder-shell,
+.capital-uiux-v2 .oc-finder-shell,
+.capital-uiux-v2 .av-finder-shell,
+.capital-uiux-v2 .av-results-shell,
+.capital-uiux-v2 .sp-summary,
+.capital-uiux-v2 .la-form-shell,
+.capital-uiux-v2 .rl-form-shell,
+.capital-uiux-v2 .rc-form-shell{
+  border-radius:0!important;
+  box-shadow:0 18px 48px rgba(35,31,32,.07)!important;
+}
+
+.capital-uiux-v2 [role="tab"]{border-radius:0!important}
+.capital-uiux-v2 [role="tab"][aria-selected="true"],
+.capital-uiux-v2 [aria-pressed="true"]{box-shadow:inset 0 -2px 0 var(--ui-accent)}
+
+/* --------------------------------------------------------------
+   4. DOMAIN-NATIVE "BUILDING DIRECTORY" ON-PAGE NAV
+   -------------------------------------------------------------- */
+.cpv3-directory{
+  position:fixed;
+  z-index:44;
+  top:50%;
+  right:16px;
+  width:176px;
+  transform:translateY(-50%);
+  padding:12px 10px 12px 12px;
+  background:rgba(19,19,19,.88);
+  border:1px solid rgba(255,255,255,.12);
+  color:#fff;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  box-shadow:0 14px 34px rgba(0,0,0,.13);
+}
+.cpv3-directory::before{
+  content:"BUILDING / PAGE";
+  display:block;
+  margin:0 0 9px;
+  padding:0 0 8px 28px;
+  border-bottom:1px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.46);
+  font-size:.52rem;
+  line-height:1;
+  letter-spacing:.14em;
+  font-weight:700;
+}
+.cpv3-directory a{
+  position:relative;
+  display:grid;
+  grid-template-columns:22px 1fr;
+  gap:7px;
+  align-items:start;
+  padding:7px 4px 7px 0;
+  color:rgba(255,255,255,.52);
+  text-decoration:none;
+  font-size:.58rem;
+  line-height:1.25;
+  letter-spacing:.035em;
+  transition:color .18s ease,transform .18s ease;
+}
+.cpv3-directory a::before{
+  content:"";
+  position:absolute;
+  left:-12px;
+  top:8px;
+  bottom:8px;
+  width:2px;
+  background:transparent;
+}
+.cpv3-directory a span:first-child{
+  color:rgba(255,255,255,.34);
+  font-variant-numeric:tabular-nums;
+  letter-spacing:.08em;
+}
+.cpv3-directory a:hover,
+.cpv3-directory a:focus-visible,
+.cpv3-directory a.is-active{color:#fff}
+.cpv3-directory a.is-active::before{background:var(--ui-accent)}
+.cpv3-directory a.is-active span:first-child{color:var(--ui-accent)}
+.cpv3-directory a:focus-visible{outline:2px solid var(--ui-focus);outline-offset:2px}
+
+/* --------------------------------------------------------------
+   5. MOBILE — deliberate dock, not a floating app pill
+   -------------------------------------------------------------- */
+.cu2-backtop{
+  border-radius:0!important;
+  border-color:rgba(255,255,255,.18)!important;
+  background:rgba(18,18,18,.94)!important;
+}
+.cu2-backtop:hover{background:var(--ui-accent)!important;color:#171717!important}
+.cu2-progress{height:2px!important}
+.cu2-progress span{background:var(--ui-accent)!important;box-shadow:none!important}
+
+@media(max-width:1320px){.cpv3-directory{display:none}}
+
+@media(max-width:800px){
+  :root{--cpv3-nav-h:70px}
+  .capital-uiux-v2 #main-nav{min-height:var(--cpv3-nav-h)!important}
+  .capital-uiux-v2 #main-nav .nav-inner{min-height:var(--cpv3-nav-h)!important;height:var(--cpv3-nav-h)!important}
+  .capital-uiux-v2 #main-nav .official-logo{max-height:58px!important;width:auto!important}
+  .capital-uiux-v2 #mob-menu{
+    padding-top:calc(var(--cpv3-nav-h) + 34px)!important;
+    background-color:#171717!important;
+    background-image:linear-gradient(var(--cpv3-grid-dark) 1px,transparent 1px),linear-gradient(90deg,var(--cpv3-grid-dark) 1px,transparent 1px)!important;
+    background-size:44px 44px!important;
+  }
+  .capital-uiux-v2 #mob-menu a{
+    border-bottom:1px solid rgba(255,255,255,.11);
+    padding:.7rem 0!important;
+  }
+  .capital-uiux-v2 #mob-menu a.active,
+  .capital-uiux-v2 #mob-menu a[aria-current="page"]{color:var(--ui-accent)!important}
+  .cu2-mobile-actions{
+    left:0!important;
+    right:0!important;
+    bottom:0!important;
+    gap:0!important;
+    padding:0!important;
+    border:0!important;
+    border-top:1px solid rgba(255,255,255,.14)!important;
+    border-radius:0!important;
+    background:rgba(18,18,18,.97)!important;
+    box-shadow:0 -12px 34px rgba(0,0,0,.16)!important;
+    backdrop-filter:blur(12px);
+  }
+  .cu2-mobile-actions a{
+    min-height:54px!important;
+    border-radius:0!important;
+    font-size:.58rem!important;
+  }
+  .cu2-mobile-actions a:first-child{background:var(--ui-accent)!important;color:#171717!important}
+  .cu2-mobile-actions a:last-child{border:0!important;border-left:1px solid rgba(255,255,255,.14)!important}
+  .capital-uiux-v2 main#main-content>section[id]:not(:first-child)::before{
+    left:1rem;
+    right:1rem;
+    background:linear-gradient(90deg,var(--ui-accent) 0 26px,var(--ui-line) 26px 100%);
+  }
+}
+
+@media(max-width:560px){
+  .capital-uiux-v2 h1{letter-spacing:-.045em}
+  .capital-uiux-v2 h2{letter-spacing:-.04em}
+  .capital-uiux-v2 [class*="-kicker"]{letter-spacing:.12em!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .cpv3-directory a{transition:none!important}
+}
+
+/* No visual-only motion should block reading or navigation. */
+.capital-uiux-v2 :where(a,button,input,select,textarea):focus-visible{outline-color:var(--ui-focus)!important}
