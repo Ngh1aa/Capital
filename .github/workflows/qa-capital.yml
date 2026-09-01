@@ -26,5 +26,8 @@ jobs:
           node --check assets/capital-vision.js
           node --check assets/capital-uiux-v2.js
           node --check assets/availability-cinematic.js
+          node --check scripts/qa_visual_v5.mjs
       - name: Capital structural and reality QA
         run: node scripts/qa_capital.mjs
+      - name: Capital visual art direction QA
+        run: node scripts/qa_visual_v5.mjs
