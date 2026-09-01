@@ -197,3 +197,133 @@ body.cp6 .skip-link:focus{top:16px}
   .cp6-display,.cp6-h1{font-size:clamp(50px,16vw,74px)}.cp6-h2{font-size:clamp(42px,13vw,62px)}.cp6-section{padding:72px 0}.cp6-hero-media{min-height:54svh}.cp6-hero-facts{grid-template-columns:1fr 1fr}.cp6-hero-facts span:nth-child(3){display:none}.cp6-story-main,.cp6-story-side figure,.cp6-address-media,.cp6-map-visual,.cp6-feature-media{min-height:390px}.cp6-floor-stats,.cp6-cert-row,.cp6-route-row,.cp6-spec-band,.cp6-performance-grid,.cp6-workday,.cp6-requirement-grid,.cp6-form{grid-template-columns:1fr}.cp6-experience-grid,.cp6-surround-grid{grid-template-columns:1fr}.cp6-experience-card:first-child,.cp6-surround-grid figure:first-child{grid-column:auto}.cp6-experience-card,.cp6-experience-card:nth-child(2),.cp6-experience-card:nth-child(3),.cp6-surround-grid figure,.cp6-surround-grid figure:nth-child(2),.cp6-surround-grid figure:nth-child(3){min-height:410px}.cp6-evidence{grid-template-columns:1fr}.cp6-footer-inner{grid-template-columns:1fr}.cp6-footer-logo{grid-column:auto}.cp6-footer-bottom{flex-direction:column}.cp6-contact-grid{gap:54px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.cp6-reveal{opacity:1;transform:none;transition:none}.cp6-experience-card img{transition:none}}
+
+/* HERO MATRIX V6.2 — page-role specific, not one shared banner template. */
+@supports selector(:has(*)) {
+  /* LOCATION — city canvas / address marker. Full-bleed spatial orientation. */
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="location-hero.jpg"]){
+    position:relative;display:block;min-height:100svh;padding-top:88px;background:#121110;color:#fff;overflow:hidden;
+  }
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="location-hero.jpg"]) .cp6-page-hero-media{
+    position:absolute;inset:88px 0 0;min-height:0;
+  }
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="location-hero.jpg"]) .cp6-page-hero-media img{object-position:center 48%;filter:saturate(.82) contrast(1.04)}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="location-hero.jpg"]) .cp6-page-hero-media::after{
+    content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,17,16,.9) 0%,rgba(18,17,16,.64) 34%,rgba(18,17,16,.08) 67%),linear-gradient(0deg,rgba(18,17,16,.76),transparent 42%);
+  }
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="location-hero.jpg"]) .cp6-page-hero-media::before{
+    content:"29 LIEU GIAI  /  HANOI";position:absolute;z-index:3;right:0;top:0;bottom:0;width:66px;display:flex;align-items:center;justify-content:center;background:var(--cp-orange);color:var(--cp-ink);font-size:10px;font-weight:800;letter-spacing:.18em;writing-mode:vertical-rl;text-orientation:mixed;
+  }
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="location-hero.jpg"]) .cp6-page-hero-copy{
+    position:relative;z-index:4;width:min(58%,820px);min-height:calc(100svh - 88px);padding:clamp(92px,11vw,168px) var(--cp-gutter) 72px;justify-content:flex-end;background:transparent;
+  }
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="location-hero.jpg"]) .cp6-h1{font-size:clamp(64px,8vw,126px);max-width:8.5ch}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="location-hero.jpg"]) .cp6-copy{max-width:43ch}
+
+  /* OFFICE — leasing blueprint. Floor plan is the hero object, interior photo becomes proof inset. */
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="office-hero.jpg"]){
+    min-height:90svh;grid-template-columns:minmax(430px,.88fr) minmax(0,1.12fr);background:var(--cp-paper);color:var(--cp-ink);border-bottom:1px solid var(--cp-line);
+  }
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="office-hero.jpg"]) .cp6-page-hero-copy{
+    padding:clamp(84px,9vw,138px) clamp(38px,5vw,82px);border-right:1px solid var(--cp-line);justify-content:flex-end;
+  }
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="office-hero.jpg"]) .cp6-h1{font-size:clamp(62px,7.2vw,116px);max-width:8ch}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="office-hero.jpg"]) .cp6-copy.light{color:var(--cp-muted)}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="office-hero.jpg"]) .cp6-secondary{border-color:rgba(29,27,26,.36);color:var(--cp-ink)}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="office-hero.jpg"]) .cp6-page-hero-media{
+    min-height:calc(90svh - 88px);background:#f8f6f1;padding:clamp(34px,4vw,64px);display:flex;align-items:center;justify-content:center;overflow:hidden;
+  }
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="office-hero.jpg"]) .cp6-page-hero-media::before{
+    content:"";position:absolute;inset:7% 8% 12%;background:#fff url("images/official/floor-standard.png") center/contain no-repeat;border:1px solid var(--cp-line);box-shadow:0 28px 70px rgba(29,27,26,.08);filter:grayscale(1) contrast(1.08);
+  }
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="office-hero.jpg"]) .cp6-page-hero-media::after{
+    content:"PUBLISHED REFERENCE  /  1,847 SQM";position:absolute;z-index:3;left:8%;top:7%;padding:13px 16px;background:var(--cp-ink);color:#fff;font-size:10px;font-weight:800;letter-spacing:.15em;
+  }
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="office-hero.jpg"]) .cp6-page-hero-media>img{
+    position:absolute;z-index:2;right:5%;bottom:5%;width:42%;height:28%;object-fit:cover;border:8px solid #fff;box-shadow:0 20px 48px rgba(29,27,26,.18);
+  }
+
+  /* SUSTAINABILITY — certification + evidence. Credential blocks dominate over generic photography. */
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="sustainability-hero.jpg"]){
+    min-height:92svh;grid-template-columns:1.04fr .96fr;background:#efebe4;color:var(--cp-ink);border-bottom:1px solid var(--cp-line);
+  }
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="sustainability-hero.jpg"]) .cp6-page-hero-copy{padding:clamp(92px,10vw,154px) clamp(40px,6vw,96px);justify-content:flex-end}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="sustainability-hero.jpg"]) .cp6-h1{font-size:clamp(62px,7vw,112px);max-width:8.5ch}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="sustainability-hero.jpg"]) .cp6-copy.light{color:var(--cp-muted)}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="sustainability-hero.jpg"]) .cp6-page-hero-media{min-height:calc(92svh - 88px);background:#151413}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="sustainability-hero.jpg"]) .cp6-page-hero-media img{filter:grayscale(.58) brightness(.58);object-position:center}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="sustainability-hero.jpg"]) .cp6-page-hero-media::before{
+    content:"PLATINUM\A O+M";white-space:pre;position:absolute;z-index:3;left:0;top:0;width:50%;height:50%;padding:34px;display:flex;align-items:flex-end;border-right:1px solid rgba(255,255,255,.24);border-bottom:1px solid rgba(255,255,255,.24);color:#fff;font-size:clamp(28px,4vw,64px);font-weight:300;line-height:.86;letter-spacing:-.04em;background:rgba(20,19,18,.36);box-sizing:border-box;
+  }
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="sustainability-hero.jpg"]) .cp6-page-hero-media::after{
+    content:"GOLD\A BD+C";white-space:pre;position:absolute;z-index:3;right:0;bottom:0;width:50%;height:50%;padding:34px;display:flex;align-items:flex-end;border-left:1px solid rgba(255,255,255,.24);border-top:1px solid rgba(255,255,255,.24);color:var(--cp-orange);font-size:clamp(28px,4vw,64px);font-weight:300;line-height:.86;letter-spacing:-.04em;background:rgba(20,19,18,.48);box-sizing:border-box;
+  }
+
+  /* AMENITIES — workday montage, not a building hero. */
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="amenities-hero.jpg"]){
+    min-height:94svh;grid-template-columns:1.25fr .75fr;background:#fff;color:var(--cp-ink);
+  }
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="amenities-hero.jpg"]) .cp6-page-hero-media{order:-1;min-height:calc(94svh - 88px);background:#171615;overflow:hidden}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="amenities-hero.jpg"]) .cp6-page-hero-media>img{position:absolute;left:0;top:0;width:62%;height:100%;object-fit:cover}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="amenities-hero.jpg"]) .cp6-page-hero-media::before{
+    content:"";position:absolute;z-index:2;right:0;top:0;width:38%;height:50%;background:url("images/official/the-nexus.jpg") center/cover no-repeat;border-left:10px solid #fff;border-bottom:10px solid #fff;
+  }
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="amenities-hero.jpg"]) .cp6-page-hero-media::after{
+    content:"";position:absolute;z-index:2;right:0;bottom:0;width:38%;height:50%;background:url("images/official/the-link.jpg") center/cover no-repeat;border-left:10px solid #fff;
+  }
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="amenities-hero.jpg"]) .cp6-page-hero-copy{position:relative;padding:clamp(82px,9vw,140px) clamp(38px,5vw,76px);justify-content:center;background:var(--cp-paper)}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="amenities-hero.jpg"]) .cp6-page-hero-copy::after{
+    content:"08:00  ARRIVE\A 11:00  MEET\A 12:30  DINE\A 18:00  RECHARGE";white-space:pre;display:block;margin-top:40px;padding-top:24px;border-top:1px solid var(--cp-line);color:var(--cp-muted);font-size:10px;font-weight:700;line-height:2.1;letter-spacing:.14em;
+  }
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="amenities-hero.jpg"]) .cp6-h1{font-size:clamp(60px,6.8vw,108px);max-width:7ch}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="amenities-hero.jpg"]) .cp6-copy.light{color:var(--cp-muted)}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="amenities-hero.jpg"]) .cp6-secondary{border-color:rgba(29,27,26,.34);color:var(--cp-ink)}
+
+  /* AVAILABILITY — leasing planner / drawing desk. No lifestyle-photo banner. */
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="capital-place-towers.jpg"]){
+    min-height:88svh;grid-template-columns:1.06fr .94fr;background:#f5f2eb;color:var(--cp-ink);border-bottom:1px solid var(--cp-line);
+  }
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="capital-place-towers.jpg"]) .cp6-page-hero-copy{padding:clamp(86px,9vw,144px) clamp(38px,6vw,94px);justify-content:flex-end;border-right:1px solid var(--cp-line)}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="capital-place-towers.jpg"]) .cp6-h1{font-size:clamp(64px,7.6vw,122px);max-width:7.6ch}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="capital-place-towers.jpg"]) .cp6-copy.light{color:var(--cp-muted)}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="capital-place-towers.jpg"]) .cp6-secondary{border-color:rgba(29,27,26,.34);color:var(--cp-ink)}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="capital-place-towers.jpg"]) .cp6-page-hero-media{min-height:calc(88svh - 88px);background:#fff;border-top:0;overflow:hidden}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="capital-place-towers.jpg"]) .cp6-page-hero-media::before{
+    content:"";position:absolute;inset:9% 8% 10%;background:url("images/official/floor-standard.png") center/contain no-repeat;filter:grayscale(1) contrast(1.06);opacity:.96;border:1px solid var(--cp-line);
+  }
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="capital-place-towers.jpg"]) .cp6-page-hero-media::after{
+    content:"AVAILABILITY  /  CONFIRMED BY LEASING";position:absolute;z-index:3;left:8%;right:8%;top:9%;padding:14px 16px;background:var(--cp-orange);color:var(--cp-ink);font-size:10px;font-weight:800;letter-spacing:.15em;
+  }
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="capital-place-towers.jpg"]) .cp6-page-hero-media>img{position:absolute;z-index:2;right:3%;bottom:4%;width:30%;height:42%;object-fit:cover;object-position:center top;border:8px solid #fff;box-shadow:0 18px 48px rgba(29,27,26,.15)}
+
+  /* LEASING — conversion desk. Quiet, dark, direct-contact composition. */
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="architecture-lobby-official.jpg"]){
+    min-height:86svh;grid-template-columns:.38fr 1fr;grid-template-areas:"media copy";background:#11100f;color:#fff;
+  }
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="architecture-lobby-official.jpg"]) .cp6-page-hero-media{grid-area:media;min-height:calc(86svh - 88px)}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="architecture-lobby-official.jpg"]) .cp6-page-hero-media img{filter:grayscale(.45) brightness(.66);object-position:center}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="architecture-lobby-official.jpg"]) .cp6-page-hero-media::after{content:"LEASING\A DESK";white-space:pre;position:absolute;inset:auto 24px 26px;z-index:3;color:#fff;font-size:11px;font-weight:800;line-height:1.5;letter-spacing:.18em}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="architecture-lobby-official.jpg"]) .cp6-page-hero-copy{grid-area:copy;padding:clamp(88px,10vw,160px) clamp(46px,8vw,132px);justify-content:flex-end;position:relative}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="architecture-lobby-official.jpg"]) .cp6-page-hero-copy::before{content:"1800 9289   ·   LEASING@CAPITALPLACE.VN";position:absolute;top:clamp(108px,12vw,180px);left:clamp(46px,8vw,132px);right:40px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.18);color:var(--cp-orange);font-size:10px;font-weight:800;letter-spacing:.16em}
+  .cp6-page-hero:has(.cp6-page-hero-media img[src*="architecture-lobby-official.jpg"]) .cp6-h1{font-size:clamp(64px,8vw,126px);max-width:9ch}
+}
+
+@media(max-width:900px){
+  @supports selector(:has(*)) {
+    .cp6-page-hero:has(.cp6-page-hero-media img[src*="location-hero.jpg"]){padding-top:76px;min-height:92svh}.cp6-page-hero:has(.cp6-page-hero-media img[src*="location-hero.jpg"]) .cp6-page-hero-media{inset:76px 0 0}.cp6-page-hero:has(.cp6-page-hero-media img[src*="location-hero.jpg"]) .cp6-page-hero-copy{width:100%;min-height:calc(92svh - 76px);padding:72px var(--cp-gutter) 52px}.cp6-page-hero:has(.cp6-page-hero-media img[src*="location-hero.jpg"]) .cp6-page-hero-media::before{width:42px;font-size:8px}
+    .cp6-page-hero:has(.cp6-page-hero-media img[src*="office-hero.jpg"]),.cp6-page-hero:has(.cp6-page-hero-media img[src*="sustainability-hero.jpg"]),.cp6-page-hero:has(.cp6-page-hero-media img[src*="amenities-hero.jpg"]),.cp6-page-hero:has(.cp6-page-hero-media img[src*="capital-place-towers.jpg"]),.cp6-page-hero:has(.cp6-page-hero-media img[src*="architecture-lobby-official.jpg"]){grid-template-columns:1fr;grid-template-areas:none;min-height:auto}
+    .cp6-page-hero:has(.cp6-page-hero-media img[src*="office-hero.jpg"]) .cp6-page-hero-copy,.cp6-page-hero:has(.cp6-page-hero-media img[src*="sustainability-hero.jpg"]) .cp6-page-hero-copy,.cp6-page-hero:has(.cp6-page-hero-media img[src*="amenities-hero.jpg"]) .cp6-page-hero-copy,.cp6-page-hero:has(.cp6-page-hero-media img[src*="capital-place-towers.jpg"]) .cp6-page-hero-copy,.cp6-page-hero:has(.cp6-page-hero-media img[src*="architecture-lobby-official.jpg"]) .cp6-page-hero-copy{grid-area:auto;order:0;padding:64px var(--cp-gutter);border-right:0}
+    .cp6-page-hero:has(.cp6-page-hero-media img[src*="office-hero.jpg"]) .cp6-page-hero-media,.cp6-page-hero:has(.cp6-page-hero-media img[src*="sustainability-hero.jpg"]) .cp6-page-hero-media,.cp6-page-hero:has(.cp6-page-hero-media img[src*="amenities-hero.jpg"]) .cp6-page-hero-media,.cp6-page-hero:has(.cp6-page-hero-media img[src*="capital-place-towers.jpg"]) .cp6-page-hero-media,.cp6-page-hero:has(.cp6-page-hero-media img[src*="architecture-lobby-official.jpg"]) .cp6-page-hero-media{grid-area:auto;order:1;min-height:54svh}
+    .cp6-page-hero:has(.cp6-page-hero-media img[src*="amenities-hero.jpg"]) .cp6-page-hero-media>img{width:62%}
+    .cp6-page-hero:has(.cp6-page-hero-media img[src*="architecture-lobby-official.jpg"]) .cp6-page-hero-copy::before{position:static;display:block;margin-bottom:44px}
+  }
+}
+
+@media(max-width:600px){
+  @supports selector(:has(*)) {
+    .cp6-page-hero:has(.cp6-page-hero-media img[src*="office-hero.jpg"]) .cp6-page-hero-media>img{width:48%;height:25%;border-width:5px}
+    .cp6-page-hero:has(.cp6-page-hero-media img[src*="sustainability-hero.jpg"]) .cp6-page-hero-media::before,.cp6-page-hero:has(.cp6-page-hero-media img[src*="sustainability-hero.jpg"]) .cp6-page-hero-media::after{padding:18px;font-size:30px}
+    .cp6-page-hero:has(.cp6-page-hero-media img[src*="amenities-hero.jpg"]) .cp6-page-hero-copy::after{font-size:9px}
+    .cp6-page-hero:has(.cp6-page-hero-media img[src*="capital-place-towers.jpg"]) .cp6-page-hero-media>img{width:34%;height:38%;border-width:5px}
+  }
+}
