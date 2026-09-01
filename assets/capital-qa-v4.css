@@ -1,17 +1,18 @@
+@import url("./capital-art-direction-v5.css?v=art-20260901-5");
+
 /* Capital Place Final QA remediation — 2026-09-01
    System-level readability, contrast and control normalization.
    This layer intentionally refines the current visual direction; it does not redesign it. */
 
 :root{
-  --qa-font-label:.6875rem;   /* 11px */
-  --qa-font-action:.75rem;    /* 12px */
-  --qa-font-nav:.78125rem;    /* 12.5px */
-  --qa-font-footer:.8125rem;  /* 13px */
+  --qa-font-label:.6875rem;
+  --qa-font-action:.75rem;
+  --qa-font-nav:.78125rem;
+  --qa-font-footer:.8125rem;
   --qa-tracking-label:.12em;
   --qa-tracking-action:.09em;
 }
 
-/* Readability: prevent microtype from falling into decorative 9–10px territory. */
 .capital-uiux-v2 .eyebrow,
 .capital-uiux-v2 .page-header-eyebrow,
 .capital-uiux-v2 [class*="-kicker"]{
@@ -57,19 +58,16 @@
   line-height:1.35!important;
 }
 
-/* Footer: the previous 58% black at 12px was below comfortable normal-text contrast. */
 .capital-uiux-v2 .ft-col-title{font-size:var(--qa-font-label)!important;letter-spacing:.16em!important}
 .capital-uiux-v2 .ft-col a{font-size:var(--qa-font-footer)!important;color:rgba(35,31,32,.72)!important;line-height:1.45!important}
 .capital-uiux-v2 .ft-addr{font-size:.75rem!important;color:rgba(35,31,32,.72)!important}
 .capital-uiux-v2 .ft-bot p{font-size:var(--qa-font-label)!important;letter-spacing:.08em!important;color:rgba(35,31,32,.72)!important}
 
-/* Wide-screen building directory stays secondary, but no longer becomes unreadable microtype. */
 .cpv3-directory{width:198px}
 .cpv3-directory::before{font-size:.625rem;color:rgba(35,31,32,.62);letter-spacing:.11em}
 .cpv3-directory a{font-size:var(--qa-font-label);color:rgba(35,31,32,.72);line-height:1.3}
 .cpv3-directory a span:first-child{color:rgba(35,31,32,.58)}
 
-/* Mobile conversion dock: preserve compactness without 9px action labels. */
 @media(max-width:800px){
   .cu2-mobile-actions a{
     min-height:56px!important;
@@ -86,11 +84,9 @@
   .cu2-mobile-actions a{font-size:var(--qa-font-action)!important;letter-spacing:.055em!important}
 }
 
-/* Preserve an obvious focus indicator on both light and dark surfaces. */
 .capital-uiux-v2 :where(a,button,input,select,textarea):focus-visible{
   outline:2px solid var(--ui-focus)!important;
   outline-offset:3px!important;
 }
 
-/* Disabled language affordance is intentionally visible but never competes with implemented EN. */
 .capital-uiux-v2 .lang-btns button[aria-disabled="true"]{opacity:.52!important}
