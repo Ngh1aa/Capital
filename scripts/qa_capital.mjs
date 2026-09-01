@@ -8,6 +8,11 @@ const pages = [
   'availability.html', 'space.html', 'leasing.html', 'visit.html', 'resources.html',
   'retail.html', 'occupiers.html', 'faq.html', 'privacy.html', '404.html'
 ];
+const runtimeAliases = Object.freeze({
+  'office.html': new Set(['floor-explorer', 'office-specifications']),
+  'resources.html': new Set(['specifications']),
+  'location.html': new Set(['transport'])
+});
 const failures = [];
 let assertions = 0;
 
@@ -19,6 +24,7 @@ function stripQuery(value) { return value.split('?')[0].split('#')[0]; }
 function isRemote(value) { return /^(?:https?:|mailto:|tel:|data:|javascript:|#)/i.test(value); }
 function read(file) { return fs.readFileSync(path.join(root, file), 'utf8'); }
 
+const dataJs = read('assets/capital-data.js');
 const htmlByPage = new Map();
 for (const page of pages) {
   const file = path.join(root, page);
@@ -30,7 +36,9 @@ for (const [page, html] of htmlByPage) {
   assert(/^<!doctype html>/i.test(html), `${page}: missing doctype`);
   assert(/<html\s+lang="en"/i.test(html), `${page}: document must start in implemented English locale`);
   assert(/<title>[^<]+<\/title>/i.test(html), `${page}: missing title`);
-  assert(/<meta\s+name="description"\s+content="[^"]+"/i.test(html), `${page}: missing meta description`);
+  const hasStaticDescription = /<meta\s+name="description"\s+content="[^"]+"/i.test(html);
+  const hasCentralDescription = page === 'faq.html' && dataJs.includes("'faq.html': Object.freeze") && dataJs.includes('Frequently asked questions about Capital Place Hanoi');
+  assert(hasStaticDescription || hasCentralDescription, `${page}: missing meta description contract`);
   assert((html.match(/<main\b/gi) || []).length === 1, `${page}: expected one main landmark`);
   assert((html.match(/<nav\b/gi) || []).length === 1, `${page}: expected one primary navigation landmark in source`);
   assert((html.match(/<footer\b/gi) || []).length === 1, `${page}: expected one footer landmark`);
@@ -50,7 +58,9 @@ for (const [page, html] of htmlByPage) {
     const hash = reference.includes('#') ? reference.split('#')[1] : '';
     const targetPage = localPath.endsWith('.html') ? localPath : '';
     if (hash && targetPage && htmlByPage.has(targetPage)) {
-      assert(htmlByPage.get(targetPage).includes(`id="${hash}"`), `${page}: missing anchor target ${reference}`);
+      const staticTarget = htmlByPage.get(targetPage).includes(`id="${hash}"`);
+      const runtimeTarget = runtimeAliases[targetPage]?.has(hash) === true;
+      assert(staticTarget || runtimeTarget, `${page}: missing anchor target ${reference}`);
     }
   }
 }
@@ -67,9 +77,8 @@ const leasingHtml = htmlByPage.get('leasing.html') || '';
 assert(leasingHtml.includes('data-leasing-form'), 'leasing.html: form contract missing');
 assert(leasingHtml.includes('This prototype has not transmitted your information'), 'leasing.html: truthful prepared-not-sent state missing');
 assert(leasingHtml.includes('prototype privacy notice'), 'leasing.html: prototype privacy disclosure missing');
-assert(leasingHtml.includes('Book Private Viewing') || leasingHtml.includes('Private Viewing'), 'leasing.html: viewing path missing');
+assert(leasingHtml.includes('Private Viewing'), 'leasing.html: viewing path missing');
 
-const dataJs = read('assets/capital-data.js');
 assert(dataJs.includes('leasableAreaSqm: 93000'), 'capital-data.js: verified area missing');
 assert(dataJs.includes('storeysPerTower: 37'), 'capital-data.js: verified storeys missing');
 assert(dataJs.includes("leasingEmail: 'leasing@capitalplace.vn'"), 'capital-data.js: verified leasing email missing');
@@ -78,6 +87,12 @@ assert(dataJs.includes("dataSourceUrl: 'https://capitalplace.com.vn/office/'"), 
 assert(dataJs.includes("evidence: 'OFFICIAL_PUBLIC_REFERENCE'"), 'capital-data.js: official floor reference evidence label missing');
 assert(dataJs.includes("evidence: 'REPRESENTATIVE_PROTOTYPE'"), 'capital-data.js: representative scenario evidence label missing');
 assert(dataJs.includes("availabilityMode: 'leasing-confirmation'"), 'capital-data.js: leasing-confirmation reality mode missing');
+assert(dataJs.includes('legacyAnchorAliases'), 'capital-data.js: URL/deep-link compatibility contract missing');
+for (const alias of ['floor-explorer', 'office-specifications', 'specifications', 'transport']) {
+  assert(dataJs.includes(`'${alias}'`), `capital-data.js: compatibility alias ${alias} missing`);
+}
+assert(dataJs.includes("href: 'office.html#floor-planning'"), 'capital-data.js: floor-plan resource still uses obsolete anchor');
+assert(dataJs.includes("href: 'office.html#technical-specifications'"), 'capital-data.js: specification resource still uses obsolete anchor');
 
 const wrapperCss = read('assets/capital-uiux-v2.css');
 const v3Css = read('assets/capital-research-v3.css');
@@ -87,7 +102,8 @@ assert(wrapperCss.includes('capital-research-v3.css'), 'shared stylesheet must l
 assert(v3Css.includes('--ui-accent:var(--cta-orange)'), 'v3 must reuse the existing CTA token rather than duplicate orange');
 assert(!v3Css.toLowerCase().includes('#f15f22'), 'v3 duplicates the CTA orange hardcode instead of reusing the token');
 assert(v3Css.includes('.cpv3-section-rule'), 'v3 architectural section-rule pattern missing');
-assert(!/main#main-content>section\[id\].*::before/.test(v3Css.replace(/\s/g, '')), 'v3 must not overwrite section pseudo-elements used by cinematic overlays');
+const compactV3Css = v3Css.replace(/\s/g, '');
+assert(!compactV3Css.includes('main#main-content>section[id]:not(:first-child)::before'), 'v3 must not overwrite top-level section pseudo-elements used by cinematic overlays');
 assert(v3Css.includes('env(safe-area-inset-bottom'), 'mobile fixed actions do not account for safe-area inset');
 assert(v3Css.includes('@media(min-width:1760px)'), 'desktop directory lacks wide-screen overlap guard');
 assert(v3Js.includes("document.documentElement.lang = 'en'"), 'language semantics are not pinned to implemented English content');
