@@ -29,7 +29,41 @@ jobs:
           node --check assets/availability-cinematic.js
           node --check scripts/qa_v6.mjs
           node --check scripts/qa_mobile_v6.mjs
+          node --check scripts/qa_mobile_render.mjs
       - name: Capital V6 design-contract QA
         run: node scripts/qa_v6.mjs
-      - name: Capital V6.4 mobile QA
+      - name: Capital V6.4 mobile source QA
         run: node scripts/qa_mobile_v6.mjs
+
+  mobile-render-qa:
+    runs-on: ubuntu-latest
+    needs: static-qa
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Playwright Chromium
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Start local Capital site
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/capital-http.log 2>&1 &
+          echo $! > /tmp/capital-http.pid
+          sleep 1
+      - name: Chromium rendered mobile QA
+        env:
+          CAPITAL_QA_URL: http://127.0.0.1:4173
+        run: node scripts/qa_mobile_render.mjs
+      - name: Upload mobile viewport captures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: capital-mobile-render-${{ github.sha }}
+          path: artifacts/mobile-render
+          if-no-files-found: warn
+          retention-days: 14
