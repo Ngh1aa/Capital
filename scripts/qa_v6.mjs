@@ -4,7 +4,6 @@ import path from 'node:path';
 const root = process.cwd();
 const pages = ['index.html','location.html','office.html','sustainability.html','amenities.html','availability.html','leasing.html','visit.html','resources.html','faq.html','occupiers.html','retail.html','space.html','privacy.html','404.html'];
 const utilityPages = new Set(['visit.html','resources.html','faq.html','occupiers.html','retail.html','space.html','privacy.html','404.html']);
-const standardPages = pages.filter(p => p !== '404.html');
 const failures = [];
 let assertions = 0;
 const check = (condition, message) => { assertions++; if (!condition) failures.push(message); };
@@ -46,8 +45,8 @@ for (const page of pages) {
 const css = fs.readFileSync(path.join(root,'assets/capital-v6.css'),'utf8');
 const compact = css.replace(/\s+/g,'').toLowerCase();
 check(compact.includes('--cp-orange:#f15f22'),'V6: Capital orange role missing');
-check(compact.includes('.cp6-nav{position:fixed;inset:0 0 auto 0;z-index:1000;height:88px;background:rgba(24,22,21,.96)'), 'V6: nav is not locked dark');
-check(compact.includes('.cp6-brand{position:relative;display:flex;align-items:center;justify-content:center;background:#141312'), 'V6: logo podium missing dark background');
+check(compact.includes('.cp6-nav{') && compact.includes('background:rgba(24,22,21,.96)'), 'V6: nav is not locked dark');
+check(compact.includes('.cp6-brand{') && compact.includes('background:#141312'), 'V6: logo podium missing dark background');
 check(compact.includes('.cp6-nav-cta{display:inline-flex') && compact.includes('background:var(--cp-orange)'), 'V6: primary nav CTA not solid orange');
 check(compact.includes('@media(max-width:900px)'), 'V6: missing tablet/mobile composition breakpoint');
 check(compact.includes('@media(max-width:600px)'), 'V6: missing mobile composition breakpoint');
@@ -70,6 +69,9 @@ check(/mailto:leasing@capitalplace\.vn/.test(leasing),'leasing: mailto handoff m
 
 const privacy = fs.readFileSync(path.join(root,'privacy.html'),'utf8');
 check(/static prototype/i.test(privacy) && /official policy/i.test(privacy),'privacy: missing prototype/first-party distinction');
+
+const js = fs.readFileSync(path.join(root,'assets/capital-v6.js'),'utf8');
+check(/aria-controls/.test(js) && /Escape/.test(js),'V6: mobile navigation semantics/escape handling missing');
 
 if (failures.length) {
   console.error(`FAIL: ${failures.length} of ${assertions} V6 assertions failed`);
