@@ -81,11 +81,11 @@ check(/AVAILABILITY\s*\/\s*CONFIRMED BY LEASING/.test(css),'availability hero: l
 check(/1800 9289/.test(css) && /LEASING@CAPITALPLACE\.VN/.test(css),'leasing hero: direct-contact signature missing');
 
 // Rendered-QA regression guards from stakeholder screenshots, 2026-09-01.
-check(/body\.cp6 a\.cp6-experience-card\{color:#fff!important\}/.test(compact),'image cards: anchor inherit can override white overlay copy');
-check(/\.cp6-experience-card div\{[^}]*background:rgba\(17,16,15,\.76\)/.test(compact),'image cards: local contrast backplate missing behind copy');
-check(/\.cp6-experience-card h3\{[^}]*color:#fff!important/.test(compact),'image cards: heading color is not locked readable over photography');
-check(/\.cp6-floor-sheet img\{[^}]*max-width:min\(100%,430px\)/.test(compact),'floor preview: tiny raster is allowed to upscale excessively');
-check(/\.cp6-plate-compare figure img\{[^}]*max-width:min\(100%,430px\)/.test(compact),'availability floor preview: tiny raster is allowed to upscale excessively');
+check(css.includes('body.cp6 a.cp6-experience-card{color:#fff!important}'),'image cards: anchor inherit can override white overlay copy');
+check(/\.cp6-experience-card div\{[^}]*background:rgba\(17,16,15,\.76\)/.test(css),'image cards: local contrast backplate missing behind copy');
+check(/\.cp6-experience-card h3\{[^}]*color:#fff!important/.test(css),'image cards: heading color is not locked readable over photography');
+check(/\.cp6-floor-sheet img\{[^}]*max-width:min\(100%,430px\)/.test(css),'floor preview: tiny raster is allowed to upscale excessively');
+check(/\.cp6-plate-compare figure img\{[^}]*max-width:min\(100%,430px\)/.test(css),'availability floor preview: tiny raster is allowed to upscale excessively');
 check(!/floor-standard\.png\) center\/contain no-repeat/.test(css),'hero: low-resolution floor-standard.png is still enlarged as a hero/background');
 check(!/PLATINUM\\A O\+M/.test(css) && !/GOLD\\A BD\+C/.test(css),'sustainability: old multiline pseudo-label pattern that overlapped remains');
 check(/bottom:74px/.test(css) && /bottom:16px/.test(css),'sustainability mobile: credential labels lack separated vertical positions');
