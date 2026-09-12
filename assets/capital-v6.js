@@ -2,6 +2,58 @@
   'use strict';
 
   const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+
+  /*
+   * Figma / HTML-to-design compatibility layer.
+   *
+   * Several pages intentionally use lazy-loaded images and scroll reveal effects for
+   * the live website. Static importers usually render the page without scrolling,
+   * which means off-screen images may never be requested and reveal blocks can remain
+   * at opacity: 0. Eagerly request every image and expose every reveal block as soon
+   * as the DOM is parsed so the complete page is available to design import tools.
+   */
+  const imagePreloads = [];
+  document.querySelectorAll('img').forEach(img => {
+    if (img.getAttribute('loading') === 'lazy') {
+      img.setAttribute('loading', 'eager');
+      try { img.loading = 'eager'; } catch (_) {}
+    }
+
+    const src = img.currentSrc || img.getAttribute('src');
+    if (src) {
+      const preload = new Image();
+      preload.decoding = 'async';
+      preload.src = src;
+      imagePreloads.push(preload);
+    }
+
+    const srcset = img.getAttribute('srcset');
+    if (srcset) {
+      const preload = new Image();
+      preload.decoding = 'async';
+      preload.srcset = srcset;
+      preload.sizes = img.getAttribute('sizes') || '100vw';
+      imagePreloads.push(preload);
+    }
+  });
+
+  document.querySelectorAll('.cp6-reveal').forEach(el => {
+    el.classList.add('is-in');
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
+
+  /* Keep strong references until load/error so importers can reach network-idle only
+     after the page's visual assets have actually been requested. */
+  Promise.allSettled(imagePreloads.map(preload => new Promise(resolve => {
+    if (preload.complete) return resolve();
+    preload.addEventListener('load', resolve, { once: true });
+    preload.addEventListener('error', resolve, { once: true });
+  }))).then(() => {
+    document.documentElement.dataset.figmaAssetsReady = 'true';
+    window.dispatchEvent(new Event('capital:assets-ready'));
+  });
+
   const menuButton = document.querySelector('.cp6-menu');
   const navLinks = document.querySelector('.cp6-nav-links');
   const brand = document.querySelector('.cp6-brand');
@@ -101,19 +153,15 @@
     if (href === page) anchor.setAttribute('aria-current', 'page');
   });
 
+  /* Reveal blocks are intentionally visible immediately for reliable static capture.
+     The is-in class preserves the final visual state defined by the stylesheet. */
   const reveals = [...document.querySelectorAll('.cp6-reveal')];
-  if (reduce || !('IntersectionObserver' in window)) {
-    reveals.forEach(el => el.classList.add('is-in'));
-  } else {
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-in');
-        io.unobserve(entry.target);
-      });
-    }, { threshold: .12, rootMargin: '0px 0px -8%' });
-    reveals.forEach(el => io.observe(el));
-  }
+  reveals.forEach(el => {
+    el.classList.add('is-in');
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+    if (reduce) el.style.transition = 'none';
+  });
 
   document.querySelectorAll('[data-scroll]').forEach(anchor => anchor.addEventListener('click', event => {
     const target = document.querySelector(anchor.getAttribute('href'));
