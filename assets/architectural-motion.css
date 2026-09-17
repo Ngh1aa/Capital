@@ -1,5 +1,7 @@
 /* CAPITAL PLACE — Visible Architectural Motion
-   Architectural / measured / confidence-building with obvious plane and evidence movement. */
+   Architectural / measured / confidence-building with obvious plane and evidence movement.
+   Fail-safe contract: content is visible by default; scroll hiding only activates
+   after the runtime confirms the observer is ready. */
 :root{
   --cp-motion-fast:190ms;
   --cp-motion-base:380ms;
@@ -22,10 +24,13 @@
 @keyframes cp-fact-in{from{opacity:0;transform:translate3d(0,22px,0)}to{opacity:1;transform:none}}
 
 .cp6-reveal{
+  opacity:1;
+  transform:none;
+  clip-path:none;
   transition:opacity var(--cp-motion-section) var(--cp-motion-ease),transform var(--cp-motion-section) var(--cp-motion-ease),clip-path var(--cp-motion-section) var(--cp-motion-ease);
 }
-.cp6-reveal:not(.is-in){opacity:0;transform:translate3d(0,34px,0)}
-.cp6-story-grid.cp6-reveal:not(.is-in),.cp6-floor-sheet.cp6-reveal:not(.is-in),.cp6-experience-grid.cp6-reveal:not(.is-in),.cp6-evidence.cp6-reveal:not(.is-in){clip-path:inset(0 0 14% 0)}
+html.cp-motion-ready .cp6-reveal:not(.is-in){opacity:0;transform:translate3d(0,34px,0)}
+html.cp-motion-ready .cp6-story-grid.cp6-reveal:not(.is-in),html.cp-motion-ready .cp6-floor-sheet.cp6-reveal:not(.is-in),html.cp-motion-ready .cp6-experience-grid.cp6-reveal:not(.is-in),html.cp-motion-ready .cp6-evidence.cp6-reveal:not(.is-in){clip-path:inset(0 0 14% 0)}
 
 .cp6-story-main,.cp6-story-side figure,.cp6-floor-sheet,.cp6-experience-card,.cp6-address-media{overflow:hidden}
 .cp6-story-main img,.cp6-story-side img,.cp6-floor-sheet img,.cp6-experience-card img,.cp6-address-media img{
@@ -56,7 +61,7 @@
 }
 .cp6-primary:active,.cp6-secondary:active,.cp6-nav-cta:active{transform:translate3d(0,1px,0) scale(.98)}
 
-@media (max-width:900px){.cp6-reveal:not(.is-in){transform:translate3d(0,20px,0)}}
+@media (max-width:900px){html.cp-motion-ready .cp6-reveal:not(.is-in){transform:translate3d(0,20px,0)}}
 
 @media (prefers-reduced-motion:reduce){
   .cp6-hero-copy>div,.cp6-hero-copy>.cp6-index,.cp6-hero-media,.cp6-hero-media>img,.cp6-hero-facts>span,.cp6-reveal,.cp6-story-main img,.cp6-story-side img,.cp6-floor-sheet img,.cp6-experience-card,.cp6-experience-card img,.cp6-address-media img,.cp6-evidence>article,.cp6-floor-stats>span,.cp6-cert-row>.cp6-cert,.cp6-nav-links a,.cp6-primary,.cp6-secondary,.cp6-link,.cp6-nav-cta{
