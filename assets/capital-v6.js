@@ -82,6 +82,9 @@
       rootMargin: '0px 0px -7% 0px'
     });
 
+    // Fail-safe readiness gate: CSS only hides reveal targets after the observer
+    // has been created successfully. If this runtime never executes, content stays visible.
+    document.documentElement.classList.add('cp-motion-ready');
     reveals.forEach((element) => observer.observe(element));
   }
 
